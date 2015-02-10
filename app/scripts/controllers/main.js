@@ -14,4 +14,8 @@ angular.module('dopApp')
       'AngularJS',
       'Karma'
     ];
+
+    this.data = {
+      title: 'Aqui va el Dashboard'
+    };
   });

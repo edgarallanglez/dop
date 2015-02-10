@@ -9,6 +9,7 @@
   <title>DOP</title>
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) styles/vendor.css -->
@@ -82,7 +83,7 @@
         </ul>
     <ul class="nav navbar-nav navbar-right user-nav">
       <li class="dropdown profile_menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="images/avatar2.jpg">Jeff Hanneman <b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="images/avatar2.jpg" style="width: 30px;">Edgar Allan Glez <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">My Account</a></li>
           <li><a href="#">Profile</a></li>
@@ -165,7 +166,7 @@
         <li class="active">Sub Category</li>
       </ol>
     </div>    
-    <div class="cl-mcont">
+    <div ng-view="views/main.html">
       <h3 class="text-center">Content goes here!</h3>
     </div>
   </div> 
@@ -206,16 +207,16 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <!-- endbuild -->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
 <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a></body></
