@@ -16,6 +16,6 @@ angular.module('dopApp')
     ];
 
     this.data = {
-      title: 'Aqui va el Dashboard'
+      title: 'Aqui va el Dashboard con graficas'
     };
   });
