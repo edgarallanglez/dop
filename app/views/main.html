@@ -1,9 +1,11 @@
-<div class="jumbotron center">
+<div id="todo" onload="fadeInImage('#todo')" class="jumbotron center">
   <h1>'Allo, 'Allo!</h1>
   <div ng-controller="MainCtrl as main" class="center">
       <p>{{main.data.title}}</p>
-      <img src="images/logo.png" alt="I'm Yeoman" style="width: 200px;"><br>
+      <img id="image-test"  width="200px" src="images/logo.png">
+      <!--<img src="images/logo.png" alt="I'm Yeoman" style="width: 200px;"><br>-->
   </div>
   <br>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <a class="waves-effect waves-light btn-large btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a>
+
 </div>

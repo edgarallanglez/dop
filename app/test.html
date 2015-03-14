@@ -10,24 +10,26 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  
 
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) styles/vendor.css -->
   <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <!-- endbuild -->
 
+  <!-- endbuild -->
+  <link href="bower_components/materialize/dist/css/materialize.css" rel="stylesheet">
   <!-- Template CSS -->
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <!-- build:css(.tmp) styles/main.css -->
   <link href="styles/style.css" rel="stylesheet"> 
   <!-- endbuild -->
 
 </head>
 
-<body ng-app="dopApp" style="opacity: 1; margin-left: 0px;">
+<body ng-app="dopApp" ng-click='expression' stop-event='click' style="opacity: 1; margin-left: 0px;">
 
   <!-- Fixed navbar -->
-  <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+  <div ng-controller="navegacion" id="head-nav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <div id="main-logo" class="">
@@ -47,7 +49,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right user-nav">
-          <li class="dropdown profile_menu">
+          <li  class="dropdown profile_menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="images/avatar2.jpg" style="width: 30px;">Edgar Allan Glez <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">My Account</a></li>
@@ -58,8 +60,8 @@
             </ul>
           </li>
         </ul>     
-    <ul class="nav navbar-nav navbar-right not-nav">
-      <li class="button dropdown" ng-click="addClass()">
+    <ul  class="nav navbar-nav navbar-right not-nav">
+      <li class="button dropdown" ng-class="{'open': open == true}" ng-click="click()">
         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="images/mini_logo.png" style="width: 17px;" /><span class="bubble">2</span></a>
         <ul class="dropdown-menu">
           <li>
@@ -130,6 +132,8 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/materialize/dist/js/materialize.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -144,7 +148,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
 
 
 <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
