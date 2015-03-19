@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name dopApp.controller:AboutCtrl
+ * @name dopApp.controller:CouponCtrl
  * @description
- * # AboutCtrl
+ * # CouponCtrl
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('CouponCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

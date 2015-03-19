@@ -24,25 +24,32 @@
 
 </head>
 
-<body ng-app="dopApp" style="opacity: 1; margin-left: 0px;">
+<body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
 
   <!-- Fixed navbar -->
   <div layout="column" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <a ng-href="/">
+        <a ng-href="#/">
           <img id="main-logo" src="images/mini_logo.png">
         </a>
         <!-- fill up the space between left and right area -->
         <md-tabs id="toolbar-options" md-selected="data.selectedIndex">
           <md-tab id="tab1" aria-controls="tab1-content" class="white">
-            <span class="white">Inicio</span>
+            <a ng-href="#/">
+              Inicio
+            </a>
           </md-tab>
           <md-tab id="tab2" aria-controls="tab2-content" class="white">
             Cupones
+            <a ng-href="#/coupon">
+              Cupones
+            </a>
           </md-tab>
           <md-tab id="tab3" aria-controls="tab3-content" class="white">
-            Reportes
+            <a ng-href="#/report">
+              Reportes
+            </a>
           </md-tab>
         </md-tabs>
         <span flex></span>
@@ -54,41 +61,46 @@
         </md-button>
       </div>
     </md-toolbar>
-    <ng-switch on="data.selectedIndex" class="tabpanel-container">
-      <div role="tabpanel"
-           id="tab1-content"
-           aria-labelledby="tab1"
-           ng-switch-when="0"
-           md-swipe-left="next()"
-           md-swipe-right="previous()" >
-          View for Item #1<br/>
-          data.selectedIndex = 0
-      </div>
-      <div role="tabpanel"
-           id="tab2-content"
-           aria-labelledby="tab2"
-           ng-switch-when="1"
-           md-swipe-left="next()"
-           md-swipe-right="previous()" >
-          <md-content layout="row" layout-align="center center">
-            <div flex ng-view="views/main.html">
-              <h3 class="text-center">Content goes here!</h3>
-            </div>
-          </md-content>
-      </div>
-      <div role="tabpanel"
-           id="tab3-content"
-           aria-labelledby="tab3"
-           ng-switch-when="2"
-           md-swipe-left="next()"
-           md-swipe-right="previous()" >
-          View for Item #3<br/>
-          data.selectedIndex = 2
-      </div>
-    </ng-switch>
+      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+        <div role="tabpanel"
+             id="tab1-content"
+             aria-labelledby="tab1"
+             ng-switch-when="0"
+             md-swipe-left="next()"
+             md-swipe-right="previous()" >
+            <md-content layout="row" layout-align="center center">
+              <div flex ng-view="views/main.html">
+                <h3 class="text-center">Content goes here!</h3>
+              </div>
+            </md-content>
+        </div>
+        <div role="tabpanel"
+             id="tab2-content"
+             aria-labelledby="tab2"
+             ng-switch-when="1"
+             md-swipe-left="next()"
+             md-swipe-right="previous()" >
+            <md-content layout="row" layout-align="center center">
+              <div flex ng-view="views/coupon.html">
+                <h3 class="text-center">Content goes here!</h3>
+              </div>
+            </md-content>
+        </div>
+        <div role="tabpanel"
+             id="tab3-content"
+             aria-labelledby="tab3"
+             ng-switch-when="2"
+             md-swipe-left="next()"
+             md-swipe-right="previous()" >
+            <md-content layout="row" layout-align="center center">
+              <div flex ng-view="views/report.html">
+                <h3 class="text-center">Content goes here!</h3>
+              </div>
+            </md-content>
+        </div>
+      </ng-switch>
   </div>
 
-  <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -128,9 +140,9 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <!-- <script src="scripts/general.js"></script>-->
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/coupon.js"></script>
+    <script src="scripts/controllers/report.js"></script>
     <!-- endbuild -->
 
 
@@ -139,7 +151,5 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
-<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 </body>
 </html>

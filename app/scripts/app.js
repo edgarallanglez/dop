@@ -26,9 +26,13 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/coupon', {
+        templateUrl: 'views/coupon.html',
+        controller: 'CouponCtrl'
+      })
+      .when('/report', {
+        templateUrl: 'views/report.html',
+        controller: 'ReportCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -37,6 +41,17 @@ angular
       .primaryPalette('blue-grey')
       .accentPalette('light-blue');
   })
+  .controller('TabController', function($scope, $location, $log){
+    $scope.selectedIndex = 0;
+
+    $scope.$watch('selectedIndex', function(current, old) {
+      switch(current) {
+        case 0: $location.url("/"); break;
+        case 1: $location.url("/coupon"); break;
+        case 2: $location.url("/report"); break;
+      }
+    });
+  });
 
 
      
