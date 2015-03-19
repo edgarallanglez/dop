@@ -30,6 +30,10 @@ angular
         templateUrl: 'views/coupon.html',
         controller: 'CouponCtrl'
       })
+      .when('/report', {
+        templateUrl: 'views/report.html',
+        controller: 'ReportCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
