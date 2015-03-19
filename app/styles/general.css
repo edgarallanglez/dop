@@ -31,3 +31,7 @@ body {
 md-tabs { width: 75% !important; height: 100% !important; }
 md-tabs .md-header { height: 100% !important; }
 md-tabs-ink-bar { height: 3px !important; }
+md-tab a {
+  text-decoration: none !important;
+  color: white !important;
+}
