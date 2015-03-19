@@ -19,7 +19,7 @@
 
   <!-- Template CSS -->
   <!-- build:css(.tmp) styles/main.css -->
-  <link href="styles/style.css" rel="stylesheet"> 
+  <link href="styles/general.css" rel="stylesheet"> 
   <!-- endbuild -->
 
 </head>
@@ -27,73 +27,36 @@
 <body ng-app="dopApp" style="opacity: 1; margin-left: 0px;">
 
   <!-- Fixed navbar -->
-  <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <div id="main-logo" class="">
-            <img src="images/mini_logo.png" style="width: 40px;">
-        </div>
+  <div layout="column" layout-fill>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <a ng-href="/">
+          <img id="main-logo" src="images/mini_logo.png">
+        </a>
+        <!-- fill up the space between left and right area -->
+        <md-tabs md-selected="data.selectedIndex">
+          <md-tab id="tab1" aria-controls="tab1-content" class="white">
+            <span class="white">Inicio</span>
+          </md-tab>
+          <md-tab id="tab2" aria-controls="tab2-content" class="white">
+            Cupones
+          </md-tab>
+          <md-tab id="tab3" aria-controls="tab3-content" class="white">
+            Reportes
+          </md-tab>
+        </md-tabs>
+        <span flex></span>
+        <md-button>
+          Edgar Allan Glez
+        </md-button>
       </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Inicio</a></li>
-          <li><a href="#about">Cupones</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Simple</a></li>
-              <li><a href="#">Customizable</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right user-nav">
-          <li class="dropdown profile_menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="images/avatar2.jpg" style="width: 30px;">Edgar Allan Glez <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">Messages</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
-            </ul>
-          </li>
-        </ul>     
-    <ul class="nav navbar-nav navbar-right not-nav">
-      <li class="button dropdown" ng-click="addClass()">
-        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><img src="images/mini_logo.png" style="width: 17px;" /><span class="bubble">2</span></a>
-        <ul class="dropdown-menu">
-          <li>
-            <div class="nano nscroller has-scrollbar">
-              <div class="content" tabindex="0" style="right: -15px;">
-                <ul>
-                  <li><a href="#"><i class="fa fa-cloud-upload info"></i><b>Daniel</b> is now following you <span class="date">2 minutes ago.</span></a></li>
-                  <li><a href="#"><i class="fa fa-male success"></i> <b>Michael</b> is now following you <span class="date">15 minutes ago.</span></a></li>
-                  <li><a href="#"><i class="fa fa-bug warning"></i> <b>Mia</b> commented on post <span class="date">30 minutes ago.</span></a></li>
-                  <li><a href="#"><i class="fa fa-credit-card danger"></i> <b>Andrew</b> killed someone <span class="date">1 hour ago.</span></a></li>
-                </ul>
-              </div>
-            <div class="pane" style="display: none;"><div class="slider" style="height: 20px; top: 0px;"></div></div></div>
-            <ul class="foot"><li><a href="#">View all activity </a></li></ul>           
-          </li>
-        </ul>
-      </li>
-    </ul>
-
-      </div><!--/.nav-collapse -->
-    </div>
-  </div>
-
-  
-  <div id="cl-wrapper">
+    </md-toolbar>
       
-    
-    <div class="container-fluid" id="pcont">
-   
-      <div ng-view="views/main.html">
+    <md-content layout="row" layout-align="center center">
+      <div layout="row" ng-view="views/main.html">
         <h3 class="text-center">Content goes here!</h3>
       </div>
-    </div> 
-    
+    </md-content>
   </div>
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
@@ -130,6 +93,7 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/nanoscroller/bin/javascripts/jquery.nanoscroller.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/materialize/bin/materialize.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

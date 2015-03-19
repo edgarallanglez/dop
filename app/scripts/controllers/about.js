@@ -14,4 +14,6 @@ angular.module('dopApp')
       'AngularJS',
       'Karma'
     ];
+
+    this.message = "InMoon Design, hasta la luna y más allá";
   });
