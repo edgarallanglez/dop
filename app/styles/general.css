@@ -27,6 +27,13 @@ body {
 .white {
   color: white !important;
 }
+md-toolbar .md-toolbar-tools .notification{
+  margin-right: 1em;
+  
+}
+md-toolbar .md-toolbar-tools .notification img{
+  width: 25px;
+}
 
 md-tabs { width: 75% !important; height: 100% !important; }
 md-tabs .md-header { height: 100% !important; }
