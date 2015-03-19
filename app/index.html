@@ -34,11 +34,11 @@
           <img id="main-logo" src="images/mini_logo.png">
         </a>
         <!-- fill up the space between left and right area -->
-        <md-tabs md-selected="data.selectedIndex">
+        <md-tabs id="toolbar-options" md-selected="data.selectedIndex">
           <md-tab id="tab1" aria-controls="tab1-content" class="white">
             <span class="white">Inicio</span>
           </md-tab>
-          <md-tab id="tab2" aria-controls="tab2-content" class="white">
+          <md-tab ng-href="/about" id="tab2" aria-controls="tab2-content" class="white">
             Cupones
           </md-tab>
           <md-tab id="tab3" aria-controls="tab3-content" class="white">
@@ -51,12 +51,38 @@
         </md-button>
       </div>
     </md-toolbar>
-      
-    <md-content layout="row" layout-align="center center">
-      <div layout="row" ng-view="views/main.html">
-        <h3 class="text-center">Content goes here!</h3>
+    <ng-switch on="data.selectedIndex" class="tabpanel-container">
+      <div role="tabpanel"
+           id="tab1-content"
+           aria-labelledby="tab1"
+           ng-switch-when="0"
+           md-swipe-left="next()"
+           md-swipe-right="previous()" >
+          View for Item #1<br/>
+          data.selectedIndex = 0
       </div>
-    </md-content>
+      <div role="tabpanel"
+           id="tab2-content"
+           aria-labelledby="tab2"
+           ng-switch-when="1"
+           md-swipe-left="next()"
+           md-swipe-right="previous()" >
+          <md-content layout="row" layout-align="center center">
+            <div flex ng-view="views/main.html">
+              <h3 class="text-center">Content goes here!</h3>
+            </div>
+          </md-content>
+      </div>
+      <div role="tabpanel"
+           id="tab3-content"
+           aria-labelledby="tab3"
+           ng-switch-when="2"
+           md-swipe-left="next()"
+           md-swipe-right="previous()" >
+          View for Item #3<br/>
+          data.selectedIndex = 2
+      </div>
+    </ng-switch>
   </div>
 
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>

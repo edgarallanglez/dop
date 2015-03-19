@@ -34,8 +34,8 @@ angular
         redirectTo: '/'
       });
     $mdThemingProvider.theme('default')
-      .primaryPalette('orange')
-      .accentPalette('pink');
+      .primaryPalette('blue-grey')
+      .accentPalette('light-blue');
   })
 
 
