@@ -38,7 +38,10 @@ angular
         redirectTo: '/'
       });
     $mdThemingProvider.theme('default')
-      .primaryPalette('blue-grey')
+      .primaryPalette('blue-grey', {
+        'hue-1': '100',
+        'hue-3': '300'
+      })
       .accentPalette('light-blue');
   })
   .controller('TabController', function($scope, $location, $log){
