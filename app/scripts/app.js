@@ -55,13 +55,34 @@ angular
       }
     });
     //Llamar SideBar derecho
-    $scope.toggleRight = function() {
-      $mdSidenav('right').toggle()
+    $scope.toggleRightNotifications = function() {
+      $mdSidenav('notifications-sidenav').toggle()
                           .then(function(){
                             //Transición terminada
                           });
     };
-  });
+    $scope.toggleRightWidgets = function() {
+      $mdSidenav('widgets-sidenav').toggle()
+                          .then(function(){
+                            //Transición terminada
+                          });
+    };
+  })
+  //Controlador SideBar derecho
+    .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function(scope,to,mds,log) {
+      scope.closeNotifications = function() {
+        mds('notifications-sidenav').close()
+            .then(function(){
+              log.debug("close RIGHT is done");
+            });
+      };
+      scope.closeWidgets = function() {
+        mds('widgets-sidenav').close()
+            .then(function(){
+              log.debug("close RIGHT is done");
+            });
+      };
+  }]);
 
 
      
