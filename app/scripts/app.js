@@ -41,7 +41,7 @@ angular
       .primaryPalette('blue-grey')
       .accentPalette('light-blue');
   })
-  .controller('TabController', function($scope, $location, $log){
+  .controller('TabController', function($scope, $location, $log, $mdSidenav){
     $scope.selectedIndex = 0;
 
     $scope.$watch('selectedIndex', function(current, old) {
@@ -51,6 +51,13 @@ angular
         case 2: $location.url("/report"); break;
       }
     });
+    //Llamar SideBar derecho
+    $scope.toggleRight = function() {
+      $mdSidenav('right').toggle()
+                          .then(function(){
+                            //Transición terminada
+                          });
+    };
   });
 
 

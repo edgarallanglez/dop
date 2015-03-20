@@ -8,8 +8,8 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
+  .controller('MainCtrl', ['$scope', function(scope) {
+    scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
@@ -17,15 +17,16 @@ angular.module('dopApp')
     this.data = {
       title: 'Aqui va el Dashboard con graficas'
     };
-  })
-  .controller('navegacion', ['$scope','$document', function(sc, dc) {
-    sc.click = function(){
-        sc.open = true;
-    }
-    dc.bind('click', function(event){
-        sc.open = false;
-    });
   }])
+  //Controlador SideBar derecho
+  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function(scope,to,mds,log) {
+    scope.close = function() {
+      mds('right').close()
+          .then(function(){
+            log.debug("close RIGHT is done");
+          });
+    };
+}]);
   
 
   
