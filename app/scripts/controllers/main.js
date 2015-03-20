@@ -18,15 +18,7 @@ angular.module('dopApp')
       title: 'Aqui va el Dashboard con graficas'
     };
   }])
-  //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function(scope,to,mds,log) {
-    scope.close = function() {
-      mds('right').close()
-          .then(function(){
-            log.debug("close RIGHT is done");
-          });
-    };
-}]);
+  
   
 
   
