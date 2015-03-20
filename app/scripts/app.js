@@ -22,6 +22,10 @@ angular
   ])
   .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider
+      .when('/login', {
+        templateUrl: '../login.html',
+        controller: 'LoginController'
+      })
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
