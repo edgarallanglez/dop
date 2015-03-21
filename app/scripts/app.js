@@ -23,8 +23,8 @@ angular
   .config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider
       .when('/login', {
-        templateUrl: '../login.html',
-        controller: 'LoginController'
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .when('/', {
         templateUrl: 'views/main.html',
@@ -73,19 +73,19 @@ angular
     };
   })
   //Controlador SideBar derecho
-    .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function(scope,to,mds,log) {
-      scope.closeNotifications = function() {
-        mds('notifications-sidenav').close()
-            .then(function(){
-              log.debug("close RIGHT is done");
-            });
-      };
-      scope.closeWidgets = function() {
-        mds('widgets-sidenav').close()
-            .then(function(){
-              log.debug("close RIGHT is done");
-            });
-      };
+  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function($scope,$timeout,$mdSidenav,$log) {
+    $scope.closeNotifications = function() {
+      $mdSidenav('notifications-sidenav').close()
+          .then(function(){
+            $log.debug("close RIGHT is done");
+          });
+    };
+    $scope.closeWidgets = function() {
+      $mdSidenav('widgets-sidenav').close()
+          .then(function(){
+            $log.debug("close RIGHT is done");
+          });
+    };
   }]);
 
 
