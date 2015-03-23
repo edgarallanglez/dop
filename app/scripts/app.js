@@ -4,7 +4,7 @@
  * @ngdoc overview
  * @name dopApp
  * @description
- * # dopApp
+ * dopApp
  *
  * Main module of the application.
  */
@@ -51,15 +51,22 @@ angular
       .accentPalette('light-blue');
   })
   .controller('TabController', function($scope, $location, $log, $mdSidenav){
-    $scope.selectedIndex = 0;
-
-    $scope.$watch('selectedIndex', function(current, old) {
-      switch(current) {
-        case 0: $location.url("/"); break;
-        case 1: $location.url("/coupon"); break;
-        case 2: $location.url("/report"); break;
-      }
-    });
+    // if ($location.url("/")) {
+    //   $scope.selectedIndex = 0;
+    // } else if ($location.url("/coupon")) {
+    //   $scope.selectedIndex = 1;
+    // } else if ($location.url("/report")) {
+    //   $scope.selectedIndex = 2;
+    // }
+    
+    console.log($scope.selectedIndex);
+    // $scope.$watch('selectedIndex', function(current, old) {
+    //   switch(current) {
+    //     case 0: $location.url("/");
+    //     case 1: $location.url("/coupon"); break;
+    //     case 2: $location.url("/report"); break;
+    //   }
+    // });
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
@@ -75,7 +82,7 @@ angular
     };
   })
   //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function($scope,$timeout,$mdSidenav,$log) {
+  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function($scope, $timeout, $mdSidenav, $log) {
     $scope.closeNotifications = function() {
       $mdSidenav('notifications-sidenav').close()
           .then(function(){
