@@ -73,19 +73,19 @@ angular
     };
   })
   //Controlador SideBar derecho
-    .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function(scope,to,mds,log) {
-      scope.closeNotifications = function() {
-        mds('notifications-sidenav').close()
-            .then(function(){
-              log.debug("close RIGHT is done");
-            });
-      };
-      scope.closeWidgets = function() {
-        mds('widgets-sidenav').close()
-            .then(function(){
-              log.debug("close RIGHT is done");
-            });
-      };
+  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function(scope,to,mds,log) {
+    scope.closeNotifications = function() {
+      mds('notifications-sidenav').close()
+          .then(function(){
+            log.debug("close RIGHT is done");
+          });
+    };
+    scope.closeWidgets = function() {
+      mds('widgets-sidenav').close()
+          .then(function(){
+            log.debug("close RIGHT is done");
+          });
+    };
   }]);
 
 
