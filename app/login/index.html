@@ -10,43 +10,42 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) styles/vendor.css -->
   <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <!-- endbuild -->
 
   <!-- Template CSS -->
   <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="styles/general.css"> 
-  <link rel="stylesheet" href="styles/calculator.css"> 
+  <link href="styles/general.css" rel="stylesheet"> 
   <!-- endbuild -->
-  <!-- <base href="/"> -->
+  <base href="/login">
 </head>
 
-<body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
+<body ng-app="dopApp"  ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
   <!-- Fixed navbar -->
   <div layout="column" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <a ng-href="/#/">
+        <a ng-href="/">
           <img id="main-logo" src="images/mini_logo.png">
         </a>
         <!-- fill up the space between left and right area -->
         <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
           <md-tab id="tab1" aria-controls="tab1-content" class="white">
-            <a ng-href="/#/">
+            <a ng-href="/">
               Inicio
             </a>
           </md-tab>
           <md-tab id="tab2" aria-controls="tab2-content" class="white">
-            <a ng-href="/#/coupon">
+            <a ng-href="/coupon">
               Cupones
             </a>
           </md-tab>
           <md-tab id="tab3" aria-controls="tab3-content" class="white">
-            <a ng-href="/#/report">
+            <a ng-href="/report">
               Reportes
             </a>
           </md-tab>
@@ -70,7 +69,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/main.html">
-                
+                <h3 class="text-center">Content goes here!</h3>
               </div>
             </md-content>
         </div>
@@ -82,7 +81,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/coupon.html">
-                
+                <h3 class="text-center">Content goes here!</h3>
               </div>
             </md-content>
         </div>
@@ -94,7 +93,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/report.html">
-                
+                <h3 class="text-center">Content goes here!</h3>
               </div>
             </md-content>
         </div>
@@ -115,33 +114,6 @@
       <h1 class="md-toolbar-tools">Utilidades</h1>
     </md-toolbar>
     <md-content ng-controller="RightCtrl" class="md-padding">
-      <div id="calculator">
-        <!-- Screen and clear key -->
-        <div class="top">
-          <span class="clear">C</span>
-          <div class="screen"></div>
-        </div>
-        
-        <div class="keys">
-          <!-- operators and other keys -->
-          <span>7</span>
-          <span>8</span>
-          <span>9</span>
-          <span class="operator">+</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span class="operator">-</span>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span class="operator">÷</span>
-          <span>0</span>
-          <span>.</span>
-          <span class="eval">=</span>
-          <span class="operator">x</span>
-        </div>
-      </div>
       <md-button ng-click="closeWidgets()" class="md-primary">
         Cerrar
       </md-button>
@@ -193,16 +165,13 @@
     <script src="scripts/controllers/coupon.js"></script>
     <script src="scripts/controllers/report.js"></script>
     <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/vendor/calculator.js"></script>
-
-     
     <!-- endbuild -->
 
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

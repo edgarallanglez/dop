@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dopApp.controller:CouponCtrl
+ * @name dopApp.controller:LoginCtrl
  * @description
- * # CouponCtrl
+ * # LoginCtrl
  * Controller of the dopApp
  */
 angular.module('dopApp')
