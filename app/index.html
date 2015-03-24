@@ -56,12 +56,12 @@
         <md-button ng-click="toggleRightNotifications()" class="notification md-fab md-primary md-hue-3">
             <span class="white">5</span>
         </md-button>
-        <md-button ng-click="toggleRightWidgets()">
-          Edgar Allan Glez
+        <md-button ng-click="toggleRightWidgets()" class="">
+          <i class="fa fa-bars menu-icon margin-sm"></i>
         </md-button>
       </div>
     </md-toolbar>
-      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+      <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl">
         <div role="tabpanel"
              id="tab1-content"
              aria-labelledby="tab1"
