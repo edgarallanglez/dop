@@ -69,8 +69,8 @@ angular
       });
      });
     }
+  })
     //
-    
   .controller('TabController', function($scope, $location, $log, $mdSidenav){
     $scope.reload = true;
     //Llamar SideBar derecho
