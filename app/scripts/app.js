@@ -50,22 +50,7 @@ angular
       .accentPalette('light-blue');
   })
   .controller('TabController', function($scope, $location, $log, $mdSidenav){
-    // if ($location.url("/")) {
-    //   $scope.selectedIndex = 0;
-    // } else if ($location.url("/coupon")) {
-    //   $scope.selectedIndex = 1;
-    // } else if ($location.url("/report")) {
-    //   $scope.selectedIndex = 2;
-    // }
-    
-    console.log($scope.selectedIndex);
-    // $scope.$watch('selectedIndex', function(current, old) {
-    //   switch(current) {
-    //     case 0: $location.url("/");
-    //     case 1: $location.url("/coupon"); break;
-    //     case 2: $location.url("/report"); break;
-    //   }
-    // });
+    $scope.reload = true;
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
@@ -79,6 +64,32 @@ angular
                             //Transición terminada
                           });
     };
+
+    $scope.$watch('data.selectedIndex', function () {
+      //  paint tab after reload
+      if ($scope.data && $scope.reload) {
+        if ($location.url() == '/coupon') {
+          $scope.data.selectedIndex = 1;
+          $scope.reload = false;
+        } else if ($location.url() == '/report') {
+          $scope.data.selectedIndex = 2;
+          $scope.reload = false;
+        };
+      };
+
+        // tab selected change
+
+      if ($scope.data) {
+        if ($scope.data.selectedIndex == 0 ) {
+          $location.url('/');
+        } else if ($scope.data.selectedIndex == 1) {
+          $location.url('/coupon');
+        } else if ($scope.data.selectedIndex == 2) {
+          $location.url('/report');
+        };
+      };
+    });
+
   })
   //Controlador SideBar derecho
   .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function($scope, $timeout, $mdSidenav, $log) {
@@ -94,6 +105,7 @@ angular
             $log.debug("close RIGHT is done");
           });
     };
+
   }]);
 
 
