@@ -21,8 +21,7 @@ angular
     'ngMaterial'
   ])
   .config(function ($routeProvider, $mdThemingProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
-
+    //$locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -50,24 +49,28 @@ angular
       })
       .accentPalette('light-blue');
   })
-  .controller('TabController', function($scope, $location, $log, $mdSidenav){
-    // if ($location.url("/")) {
-    //   $scope.selectedIndex = 0;
-    // } else if ($location.url("/coupon")) {
-    //   $scope.selectedIndex = 1;
-    // } else if ($location.url("/report")) {
-    //   $scope.selectedIndex = 2;
-    // }
+  .controller('TabController', function($scope, $location, $log, $mdSidenav,$http,$templateCache){
     
-    console.log($scope.selectedIndex);
-    // $scope.$watch('selectedIndex', function(current, old) {
-    //   switch(current) {
-    //     case 0: $location.url("/");
-    //     case 1: $location.url("/coupon"); break;
-    //     case 2: $location.url("/report"); break;
-    //   }
-    // });
-    //Llamar SideBar derecho
+    //Obtener clima según locación
+    console.log($scope);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position){
+          $scope.$apply(function(){
+          $scope.position = position;
+          var latitude=position.coords.latitude;
+          var longitude=position.coords.longitude;
+          var method = 'GET';
+          var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';        
+          $http.jsonp(url).success(function(data) {
+          if (data) {
+            console.log(data);
+          }
+        });
+      });
+     });
+    }
+    //
+    
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
                           .then(function(){
