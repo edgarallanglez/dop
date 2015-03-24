@@ -50,9 +50,8 @@ angular
       .accentPalette('light-blue');
   })
   .controller('TabController', function($scope, $location, $log, $mdSidenav,$http,$templateCache){
-    
+    $scope.reload = true;
     //Obtener clima según locación
-    console.log($scope);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position){
           $scope.$apply(function(){
@@ -64,15 +63,12 @@ angular
           $http.jsonp(url).success(function(data) {
           if (data) {
             console.log(data);
-          }
+          };
         });
       });
      });
-    }
-  })
+    };
     //
-  .controller('TabController', function($scope, $location, $log, $mdSidenav){
-    $scope.reload = true;
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
