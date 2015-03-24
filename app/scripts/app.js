@@ -86,7 +86,10 @@ angular
     $scope.$watch('data.selectedIndex', function () {
       //  paint tab after reload
       if ($scope.data && $scope.reload) {
-        if ($location.url() == '/coupon') {
+        if ($location.url() == '/') {
+          $scope.data.selectedIndex = 0;
+          $scope.reload = false;
+        } else if ($location.url() == '/coupon') {
           $scope.data.selectedIndex = 1;
           $scope.reload = false;
         } else if ($location.url() == '/report') {
