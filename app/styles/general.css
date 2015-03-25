@@ -1,9 +1,23 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,300,400);
+body { background-color: #eee !important; }
+
+/* General paddings */
+.padding-sm { padding: 5px !important; }
+.padding-md { padding: 10px !important; }
+.padding-lg { padding: 15px !important; }
+.padding-xl { padding: 20px !important; }
+
+/* General margins */
+.margin-sm { margin: 5px !important; }
+.margin-md { margin: 10px !important; }
+.margin-lg { margin: 15px !important; }
+.margin-xl { margin: 20px !important; }
 
 .center {
     text-align: center !important;
 }
 
+.menu-icon { font-size: 24px; }
 .navbar {
     background-color: #282828 !important;
     font-size: 14px;

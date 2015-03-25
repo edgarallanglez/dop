@@ -21,6 +21,7 @@
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/general.css"> 
   <link rel="stylesheet" href="styles/calculator.css"> 
+  <link rel="stylesheet" href="styles/demo.css"> 
   <!-- endbuild -->
   <!-- <base href="/"> -->
 </head>
@@ -30,23 +31,23 @@
   <div layout="column" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <a ng-href="/#/">
+        <a ng-href="#/">
           <img id="main-logo" src="images/mini_logo.png">
         </a>
         <!-- fill up the space between left and right area -->
         <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
           <md-tab id="tab1" aria-controls="tab1-content" class="white">
-            <a ng-href="/#/">
+            <a ng-href="#/">
               Inicio
             </a>
           </md-tab>
           <md-tab id="tab2" aria-controls="tab2-content" class="white">
-            <a ng-href="/#/coupon">
+            <a ng-href="#/coupon">
               Cupones
             </a>
           </md-tab>
           <md-tab id="tab3" aria-controls="tab3-content" class="white">
-            <a ng-href="/#/report">
+            <a ng-href="#/report">
               Reportes
             </a>
           </md-tab>
@@ -56,12 +57,12 @@
         <md-button ng-click="toggleRightNotifications()" class="notification md-fab md-primary md-hue-3">
             <span class="white">5</span>
         </md-button>
-        <md-button ng-click="toggleRightWidgets()">
-          Edgar Allan Glez
+        <md-button ng-click="toggleRightWidgets()" class="">
+          <i class="fa fa-bars menu-icon margin-sm"></i>
         </md-button>
       </div>
     </md-toolbar>
-      <ng-switch on="data.selectedIndex" class="tabpanel-container">
+      <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl">
         <div role="tabpanel"
              id="tab1-content"
              aria-labelledby="tab1"
@@ -70,7 +71,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/main.html">
-                
+                <!-- tab's content -->
               </div>
             </md-content>
         </div>
@@ -82,7 +83,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/coupon.html">
-                
+                <!-- tab's content -->
               </div>
             </md-content>
         </div>
@@ -94,7 +95,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/report.html">
-                
+                <!-- tab's content -->
               </div>
             </md-content>
         </div>
@@ -110,9 +111,12 @@
       </md-button>
     </md-content>
   </md-sidenav>
-  <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav">
+  <md-sidenav id="utilities-sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav">
     <md-toolbar class="md-theme-light">
       <h1 class="md-toolbar-tools">Utilidades</h1>
+      <button class="cmn-toggle-switch cmn-toggle-switch__htx">
+        <span>toggle menu</span>
+      </button>
     </md-toolbar>
     <md-content ng-controller="RightCtrl" class="md-padding">
       <div id="calculator">
@@ -194,6 +198,7 @@
     <script src="scripts/controllers/report.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/vendor/calculator.js"></script>
+    <script src="scripts/vendor/demo.js"></script>
 
      
     <!-- endbuild -->
