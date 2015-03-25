@@ -30,23 +30,23 @@
   <div layout="column" layout-fill>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <a ng-href="/#/">
+        <a ng-href="#/">
           <img id="main-logo" src="images/mini_logo.png">
         </a>
         <!-- fill up the space between left and right area -->
         <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
           <md-tab id="tab1" aria-controls="tab1-content" class="white">
-            <a ng-href="/#/">
+            <a ng-href="#/">
               Inicio
             </a>
           </md-tab>
           <md-tab id="tab2" aria-controls="tab2-content" class="white">
-            <a ng-href="/#/coupon">
+            <a ng-href="#/coupon">
               Cupones
             </a>
           </md-tab>
           <md-tab id="tab3" aria-controls="tab3-content" class="white">
-            <a ng-href="/#/report">
+            <a ng-href="#/report">
               Reportes
             </a>
           </md-tab>
@@ -70,7 +70,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/main.html">
-                
+                <!-- tab's content -->
               </div>
             </md-content>
         </div>
@@ -82,7 +82,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/coupon.html">
-                
+                <!-- tab's content -->
               </div>
             </md-content>
         </div>
@@ -94,7 +94,7 @@
              md-swipe-right="previous()" >
             <md-content layout="row" layout-align="center center">
               <div flex ng-view="views/report.html">
-                
+                <!-- tab's content -->
               </div>
             </md-content>
         </div>
