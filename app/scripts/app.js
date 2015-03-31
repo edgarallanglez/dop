@@ -77,6 +77,8 @@ angular
                           });
     };
     $scope.toggleRightWidgets = function() {
+      var closeWidgetsBtn=document.getElementById('closeWidgetsBtn');
+      setTimeout(function(){ closeWidgetsBtn.classList.add('active'); },450);
       $mdSidenav('widgets-sidenav').toggle()
                           .then(function(){
                             //Transición terminada
