@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'chart.js'
   ])
   .config(function ($routeProvider, $mdThemingProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
