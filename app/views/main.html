@@ -1,13 +1,5 @@
-<div id="todo" onload="fadeInImage('#todo')" class="jumbotron center">
-  <h1>'Allo, 'Allo!</h1>
-  <div ng-controller="MainCtrl as main" class="center">
-      <p>{{main.data.title}}</p>
-      <img id="image-test"  width="200px" src="images/logo.png">
-      <!--<img src="images/logo.png" alt="I'm Yeoman" style="width: 200px;"><br>-->
-  </div>
-  <br>
-  <md-button class="md-button-colored md-default-theme">Splendid!<span class="glyphicon glyphicon-ok"></span></md-button>
-  <div style="width: 200px; height: 200px;">
-    <canvas id="myChart" width="100" height="100"></canvas>
-  </div>
+<div class="center">
+    <div ng-controller="MainCtrl as main" class="center">
+        <div ui-view="genderView"></div>
+    </div>
 </div>
