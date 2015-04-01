@@ -18,6 +18,10 @@ angular.module('dopApp')
               'genderChart': {
                 templateUrl: '../../views/dashboardViews/genderView.html',
                 controller: 'GenderWidgetCtrl'
+              },
+              'couponStatusChart': {
+                templateUrl: '../../views/dashboardViews/couponView.html',
+                controller: 'CouponWidgetCtrl'
               }
           }
         });
