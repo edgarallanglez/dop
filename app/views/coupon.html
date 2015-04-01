@@ -1,15 +1,15 @@
 <div ng-controller="CouponCtrl as coupon">
   <md-content layout="row">
-    <md-card>
+    <md-card class="background-white">
      <img src="images/logo.png" class="md-card-image" style="width: 300px;">
      <h2>Paracosm</h2>
      <p>
       {{coupon.message}}
      </p>
     </md-card>
-    <div ui-view="genderChart" ng-controller="GenderWidgetCtrl">
-    </div>
-    <div ui-view="genderChart" ng-controller="GenderWidgetCtrl">
-    </div>
+    <md-card class="background-white">
+      <div ui-view="genderChart">
+      </div>
+    </md-card>
   </md-content>
 </div>
