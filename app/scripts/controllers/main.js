@@ -8,6 +8,15 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
+  .config(function($stateProvider){
+    $stateProvider
+      .state('index', {
+          url: "/",
+          views: {
+            "genderChart": { template: "../views/dashboardViews/genderView.html" },
+          }
+        })
+  })
   .controller('MainCtrl', ['$scope', function(scope) {
     scope.awesomeThings = [
       'HTML5 Boilerplate',
@@ -35,10 +44,9 @@ angular.module('dopApp')
         }
     ]
 
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var myNewChart = new Chart(ctx).PolarArea(this.data);
+    // var ctx = document.getElementById("myChart").getContext("2d");
+    // var myNewChart = new Chart(ctx).PolarArea(this.data);
   }])
-  
   
 
   
