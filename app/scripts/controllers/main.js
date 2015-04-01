@@ -10,8 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
     $stateProvider
-      .state('index', {
-          url: "/",
+      .state('/', {
           views: {
             "genderChart": { template: "../views/dashboardViews/genderView.html" },
           }
