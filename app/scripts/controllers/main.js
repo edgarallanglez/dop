@@ -13,9 +13,9 @@ angular.module('dopApp')
       .state('index', {
           url: "/",
           views: {
-            "genderChart": { template: "../views/dashboardViews/genderView.html" },
+            "genderChart": { template: "../views/dashboardViews/genderView.html" }
           }
-        })
+        });
   })
   .controller('MainCtrl', ['$scope', function(scope) {
     scope.awesomeThings = [
@@ -46,7 +46,7 @@ angular.module('dopApp')
 
     // var ctx = document.getElementById("myChart").getContext("2d");
     // var myNewChart = new Chart(ctx).PolarArea(this.data);
-  }])
+  }]);
   
 
   
