@@ -1,5 +1,23 @@
 <div class="center">
-    <div ng-controller="MainCtrl as main" class="center">
-        <div ui-view="genderView"></div>
+    <div ng-controller="MainCtrl as main" class="center" layout="row" layout-wrap>
+        <md-card class="background-white" flex="50">
+            <div ui-view="genderChart">
+            </div>
+        </md-card>
+
+        <md-card class="background-white" flex="50">
+            <div ui-view="LocationChart">
+            </div>
+        </md-card>
+
+        <md-card class="background-white" flex="50">
+            <div ui-view="couponStatusChart">
+            </div>
+        </md-card>
+
+        <md-card class="background-white" flex="50">
+            <div ui-view="ageChart">
+            </div>
+        </md-card>
     </div>
 </div>
