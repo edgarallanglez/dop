@@ -10,8 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
     $stateProvider
-      .state('index', {
-          url: "/",
+      .state('/', {
           views: {
             "genderChart": { template: "../views/dashboardViews/genderView.html" }
           }
@@ -44,9 +43,8 @@ angular.module('dopApp')
         }
     ]
 
-    // var ctx = document.getElementById("myChart").getContext("2d");
-    // var myNewChart = new Chart(ctx).PolarArea(this.data);
-  }]);
   
+  }])
+
 
   
