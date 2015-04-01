@@ -9,21 +9,27 @@
  */
 angular.module('dopApp')
   .config(function($stateProvider){
-    // $stateProvider
-    //   .state('/', {
-    //       views: {
-    //         "genderChart": { template: "../views/dashboardViews/genderView.html" }
-    //       }
-    //     });
+    $stateProvider
+        // HOME STATES AND NESTED VIEWS ========================================
+        .state('/dashboard', {
+          url: '/',
+          views: {
+              // the child views will be defined here (absolutely named)
+              'genderChart': {
+                templateUrl: '../../views/dashboardViews/genderView.html',
+                controller: 'GenderWidgetCtrl'
+              }
+          }
+        });
   })
-  .controller('MainCtrl', ['$scope', function(scope) {
-    scope.awesomeThings = [
+  .controller('MainCtrl', function($scope, $state) {
+    $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  
-  }])
+    $state.go("/dashboard");
+  })
 
 
   
