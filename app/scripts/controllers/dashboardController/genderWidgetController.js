@@ -9,40 +9,10 @@
  */
 angular.module('dopApp')
   .config(function($stateProvider){
-    // $stateProvider
-    //   .state('/', {
-    //       views: {
-    //         "genderChart": { template: "../views/dashboardViews/genderView.html" }
-    //       }
-    //     });
   })
-  .controller('GenderWidgetCtrl', ['$scope', function(scope) {
-    scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    this.data = [
-          {
-              value: 300,
-              color:"#F7464A",
-              highlight: "#FF5A5E",
-              label: "Red"
-          },
-          {
-              value: 50,
-              color: "#46BFBD",
-              highlight: "#5AD3D1",
-              label: "Green"
-          },
-          {
-              value: 100,
-              color: "#FDB45C",
-              highlight: "#FFC870",
-              label: "Yellow"
-          }
-      ];
-      var ctx = document.getElementById("myChart").getContext("2d");
-      var myNewChart = new Chart(ctx).PolarArea(this.data);
-  
-  }])
+  .controller('GenderWidgetCtrl', function($scope) {
+
+    $scope.labels = ['Hombres', 'Mujeres'];
+    $scope.data = [55, 23];
+    $scope.colours = ['#3F51B5', '#FF4081'];
+  });
