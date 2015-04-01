@@ -7,13 +7,14 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('CouponCtrl', function ($scope) {
+  .controller('CouponCtrl', function ($scope,$state) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
     this.message = "InMoon Design, hasta la luna y más allá";
+    $state.go("coupon");
   })
   .config(function($stateProvider,$urlRouterProvider){
   	$urlRouterProvider.otherwise('/coupon');
@@ -23,7 +24,9 @@ angular.module('dopApp')
 	        url: '/coupon',
 	        views: {
 	            // the child views will be defined here (absolutely named)
-	            'genderChart': { template: '<h1>Look I am a column!</h1>' }
+	            'genderChart': { templateUrl: '../../views/dashboardViews/genderView.html',
+	            				 controller: 'GenderWidgetCtrl'
+	            				}
 	        }
 	    });
 	
