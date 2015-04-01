@@ -1,6 +1,26 @@
-<div layout-align="center center" ng-controller="GenderWidgetCtrl" style="width: 200px;
-                                                                          height: 300px;
-                                                                          margin: 0 auto;">
-    <h2>Cupones</h2>
-   
+
+<div ng-controller="CouponWidgetCtrl" class="tabsdemoStaticTabs sample">
+    <md-tabs class="md-accent" md-selected="data.selectedIndex">
+      <md-tab id="tab1">
+        <md-tab-label>Item One</md-tab-label>
+        <md-tab-template>
+          View for Item #1 <br/>
+          data.selectedIndex = 0;
+        </md-tab-template>
+      </md-tab>
+      <md-tab id="tab2" ng-disabled="data.secondLocked">
+        <md-tab-label>{{data.secondLabel}}</md-tab-label>
+        <md-tab-template>
+          View for Item #2 <br/>
+          data.selectedIndex = 1;
+        </md-tab-template>
+      </md-tab>
+      <md-tab id="tab3">
+        <md-tab-label>Item Three</md-tab-label>
+        <md-tab-template>
+          View for Item #3 <br/>
+          data.selectedIndex = 2;
+        </md-tab-template>
+      </md-tab>
+    </md-tabs>
 </div>
