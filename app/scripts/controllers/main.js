@@ -26,6 +26,10 @@ angular.module('dopApp')
               'couponStatusChart': {
                 templateUrl: '../../views/dashboardViews/couponView.html',
                 controller: 'CouponWidgetCtrl'
+              },
+              'couponList': {
+                templateUrl: '../../views/dashboardViews/couponListView.html',
+                controller: 'CouponListWidgetCtrl'
               }
           }
         });
