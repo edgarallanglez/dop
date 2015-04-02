@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dopApp.controller:MainCtrl
+ * @name dopApp.controller:GenderWidgetCtrl
  * @description
- * # MainCtrl
+ * # GenderWidgetCtrl
  * Controller of the dopApp
  */
 angular.module('dopApp')

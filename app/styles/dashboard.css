@@ -45,3 +45,5 @@
 	border-left: 2px solid rgb(225, 225, 225);
 	border-top: 2px solid rgb(225, 225, 225);
 }
+
+.angular-google-map-container { height: 400px; }

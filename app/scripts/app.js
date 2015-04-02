@@ -20,7 +20,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMaterial',
-    'chart.js'
+    'chart.js',
+    'uiGmapgoogle-maps'
   ])
   .config(function ($routeProvider, $mdThemingProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
