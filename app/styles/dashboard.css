@@ -60,5 +60,11 @@
 		width: inherit;
 }
 /* End Gender Chart CSS*/
+
 /* Maps Widget*/
 .angular-google-map-container { height: 400px; }
+
+.coupon-card { padding: 1em; }
+.coupon-card p,.coupon-card h2 { margin-bottom: 0; }
+.coupon-card h2 { margin-top:0; }
+
