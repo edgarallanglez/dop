@@ -23,4 +23,4 @@ angular.module('dopApp')
       $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
     };
    
-  })
+  });

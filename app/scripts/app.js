@@ -51,26 +51,9 @@ angular
       })
       .accentPalette('light-blue');
   })
-  .controller('TabController', function($scope, $location, $log, $mdSidenav,$http,$templateCache){
+  .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache){
     $scope.reload = true;
-    //Obtener clima según locación
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position){
-          $scope.$apply(function(){
-          $scope.position = position;
-          var latitude=position.coords.latitude;
-          var longitude=position.coords.longitude;
-          var method = 'GET';
-          var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';        
-          $http.jsonp(url).success(function(data) {
-          if (data) {
-            console.log(data);
-          };
-        });
-      });
-     });
-    };
-    //
+    
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
@@ -117,7 +100,7 @@ angular
 
   })
   //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', function($scope, $timeout, $mdSidenav, $log) {
+  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$http', function($scope, $timeout, $mdSidenav, $log, $http) {
     $scope.closeNotifications = function() {
       $mdSidenav('notifications-sidenav').close()
           .then(function(){
@@ -131,6 +114,22 @@ angular
           });
     };
 
+    //Obtener clima según locación
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position){
+          $scope.$apply(function(){
+
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var method = 'GET';
+            var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';        
+            $http.jsonp(url).success(function(data) {
+              $scope.data = data;
+              $scope.icon = data.weather[0].icon;
+            });
+          });
+      });
+    };
   }]);
 
 

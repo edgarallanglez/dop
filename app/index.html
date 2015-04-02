@@ -121,6 +121,14 @@
       </button>
     </md-toolbar>
     <md-content ng-controller="RightCtrl" class="md-padding">
+
+      <div id="weather">
+        <md-content>
+          <h1>{{data.name}}</h1>
+          <img src="http://openweathermap.org/img/w/{{icon}}.png">
+          <h2>{{data.main.temp - 273.15 | number: 0}}</h2>
+        </md-content>
+      </div>
       <div id="calculator">
         <!-- Screen and clear key -->
         <div class="top">
@@ -148,6 +156,7 @@
           <span class="operator">x</span>
         </div>
       </div>
+
       <md-button ng-click="closeWidgets()" class="md-primary">
         Cerrar
       </md-button>
