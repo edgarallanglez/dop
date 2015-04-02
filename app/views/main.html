@@ -1,19 +1,22 @@
 <div class="center">
-    <div ng-controller="MainCtrl as main" class="center" layout="row" layout-wrap>
-        <md-card class="background-white" flex="45" flex-order="1">
-            <div ui-view="genderChart"></div>
-        </md-card>
+    <div ng-controller="MainCtrl as main" class="center">
+        <div layout-fill layout="row" layout-wrap>
+            <md-card class="background-white" flex flex-sm="100" flex-order="1">
+                <div ui-view="genderChart"></div>
+            </md-card>
 
-        <md-card class="background-white" flex="45" flex-order="2">
-            <div ui-view="ageChart"></div>
-        </md-card>
+            <md-card class="background-white" flex flex-sm="100" flex-order="2">
+                <div ui-view="ageChart"></div>
+            </md-card>
+        </div>
+        <div layout-fill layout="row" layout-wrap>
+            <md-card class="background-white tabsdemoStaticTabs" flex flex-sm="100" flex-order="3">
+                <div ui-view="couponStatusChart"></div>
+            </md-card>
 
-        <md-card class="background-white tabsdemoStaticTabs" flex="45" flex-order="3">
-            <div ui-view="couponStatusChart"></div>
-        </md-card>
-
-        <md-card class="background-white" flex="45" flex-order="4">
-            <div ui-view="locationChart"></div>
-        </md-card>
+            <md-card class="background-white" flex flex-sm="100" flex-order="4">
+                <div ui-view="locationChart"></div>
+            </md-card>
+        </div>
     </div>
 </div>
