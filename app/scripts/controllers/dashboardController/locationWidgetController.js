@@ -12,5 +12,11 @@ angular.module('dopApp')
   })
   .controller('LocationWidgetCtrl', function($scope) {
 
-    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    $scope.map = {
+      center: { 
+        latitude: 24.78,
+        longitude: -107.43
+      },
+      zoom: 11
+    };
   });
