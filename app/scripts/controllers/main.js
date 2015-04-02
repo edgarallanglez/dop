@@ -30,6 +30,10 @@ angular.module('dopApp')
               'couponList': {
                 templateUrl: '../../views/dashboardViews/couponListView.html',
                 controller: 'CouponListWidgetCtrl'
+              },              
+              'locationChart': {
+                templateUrl: '../../views/dashboardViews/locationView.html',
+                controller: 'LocationWidgetCtrl'
               }
           }
         });
