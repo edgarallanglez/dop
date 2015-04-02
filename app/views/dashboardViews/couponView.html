@@ -2,15 +2,28 @@
 <div ng-controller="CouponWidgetCtrl" class="tabsdemoStaticTabs sample">
     <md-tabs class="md-default-theme" md-selected="data.selectedIndex">
       <md-tab id="tab1">
-          <md-tab-label>Item One</md-tab-label>
-          <md-tab-template>
-          <br/>
-            View for Item #1 <br/>
-            data.selectedIndex = 0;
+          <md-tab-label>TOTAL</md-tab-label>
+          <md-tab-template class="total">
+            <div>
+              <h1>1</h1>
+              <h3>Usados</h3>
+            </div>
+            <div>
+              <h1>1</h1>
+              <h3>No Usados</h3>
+            </div>
+            <div>
+              <h1>1</h1>
+              <h3>Libres</h3>
+            </div>
+            <div>
+              <h1>1</h1>
+              <h3>Creados</h3>
+            </div>
           </md-tab-template>
       </md-tab>
       <md-tab id="tab2">
-          <md-tab-label>{{data.secondLabel}}</md-tab-label>
+          <md-tab-label>VIGENTE</md-tab-label>
           <md-tab-template>
           <br/>
             View for Item #2 <br/>
@@ -18,7 +31,7 @@
           </md-tab-template>
       </md-tab>
       <md-tab id="tab3">
-          <md-tab-label>Item Three</md-tab-label>
+          <md-tab-label>HISTORIAL</md-tab-label>
           <md-tab-template>
           <br/>
             View for Item #3 <br/>
