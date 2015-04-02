@@ -1,8 +1,11 @@
 <div class="center">
     <div ng-controller="MainCtrl as main" class="center" layout="row" layout-wrap>
-        <md-card class="background-white" flex="95" flex-order="1">
-            <div ui-view="couponList"></div>
-        </md-card>
+        <div flex="95" layout="row" flex-order="1">
+            <md-card class="background-white" flex="10" ng-repeat="n in [42, 42, 43, 43] track by $index">
+                1
+            </md-card>
+            <!--<div ui-view="couponList"></div>-->
+        </div>
         <md-card class="background-white" flex="45" flex-order="2">
             <div ui-view="genderChart"></div>
         </md-card>
