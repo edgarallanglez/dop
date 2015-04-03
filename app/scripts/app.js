@@ -10,6 +10,7 @@
  */
 angular
   .module('dopApp', [
+    'auth0',
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -26,12 +27,13 @@ angular
     'angular-storage', 
     'angular-jwt'
   ])
-  .config(function ($routeProvider, $mdThemingProvider, $locationProvider) {
+  .config(function ($routeProvider, $mdThemingProvider, $locationProvider, authProvider) {
     //$locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        requiresLogin: true
       })
       .when('/login', {
         templateUrl: 'login.html',
@@ -54,6 +56,15 @@ angular
         'hue-3': '300'
       })
       .accentPalette('light-blue');
+
+    // authProvider.init({
+    //   domain: 'localhost:9000',
+    //   clientID: 'myClientID',
+    //   loginUrl: '/login'
+    // })
+    // .run(function(auth) {
+    //   auth.hookEvents();
+    // });
   })
   .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache){
     $scope.reload = true;
