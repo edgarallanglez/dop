@@ -14,11 +14,11 @@
 }
 
 
-.total div p{
+md-tab-template div p{
 	margin:0;
 	font-size: 5em;
 }
-.total div:nth-child(1){
+md-tab-template div:nth-child(1){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
@@ -26,14 +26,14 @@
 	border-right: 2px solid rgb(225, 225, 225);
 	border-bottom: 2px solid rgb(225, 225, 225);
 }
-.total div:nth-child(2){
+md-tab-template div:nth-child(2){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
 	border-left: 2px solid rgb(225, 225, 225);
 	border-bottom: 2px solid rgb(225, 225, 225);
 }
-.total div:nth-child(3){
+md-tab-template div:nth-child(3){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
@@ -41,7 +41,7 @@
 	border-right: 2px solid rgb(225, 225, 225);
 	border-top: 2px solid rgb(225, 225, 225);
 }
-.total div:nth-child(4){
+md-tab-template div:nth-child(4){
 	height: 50%;
 	display: inline-block;
 	width: 50%;

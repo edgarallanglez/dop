@@ -16,6 +16,7 @@ angular.module('dopApp')
     ];
 
 
+
     var method = 'POST';
   	var url = 'http://104.236.141.44:5000/login';
   	$scope.codeStatus = "";

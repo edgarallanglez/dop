@@ -11,6 +11,7 @@
   <link href="http://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="styles/login.css">
 
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) styles/vendor.css -->
@@ -22,6 +23,28 @@
   <link href="styles/general.css" rel="stylesheet"> 
   <!-- endbuild -->
 </head>
-<body ng-app="dopApp"  ng-controller="LoginController">
-  <div>hola</div>
+<body ng-app="dopApp"  ng-controller="LoginCtrl">
+  <div class="login-container" layout-fill layout="row" layout-align="center center">
+    <md-card class="background-white login-card"   flex-order="1">
+      <div class="login-top">
+        <img src="images/mini_logo.png"/>
+      </div>
+      <form name="userForm" class="login-form">
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Usuario</label>
+            <input ng-model="user" >
+          </md-input-container>
+        </div>
+        <div layout layout-sm="column">
+          <md-input-container flex>
+            <label>Contraseña</label>
+            <input type="password" ng-model="password">
+          </md-input-container>
+        </div>
+        <md-button class="md-primary login-button">Iniciar Sesión</md-button>
+
+      </form>
+    </md-card>
+  </div>
 </body>

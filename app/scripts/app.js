@@ -36,7 +36,7 @@ angular
         requiresLogin: true
       })
       .when('/login', {
-        templateUrl: 'views/login.html',
+        templateUrl: 'login.html',
         controller: 'LoginCtrl'
       })
       .when('/coupon', {
@@ -165,7 +165,8 @@ angular
           });
       });
     };
-  }]);
+  }])
+
 
 
      
