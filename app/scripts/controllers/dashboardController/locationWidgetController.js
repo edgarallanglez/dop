@@ -19,4 +19,6 @@ angular.module('dopApp')
       },
       zoom: 11
     };
+
+    $scope.options = { scrollwheel: false };
   });

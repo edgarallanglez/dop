@@ -21,7 +21,10 @@ angular
     'ngTouch',
     'ngMaterial',
     'chart.js',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'auth0', 
+    'angular-storage', 
+    'angular-jwt'
   ])
   .config(function ($routeProvider, $mdThemingProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
@@ -31,7 +34,7 @@ angular
         controller: 'MainCtrl'
       })
       .when('/login', {
-        templateUrl: 'views/login.html',
+        templateUrl: 'login.html',
         controller: 'LoginCtrl'
       })
       .when('/coupon', {
@@ -131,7 +134,8 @@ angular
           });
       });
     };
-  }]);
+  }])
+
 
 
      

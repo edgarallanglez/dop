@@ -1,3 +1,4 @@
+/* Cupoun Widget CSS*/
 .tabsdemoStaticTabs .sample { height: 450px; }
 .tabsdemoStaticTabs .sample md-tab-content { padding: 25px; }
 .tabsdemoStaticTabs .sample md-tab-content:nth-child(1) { background-color: #42A5F5; }
@@ -11,11 +12,13 @@
 .md-tab-content{
 	padding: 1em;
 }
-.total div p{
+
+
+md-tab-template div p{
 	margin:0;
 	font-size: 5em;
 }
-.total div:nth-child(1){
+md-tab-template div:nth-child(1){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
@@ -23,14 +26,14 @@
 	border-right: 2px solid rgb(225, 225, 225);
 	border-bottom: 2px solid rgb(225, 225, 225);
 }
-.total div:nth-child(2){
+md-tab-template div:nth-child(2){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
 	border-left: 2px solid rgb(225, 225, 225);
 	border-bottom: 2px solid rgb(225, 225, 225);
 }
-.total div:nth-child(3){
+md-tab-template div:nth-child(3){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
@@ -38,16 +41,30 @@
 	border-right: 2px solid rgb(225, 225, 225);
 	border-top: 2px solid rgb(225, 225, 225);
 }
-.total div:nth-child(4){
+md-tab-template div:nth-child(4){
 	height: 50%;
 	display: inline-block;
 	width: 50%;
 	border-left: 2px solid rgb(225, 225, 225);
 	border-top: 2px solid rgb(225, 225, 225);
+}
+/* end Coupon Widget*/
+
+/* Gender Chart CSS*/
+.gender-chart {
+		padding: 20px 20px 0 20px;
+		width: 90% !important;
 }
 
+.gender-chart canvas {
+		width: inherit;
+}
+/* End Gender Chart CSS*/
+
+/* Maps Widget*/
 .angular-google-map-container { height: 400px; }
 
-.coupon-card{ padding: 1em; }
-.coupon-card p,.coupon-card h2{ margin-bottom:0; }
-.coupon-card h2{ margin-top:0; }
+.coupon-card { padding: 1em; }
+.coupon-card p,.coupon-card h2 { margin-bottom: 0; }
+.coupon-card h2 { margin-top:0; }
+
