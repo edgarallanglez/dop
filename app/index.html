@@ -114,9 +114,9 @@
     </md-content>
   </md-sidenav>
   <md-sidenav id="utilities-sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav">
-    <md-toolbar class="md-theme-light">
+    <md-toolbar ng-controller="RightCtrl" class="md-theme-light">
       <h1 class="md-toolbar-tools">Utilidades</h1>
-      <button id="closeWidgetsBtn" class="cmn-toggle-switch cmn-toggle-switch__htx">
+      <button id="closeWidgetsBtn" class="cmn-toggle-switch cmn-toggle-switch__htx" ng-click="closeWidgets()">
         <span>toggle menu</span>
       </button>
     </md-toolbar>
@@ -204,6 +204,10 @@
     <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/auth0.js/build/auth0.js"></script>
+    <script src="bower_components/auth0-lock/build/auth0-lock.js"></script>
+    <script type="text/javascript" src="http://cdn.auth0.com/js/auth0-lock-6.js"></script>
+    <script src="bower_components/auth0-angular/build/auth0-angular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
