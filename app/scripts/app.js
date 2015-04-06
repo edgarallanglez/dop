@@ -10,7 +10,6 @@
  */
 angular
   .module('dopApp', [
-    'auth0',
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -23,11 +22,9 @@ angular
     'ngMaterial',
     'chart.js',
     'uiGmapgoogle-maps',
-    'angular-storage',
     'angular-jwt'
   ])
-  .config(function ($routeProvider, $mdThemingProvider, $locationProvider, $httpProvider,
-                    authProvider, jwtInterceptorProvider) {
+  .config(function ($routeProvider, $mdThemingProvider, $locationProvider, $httpProvider) {
     //$locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
@@ -56,35 +53,6 @@ angular
         'hue-3': '300'
       })
       .accentPalette('light-blue');
-
-    authProvider.init({
-      domain: 'localhost:3001/ping',
-      clientID: '1',
-      loginUrl: '/login'
-    });
-
-    jwtInterceptorProvider.tokenGetter = function(store) {
-      return store.get('token');
-    }
-
-      // Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
-      // NOTE: in case you are calling APIs which expect a token signed with a different secret, you might
-      // want to check the delegation-token example
-      $httpProvider.interceptors.push('jwtInterceptor');
-  }).run(function($rootScope, auth, store, jwtHelper, $location) {
-    $rootScope.$on('$locationChangeStart', function() {
-      if (!auth.isAuthenticated) {
-        var token = store.get('token');
-        if (token) {
-          if (!jwtHelper.isTokenExpired(token)) {
-            auth.authenticate(store.get('profile'), token);
-          } else {
-            $location.path('/login');
-          }
-        }
-      }
-
-    });
   })
   .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache){
     $scope.reload = true;
