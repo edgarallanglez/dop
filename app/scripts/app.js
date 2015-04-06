@@ -22,15 +22,15 @@ angular
     'ngMaterial',
     'chart.js',
     'uiGmapgoogle-maps',
+    'satellizer',
     'angular-jwt'
   ])
-  .config(function ($routeProvider, $mdThemingProvider, $locationProvider, $httpProvider) {
+  .config(function ($routeProvider, $mdThemingProvider, $locationProvider, $httpProvider, $authProvider) {
     //$locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        requiresLogin: true
+        controller: 'MainCtrl'
       })
       .when('/login', {
         templateUrl: 'login.html',
@@ -53,6 +53,14 @@ angular
         'hue-3': '300'
       })
       .accentPalette('light-blue');
+
+    $authProvider.facebook({
+      clientId: '624059410963642'
+    });
+
+    $authProvider.google({
+      clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
+    });
   })
   .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache){
     $scope.reload = true;
