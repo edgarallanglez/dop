@@ -8,14 +8,7 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('LoginCtrl', function ($scope,$http, $templateCache) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-
-
+  .controller('LoginCtrl', function ($scope, $auth, $http, $templateCache) {
 
     var method = 'POST';
   	var url = 'http://104.236.141.44:5000/login';
@@ -39,5 +32,9 @@ angular.module('dopApp')
 	        $scope.codeStatus = response || "Request failed";
 	    });
 	    return false;
-	}
+      }
+
+      $scope.authenticate = function(provider) {
+        $auth.authenticate(provider);
+      };
   });
