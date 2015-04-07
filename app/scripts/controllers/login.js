@@ -11,13 +11,15 @@ angular.module('dopApp')
   .controller('LoginCtrl', function ($scope, $auth, $http, $templateCache) {
 
     var method = 'POST';
-  	var url = 'http://104.236.141.44:5000/login';
+  	var url = 'http://104.236.141.44:5000/company/auth/signup';
   	$scope.codeStatus = "";
     $scope.login = function(){
+
     	var FormData = {
-	      'name' : "jose",
+	      'email' : "jose",
 	      'password' : "123"
     	};
+        console.log(FormData);
 	    $http({
 	      method: method,
 	      url: url,
@@ -37,4 +39,5 @@ angular.module('dopApp')
       $scope.authenticate = function(provider) {
         $auth.authenticate(provider);
       };
+
   });

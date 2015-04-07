@@ -55,7 +55,7 @@ angular
       .accentPalette('light-blue');
 
     $authProvider.facebook({
-      clientId: '624059410963642'
+      clientId: '379616075568079'
     });
 
     $authProvider.google({
