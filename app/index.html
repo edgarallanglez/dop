@@ -30,8 +30,8 @@
 
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
   <!-- Fixed navbar -->
-  <div layout="column" layout-fill>
-    <md-toolbar>
+  <div layout="column"layout-fill>
+    <md-toolbar ng-show="isAuthenticated" >
       <div class="md-toolbar-tools">
         <a ng-href="#/">
           <img id="main-logo" src="images/mini_logo.png">

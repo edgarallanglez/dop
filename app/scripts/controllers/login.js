@@ -19,9 +19,6 @@ angular.module('dopApp')
         $auth.setToken(response.data.token,false);
       });
 
-   
-
-
     };
     // $scope.authenticate = function(provider) {
     //   $auth.authenticate(provider);
