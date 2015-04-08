@@ -19,8 +19,7 @@ angular.module('dopApp')
       })
       .then(function(response) {
         console.log(response.data);
-        $auth.setToken(response.data.token, [false]);
-        
+        $auth.setToken(response.data.token,false);
       });
 
 
