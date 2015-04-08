@@ -26,7 +26,8 @@ angular
     'angular-jwt'
   ])
   .config(function ($routeProvider, $mdThemingProvider, $locationProvider, $httpProvider, $authProvider) {
-    //$locationProvider.html5Mode(true);
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -57,6 +58,7 @@ angular
     $authProvider.facebook({
       clientId: '379616075568079'
     });
+    $authProvider.signupUrl = 'http://104.236.141.44:5000/api/company/auth/signup';
 
     $authProvider.google({
       clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'

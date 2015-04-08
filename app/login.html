@@ -29,7 +29,7 @@
       <div class="login-top">
         <img src="images/mini_logo.png"/>
       </div>
-      <form name="userForm" class="login-form">
+      <form name="userForm" class="login-form" method="post" ng-submit="signup()">
         <div layout layout-sm="column">
           <md-input-container flex>
             <label>Usuario</label>
@@ -42,9 +42,8 @@
             <input type="password" ng-model="password">
           </md-input-container>
         </div>
-        <md-button class="md-primary login-button" ng-click="login()">Iniciar Sesión</md-button>
-        <button ng-click="authenticate('facebook')">Sign in with Facebook</button>
-
+          <button type="submit" class="md-primary login-button">Iniciar Sesión</button>
+          <!-- <button ng-click="authenticate('facebook')">Sign in with Facebook</button> -->
       </form>
     </md-card>
   </div>

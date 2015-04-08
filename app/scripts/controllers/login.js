@@ -9,35 +9,22 @@
  */
 angular.module('dopApp')
   .controller('LoginCtrl', function ($scope, $auth, $http, $templateCache) {
+    $scope.signup = function() {
 
-    var method = 'POST';
-  	var url = 'http://104.236.141.44:5000/company/auth/signup';
-  	$scope.codeStatus = "";
-    $scope.login = function(){
+      $auth.signup({
+        'email' : "allang@gmail.com",
+        'password' : "123",
+        'name': 'Edgar',
+        'branch_id': 2
+      })
+      .then(function(response) {
+        console.log(response);
+        console.log(response.data);
+      });
 
-    	var FormData = {
-	      'email' : "jose",
-	      'password' : "123"
-    	};
-        console.log(FormData);
-	    $http({
-	      method: method,
-	      url: url,
-	      data: FormData,
-	      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-	      cache: $templateCache
-	    }).
-	    success(function(response) {
-        	$scope.codeStatus = response.data;
-	    }).
-	    error(function(response) {
-	        $scope.codeStatus = response || "Request failed";
-	    });
-	    return false;
-      }
-
-      $scope.authenticate = function(provider) {
-        $auth.authenticate(provider);
-      };
+    };
+    // $scope.authenticate = function(provider) {
+    //   $auth.authenticate(provider);
+    // };
 
   });
