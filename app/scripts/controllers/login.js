@@ -12,7 +12,7 @@ angular.module('dopApp')
     $scope.signup = function() {
 
       $auth.signup({
-        'email' : "allang@gmail.com",
+        'email' : "allan@gmail.com",
         'password' : "123",
         'name': 'Edgar',
         'branch_id': 2
