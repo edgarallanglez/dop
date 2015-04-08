@@ -65,8 +65,15 @@ angular
       clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
     });
   })
-  .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache){
+  .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache,$auth){
     $scope.reload = true;
+
+
+    if(!$auth.isAuthenticated()){
+     $scope.isAuthenticated=false;
+    }else{
+      $scope.isAuthenticated=true;
+    }
     
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
