@@ -18,9 +18,10 @@ angular.module('dopApp')
         'branch_id': 2
       })
       .then(function(response) {
-        console.log(response);
         console.log(response.data);
+        $auth.setToken(response.data.token,false);
       });
+
 
     };
     // $scope.authenticate = function(provider) {
