@@ -29,6 +29,8 @@ angular
                     $locationProvider, $httpProvider, $authProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    $authProvider.signupUrl = 'http://104.236.141.44:5000/api/company/auth/signup';
+    $authProvider.loginUrl = 'http://104.236.141.44:5000/api/company/auth/login';
     $stateProvider
       .state('home', {
         url: '/',
@@ -93,22 +95,28 @@ angular
 
     $urlRouterProvider.otherwise('/');
 
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue-grey', {
-        'hue-1': '100',
-        'hue-3': '300'
-      })
-      .accentPalette('light-blue');
-
     $authProvider.facebook({
       clientId: '379616075568079'
     });
-    $authProvider.signupUrl = 'http://104.236.141.44:5000/api/company/auth/signup';
-    $authProvider.loginUrl = 'http://104.236.141.44:5000/api/company/auth/login';
 
     $authProvider.google({
       clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
     });
+
+    // Theme configurations
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue-grey', {
+        'default': '800',
+        'hue-1': '100',
+        'hue-3': '300'
+      })
+      .accentPalette('red', {
+        'default': '600'
+      });
+    $mdThemingProvider.theme('green')
+      .primaryPalette('light-green')
+      .accentPalette('light-blue');
+
   })
   .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth){
     $scope.reload = true;

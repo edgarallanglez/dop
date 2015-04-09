@@ -2,7 +2,8 @@
 @import url('dashboard.css');
 body { 
     background-color: #eee !important;
-    height: auto;
+    height: 100%;
+    font-size: 1.6rem;
     font-family: Roboto, sans-serif !important; 
     font-weight: 300;
 }

@@ -1,24 +1,30 @@
 
-<div ng-controller="LoginCtrl">
+<div ng-controller="LoginCtrl" md-theme="green">
   <div class="login-container" layout-fill layout="row" layout-align="center center">
     <md-card class="background-white login-card"   flex-order="1">
-      <div class="login-top">
-        <img src="images/mini_logo.png"/>
+      <div class="login-top" layout="row" layout-align="center center">
+        <img src="images/logo.png"/>
       </div>
       <form name="userForm" class="login-form" method="post" ng-submit="login()">
         <div layout layout-sm="column">
           <md-input-container flex>
             <label>Usuario</label>
-            <input ng-model="user" >
+            <input name="user" ng-model="user" required>
+            <div ng-messages="userForm.user.$error">
+              <!-- <div ng-message="required">Email es requerido.</div> -->
+            </div>
           </md-input-container>
         </div>
         <div layout layout-sm="column">
           <md-input-container flex>
             <label>Contraseña</label>
-            <input type="password" ng-model="password">
+            <input type="password" name="password" ng-model="password" required>
+            <div ng-messages="userForm.password.$error">
+              <!-- <div ng-message="required">Email es requerido.</div> -->
+            </div>
           </md-input-container>
         </div>
-          <button type="submit" class="md-primary login-button">Iniciar Sesión</button>
+        <md-button type="submit" class="login-button md-raised md-primary md-button md-default-theme">Iniciar Sesión</md-button>
           <!-- <button ng-click="authenticate('facebook')">Sign in with Facebook</button> -->
       </form>
     </md-card>
