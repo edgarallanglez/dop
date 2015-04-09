@@ -1,7 +1,16 @@
 <div ng-controller="CouponCtrl as coupon" layout="column" >
   <md-content layout="row" class="coupon-container" flex>
    	<md-card class="coupon-list-card">
-	    <md-list>
+   		<div>
+	   		<md-button class="md-raised">Button</md-button>
+	   		<md-button class="md-raised">Button</md-button>
+	   	</div>
+	   	<div>
+	   		<md-button class="md-raised">Button</md-button>
+	   		<md-button class="md-raised">Button</md-button>
+   		</div>
+
+	    <md-list class="coupon-list">
 	      <md-list-item class="md-3-line" ng-repeat="item in todos" flex>
 	        <div class="md-list-item-text">
 	          <h3>{{ item.who }}</h3>

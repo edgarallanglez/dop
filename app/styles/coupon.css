@@ -8,8 +8,11 @@
 	background: none !important;
 }
 .coupon-list-card{
-	padding: 1em;
+	padding: 0;
 	overflow: scroll;
 	height: 42em;
 	background: white;
+}
+.coupon-list{
+	padding: 1em;
 }
