@@ -8,7 +8,7 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('LoginCtrl', function ($scope, $auth, $http, $templateCache) {
+  .controller('LoginCtrl', function($scope, $auth, $http, $templateCache) {
 
     $scope.login = function() {
       $auth.login({

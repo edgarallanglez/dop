@@ -11,8 +11,8 @@ angular.module('dopApp')
   .config(function($stateProvider){
     $stateProvider
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('dashboard', {
-          url: '/inicio',
+        .state('home.dashboard', {
+          url: '/',
           views: {
               // the child views will be defined here (absolutely named)
               'genderChart': {
@@ -39,7 +39,8 @@ angular.module('dopApp')
         });
   })
   .controller('MainCtrl', function($scope, $state) {
-    $state.go("dashboard");
+    console.log($state.current);
+    $state.transitionTo('home.dashboard');
   })
 
 

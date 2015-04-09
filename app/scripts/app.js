@@ -32,10 +32,18 @@ angular
     $stateProvider
       .state('home', {
         url: '/',
-        views: {
-          'home': {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth, $state) {
+            var deferred = $q.defer();
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
           }
         }
       })
@@ -64,10 +72,20 @@ angular
       .state('report', {
         url: '/report',
         templateUrl: 'views/report.html',
-        controller: 'ReportCtrl'
+        controller: 'ReportCtrl',
+        authenticated: function($q, $location, $auth, $state) {
+            var deferred = $q.defer();
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
       });
 
-    $urlRouterProvider.otherwise('#/');
+    $urlRouterProvider.otherwise('/');
 
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey', {
