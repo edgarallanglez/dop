@@ -31,7 +31,7 @@
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
   <!-- Fixed navbar -->
   <div layout="column"layout-fill>
-    <md-toolbar ng-show="isAuthenticated" >
+    <md-toolbar>
       <div class="md-toolbar-tools">
         <a ng-href="#/">
           <img id="main-logo" src="images/mini_logo.png">
@@ -39,17 +39,17 @@
         <!-- fill up the space between left and right area -->
         <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
           <md-tab id="tab1" aria-controls="tab1-content" class="white">
-            <a ng-href="#/">
+            <a ui-sref="home">
               Inicio
             </a>
           </md-tab>
           <md-tab id="tab2" aria-controls="tab2-content" class="white">
-            <a ng-href="#/coupon">
+            <a ui-sref="coupon">
               Cupones
             </a>
           </md-tab>
           <md-tab id="tab3" aria-controls="tab3-content" class="white">
-            <a ng-href="#/report">
+            <a ui-sref="report">
               Reportes
             </a>
           </md-tab>
@@ -64,44 +64,44 @@
         </md-button>
       </div>
     </md-toolbar>
-      <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl">
-        <div role="tabpanel"
-             id="tab1-content"
-             aria-labelledby="tab1"
-             ng-switch-when="0"
-             md-swipe-left="next()"
-             md-swipe-right="previous()" >
-            <md-content layout="row" layout-align="center center" class="no-background">
-              <div flex ng-view="views/main.html">
-                <!-- tab's content -->
-              </div>
-            </md-content>
-        </div>
-        <div role="tabpanel"
-             id="tab2-content"
-             aria-labelledby="tab2"
-             ng-switch-when="1"
-             md-swipe-left="next()"
-             md-swipe-right="previous()" >
-            <md-content layout="row" layout-align="center center" class="no-background">
-              <div flex ng-view="views/coupon.html">
-                <!-- tab's content -->
-              </div>
-            </md-content>
-        </div>
-        <div role="tabpanel"
-             id="tab3-content"
-             aria-labelledby="tab3"
-             ng-switch-when="2"
-             md-swipe-left="next()"
-             md-swipe-right="previous()" >
-            <md-content layout="row" layout-align="center center" class="no-background">
-              <div flex ng-view="views/report.html">
-                <!-- tab's content -->
-              </div>
-            </md-content>
-        </div>
-      </ng-switch>
+    <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl">
+      <div role="tabpanel"
+           id="tab1-content"
+           aria-labelledby="tab1"
+           ng-switch-when="0"
+           md-swipe-left="next()"
+           md-swipe-right="previous()" >
+          <md-content layout="row" layout-align="center center" class="no-background">
+            <div flex ui-view="home">
+              <!-- tab's content -->
+            </div>
+          </md-content>
+      </div>
+      <div role="tabpanel"
+           id="tab2-content"
+           aria-labelledby="tab2"
+           ng-switch-when="1"
+           md-swipe-left="next()"
+           md-swipe-right="previous()" >
+          <md-content layout="row" layout-align="center center" class="no-background">
+            <div flex ui-view>
+              <!-- tab's content -->
+            </div>
+          </md-content>
+      </div>
+      <div role="tabpanel"
+           id="tab3-content"
+           aria-labelledby="tab3"
+           ng-switch-when="2"
+           md-swipe-left="next()"
+           md-swipe-right="previous()" >
+          <md-content layout="row" layout-align="center center" class="no-background">
+            <div flex ui-view>
+              <!-- tab's content -->
+            </div>
+          </md-content>
+      </div>
+    </ng-switch>
   </div>
   <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="notifications-sidenav">
     <md-toolbar class="md-theme-light">
