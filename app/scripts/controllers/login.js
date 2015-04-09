@@ -9,6 +9,7 @@
  */
 angular.module('dopApp')
   .controller('LoginCtrl', function ($scope, $auth, $http, $templateCache) {
+
     $scope.login = function() {
       $auth.login({
         'email': $scope.user,

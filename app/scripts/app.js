@@ -25,29 +25,50 @@ angular
     'satellizer',
     'angular-jwt'
   ])
-  .config(function ($routeProvider, $mdThemingProvider, $locationProvider, $httpProvider, $authProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
+                    $locationProvider, $httpProvider, $authProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+    $stateProvider
+      .state('home', {
+        url: '/',
+        views: {
+          'home': {
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl'
+          }
+        }
       })
-      .when('/login', {
+      .state('login', {
+        url: '/login',
         templateUrl: 'login.html',
         controller: 'LoginCtrl'
       })
-      .when('/coupon', {
+      .state('coupon', {
+        url: '/coupon',
         templateUrl: 'views/coupon.html',
-        controller: 'CouponCtrl'
+        controller: 'CouponCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth, $state) {
+            var deferred = $q.defer();
+            if (!$auth.isAuthenticated()) {
+              $location.path('/login');
+            } else {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
       })
-      .when('/report', {
+      .state('report', {
+        url: '/report',
         templateUrl: 'views/report.html',
         controller: 'ReportCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
+
+    $urlRouterProvider.otherwise('#/');
+
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey', {
         'hue-1': '100',
@@ -65,15 +86,8 @@ angular
       clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
     });
   })
-  .controller('TabController', function($scope, $location, $log, $mdSidenav, $http, $templateCache,$auth){
+  .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth){
     $scope.reload = true;
-
-
-    if(!$auth.isAuthenticated()){
-     $scope.isAuthenticated=false;
-    }else{
-      $scope.isAuthenticated=true;
-    }
     
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
