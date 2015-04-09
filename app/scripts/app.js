@@ -73,7 +73,8 @@ angular
         url: '/report',
         templateUrl: 'views/report.html',
         controller: 'ReportCtrl',
-        authenticated: function($q, $location, $auth, $state) {
+        resolve: {
+          authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if (!$auth.isAuthenticated()) {
               $location.path('/login');
@@ -83,6 +84,7 @@ angular
 
             return deferred.promise;
           }
+        }
       });
 
     $urlRouterProvider.otherwise('/');
