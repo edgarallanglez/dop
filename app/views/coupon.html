@@ -1,11 +1,19 @@
-<div ng-controller="CouponCtrl as coupon">
-  <md-content layout="row">
-    <md-card class="background-white">
-     <img src="images/logo.png" class="md-card-image" style="width: 300px;">
-     <h2>Paracosm</h2>
-     <p>
-      {{coupon.message}}
-     </p>
-    </md-card>
+<div ng-controller="CouponCtrl as coupon" layout="column" >
+  <md-content layout="row" class="coupon-container" flex>
+   	<md-card class="coupon-list-card">
+	    <md-list>
+	      <md-list-item class="md-3-line" ng-repeat="item in todos" flex>
+	        <div class="md-list-item-text">
+	          <h3>{{ item.who }}</h3>
+	          <h4>{{ item.what }}</h4>
+	          <p>{{ item.notes }}</p>
+	        </div>
+	        <md-divider ng-if="!$last"></md-divider>
+	      </md-list-item>
+	    </md-list>
+	</md-card>
+	<md-card class="coupon-list-card" flex>
+	    Hola
+	</md-card>
   </md-content>
 </div>
