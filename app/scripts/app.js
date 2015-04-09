@@ -49,8 +49,12 @@ angular
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'login.html',
-        controller: 'LoginCtrl'
+        views: {
+          'login': {
+            templateUrl: 'login.html',
+            controller: 'LoginCtrl'
+          }
+        }
       })
       .state('coupon', {
         url: '/coupon',
