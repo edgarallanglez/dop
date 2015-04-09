@@ -1,0 +1,18 @@
+.listdemoBasicUsage .face {
+	border-radius: 30px;
+	border: 1px solid #ddd;
+	width: 48px;
+	margin: 16px; 
+}
+.coupon-container{
+	background: none !important;
+}
+.coupon-list-card{
+	padding: 0;
+	overflow: scroll;
+	height: 42em;
+	background: white;
+}
+.coupon-list{
+	padding: 1em;
+}
