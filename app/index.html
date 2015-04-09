@@ -31,7 +31,7 @@
 
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
   <!-- Fixed navbar -->
-  <div id="webApp" ng-if="!isAuthenticated()">
+  <div id="webApp" ng-if="isAuthenticated()">
       <div layout="column"layout-fill>
         <md-toolbar>
           <div class="md-toolbar-tools">

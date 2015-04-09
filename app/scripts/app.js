@@ -112,7 +112,9 @@ angular
   })
   .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth){
     $scope.reload = true;
-    
+    $scope.isAuthenticated = function() {
+      return $auth.isAuthenticated();
+    };
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
