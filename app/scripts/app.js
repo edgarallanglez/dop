@@ -13,6 +13,7 @@ angular
     'ngAnimate',
     'ngAria',
     'ngCookies',
+    'ngMdIcons',
     'ngMessages',
     'ngResource',
     'ngRoute',
