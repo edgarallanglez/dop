@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponListWidgetCtrl', function($scope) {
+  .controller('LastCouponListWidgetCtrl', function($scope) {
   	console.log("entro");
    
   });

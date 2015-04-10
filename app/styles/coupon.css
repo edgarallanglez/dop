@@ -9,10 +9,12 @@
 }
 .coupon-list-card{
 	padding: 0;
-	overflow: scroll;
 	height: 42em;
 	background: white;
+	overflow: hidden;
 }
 .coupon-list{
+	overflow: scroll;
 	padding: 1em;
+	height: 38em;
 }
