@@ -7,40 +7,22 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('CouponCtrl', function ($scope) {
-    this.message = "InMoon Design, hasta la luna y más allá";
-    $scope.todos = [
-      {
-        what: 'Sin limite de personas',
-        who: '20% Frapuccino',
-        when: '3:08PM',
-        notes: "Aplicable hasta el 25 de mayo"
-      },
-      {
-        what: 'Sin limite de personas',
-        who: '20% Frapuccino',
-        when: '3:08PM',
-        notes: "Aplicable hasta el 25 de mayo"
-      },
-      {
-        what: 'Sin limite de personas',
-        who: '20% Frapuccino',
-        when: '3:08PM',
-        notes: "Aplicable hasta el 25 de mayo"
-      },
-      {
-        what: 'Sin limite de personas',
-        who: '20% Frapuccino',
-        when: '3:08PM',
-        notes: "Aplicable hasta el 25 de mayo"
-      },
-      {
-        what: 'Sin limite de personas',
-        who: '20% Frapuccino',
-        when: '3:08PM',
-        notes: "Aplicable hasta el 25 de mayo"
-      },
-    ];
+	.config(function($stateProvider){
+	    $stateProvider
+	        // HOME STATES AND NESTED VIEWS ========================================
+	        .state('coupon.list', {
+	          views: {
+	              // the child views will be defined here (absolutely named)
+	              'coupon-list-view': {
+	                templateUrl: '../../views/couponViews/couponListView.html',
+	                controller: 'CouponListCtrl'
+	              }
+	          }
+	      });
+	    })
+  .controller('CouponCtrl', function ($scope,$state) {
+  	$state.transitionTo('coupon.list');
+    
   });
 
 

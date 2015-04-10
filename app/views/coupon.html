@@ -1,28 +1,13 @@
+
 <div ng-controller="CouponCtrl as coupon" layout="column" >
   <md-content layout="row" class="coupon-container" flex>
    	<md-card class="coupon-list-card">
-   		<div>
-	   		<md-button class="md-raised">Button</md-button>
-	   		<md-button class="md-raised">Button</md-button>
-	   	</div>
-	   	<div>
-	   		<md-button class="md-raised">Button</md-button>
-	   		<md-button class="md-raised">Button</md-button>
-   		</div>
-
-	    <md-list class="coupon-list">
-	      <md-list-item class="md-3-line" ng-repeat="item in todos" flex>
-	        <div class="md-list-item-text">
-	          <h3>{{ item.who }}</h3>
-	          <h4>{{ item.what }}</h4>
-	          <p>{{ item.notes }}</p>
-	        </div>
-	        <md-divider ng-if="!$last"></md-divider>
-	      </md-list-item>
-	    </md-list>
+   		<div ui-view="coupon-list-view">
+	   		
+	    </div>
 	</md-card>
-	<md-card class="coupon-list-card" flex>
+	<!--<md-card class="coupon-list-card" flex>
 	    Hola
-	</md-card>
+	</md-card>-->
   </md-content>
 </div>
