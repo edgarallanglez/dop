@@ -1,29 +1,27 @@
 <div ng-controller="CouponListCtrl">
-	<div class="coupon-list-button">
-		<div layout-fill layout="row" layout-wrap>
-			<md-button class="md-raised action-button" flex  flex-order="1">Button</md-button>
-			<md-button class="md-raised action-button" flex flex-sm="50" flex-order="2">Button</md-button>
+		<div class="coupon-list-button">
+			<div layout="row" layout-wrap>
+					<md-button class="md-raised action-button" flex="50" flex-order="1">Button</md-button>
+					<md-button class="md-raised action-button" flex="50" flex-order="2">Button</md-button>
+					<md-button class="md-raised action-button" flex="50" flex-order="3">Button</md-button>
+					<md-button class="md-raised action-button" flex="50" flex-order="4">Button</md-button>
+			</div>
+			
+			<div class="coupon-search-container" flex="100">
+				<!--<i class="fa fa-search"></i>-->
+					<input placeholder="Buscar" type="text"/>
+			</div>
 		</div>
-		<div layout-fill layout="row" layout-wrap>
-			<md-button class="md-raised action-button" flex flex-sm="50" flex-order="1">Button</md-button>
-			<md-button class="md-raised action-button" flex flex-sm="50" flex-order="2">Button</md-button>
+		<div class="coupon-list">
+				<md-list>
+						<md-list-item class="md-3-line" ng-repeat="item in todos" flex>
+								<div class="md-list-item-text">
+										<h3>{{ item.who }}</h3>
+										<h4>{{ item.what }}</h4>
+										<p>{{ item.notes }}</p>
+								</div>
+								<md-divider ng-if="!$last"></md-divider>
+						</md-list-item>
+				</md-list>
 		</div>
-		
-		<div class="coupon-search-container">
-			<!--<i class="fa fa-search"></i>-->
-			<input placeholder="Buscar" type="text"/>
-		</div>
-	</div>
-	<div class="coupon-list">
-		<md-list>
-			<md-list-item class="md-3-line" ng-repeat="item in todos" flex>
-				<div class="md-list-item-text">
-					<h3>{{ item.who }}</h3>
-					<h4>{{ item.what }}</h4>
-					<p>{{ item.notes }}</p>
-				</div>
-			<md-divider ng-if="!$last"></md-divider>
-			</md-list-item>
-		</md-list>
-	</div>
 </div>

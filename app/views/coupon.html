@@ -1,15 +1,15 @@
 
-<div ng-controller="CouponCtrl as coupon" layout="column" >
-  <md-content layout="row" class="coupon-container" flex>
-   	<md-card class="coupon-list-card">
-   		<div ui-view="coupon-list-view">
-	   		
-	    </div>
-	</md-card>
-	<md-card class="coupon-main-card" flex>
-	    <div ui-view="coupon-main-view">
-	   		
-	    </div>
-	</md-card>
-  </md-content>
+<div ng-controller="CouponCtrl as coupon" layout-margin layout-wrap>
+    <md-content layout="row" class="coupon-container">
+    	<md-card class="coupon-list-card" flex="20">
+     		<div ui-view="coupon-list-view">
+    	   		
+    	    </div>
+    	</md-card>
+    	<md-card class="coupon-main-card" flex="80">
+    	    <div ui-view="coupon-main-view">
+    	   		
+    	    </div>
+    	</md-card>
+    </md-content>
 </div>
