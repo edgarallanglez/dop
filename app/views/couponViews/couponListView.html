@@ -1,11 +1,18 @@
 <div ng-controller="CouponListCtrl">
-	<div>
-		<md-button class="md-raised">Button</md-button>
-		<md-button class="md-raised">Button</md-button>
-	</div>
-	<div>
-		<md-button class="md-raised">Button</md-button>
-		<md-button class="md-raised">Button</md-button>
+	<div class="coupon-list-button">
+		<div layout-fill layout="row" layout-wrap>
+			<md-button class="md-raised action-button" flex  flex-order="1">Button</md-button>
+			<md-button class="md-raised action-button" flex flex-sm="50" flex-order="2">Button</md-button>
+		</div>
+		<div layout-fill layout="row" layout-wrap>
+			<md-button class="md-raised action-button" flex flex-sm="50" flex-order="1">Button</md-button>
+			<md-button class="md-raised action-button" flex flex-sm="50" flex-order="2">Button</md-button>
+		</div>
+		
+		<div class="coupon-search-container">
+			<!--<i class="fa fa-search"></i>-->
+			<input placeholder="Buscar" type="text"/>
+		</div>
 	</div>
 	<div class="coupon-list">
 		<md-list>

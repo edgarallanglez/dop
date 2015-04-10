@@ -1,4 +1,8 @@
-.login-container { height: inherit; }
+.login-container { 
+		height: inherit !important;
+		padding-top: 2em;
+}
+
 .login-form { padding: 0 25px 4em 25px; }
 .login-container .login-card { width: 29em; }
 .login-container .login-button { float: right; }

@@ -160,7 +160,7 @@ angular
         if ($scope.data.selectedIndex == 0 ) {
           $location.url('/');
         } else if ($scope.data.selectedIndex == 1) {
-          $location.url('/coupon');
+          $location.path('/coupon');
         } else if ($scope.data.selectedIndex == 2) {
           $location.url('/report');
         };

@@ -16,7 +16,11 @@ angular.module('dopApp')
 	              'coupon-list-view': {
 	                templateUrl: '../../views/couponViews/couponListView.html',
 	                controller: 'CouponListCtrl'
-	              }
+	              },
+                'coupon-main-view': {
+                  templateUrl: '../../views/couponViews/couponMainView.html',
+                  controller: 'CouponMainCtrl'
+                }
 	          }
 	      });
 	    })

@@ -27,8 +27,8 @@ angular.module('dopApp')
                 controller: 'CouponWidgetCtrl'
               },
               'couponList': {
-                templateUrl: '../../views/dashboardViews/LastCouponListView.html',
-                controller: 'LastCouponListWidgetCtrl'
+                templateUrl: '../../views/dashboardViews/lastCouponListView.html',
+                controller: 'CouponListWidgetCtrl'
               },              
               'locationChart': {
                 templateUrl: '../../views/dashboardViews/locationView.html',

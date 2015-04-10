@@ -16,5 +16,30 @@
 .coupon-list{
 	overflow: scroll;
 	padding: 1em;
-	height: 38em;
+	height: 36em;
+}
+.coupon-list-button .action-button{
+	/*box-shadow: none !important;*/
+	border-radius: 0;
+}
+.coupon-list-button input{
+	width: 100%;
+	height: 2.2em;
+	border:none;
+	margin: 0;
+	padding: 0;
+	margin-left: 1em;
+	background: transparent;
+	/*background:white url(https://cdn3.iconfinder.com/data/icons/eightyshades/512/11_Search-128.png) no-repeat left center;
+	padding:6px 15px 6px 30px;
+	margin:3px; */
+}
+.coupon-search-container{
+	/*padding: 1em;*/
+	padding-top: 5px;
+	background: rgb(240, 240, 240);
+	border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.coupon-main-card{
+	background: white;
 }
