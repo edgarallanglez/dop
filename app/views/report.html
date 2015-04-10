@@ -1,47 +1,32 @@
-<div ng-controller="ReportCtrl">
-  <md-toolbar class="md-theme-light">
-    <h1 class="md-toolbar-tools">
-      <span>Full Bleed</span>
-    </h1>
-  </md-toolbar>
-  <md-content>
-    <md-list>
-      <md-item ng-repeat="item in messages">
-        <md-item-content>
-          <div class="md-tile-content">
-            <h3>{{item.what}}</h3>
-            <h4>{{item.who}}</h4>
-            <p>
-              {{item.notes}}
-            </p>
-          </div>
-        </md-item-content>
-        <md-divider ng-if="!$last"></md-divider>
-      </md-item>
-    </md-list>
-  </md-content>
-  <md-toolbar class="md-theme-light">
-    <h1 class="md-toolbar-tools">
-      <span>Inset</span>
-    </h1>
-  </md-toolbar>
-  <md-content>
-    <md-list>
-      <md-item ng-repeat="item in messages">
-        <md-item-content>
-          <div class="md-tile-left">
-            <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
-          </div>
-          <div class="md-tile-content">
-            <h3>{{item.what}}</h3>
-            <h4>{{item.who}}</h4>
-            <p>
-              {{item.notes}}
-            </p>
-          </div>
-        </md-item-content>
-        <md-divider md-inset ng-if="!$last"></md-divider>
-      </md-item>
-    </md-list>
-  </md-content>
+<div ng-controller="ReportCtrl" layout="row" layout-margin layout-wrap>
+    <div flex flex-order="1" flex-sm="100">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">
+            <span>Basic Report</span>
+          </h1>
+        </md-toolbar>
+        <md-content class="pointer">
+          <div ui-view="basicReport"></div>
+        </md-content>
+    </div>
+    <div flex flex-order="2" flex-sm="100">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">
+            <span>Middle Report</span>
+          </h1>
+        </md-toolbar>
+        <md-content class="pointer">
+          <div ui-view="middleReport"></div>
+        </md-content>
+    </div>
+    <div flex flex-order="3" flex-sm="100">
+        <md-toolbar class="md-theme-light">
+          <h1 class="md-toolbar-tools">
+            <span>Advance Report</span>
+          </h1>
+        </md-toolbar>
+        <md-content class="pointer">
+          <div ui-view="advanceReport"></div>
+        </md-content>
+    </div>
 </div>
