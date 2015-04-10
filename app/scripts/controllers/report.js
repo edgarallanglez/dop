@@ -8,6 +8,12 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
+  .service( 'reportService', function() {
+    this.isInView = false;
+    this.setInView = function(currentStatus) {
+      this.isInView = currentStatus;
+    }
+  })
   .config(function($stateProvider){
       $stateProvider
           // HOME STATES AND NESTED VIEWS ========================================

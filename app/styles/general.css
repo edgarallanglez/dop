@@ -8,6 +8,7 @@ body {
     font-family: Roboto, sans-serif !important; 
     font-weight: 300;
 }
+.pointer { cursor: pointer; }
 .background-white { background-color: white !important; }
 .no-background { background-color: transparent !important; }
 /* General paddings */
