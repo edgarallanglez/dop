@@ -24,7 +24,7 @@ angular.module('dopApp')
         }
       });
     })
-  .controller('CouponCtrl', function ($scope,$state) {
+  .controller('CouponCtrl', function ($scope, $state) {
   	$state.transitionTo('coupon.list');
     
   });

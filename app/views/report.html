@@ -1,32 +1,71 @@
-<div ng-controller="ReportCtrl" layout="row" layout-margin layout-wrap>
-    <div flex flex-order="1" flex-sm="100">
-        <md-toolbar class="md-theme-light">
-          <h1 class="md-toolbar-tools">
-            <span>Basic Report</span>
-          </h1>
-        </md-toolbar>
-        <md-content class="pointer">
-          <div ui-view="basicReport"></div>
-        </md-content>
+<div ng-controller="ReportCtrl">
+    <div ui-view>
+        <div ng-if="!isInView" layout="row" layout-margin layout-wrap>
+            <div flex flex-order="1" flex-sm="100">
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">
+                      <span>Basic Report</span>
+                    </h1>
+                </md-toolbar>
+                <md-content class="pointer">
+                    <div ng-click="toggleRight('from basic')">
+                        <div layout="row" layout-align="center center" md-theme="default">
+                            <ng-md-icon icon="assignment" size="256" style="fill: #03A9F4" class="padding-lg"></ng-md-icon>
+                        </div>
+                    </div>
+                </md-content>
+            </div>
+            <div flex flex-order="2" flex-sm="100">
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">
+                      <span>Middle Report</span>
+                    </h1>
+                </md-toolbar>
+                <md-content class="pointer">
+                    <div ng-click="toggleRight('from middle')">
+                        <div layout="row" layout-align="center center" md-theme="default">
+                            <ng-md-icon icon="assessment" size="256" style="fill: #EF5350" class="padding-lg"></ng-md-icon>
+                        </div>
+                    </div>
+                </md-content>
+            </div>
+            <div flex flex-order="3" flex-sm="100">
+                <md-toolbar class="md-theme-light">
+                    <h1 class="md-toolbar-tools">
+                      <span>Advance Report</span>
+                    </h1>
+                </md-toolbar>
+                <md-content class="pointer">
+                    <div ng-click="toggleRight('from advance')">
+                        <div layout="row" layout-align="center center" md-theme="default">
+                            <ng-md-icon icon="view_carousel" size="256" style="fill: #8BC34A" class="padding-lg"></ng-md-icon>
+                        </div>
+                    </div>
+                </md-content>
+            </div>
+        </div>
     </div>
-    <div flex flex-order="2" flex-sm="100">
-        <md-toolbar class="md-theme-light">
-          <h1 class="md-toolbar-tools">
-            <span>Middle Report</span>
-          </h1>
-        </md-toolbar>
-        <md-content class="pointer">
-          <div ui-view="middleReport"></div>
-        </md-content>
-    </div>
-    <div flex flex-order="3" flex-sm="100">
-        <md-toolbar class="md-theme-light">
-          <h1 class="md-toolbar-tools">
-            <span>Advance Report</span>
-          </h1>
-        </md-toolbar>
-        <md-content class="pointer">
-          <div ui-view="advanceReport"></div>
-        </md-content>
-    </div>
+    <section>
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+            <md-toolbar class="md-theme-light">
+              <h1 class="md-toolbar-tools">Sidenav Right</h1>
+            </md-toolbar>
+            <md-content ng-controller="RightCtrl" layout-padding>
+                <form>
+                    <md-input-container>
+                      <label for="testInput">Test input</label>
+                      <input type="text" id="testInput"
+                             ng-model="data" md-sidenav-focus>
+                    </md-input-container>
+                    <md-input-container flex="" class="md-default-theme">
+                      <label for="input_02W">Submission Date</label>
+                      <input type="date" ng-model="user.submissionDate" class="ng-valid md-input ng-dirty ng-valid-date ng-touched" id="input_02W" tabindex="0" aria-invalid="false">
+                    </md-input-container>
+                </form>
+                <md-button ng-click="close()" class="md-primary">
+                  Close Sidenav Right
+                </md-button>
+            </md-content>
+        </md-sidenav>
+    </section>
 </div>

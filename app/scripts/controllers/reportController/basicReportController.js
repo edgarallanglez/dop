@@ -10,9 +10,9 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('BasicReportCtrl', function($scope) {
-
-    $scope.labels = ['Hombres', 'Mujeres'];
-    $scope.data = [55, 23];
-    $scope.colours = ['#3F51B5', '#FF4081'];
+  .controller('BasicReportCtrl', function($scope, reportService) {
+    reportService.setInView(true);
+    $scope.isInView = reportService.getInView();
+      $scope.toggleRight = function() {
+    };
   });

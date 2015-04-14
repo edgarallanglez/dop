@@ -42,14 +42,11 @@ body {
 }
 
 #main-logo {
-  width: 45px;
-  margin-right: 30px;
-    /*padding: 9px 35px 9px 9px;*/
+    width: 45px;
+    margin-right: 30px;
 }
 
-.white {
-  color: white !important;
-}
+.white { color: white !important; }
 /*Angular-Material Design*/
 md-toolbar .md-toolbar-tools .notification { margin-right: 1em; }
 md-toolbar .md-toolbar-tools .notification img { width: 25px; }
@@ -57,12 +54,12 @@ md-tabs { width: 75% !important; height: 100% !important; }
 md-tabs .md-header { height: 100% !important; }
 md-tabs-ink-bar { height: 3px !important; }
 md-tab a {
-  text-decoration: none !important;
-  color: white !important;
+    text-decoration: none !important;
+    color: white !important;
 }
 .md-button.md-fab.notification { 
-  width: 40px !important;
-  height: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
 }
 
 
