@@ -10,31 +10,54 @@
 angular.module('dopApp')
   .service( 'reportService', function() {
     this.isInView = false;
+    this.reportData = {
+      'beginDate': new Date(),
+      'endDate': new Date(),
+      'type': 'default'
+    }
     this.setInView = function(currentStatus) {
       this.isInView = currentStatus;
     }
+    this.getInView = function(){
+      return this.isInView;
+    }
+
+    this.setReportData = function(key, value) {
+      this.reportData[key] = value;
+    }
   })
   .config(function($stateProvider){
-      $stateProvider
-          // HOME STATES AND NESTED VIEWS ========================================
-          .state('report.layout', {
-            views: {
-                // the child views will be defined here (absolutely named)
-                'basicReport': {
-                  templateUrl: '../../views/reportViews/basicReportView.html',
-                  controller: 'BasicReportCtrl'
-                },
-                'middleReport': {
-                  templateUrl: '../../views/reportViews/middleReportView.html',
-                  controller: 'MiddleReportCtrl'
-                },
-                'advanceReport': {
-                  templateUrl: '../../views/reportViews/advanceReportView.html',
-                  controller: 'AdvanceReportCtrl'
-                }
-            }
-          });
+    $stateProvider
+      // HOME STATES AND NESTED VIEWS ========================================
+      .state('report.basicReport', {
+        url: '/basic',
+        templateUrl: '../../views/reportViews/basicReportView.html',
+        controller: 'BasicReportCtrl'
+      })
+      .state('report.middleReport', {
+        url: '/middle',
+        templateUrl: '../../views/reportViews/middleReportView.html',
+        controller: 'MiddleReportCtrl'
+      })
+      .state('report.advanceReport', {
+        url: '/advance',
+        templateUrl: '../../views/reportViews/advanceReportView.html',
+        controller: 'AdvanceReportCtrl'
+      });
   })
-  .controller('ReportCtrl', function ($scope, $state) {
-    $state.transitionTo('report.layout');
+  .controller('ReportCtrl', function ($scope, $state, reportService, $mdSidenav, $log) {
+    $scope.reportData = reportService.reportData;
+
+    $scope.toggleRight = function (current) {
+      $mdSidenav('right').toggle()
+                          .then(function(){
+                            $log.debug(current);
+                          });
+
+    };
+
+    $scope.createReport = function (kindReport) {
+      $state.go(kindReport);
+    };
+
   });
