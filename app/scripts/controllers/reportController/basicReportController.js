@@ -13,6 +13,7 @@ angular.module('dopApp')
   .controller('BasicReportCtrl', function($scope, reportService) {
     reportService.setInView(true);
     $scope.isInView = reportService.getInView();
-      $scope.toggleRight = function() {
+    $scope.toggleRight = function() {
+      
     };
   });
