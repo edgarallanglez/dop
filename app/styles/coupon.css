@@ -4,9 +4,7 @@
 	width: 48px;
 	margin: 16px; 
 }
-.coupon-container{
-	background: none !important;
-}
+.coupon-container{ background: none !important; }
 .coupon-list-card{
 	padding: 0;
 	height: 42em;
@@ -40,6 +38,28 @@
 	background: rgb(240, 240, 240);
 	border-bottom: 1px solid rgba(0,0,0,0.12);
 }
-.coupon-main-card{
+.coupon-main-card{ 
 	background: white;
+	height: 100%;
+}
+#create-coupon-btn{
+	float:right;
+	margin-top: 2.2em;
+}
+.coupon-select{
+	margin-bottom: 2.2em;
+}
+
+/* Animations */
+.sample-show-hide {
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+.coupon-form {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+.coupon-form.ng-hide {
+  opacity:0;
 }
