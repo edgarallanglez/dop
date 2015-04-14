@@ -45,13 +45,13 @@
             </div>
         </div>
     </div>
-    <section md-theme="green">
+    <section>
         <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
             <md-toolbar class="md-theme-default">
               <h1 class="md-toolbar-tools">Información Reporte</h1>
             </md-toolbar>
-            <md-content ng-controller="RightCtrl" layout-padding>
-                <form>
+            <md-content ng-controller="RightCtrl" md-theme="green" layout-padding>
+                <form> 
                     <md-input-container>
                       <label for="reportName">Test input</label>
                       <input type="text" id="reportName"
@@ -68,11 +68,11 @@
                       </md-input-container>
                     </div> 
                 </form>
-                <md-button ng-click="close()" class="md-primary">
-                  Close
-                </md-button>
-                <md-button ng-click="createReport()" class="md-primary">
+                <md-button ng-click="createReport()" class="md-raised md-primary md-button md-default-theme white">
                   Crear Reporte
+                </md-button>
+                <md-button ng-click="close()" class="md-raised md-primary md-button md-default-theme white">
+                  Close
                 </md-button>
             </md-content>
         </md-sidenav>

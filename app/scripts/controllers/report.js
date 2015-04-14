@@ -14,8 +14,14 @@ angular.module('dopApp')
       'name': 'Valen dick las mac de 13',
       'beginDate': new Date(),
       'endDate': new Date(),
-      'type': 'default'
+      'type': 'default',
+      'category': {
+        'sales': false,
+        'detailed': false,
+        'profit': false
+      }
     }
+
     this.setInView = function(currentStatus) {
       this.isInView = currentStatus;
     }
