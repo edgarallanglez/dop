@@ -13,31 +13,31 @@ angular.module('dopApp')
   .controller('CouponListCtrl', function($scope) {
   	$scope.todos = [
       {
-        what: 'Sin limite de personas',
+        what: 'Sin límite de personas',
         who: '20% Frapuccino',
         when: '3:08PM',
         notes: "Aplicable hasta el 25 de mayo"
       },
       {
-        what: 'Sin limite de personas',
+        what: 'Sin límite de personas',
         who: '20% Frapuccino',
         when: '3:08PM',
         notes: "Aplicable hasta el 25 de mayo"
       },
       {
-        what: 'Sin limite de personas',
+        what: 'Sin límite de personas',
         who: '20% Frapuccino',
         when: '3:08PM',
         notes: "Aplicable hasta el 25 de mayo"
       },
       {
-        what: 'Sin limite de personas',
+        what: 'Sin límite de personas',
         who: '20% Frapuccino',
         when: '3:08PM',
         notes: "Aplicable hasta el 25 de mayo"
       },
       {
-        what: 'Sin limite de personas',
+        what: 'Sin límite de personas',
         who: '20% Frapuccino',
         when: '3:08PM',
         notes: "Aplicable hasta el 25 de mayo"
