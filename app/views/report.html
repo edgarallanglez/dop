@@ -45,25 +45,34 @@
             </div>
         </div>
     </div>
-    <section>
+    <section md-theme="green">
         <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-            <md-toolbar class="md-theme-light">
-              <h1 class="md-toolbar-tools">Sidenav Right</h1>
+            <md-toolbar class="md-theme-default">
+              <h1 class="md-toolbar-tools">Información Reporte</h1>
             </md-toolbar>
             <md-content ng-controller="RightCtrl" layout-padding>
                 <form>
                     <md-input-container>
-                      <label for="testInput">Test input</label>
-                      <input type="text" id="testInput"
-                             ng-model="data" md-sidenav-focus>
+                      <label for="reportName">Test input</label>
+                      <input type="text" id="reportName"
+                             ng-model="reportData.name" md-sidenav-focus>
                     </md-input-container>
-                    <md-input-container flex="" class="md-default-theme">
-                      <label for="input_02W">Submission Date</label>
-                      <input type="date" ng-model="user.submissionDate" class="ng-valid md-input ng-dirty ng-valid-date ng-touched" id="input_02W" tabindex="0" aria-invalid="false">
-                    </md-input-container>
+                    <div layout="row" layout-wrap>
+                      <md-input-container flex class="md-default-theme">
+                        <label for="beginDate">Fecha de inicio</label>
+                        <input type="date" ng-model="reportData.beginDate" class="ng-valid md-input ng-dirty ng-valid-date ng-touched" id="beginDate" tabindex="0" aria-invalid="false">
+                      </md-input-container>
+                      <md-input-container flex class="md-default-theme">
+                        <label for="endDate">Fecha final</label>
+                        <input type="date" ng-model="reportData.endDate" class="ng-valid md-input ng-dirty ng-valid-date ng-touched" id="endDate" tabindex="0" aria-invalid="false">
+                      </md-input-container>
+                    </div> 
                 </form>
                 <md-button ng-click="close()" class="md-primary">
-                  Close Sidenav Right
+                  Close
+                </md-button>
+                <md-button ng-click="createReport()" class="md-primary">
+                  Crear Reporte
                 </md-button>
             </md-content>
         </md-sidenav>

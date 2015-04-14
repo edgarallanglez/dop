@@ -11,6 +11,7 @@ angular.module('dopApp')
   .service( 'reportService', function() {
     this.isInView = false;
     this.reportData = {
+      'name': 'Valen dick las mac de 13',
       'beginDate': new Date(),
       'endDate': new Date(),
       'type': 'default'
@@ -53,11 +54,14 @@ angular.module('dopApp')
                           .then(function(){
                             $log.debug(current);
                           });
-
     };
 
     $scope.createReport = function (kindReport) {
-      $state.go(kindReport);
+      $log.debug($scope.reportData);
+    };
+
+    $scope.close = function() {
+      $mdSidenav('right').toggle();
     };
 
   });
