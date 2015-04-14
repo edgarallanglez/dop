@@ -1,6 +1,6 @@
 <div ng-controller="ReportCtrl">
     <div ui-view>
-        <div ng-if="!isInView" layout="row" layout-margin layout-wrap>
+        <div ng-show="!isInView" class="report-height" layout="row" layout-align="center" layout-margin layout-wrap>
             <div flex flex-order="1" flex-sm="100">
                 <md-toolbar class="md-theme-light">
                     <h1 class="md-toolbar-tools">
@@ -50,7 +50,7 @@
             <md-toolbar class="md-theme-default">
               <h1 class="md-toolbar-tools">Información Reporte</h1>
             </md-toolbar>
-            <md-content ng-controller="RightCtrl" md-theme="green" layout-padding>
+            <md-content class="report-height" ng-controller="RightCtrl" md-theme="green" layout-padding>
                 <form> 
                     <md-input-container>
                       <label for="reportName">Test input</label>
@@ -60,20 +60,30 @@
                     <div layout="row" layout-wrap>
                       <md-input-container flex class="md-default-theme">
                         <label for="beginDate">Fecha de inicio</label>
-                        <input type="date" ng-model="reportData.beginDate" class="ng-valid md-input ng-dirty ng-valid-date ng-touched" id="beginDate" tabindex="0" aria-invalid="false">
+                        <input type="date" ng-model="reportData.beginDate" class="ng-valid font-15 md-input ng-dirty ng-valid-date ng-touched" id="beginDate" tabindex="0" aria-invalid="false">
                       </md-input-container>
                       <md-input-container flex class="md-default-theme">
                         <label for="endDate">Fecha final</label>
-                        <input type="date" ng-model="reportData.endDate" class="ng-valid md-input ng-dirty ng-valid-date ng-touched" id="endDate" tabindex="0" aria-invalid="false">
+                        <input type="date" ng-model="reportData.endDate" class="ng-valid font-15 md-input ng-dirty ng-valid-date ng-touched" id="endDate" tabindex="0" aria-invalid="false">
                       </md-input-container>
-                    </div> 
+                    </div>
+                    <div layout="column" class="checkbox-container margin-bottom-xxl" layout-wrap>
+                      <md-checkbox flex ng-model="reportData.category.sales" aria-label="Ventas">
+                          Ventas
+                      </md-checkbox>
+                      <md-checkbox flex ng-model="reportData.category.detailed" aria-label="Detalle">
+                          Detalle
+                      </md-checkbox>
+                      <md-checkbox flex ng-model="reportData.category.profit" aria-label="Ganancia">
+                          Ganancia
+                      </md-checkbox>
+                    </div>
                 </form>
-                <md-button ng-click="createReport()" class="md-raised md-primary md-button md-default-theme white">
-                  Crear Reporte
-                </md-button>
-                <md-button ng-click="close()" class="md-raised md-primary md-button md-default-theme white">
-                  Close
-                </md-button>
+                <div layout="row" class="margin-lg margin-top-xl">
+                    <md-button flex ng-click="createReport()" class="md-raised md-primary md-button md-default-theme white">
+                      Crear Reporte
+                    </md-button>
+                </div>
             </md-content>
         </md-sidenav>
     </section>

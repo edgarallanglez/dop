@@ -127,17 +127,17 @@ angular
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').toggle()
-                          .then(function(){
-                            //Transición terminada
-                          });
+                                          .then(function(){
+                                            //Transición terminada
+                                          });
     };
     $scope.toggleRightWidgets = function() {
       var closeWidgetsBtn=document.getElementById('closeWidgetsBtn');
       setTimeout(function(){ closeWidgetsBtn.classList.add('active'); },450);
       $mdSidenav('widgets-sidenav').toggle()
-                          .then(function(){
-                            //Transición terminada
-                          });
+                                    .then(function(){
+                                      //Transición terminada
+                                    });
     };
 
     $scope.$watch('data.selectedIndex', function () {
@@ -173,15 +173,15 @@ angular
   .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$http', function($scope, $timeout, $mdSidenav, $log, $http) {
     $scope.closeNotifications = function() {
       $mdSidenav('notifications-sidenav').close()
-          .then(function(){
-            $log.debug("close RIGHT is done");
-          });
+                                          .then(function(){
+                                            $log.debug("close RIGHT is done");
+                                          });
     };
     $scope.closeWidgets = function() {
       $mdSidenav('widgets-sidenav').close()
-          .then(function(){
-            $log.debug("close RIGHT is done");
-          });
+                                    .then(function(){
+                                      $log.debug("close RIGHT is done");
+                                    });
     };
 
     //Obtener clima según locación
@@ -191,7 +191,6 @@ angular
 
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
-            var method = 'GET';
             var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';        
             $http.jsonp(url).success(function(data) {
               $scope.data = data;

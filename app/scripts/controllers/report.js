@@ -25,6 +25,7 @@ angular.module('dopApp')
     this.setInView = function(currentStatus) {
       this.isInView = currentStatus;
     }
+
     this.getInView = function(){
       return this.isInView;
     }
@@ -58,6 +59,7 @@ angular.module('dopApp')
     $scope.toggleRight = function (current) {
       $mdSidenav('right').toggle()
                           .then(function(){
+                            console.log(1);
                             $log.debug(current);
                           });
     };
@@ -67,7 +69,10 @@ angular.module('dopApp')
     };
 
     $scope.close = function() {
-      $mdSidenav('right').toggle();
+      $mdSidenav('right').close()
+                          .then(function(){
+                           
+                          });
     };
 
   });
