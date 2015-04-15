@@ -41,6 +41,6 @@ angular.module('dopApp')
         who: '20% Frapuccino',
         when: '3:08PM',
         notes: "Aplicable hasta el 25 de mayo"
-      },
+      }
     ];
   });

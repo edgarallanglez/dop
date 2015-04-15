@@ -39,7 +39,7 @@ angular.module('dopApp')
   })
   .controller('MainCtrl', function($scope, $state) {
     $state.go('home.dashboard');
-  })
+  });
 
 
   

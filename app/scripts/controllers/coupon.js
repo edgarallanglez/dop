@@ -26,7 +26,6 @@ angular.module('dopApp')
   })
   .controller('CouponCtrl', function ($scope, $state) {
     $state.go('coupon.list');
-
   });
 
 
