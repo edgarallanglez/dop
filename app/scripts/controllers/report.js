@@ -11,13 +11,21 @@ angular.module('dopApp')
   .service( 'reportService', function() {
     this.isInView = false;
     this.reportData = {
+      'name': 'Valen dick las mac de 13',
       'beginDate': new Date(),
       'endDate': new Date(),
-      'type': 'default'
+      'type': 'default',
+      'category': {
+        'sales': false,
+        'detailed': false,
+        'profit': false
+      }
     }
+
     this.setInView = function(currentStatus) {
       this.isInView = currentStatus;
     }
+
     this.getInView = function(){
       return this.isInView;
     }
@@ -49,15 +57,22 @@ angular.module('dopApp')
     $scope.reportData = reportService.reportData;
 
     $scope.toggleRight = function (current) {
-      $mdSidenav('right').toggle()
-                          .then(function(){
-                            $log.debug(current);
-                          });
-
+      $mdSidenav('reportData').open();
+                          // .then(function(){
+                          //   console.log(1);
+                          //   $log.debug(current);
+                          // });
     };
 
     $scope.createReport = function (kindReport) {
-      $state.go(kindReport);
+      $log.debug($scope.reportData);
     };
+
+    // $scope.close = function() {
+    //   $mdSidenav('right').close()
+    //                       .then(function(){
+                           
+    //                       });
+    // };
 
   });

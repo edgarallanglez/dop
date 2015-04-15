@@ -32,7 +32,7 @@
 
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
     <!-- Fixed navbar -->
-    <div id="webApp" ng-if="isAuthenticated()">
+    <div id="webApp" ng-show="isAuthenticated()">
         <div layout="column"layout-fill>
           <md-toolbar>
             <div class="md-toolbar-tools">
@@ -98,7 +98,7 @@
                  ng-switch-when="2"
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background">
+                <md-content layout="row" layout-align="center center" class="no-background height-inherit">
                   <div flex ui-view>
                     <!-- tab's content -->
                   </div>
@@ -202,7 +202,6 @@
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
-        <script src="bower_components/materialize/bin/materialize.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/Chart.js/Chart.js"></script>
         <script src="bower_components/chartjs/Chart.js"></script>

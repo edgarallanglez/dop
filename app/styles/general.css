@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,300,400);
 @import url('dashboard.css');
+@import url('report.css');
 body { 
     background-color: #eee !important;
     min-height: 100%;
@@ -26,11 +27,25 @@ body {
 .margin-md { margin: 10px !important; }
 .margin-lg { margin: 15px !important; }
 .margin-xl { margin: 20px !important; }
+/* Margin for top */
+.margin-top-sm { margin-top: 5px !important; }
+.margin-top-md { margin-top: 10px !important; }
+.margin-top-lg { margin-top: 15px !important; }
+.margin-top-xl { margin-top: 20px !important; }
+/* Margin for bottom */
+.margin-bottom-sm { margin-bottom: 5px !important; }
+.margin-bottom-md { margin-bottom: 10px !important; }
+.margin-bottom-lg { margin-bottom: 15px !important; }
+.margin-bottom-xl { margin-bottom: 20px !important; }
+.margin-bottom-xxl { margin-bottom: 30px !important; }
+
+/* fonts */
+.font-15 { font-size: 15px !important; }
 
 .center {
     text-align: center !important;
 }
-
+.report-height { min-height: 450px !important; }
 .menu-icon { font-size: 24px; }
 .navbar {
     background-color: #282828 !important;

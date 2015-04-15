@@ -4,15 +4,14 @@
         Nuevo Cupón
     </h1>
 </md-toolbar>
-<div class="flip">
-<md-content class="md-padding card">
+<md-content class="md-padding ">
     <md-select ng-init="couponSelect=0" ng-model="couponSelect" class="coupon-select"  placeholder="Tipo de Cupón" ng-model="someVal" flex>
             <md-option value="1">Compra X y llevate X</md-option>
             <md-option value="2">Descuento</md-option>
             <md-option value="3">Bono</md-option>
     </md-select>
     <form name="userForm" class="coupon-form" ng-show="couponSelect!=0">
-        <div layout layout-sm="column" class="face front">
+        <div layout layout-sm="column">
             <md-input-container flex>
                 <label>Fecha de Disponibilidad</label>
                 <input required type="date" ng-model="coupon.startDate">
@@ -22,14 +21,14 @@
                 <input required type="date" ng-model="coupon.endDate">
             </md-input-container>
         </div>
-        <div layout layout-sm="column" class="face back">
+        <div layout layout-sm="column">
             <md-input-container flex>
                 <label>Nombre</label>
                 <input ng-model="coupon.name">
             </md-input-container>
             <md-input-container flex="20">
                 <label>Límite</label>
-                <input required type="number" step="any" name="rate" ng-model="project.rate" min="0" max="2000">
+                <input required type="number" step="any" name="rate" ng-model="coupon.limit" min="0" max="2000">
                 <div ng-messages="projectForm.rate.$error">
                   <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
                   <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
@@ -73,4 +72,4 @@
         </md-button>
     </form>
 </md-content>
-</div>
+
