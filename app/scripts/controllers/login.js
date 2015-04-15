@@ -8,7 +8,7 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('LoginCtrl', function($scope, $auth, $http, $templateCache) {
+  .controller('LoginCtrl', function($scope, $auth, $http, $templateCache, SweetAlert) {
 
     $scope.login = function() {
       $auth.login({
@@ -16,8 +16,10 @@ angular.module('dopApp')
         'password': $scope.password
       })
       .then(function(response) {
-        console.log(response.data);
-        $auth.setToken(response.data.token,false);
+        $auth.setToken(response.data.token, false);
+      })
+      .catch(function(response) {
+          SweetAlert.swal("Error", "El usuario y/o contraseña son incorrectos ", "error");
       });
 
     };

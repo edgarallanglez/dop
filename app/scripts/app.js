@@ -24,7 +24,8 @@ angular
     'chart.js',
     'uiGmapgoogle-maps',
     'satellizer',
-    'angular-jwt'
+    'angular-jwt',
+    'oitozero.ngSweetAlert'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
                     $locationProvider, $httpProvider, $authProvider) {

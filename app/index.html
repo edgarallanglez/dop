@@ -16,6 +16,7 @@
   <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+  <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
   <!-- endbuild -->
 
   <!-- Template CSS -->
@@ -59,10 +60,10 @@
               </md-tabs>
               <span flex></span>
 
-              <md-button ng-click="toggleRightNotifications()" class="notification md-fab md-primary md-hue-3">
+              <md-button ng-click="toggleRightNotifications()" class="notification md-fab md-primary md-hue-3" aria-label="Notification">
                   <span class="white">5</span>
               </md-button>
-              <md-button ng-click="toggleRightWidgets()" class="">
+              <md-button ng-click="toggleRightWidgets()" class="" aria-label="Menu">
                 <i class="fa fa-bars menu-icon margin-sm"></i>
               </md-button>
             </div>
@@ -211,6 +212,8 @@
         <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
         <script src="bower_components/satellizer/satellizer.js"></script>
         <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+        <script src="bower_components/sweetalert/lib/sweet-alert.js"></script>
+        <script src="bower_components/angular-sweetalert/SweetAlert.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
