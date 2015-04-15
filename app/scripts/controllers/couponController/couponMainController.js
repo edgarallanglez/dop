@@ -35,5 +35,4 @@ angular.module('dopApp')
       'bond':0,
       'description':''
     };
->>>>>>> 31c204cc0c53ef9e71173089d5be4c7765004a69
   });
