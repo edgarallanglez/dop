@@ -11,15 +11,28 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('CouponMainCtrl', function($scope) {
-
-  	$scope.coupon= { 'startDate': new Date(), 
-  									 'endDate': new Date(), 
-                     'name':'', 
-                     'limit':0,
-                     'receives':0,
-                     'buy':0,
-                     'discount':0,
-                     'bond':0,
-                     'description':''
-                   }
+    $scope.couponSelected = 0;
+    $scope.selectTags = [{
+        'label': 'Compra X y llevate X',
+        'val': 1 
+      },
+      { 
+        'label': 'Descuento',
+        'val': 2
+      },
+      {
+        'label': 'Bono',
+        'val': 3
+    }];
+  	$scope.coupon = { 
+      'startDate': new Date(), 
+		  'endDate': new Date(), 
+      'name':'', 
+      'limit':0,
+      'receives':0,
+      'buy':0,
+      'discount':0,
+      'bond':0,
+      'description':''
+    };
   });
