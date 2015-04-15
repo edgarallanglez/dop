@@ -11,7 +11,7 @@ angular.module('dopApp')
   .service( 'reportService', function() {
     this.isInView = false;
     this.reportData = {
-      'name': 'Valen dick las mac de 13',
+      'name': '',
       'beginDate': new Date(),
       'endDate': new Date(),
       'type': 'default',
@@ -57,15 +57,16 @@ angular.module('dopApp')
     $scope.reportData = reportService.reportData;
 
     $scope.toggleRight = function (current) {
-      $mdSidenav('reportData').open();
-                          // .then(function(){
-                          //   console.log(1);
-                          //   $log.debug(current);
-                          // });
+      $mdSidenav('reportData').open()
+                          .then(function(){
+                            $scope.reportData['type'] = current;
+                          });
     };
 
     $scope.createReport = function (kindReport) {
+
       $log.debug($scope.reportData);
+      
     };
 
     // $scope.close = function() {
