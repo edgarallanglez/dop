@@ -5,12 +5,12 @@
         </h1>
     </md-toolbar>
     <md-content class="md-padding ">
-        <md-select ng-init="couponSelect=0" ng-model="couponSelect" class="coupon-select"  placeholder="Tipo de Cupón" ng-model="someVal" flex>
+        <md-select ng-init="couponSelect=0" ng-model="couponSelect" class="coupon-select"  placeholder="Tipo de Cupón" flex>
                 <md-option value="1">Compra X y llevate X</md-option>
                 <md-option value="2">Descuento</md-option>
                 <md-option value="3">Bono</md-option>
         </md-select>
-        <form name="userForm" class="coupon-form" ng-show="couponSelect!=0">
+        <form name="couponForm" class="coupon-form" ng-show="couponSelect!=0">
             <div layout layout-sm="column">
                 <md-input-container flex>
                     <label>Fecha de Disponibilidad</label>

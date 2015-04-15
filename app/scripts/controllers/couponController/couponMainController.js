@@ -11,7 +11,6 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('CouponMainCtrl', function($scope) {
-
   	$scope.coupon= { 'startDate': new Date(), 
   									 'endDate': new Date(), 
                      'name':'', 
