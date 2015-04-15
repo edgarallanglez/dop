@@ -23,10 +23,10 @@ angular.module('dopApp')
           }
         }
       });
-    })
+  })
   .controller('CouponCtrl', function ($scope, $state) {
-  	$state.transitionTo('coupon.list');
-    
+    $state.go('coupon.list');
+
   });
 
 

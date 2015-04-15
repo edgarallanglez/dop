@@ -11,7 +11,7 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('CouponListCtrl', function($scope) {
-  	$scope.todos = [
+    $scope.todos = [
       {
         what: 'Sin límite de personas',
         who: '20% Frapuccino',
