@@ -126,7 +126,7 @@ angular
     };
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
-      $mdSidenav('notifications-sidenav').toggle()
+      $mdSidenav('notifications-sidenav').open()
                                           .then(function(){
                                             //Transición terminada
                                           });
@@ -134,7 +134,7 @@ angular
     $scope.toggleRightWidgets = function() {
       var closeWidgetsBtn=document.getElementById('closeWidgetsBtn');
       setTimeout(function(){ closeWidgetsBtn.classList.add('active'); },450);
-      $mdSidenav('widgets-sidenav').toggle()
+      $mdSidenav('widgets-sidenav').open()
                                     .then(function(){
                                       //Transición terminada
                                     });

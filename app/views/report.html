@@ -46,14 +46,14 @@
         </div>
     </div>
     <section>
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="reportData">
             <md-toolbar class="md-theme-default">
               <h1 class="md-toolbar-tools">Información Reporte</h1>
             </md-toolbar>
-            <md-content class="report-height" ng-controller="RightCtrl" md-theme="green" layout-padding>
+            <md-content class="report-height" md-theme="green" layout-padding>
                 <form> 
                     <md-input-container>
-                      <label for="reportName">Test input</label>
+                      <label for="reportName">Nombre</label>
                       <input type="text" id="reportName"
                              ng-model="reportData.name" md-sidenav-focus>
                     </md-input-container>

@@ -57,22 +57,22 @@ angular.module('dopApp')
     $scope.reportData = reportService.reportData;
 
     $scope.toggleRight = function (current) {
-      $mdSidenav('right').toggle()
-                          .then(function(){
-                            console.log(1);
-                            $log.debug(current);
-                          });
+      $mdSidenav('reportData').open();
+                          // .then(function(){
+                          //   console.log(1);
+                          //   $log.debug(current);
+                          // });
     };
 
     $scope.createReport = function (kindReport) {
       $log.debug($scope.reportData);
     };
 
-    $scope.close = function() {
-      $mdSidenav('right').close()
-                          .then(function(){
+    // $scope.close = function() {
+    //   $mdSidenav('right').close()
+    //                       .then(function(){
                            
-                          });
-    };
+    //                       });
+    // };
 
   });
