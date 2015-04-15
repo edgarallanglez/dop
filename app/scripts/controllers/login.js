@@ -19,7 +19,7 @@ angular.module('dopApp')
         $auth.setToken(response.data.token, false);
       })
       .catch(function(response) {
-          SweetAlert.swal("Error", "El usuario y/o contraseña son incorrectos ", "error");
+          SweetAlert.swal("Oops!", "El usuario y/o contraseña son incorrectos ", "error");
       });
 
     };
