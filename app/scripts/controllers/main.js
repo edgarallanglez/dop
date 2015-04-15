@@ -38,8 +38,8 @@ angular.module('dopApp')
       });
   })
   .controller('MainCtrl', function($scope, $state) {
-    $state.transitionTo('home.dashboard');
-  })
+    $state.go('home.dashboard');
+  });
 
 
   
