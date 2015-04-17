@@ -35,4 +35,28 @@ angular.module('dopApp')
       'bond':0,
       'description':''
     };
+    $scope.createCoupon = function() {
+      var benefits;
+      switch($scope.couponSelected){
+        case 1:
+          benefits = {"":""};
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+      }
+
+      var couponInfo = {
+        "name": $scope.coupon.name,
+        "startDate": $scope.coupon.startDate,
+        "endDate": $scope.coupon.endDate,
+        "limit": $scope.coupon.limit,
+        "description": $scope.coupon.description,
+        "benefits" : { 
+          "hola":benefits 
+        }
+      };
+      console.log(couponInfo);
+    };
   });
