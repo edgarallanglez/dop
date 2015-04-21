@@ -39,23 +39,26 @@ angular.module('dopApp')
       var benefits;
       switch($scope.couponSelected){
         case 1:
-          benefits = {"":""};
+          benefits = {"n1":"2","n2":"1"};
           break;
         case 2:
+          benefits = {"discount":"50"};
           break;
         case 3:
+          benefits = {"bond_size":"50"};
           break;
       }
 
       var couponInfo = {
         "name": $scope.coupon.name,
-        "startDate": $scope.coupon.startDate,
-        "endDate": $scope.coupon.endDate,
+        "branch_id": "2",
+        "start_date": $scope.coupon.startDate,
+        "end_date": $scope.coupon.endDate,
+        "min_spent": "500",
         "limit": $scope.coupon.limit,
         "description": $scope.coupon.description,
-        "benefits" : { 
-          "hola":benefits 
-        }
+        "category_id": "1",
+        benefits
       };
       console.log(couponInfo);
     };
