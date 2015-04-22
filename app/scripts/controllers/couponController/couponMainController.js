@@ -39,12 +39,13 @@ angular.module('dopApp')
       var couponInfo = {
         "name": $scope.coupon.name,
         "branch_id": "2",
-        "start_date": $scope.coupon.startDate,
-        "end_date": $scope.coupon.endDate,
+        "start_date": '01-01-2015',
+        "end_date": '02-01-2015',
         "min_spent": "500",
         "limit": $scope.coupon.limit,
         "description": $scope.coupon.description,
-        "category_coupon_id": $scope.couponSelected
+        "coupon_category_id": $scope.couponSelected,
+        "bond_size": 500
       };
 
       switch($scope.couponSelected){
@@ -62,7 +63,7 @@ angular.module('dopApp')
       $http({
         method: 'POST',
         url: 'http://104.236.141.44:5000/api/coupon/bond/create',
-        data: $.param(couponInfo),
+        data: couponInfo,
         headers: {'Content-Type': 'application/json'}
       })
       .success(function () {
