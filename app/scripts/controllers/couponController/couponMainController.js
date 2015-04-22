@@ -14,7 +14,7 @@ angular.module('dopApp')
     $scope.couponSelected = 0;
     $scope.selectTags = [{
         'label': 'Compra X y llevate X',
-        'val': 1 
+        'val': 3 
       },
       { 
         'label': 'Descuento',
@@ -22,7 +22,7 @@ angular.module('dopApp')
       },
       {
         'label': 'Bono',
-        'val': 3
+        'val': 1
     }];
   	$scope.coupon = { 
       'startDate': new Date(), 
@@ -36,19 +36,6 @@ angular.module('dopApp')
       'description':''
     };
     $scope.createCoupon = function() {
-      var benefits;
-      switch($scope.couponSelected){
-        case 1:
-          benefits = {"n1":"2","n2":"1"};
-          break;
-        case 2:
-          benefits = {"discount":"50"};
-          break;
-        case 3:
-          benefits = {"bond_size":"50"};
-          break;
-      }
-
       var couponInfo = {
         "name": $scope.coupon.name,
         "branch_id": "2",
@@ -57,9 +44,21 @@ angular.module('dopApp')
         "min_spent": "500",
         "limit": $scope.coupon.limit,
         "description": $scope.coupon.description,
-        "category_id": "1",
-        benefits
+        "category_id": $scope.couponSelected
       };
+
+      switch($scope.couponSelected){
+        case 1:
+          couponInfo.bond_size=50;
+          break;
+        case 2:
+          couponInfo.discount=50;
+          break;
+        case 3:
+          couponInfo.n1=2;
+          couponInfo.n2=2;
+          break;
+      }
       console.log(couponInfo);
     };
   });
