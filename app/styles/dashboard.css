@@ -65,6 +65,15 @@ md-tab-template div:nth-child(4){
 .angular-google-map-container { height: 400px; }
 
 .coupon-card { padding: 1em; }
-.coupon-card p,.coupon-card h2 { margin-bottom: 0; }
+.coupon-card p,
+.coupon-card h2 { margin-bottom: 0; }
 .coupon-card h2 { margin-top:0; }
 
+/*canvas#ageChart { 
+		width: 100% !important;
+		height: auto !important;
+}
+canvas#genderChart {
+		width: 100% !important;
+		height: auto !important;
+}*/
