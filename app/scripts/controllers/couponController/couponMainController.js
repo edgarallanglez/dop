@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope) {
+  .controller('CouponMainCtrl', function($scope,$http) {
     $scope.couponSelected = 0;
     $scope.selectTags = [{
         'label': 'Compra X y llevate X',
@@ -59,6 +59,15 @@ angular.module('dopApp')
           couponInfo.n2=2;
           break;
       }
-      console.log(couponInfo);
-    };
+      $http({
+        method: 'POST',
+        url: 'http://104.236.141.44:5000/api/coupon/bond/create',
+        data: $.param(couponInfo),
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      })
+      .success(function () {
+        console.log("Listo");
+      });
+      
+      };
   });

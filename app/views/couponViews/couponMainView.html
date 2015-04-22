@@ -34,7 +34,7 @@
             </div>
             <!--Layout según tipo de cupon seleccionado-->
             <!--Compra X y llevate X-->
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='1'">
+            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='3'">
                 <md-input-container flex>
                     <label for="receives">Recibe</label>
                     <input name="receives"  type="number" id="receives" ng-model="coupon.receives" min="0" max="10">
@@ -52,7 +52,7 @@
                 </md-input-container>
             </div>
             <!--Bono-->
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='3'">
+            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='1'">
                 <md-input-container flex>
                     <label for="bond">Bonificación</label>
                     <input name="bond" type="number" id="bond" ng-model="coupon.bond" min="0" max="99999">
