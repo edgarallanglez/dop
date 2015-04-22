@@ -44,7 +44,7 @@ angular.module('dopApp')
         "min_spent": "500",
         "limit": $scope.coupon.limit,
         "description": $scope.coupon.description,
-        "category_id": $scope.couponSelected
+        "category_coupon_id": $scope.couponSelected
       };
 
       switch($scope.couponSelected){
@@ -63,7 +63,7 @@ angular.module('dopApp')
         method: 'POST',
         url: 'http://104.236.141.44:5000/api/coupon/bond/create',
         data: $.param(couponInfo),
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        headers: {'Content-Type': 'application/json'}
       })
       .success(function () {
         console.log("Listo");
