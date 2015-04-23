@@ -10,6 +10,6 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('AdvanceReportCtrl', function($scope, reportService) {
+  .controller('AdvanceReportCtrl', function($scope, $reportService) {
     
   });

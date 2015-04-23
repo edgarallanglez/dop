@@ -27,6 +27,22 @@ angular
     'angular-jwt',
     'oitozero.ngSweetAlert'
   ])
+  .service('$userService', function() {
+    this.userId = 0
+    this.branchName = ''
+    this.name = ''
+    this.email = ''
+    this.branchId = 0
+
+    this.setUser = function(id, branchName, name, email, branchId) {
+      this.userId = id 
+      this.branchName = branchName
+      this.name = name
+      this.email = email
+      this.branchId = branchId
+    }
+
+  })
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
                     $locationProvider, $httpProvider, $authProvider) {
     $httpProvider.defaults.useXDomain = true;

@@ -8,7 +8,7 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .service( 'reportService', function() {
+  .service('$reportService', function() {
     this.isInView = false;
     this.reportData = {
       'name': '',
@@ -53,8 +53,8 @@ angular.module('dopApp')
         controller: 'AdvanceReportCtrl'
       });
   })
-  .controller('ReportCtrl', function ($scope, $state, reportService, $mdSidenav, $log) {
-    $scope.reportData = reportService.reportData;
+  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log) {
+    $scope.reportData = $reportService.reportData;
 
     $scope.toggleRight = function (current) {
       $mdSidenav('reportData').open()
