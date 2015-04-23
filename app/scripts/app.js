@@ -25,7 +25,8 @@ angular
     'uiGmapgoogle-maps',
     'satellizer',
     'angular-jwt',
-    'oitozero.ngSweetAlert'
+    'oitozero.ngSweetAlert',
+    '720kb.datepicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
                     $locationProvider, $httpProvider, $authProvider) {
