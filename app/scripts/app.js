@@ -28,15 +28,15 @@ angular
     'oitozero.ngSweetAlert'
   ])
   .service('$userService', function() {
-    this.userId = 0
-    this.branchName = ''
-    this.name = ''
-    this.email = ''
-    this.branchId = 0
+    this.userId = 0;
+    this.branch = new Object();
+    this.name = '';
+    this.email = '';
+    this.branchId = 0;
 
-    this.setUser = function(id, branchName, name, email, branchId) {
+    this.setUser = function(id, branch, name, email, branchId) {
       this.userId = id 
-      this.branchName = branchName
+      this.branch = branch
       this.name = name
       this.email = email
       this.branchId = branchId

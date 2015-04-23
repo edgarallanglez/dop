@@ -35,7 +35,7 @@ angular.module('dopApp')
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
         var user = data.data
-        $userService.setUser(payload.id, user.branch_name, user.name, user.email, user.branch_id);
+        $userService.setUser(payload.id, user.branch, user.name, user.email, user.branch_id);
         console.log($userService);
       });
     }
