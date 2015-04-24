@@ -28,18 +28,14 @@ angular
     'oitozero.ngSweetAlert'
   ])
   .service('$userService', function() {
-    this.userId = 0;
-    this.branch = new Object();
-    this.name = '';
-    this.email = '';
-    this.branchId = 0;
+    this.currentUser;
 
-    this.setUser = function(id, branch, name, email, branchId) {
-      this.userId = id 
-      this.branch = branch
-      this.name = name
-      this.email = email
-      this.branchId = branchId
+    this.setUser = function(currentUser) {
+      this.currentUser = currentUser
+    }
+
+    this.getCurrentUser = function () {
+      return this.currentUser
     }
 
   })
@@ -187,7 +183,22 @@ angular
 
   })
   //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$http', function($scope, $timeout, $mdSidenav, $log, $http) {
+  .controller('RightCtrl', ['$scope', '$userService', '$auth', '$timeout', '$mdSidenav', '$log', '$http', 
+                    function($scope, $userService, $auth, $timeout, $mdSidenav, $log, $http) {
+    $scope.init = function () {
+      var payload = $auth.getPayload();
+      $http({
+        method: 'POST',
+        url: 'http://104.236.141.44:5000/api/company/me',
+        data: { 'branches_user_id': payload.id },
+        headers: {'Content-Type': 'application/json'}
+      }).success(function(data){
+        var user = data.data
+        $userService.setUser(user);
+        $scope.user = $userService.getCurrentUser();
+      });
+    };
+
     $scope.closeNotifications = function() {
       $mdSidenav('notifications-sidenav').close()
                                           .then(function(){

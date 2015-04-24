@@ -17,7 +17,7 @@ angular.module('dopApp')
       })
       .then(function(response) {
         $auth.setToken(response.data.token, false);
-        $scope.setGlobalUser();
+        // $scope.setGlobalUser();
       })
       .catch(function(response) {
           SweetAlert.swal("Oops!", "El usuario y/o contraseña son incorrectos ", "error");
@@ -25,20 +25,19 @@ angular.module('dopApp')
 
     };
 
-    $scope.setGlobalUser = function () {
-      var payload = $auth.getPayload();
+    // $scope.setGlobalUser = function () {
+    //   var payload = $auth.getPayload();
 
-      $http({
-        method: 'POST',
-        url: 'http://104.236.141.44:5000/api/company/me',
-        data: { 'branches_user_id': payload.id },
-        headers: {'Content-Type': 'application/json'}
-      }).success(function(data){
-        var user = data.data
-        $userService.setUser(payload.id, user.branch, user.name, user.email, user.branch_id);
-        console.log($userService);
-      });
-    }
+    //   $http({
+    //     method: 'POST',
+    //     url: 'http://104.236.141.44:5000/api/company/me',
+    //     data: { 'branches_user_id': payload.id },
+    //     headers: {'Content-Type': 'application/json'}
+    //   }).success(function(data){
+    //     var user = data.data
+    //     $userService.setUser(user);
+    //   });
+    // }
     // $scope.authenticate = function(provider) {
     //   $auth.authenticate(provider);
     // };

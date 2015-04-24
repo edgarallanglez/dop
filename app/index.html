@@ -118,8 +118,8 @@
           </md-content>
         </md-sidenav>
         <md-sidenav id="utilities-sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav"layout="vertical" layout-fill>
-          <md-toolbar ng-controller="RightCtrl" class="md-theme-light">
-            <h1 class="md-toolbar-tools">Utilidades</h1>
+          <md-toolbar ng-controller="RightCtrl" ng-init="init()" class="md-theme-light">
+            <h1 class="md-toolbar-tools">{{user.branch.name}}</h1>
             <button id="closeWidgetsBtn" class="cmn-toggle-switch cmn-toggle-switch__htx" ng-click="closeWidgets()">
               <span>toggle menu</span>
             </button>
