@@ -74,8 +74,8 @@ angular.module('dopApp')
         data: couponInfo,
         headers: {'Content-Type': 'application/json'}
       })
-      .success(function () {
-        console.log("Listo");
+      .success(function (data) {
+        console.log(data.message);
       });
     };
 

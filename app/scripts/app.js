@@ -28,6 +28,18 @@ angular
     'oitozero.ngSweetAlert',
     '720kb.datepicker'
   ])
+  .service('$userService', function() {
+    this.currentUser;
+
+    this.setUser = function(currentUser) {
+      this.currentUser = currentUser
+    }
+
+    this.getCurrentUser = function () {
+      return this.currentUser
+    }
+
+  })
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
                     $locationProvider, $httpProvider, $authProvider) {
     $httpProvider.defaults.useXDomain = true;
@@ -172,7 +184,22 @@ angular
 
   })
   //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$http', function($scope, $timeout, $mdSidenav, $log, $http) {
+  .controller('RightCtrl', ['$scope', '$userService', '$auth', '$timeout', '$mdSidenav', '$log', '$http', 
+                    function($scope, $userService, $auth, $timeout, $mdSidenav, $log, $http) {
+    $scope.init = function () {
+      var payload = $auth.getPayload();
+      $http({
+        method: 'POST',
+        url: 'http://104.236.141.44:5000/api/company/me',
+        data: { 'branches_user_id': payload.id },
+        headers: {'Content-Type': 'application/json'}
+      }).success(function(data){
+        var user = data.data
+        $userService.setUser(user);
+        $scope.user = $userService.getCurrentUser();
+      });
+    };
+
     $scope.closeNotifications = function() {
       $mdSidenav('notifications-sidenav').close()
                                           .then(function(){
