@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope,$http) {
+  .controller('CouponMainCtrl', function($scope,$http,$filter) {
     $scope.couponSelected = 0;
     $scope.selectTags = [{
         'label': 'Compra X y llevate X',
@@ -29,46 +29,54 @@ angular.module('dopApp')
 		  'endDate': new Date(), 
       'name':'', 
       'limit':0,
+      'min_spent':0,
       'receives':0,
       'buy':0,
       'discount':0,
       'bond':0,
-      'description':''
+      'description':'',
+      'bond_size': 0
     };
+
     $scope.createCoupon = function() {
       var couponInfo = {
         "name": $scope.coupon.name,
         "branch_id": "2",
-        "start_date": '01-01-2015',
-        "end_date": '02-01-2015',
-        "min_spent": "500",
+        "start_date": $filter('date')($scope.coupon.startDate,'MM-dd-yyyy'),
+        "end_date": $filter('date')($scope.coupon.endDate,'MM-dd-yyyy'),
+        "min_spent": $scope.coupon.min_spent,
         "limit": $scope.coupon.limit,
         "description": $scope.coupon.description,
-        "coupon_category_id": $scope.couponSelected,
-        "bond_size": 500
+        "coupon_category_id": $scope.couponSelected
       };
+
+      var createCouponUrl='http://104.236.141.44:5000/api/coupon/';
 
       switch($scope.couponSelected){
         case 1:
-          couponInfo.bond_size=50;
+          couponInfo.bond_size = $scope.coupon.bond_size;
+          createCouponUrl += "bond/create";
           break;
         case 2:
-          couponInfo.discount=50;
+          couponInfo.discount = $scope.coupon.discount;
+          createCouponUrl += "discount/create";
           break;
         case 3:
-          couponInfo.n1=2;
-          couponInfo.n2=2;
+          couponInfo.n1 = $scope.coupon.receives;
+          couponInfo.n2 = $scope.coupon.buy;
+          createCouponUrl += "nxn/create";
           break;
       }
+      
       $http({
         method: 'POST',
-        url: 'http://104.236.141.44:5000/api/coupon/bond/create',
+        url: createCouponUrl,
         data: couponInfo,
         headers: {'Content-Type': 'application/json'}
       })
       .success(function (data) {
         console.log(data.message);
       });
-      
-      };
+    };
+
   });

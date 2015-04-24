@@ -10,7 +10,7 @@
             <div layout-wrap layout-sm="column">
                 <md-input-container flex>
                     <label for="startDate">Fecha de Disponibilidad</label>
-                    <input name="startDate" required type="date" id="startDate" ng-model="coupon.startDate">
+                    <input  name="startDate" required type="date" id="startDate" ng-model="coupon.startDate">
                 </md-input-container>
                 <md-input-container flex>
                     <label for="endDate">Fecha de caducidad</label>
@@ -25,6 +25,15 @@
                 <md-input-container flex="20">
                     <label for="limit">Límite</label>
                     <input name="limit" type="number" id="limit" ng-model="coupon.limit" min="0" max="2000">
+                    <!--                     <div ng-messages="userForm.limit.$error">
+                      <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
+                      <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
+                      <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
+                    </div> -->
+                </md-input-container>
+                <md-input-container flex="20">
+                    <label for="min_spent">Compra Mínima</label>
+                    <input name="min_spent" type="number" id="min_spent" ng-model="coupon.min_spent" min="0" max="99999" >
                     <!--                     <div ng-messages="userForm.limit.$error">
                       <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
                       <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>

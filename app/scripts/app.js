@@ -25,7 +25,8 @@ angular
     'uiGmapgoogle-maps',
     'satellizer',
     'angular-jwt',
-    'oitozero.ngSweetAlert'
+    'oitozero.ngSweetAlert',
+    '720kb.datepicker'
   ])
   .service('$userService', function() {
     this.currentUser;
