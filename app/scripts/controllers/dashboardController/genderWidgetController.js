@@ -16,7 +16,7 @@ angular.module('dopApp')
     $scope.data = [55, 23];
     $scope.colours = ['#3F51B5', '#FF4081'];  
     $scope.$on('create', function (event, chart) {
-      console.log(chart);
+
     });
 
   });
