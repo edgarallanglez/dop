@@ -1,29 +1,6 @@
-
-<div >
-
-</div>
-
 <div class="card" ng-controller="CouponWidgetCtrl">
-    <div class="card-header">
-        <h2>Status de cupón</h2>
-        
-        <ul class="actions">
-            <li class="dropdown action-show">
-                <a href="" data-toggle="dropdown" aria-expanded="false">
-                    <ng-md-icon icon="more_vert">
-                </a>
-
-                <div class="dropdown-menu pull-right">
-                    <p class="p-20">
-                        You can put anything here
-                    </p>
-                </div>
-            </li>
-        </ul>
-    </div>
-    
-    <div class="card-body card-padding">
-        <div class="padding-xl tabsdemoStaticTabs sample">
+    <div class="coupon card-header">
+        <div class="tabsdemoStaticTabs sample">
           <md-tabs class="md-default-theme" md-selected="data.selectedIndex">
             <md-tab id="tab1">
                 <md-tab-label>TOTAL</md-tab-label>
@@ -89,6 +66,19 @@
                 </md-tab-template>
             </md-tab>
           </md-tabs>
+          <ul class="actions">
+            <li class="dropdown action-show">
+                <a href="" data-toggle="dropdown" aria-expanded="false">
+                    <ng-md-icon icon="more_vert">
+                </a>
+
+                <div class="dropdown-menu pull-right">
+                    <p class="p-20">
+                        You can put anything here
+                    </p>
+                </div>
+            </li>
+          </ul>
         </div>
     </div>
 </div>
