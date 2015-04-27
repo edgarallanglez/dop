@@ -26,7 +26,8 @@ angular
     'satellizer',
     'angular-jwt',
     'oitozero.ngSweetAlert',
-    '720kb.datepicker'
+    '720kb.datepicker',
+    'restangular'
   ])
   .service('$userService', function() {
     this.currentUser;
@@ -133,7 +134,7 @@ angular
       .accentPalette('light-blue');
 
   })
-  .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth){
+  .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth, Restangular){
     $scope.reload = true;
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
@@ -169,8 +170,7 @@ angular
         };
       };
 
-        // tab selected change
-
+      // tab selected change
       if ($scope.data) {
         if ($scope.data.selectedIndex == 0 ) {
           $location.url('/');
@@ -197,6 +197,7 @@ angular
         var user = data.data
         $userService.setUser(user);
         $scope.user = $userService.getCurrentUser();
+        console.log($scope.user);
       });
     };
 
