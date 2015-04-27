@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope,$http,$filter) {
+  .controller('CouponMainCtrl', function($scope,$http,$filter,SweetAlert) {
     $scope.couponSelected = 0;
     $scope.selectTags = [{
         'label': 'Compra X y llevate X',
@@ -74,9 +74,12 @@ angular.module('dopApp')
         data: couponInfo,
         headers: {'Content-Type': 'application/json'}
       })
-      .success(function (data) {
-        console.log(data.message);
-      });
+      .catch(function(data, status) {
+        SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");
+      })
+      .finally(function() {
+        SweetAlert.swal("Cupón Creado!", "El cupón ha sido creado correctamente ", "success");
+      })
     };
 
   });
