@@ -1,5 +1,5 @@
 /* Cupoun Widget CSS*/
-/*.tabsdemoStaticTabs .sample { height: 450px; }*/
+.tabsdemoStaticTabs .sample { height: 506px; }
 .tabsdemoStaticTabs .sample md-tab-content { padding: 25px; }
 .tabsdemoStaticTabs .sample md-tab-content:nth-child(1) { background-color: #42A5F5; }
 .tabsdemoStaticTabs .sample md-tab-content:nth-child(2) { background-color: #689F38; }
