@@ -14,10 +14,10 @@
 		</div>
 		<div class="coupon-list">
 				<md-list>
-						<md-list-item class="md-3-line" ng-repeat="item in todos" flex>
+						<md-list-item class="md-3-line" ng-repeat="item in coupons" flex>
 								<div class="md-list-item-text">
 										<h3>{{ item.name }}</h3>
-										<h4>{{ item.limit }}</h4>
+										<h4>Disponible para {{ item.limit }} personas</h4>
 										<p>Aplicable hasta el {{ item.end_date | date:'dd' }} de {{ item.end_date | date:'MM' | monthName }}</p>
 								</div>
 								<md-divider ng-if="!$last"></md-divider>

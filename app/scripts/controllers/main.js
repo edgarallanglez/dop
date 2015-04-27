@@ -14,6 +14,10 @@ angular.module('dopApp')
       .state('home.dashboard', {
         views: {
             // the child views will be defined here (absolutely named)
+            'lastCoupons': {
+              templateUrl: '../../views/dashboardViews/lastCouponListView.html',
+              controller: 'LastCouponListWidgetCtrl'
+            },
             'genderChart': {
               templateUrl: '../../views/dashboardViews/genderView.html',
               controller: 'GenderWidgetCtrl'
