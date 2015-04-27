@@ -1,4 +1,25 @@
-<div layout-align="center center" ng-controller="LocationWidgetCtrl">
-    <h2>Ubicación de uso</h2>
-    <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options"></ui-gmap-google-map>
+<div class="card" ng-controller="LocationWidgetCtrl">
+    <div class="card-header">
+        <h2>Ubicación</h2>
+        
+        <ul class="actions">
+            <li class="dropdown action-show">
+                <a href="" data-toggle="dropdown" aria-expanded="false">
+                    <ng-md-icon icon="more_vert">
+                </a>
+
+                <div class="dropdown-menu pull-right">
+                    <p class="p-20">
+                        You can put anything here
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="card-body card-padding">
+        <div class="padding-xl">
+          <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options"></ui-gmap-google-map>
+        </div>
+    </div>
 </div>

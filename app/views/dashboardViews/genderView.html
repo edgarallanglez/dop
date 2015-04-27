@@ -1,6 +1,25 @@
-<div layout-align="center center" ng-controller="GenderWidgetCtrl">
-    <h2>Gráfica por género</h2>
-    <div class="gender-chart" style="margin: 0 auto;">
-        <canvas id="genderChart" class="chart chart-doughnut" data="data" labels="labels" colours="colours"></canvas>
+<div class="card" ng-controller="GenderWidgetCtrl">
+    <div class="card-header">
+        <h2>Gráfica por genero</h2>
+        
+        <ul class="actions">
+            <li class="dropdown action-show">
+                <a href="" data-toggle="dropdown" aria-expanded="false">
+                    <ng-md-icon icon="more_vert">
+                </a>
+
+                <div class="dropdown-menu pull-right">
+                    <p class="p-20">
+                        You can put anything here
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="card-body card-padding">
+        <div class="padding-xl">
+          <canvas id="genderChart" width="600" height="340" class="chart chart-doughnut" data="data" labels="labels" colours="colours"></canvas>
+        </div>
     </div>
 </div>
