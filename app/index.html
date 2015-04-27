@@ -14,6 +14,7 @@
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) styles/vendor.css -->
   <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="bower_components/angular/angular-csp.css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
   <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
@@ -31,7 +32,7 @@
   <!-- <base href="/"> -->
 </head>
 
-<body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;">
+<body ng-app="dopApp" ng-controller="TabController" class="ng-cloak" style="opacity: 1; margin-left: 0px;">
     <!-- Fixed navbar -->
     <div id="webApp" ng-show="isAuthenticated()">
         <div layout="column"layout-fill>
@@ -75,7 +76,7 @@
                  ng-switch-when="0"
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background">
+                <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
                     <!-- tab's content -->
                   </div>
@@ -87,7 +88,7 @@
                  ng-switch-when="1"
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background">
+                <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
                     <!-- tab's content -->
                   </div>
@@ -99,7 +100,7 @@
                  ng-switch-when="2"
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background height-inherit">
+                <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
                   <div flex ui-view>
                     <!-- tab's content -->
                   </div>
@@ -217,6 +218,7 @@
         <script src="bower_components/moment/moment.js"></script>
         <script src="bower_components/angular-moment/angular-moment.js"></script>
         <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+        <script src="bower_components/restangular/dist/restangular.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
