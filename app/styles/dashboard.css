@@ -48,6 +48,8 @@ md-tab-template div:nth-child(4){
 	border-left: 2px solid rgb(225, 225, 225);
 	border-top: 2px solid rgb(225, 225, 225);
 }
+
+.coupon-description { line-height: 1.3; }
 /* end Coupon Widget*/
 
 /* Gender Chart CSS*/
