@@ -11,8 +11,8 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('CouponListCtrl', function($scope,$http) {
-    $scope.todos = [];
-    /*$scope.todos = [
+    $scope.coupons = [];
+    /*$scope.coupons = [
       {
         'limit': 'Sin límite de personas',
         'name': '20% Frapuccino',
@@ -47,7 +47,7 @@ angular.module('dopApp')
     $http.get('http://104.236.141.44:5000/api/coupon/get/all').
       success(function(data, status, headers, config) {
         angular.forEach(data.data, function(item) {
-          $scope.todos.push(item);
+          $scope.coupons.push(item);
         });     
     }).
     error(function(data, status, headers, config) {

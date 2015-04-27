@@ -1,5 +1,5 @@
 /* Cupoun Widget CSS*/
-.tabsdemoStaticTabs .sample { height: 450px; }
+.tabsdemoStaticTabs .sample { height: 506px; }
 .tabsdemoStaticTabs .sample md-tab-content { padding: 25px; }
 .tabsdemoStaticTabs .sample md-tab-content:nth-child(1) { background-color: #42A5F5; }
 .tabsdemoStaticTabs .sample md-tab-content:nth-child(2) { background-color: #689F38; }
@@ -48,6 +48,8 @@ md-tab-template div:nth-child(4){
 	border-left: 2px solid rgb(225, 225, 225);
 	border-top: 2px solid rgb(225, 225, 225);
 }
+
+.coupon-description { line-height: 1.3; }
 /* end Coupon Widget*/
 
 /* Gender Chart CSS*/
