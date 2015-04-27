@@ -51,14 +51,58 @@ md-tab-template div:nth-child(4){
 /* end Coupon Widget*/
 
 /* Gender Chart CSS*/
-.gender-chart {
+/*.gender-chart {
 		padding: 20px 20px 0 20px;
 		width: 90% !important;
 }
 
 .gender-chart canvas {
 		width: inherit;
+}*/
+
+.card {
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+/*  margin-bottom: 30px;*/
 }
+
+.card .card-header {
+  position: relative;
+}
+
+.card .card-header h2 {
+	text-align: left;
+  margin: 0;
+  line-height: 100%;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.card .card-header .actions {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+  top: 15px;
+}
+
+.actions {
+  list-style: none;
+  padding: 0;
+  z-index: 2;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+	.card .card-header:not(.ch-alt) {
+	  padding: 23px 26px;
+	}
+
+	.card .coupon.card-header:not(.ch-alt) {
+	  padding: 0px;
+	}
+}
+
 /* End Gender Chart CSS*/
 
 /* Maps Widget*/

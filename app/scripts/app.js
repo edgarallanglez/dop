@@ -213,7 +213,7 @@ angular
                                       $log.debug("close RIGHT is done");
                                     });
     };
-
+    $scope.today = new Date()
     //Obtener clima según locación
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position){
