@@ -18,7 +18,7 @@
 								<div class="md-list-item-text">
 										<h3>{{ item.name }}</h3>
 										<p class="coupon-description">{{ item.description }}</p>
-										<p>Aplicable hasta el {{ item.end_date | date:'dd' }} de {{ item.end_date | date:'MM' | monthName }}</p>
+										<p>Aplicable hasta el {{ item.end_date | date:'dd' }} de {{ item.end_date | date:'MMMM' }}</p>
 								</div>
 								<md-divider ng-if="!$last"></md-divider>
 						</md-list-item>
