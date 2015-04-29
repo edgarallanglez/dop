@@ -47,11 +47,7 @@ angular
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     RestangularProvider.setBaseUrl('http://104.236.141.44:5000/api');
-    RestangularProvider.setDefaultHeaders({
-      "Content-Type" : "application/json"
-    });
-    // RestangularProvider.setDefaultHeaders({'Content-Type': 'application/json'});
-
+    RestangularProvider.setDefaultHeaders({ "Content-Type" : "application/json" });
     $authProvider.signupUrl = 'http://104.236.141.44:5000/api/company/auth/signup';
     $authProvider.loginUrl = 'http://104.236.141.44:5000/api/company/auth/login';
     $stateProvider
