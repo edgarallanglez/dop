@@ -127,8 +127,10 @@
             </button>
           </md-toolbar>
           <md-content ng-controller="RightCtrl" class="md-padding">
-
-            <div id="weather">
+            <md-card class="loading" flex ng-show="loading" layout-align="center center">
+              <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+            </md-card>
+            <div id="weather" class="animated fadeInLeft" ng-show="!loading">
               <md-content>
                 <div layout="column" layout-align="center center">
                   <h1 class="location no-margin-bottom" flex="100">{{data.name}}</h1>

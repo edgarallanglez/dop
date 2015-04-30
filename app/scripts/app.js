@@ -189,6 +189,7 @@ angular
   //Controlador SideBar derecho
   .controller('RightCtrl', ['$scope', '$userService', '$auth', '$timeout', '$mdSidenav', '$log', '$http', 
                     function($scope, $userService, $auth, $timeout, $mdSidenav, $log, $http) {
+    $scope.loading = true;
     $scope.init = function () {
       var payload = $auth.getPayload();
       $http({
@@ -228,6 +229,7 @@ angular
             $http.jsonp(url).success(function(data) {
               $scope.data = data;
               $scope.icon = data.weather[0].icon;
+              $scope.loading = false;
             });
           });
       });
