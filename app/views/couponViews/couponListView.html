@@ -15,6 +15,7 @@
 		<div class="coupon-list">
 				<md-list>
 						<md-list-item class="md-3-line" ng-repeat="item in coupons" flex>
+								<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md" ng-click="delete(item)"></ng-md-icon>
 								<div class="md-list-item-text">
 										<h3>{{ item.name }}</h3>
 										<p class="coupon-description">{{ item.description }}</p>
