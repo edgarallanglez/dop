@@ -1,5 +1,8 @@
 <div layout-fill layout="row" layout-wrap ng-controller="LastCouponListWidgetCtrl" style="margin: 0 auto;">
-    	<md-card ng-click="select(item)" class="background-white coupon-card" flex flex-sm="45" flex-md="20" ng-repeat="item in coupons">
+      <md-card class="loading" flex ng-show="loading" layout-align="center center">
+        <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+      </md-card>
+    	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInLeft" flex flex-sm="45" flex-md="20" ng-repeat="item in coupons">
                 <h2 class="margin-sm">{{item.name}}</h2>
                 <p class="coupon-description">Descripción: {{item.description}}</p>
         </md-card>

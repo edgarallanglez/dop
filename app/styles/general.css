@@ -86,4 +86,7 @@ md-tab a {
     height: 40px !important;
 }
 
-
+.loading { 
+    box-shadow: none !important; 
+    height: 100px;
+}
