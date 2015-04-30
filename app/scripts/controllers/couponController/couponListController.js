@@ -18,17 +18,19 @@ angular.module('dopApp')
 
     $scope.delete = function(coupon) {
       SweetAlert.swal({
-         title: "Are you sure?",
-         text: "Your will not be able to recover this imaginary file!",
-         type: "warning",
-         showCancelButton: true,
-         confirmButtonColor: "#DD6B55",
-         confirmButtonText: "Yes, delete it!",
-         closeOnConfirm: false}, 
+        title: "Estás seguro?",
+        text: "Este cupón sera eliminado para siempre",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#F44336",
+        confirmButtonText: "Sí, eliminalo!",
+        closeOnConfirm: false
+      }, 
       function(confirmed){
         if (confirmed) {
-          Restangular.one('coupon/' + coupon.coupon_id + '/delete').put();
-          SweetAlert.swal("se eliminó el son of a bitch!", "success");
+          Restangular.one('coupon/' + coupon.coupon_id + '/delete').put().then(function(){
+            SweetAlert.swal("se eliminó el son of a bitch!", "yupi");
+          });
         }
       });
     }
