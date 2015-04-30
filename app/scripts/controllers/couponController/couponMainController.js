@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope,$http,$filter,SweetAlert,$lastCouponFactory) {
+  .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $lastCouponFactory) {
     var selected_coupon = $lastCouponFactory.getCoupon();
     console.log("Cupón seleccionado: "+selected_coupon.name);
 
