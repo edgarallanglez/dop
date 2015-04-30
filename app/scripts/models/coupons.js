@@ -21,7 +21,7 @@ angular.module('dopApp')
             angular.extend(this, coupon);
         },
         getAll : function(){
-        	Restangular.all('coupon/all/get').getList().then(function(data){
+        	return Restangular.all('coupon/all/get').getList().then(function(data){
 	    		console.log(data);
 	    		return data;
     		});

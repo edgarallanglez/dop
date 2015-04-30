@@ -10,9 +10,12 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponListCtrl', function($scope, Restangular, SweetAlert,Coupon) {
+  .controller('CouponListCtrl', function($scope, Restangular, SweetAlert, Coupon) {
     var godCoupon = new Coupon();
-    $scope.coupons = godCoupon.getAll();
+
+    godCoupon.__proto__.getAll().then(function(data){
+      $scope.coupons = data;
+    })
 
     $scope.delete = function(coupon) {
       SweetAlert.swal({
