@@ -10,13 +10,13 @@
  */
 angular.module('dopApp')
   .factory('CouponFactory', function(Restangular, SweetAlert) {
-  	function Coupon(coupon) {
+  	function CouponFactory(coupon) {
         if (coupon) {
             this.setCoupon(coupon);
         }
     };
  
-    Coupon.prototype = {
+    CouponFactory.prototype = {
         setCoupon : function(coupon) {
             angular.extend(this, coupon);
         },
@@ -50,5 +50,5 @@ angular.module('dopApp')
         }
     };
 
-    return Coupon;
+    return CouponFactory;
   });
