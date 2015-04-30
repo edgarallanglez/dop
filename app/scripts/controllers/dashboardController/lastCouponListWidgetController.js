@@ -20,11 +20,11 @@ angular.module('dopApp')
        this.coupon = coupon;
     }
   })
-  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$location,$lastCouponService) {
+  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$location,$lastCouponService, $state) {
 
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
-      $location.path('/coupon');
+      $state.go('coupon');
     }
 
   	$scope.coupons = [];

@@ -11,26 +11,26 @@
 angular.module('dopApp')
   .factory('$couponFactory', function(Restangular) {
     var coupon = {};
-    var getCoupon = function () {
+    coupon.getGodCoupon = function () {
         return this.coupon;
     }
 
-    var setCoupon = function(coupon){
+    coupon.setGodCoupon = function(coupon){
        this.coupon = coupon;
     }
 
-    var getAll = function(){
+    coupon.getAll = function(){
     	Restangular.all('coupon/all/get').getList().then(function(data){
     		console.log("listo");
     		return data;
     	});
     }
-    var getById = function(id){
-    	Restangular.one('coupon/'+id+'/get').then(function(data){
+    coupon.getById = function(id){
+    	Restangular.one('coupon/'+ id +'/get').then(function(data){
     		return data;
     	});
     }
-    var deleteById = function(id){
+    coupon.deleteById = function(id){
     	SweetAlert.swal({
         title: "Estás seguro?",
         text: "Este cupón sera eliminado para siempre",
