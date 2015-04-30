@@ -21,7 +21,7 @@ angular.module('dopApp')
     }
   })
   .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$location,$lastCouponService, $state) {
-
+    $scope.loading = true;
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
@@ -31,5 +31,6 @@ angular.module('dopApp')
     Restangular.all('coupon/all/get').getList()
       .then(function(data){
         $scope.coupons = data;
+        $scope.loading = false;
       });
   });
