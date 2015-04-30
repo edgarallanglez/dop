@@ -11,23 +11,22 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .factory('$lastCouponFactory', function() {
-    this.isInView = false;
-    var coupon={
-      'name': 'nombre'
-    };
-   
+    var coupon = {};
 
-    this.setInView = function(currentStatus) {
-      this.isInView = currentStatus;
+    coupon.getCoupon = function(){
+      return coupon.name;
     }
-
-    this.getCoupon = function(){
-      return this.isInView;
+    coupon.setCoupon = function(coupon){
+      this.coupon = coupon;
+    }
+    coupon.getAll = function(){
+      return "asd";
     }
 
     return coupon;
   })
-  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular) {
+  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$lastCouponFactory) {
+    console.log($lastCouponFactory.getAll());
 
     $scope.selectCoupon = function(coupon) {
       console.log(coupon);

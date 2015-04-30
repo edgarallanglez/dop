@@ -17,6 +17,6 @@ angular.module('dopApp')
     });
 
     $scope.delete = function(coupon) {
-      console.log(coupon);
+      
     }
   });
