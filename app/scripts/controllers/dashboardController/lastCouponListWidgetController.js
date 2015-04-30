@@ -10,22 +10,20 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .factory('$lastCouponFactory', function() {
-    var coupon = {};
+  .service('$lastCouponService', function() {
+    this.coupon = {};
+    this.getCoupon = function () {
+        return this.coupon;
+    }
 
-    return {
-        getCoupon : function () {
-            return this.coupon;
-        },
-        setCoupon : function(coupon){
-           this.coupon = coupon;
-        }
-    }       
+    this.setCoupon = function(coupon){
+       this.coupon = coupon;
+    }
   })
-  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$location,$lastCouponFactory) {
+  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$location,$lastCouponService) {
 
     $scope.select = function(coupon) {
-      $lastCouponFactory.setCoupon(coupon);
+      $lastCouponService.setCoupon(coupon);
       $location.path('/coupon');
     }
 
