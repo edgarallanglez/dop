@@ -13,7 +13,7 @@ angular.module('dopApp')
   .controller('CouponListCtrl', function($scope, Restangular, SweetAlert, Coupon) {
     var godCoupon = new Coupon();
 
-    godCoupon.__proto__.getAll().then(function(data){
+    godCoupon.getAll().then(function(data){
       $scope.coupons = data;
     })
 
