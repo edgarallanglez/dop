@@ -24,7 +24,30 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-
+    sshconfig: {
+      awesome: {
+        host: '104.236.141.44',
+        port: '9000',
+        privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/id_rsa'),
+        username: 'root',
+        agent: process.env.SSH_AUTH_SOCK
+      }
+    },
+    sshexec: {
+      deploy: {
+        command: [
+          'cd /var/www',
+          'git fetch --all',
+          'git reset --hard origin/master',
+          'cd /var/www/project/dist',
+          'npm install',
+          'pm2 restart app'
+        ].join(' ; '),
+        options: {
+          config: 'awesome'
+        }
+      }
+    },
     // Project settings
     yeoman: appConfig,
 
