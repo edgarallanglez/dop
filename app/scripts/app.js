@@ -65,6 +65,21 @@ angular
             }
 
             return deferred.promise;
+          },
+          userService: function($q, $location, $auth, $http, $userService) {
+            var deferred = $q.defer();
+            var payload = $auth.getPayload();
+            $http({
+              method: 'POST',
+              url: 'http://104.236.141.44:5000/api/company/me',
+              data: { 'branches_user_id': payload.id },
+              headers: {'Content-Type': 'application/json'}
+            }).success(function(data){
+              var user = data.data
+              $userService.setUser(user);
+              deferred.resolve();
+            });
+            return deferred.promise;
           }
         }
       })
@@ -91,6 +106,21 @@ angular
             }
 
             return deferred.promise;
+          },
+          userService: function($q, $location, $auth, $http, $userService) {
+            var deferred = $q.defer();
+            var payload = $auth.getPayload();
+            $http({
+              method: 'POST',
+              url: 'http://104.236.141.44:5000/api/company/me',
+              data: { 'branches_user_id': payload.id },
+              headers: {'Content-Type': 'application/json'}
+            }).success(function(data){
+              var user = data.data
+              $userService.setUser(user);
+              deferred.resolve();
+            });
+            return deferred.promise;
           }
         }
       })
@@ -107,6 +137,21 @@ angular
               deferred.resolve();
             }
 
+            return deferred.promise;
+          },
+          userService: function($q, $location, $auth, $http, $userService) {
+            var deferred = $q.defer();
+            var payload = $auth.getPayload();
+            $http({
+              method: 'POST',
+              url: 'http://104.236.141.44:5000/api/company/me',
+              data: { 'branches_user_id': payload.id },
+              headers: {'Content-Type': 'application/json'}
+            }).success(function(data){
+              var user = data.data
+              $userService.setUser(user);
+              deferred.resolve();
+            });
             return deferred.promise;
           }
         }
@@ -139,6 +184,7 @@ angular
   })
   .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth, Restangular){
     $scope.reload = true;
+
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
@@ -187,8 +233,8 @@ angular
 
   })
   //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$userService', '$auth', '$timeout', '$mdSidenav', '$log', '$http', 
-                    function($scope, $userService, $auth, $timeout, $mdSidenav, $log, $http) {
+  .controller('RightCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http', 
+                    function($scope, $auth, $userService, $timeout, $mdSidenav, $log, $http) {
     $scope.loading = true;
     $scope.init = function () {
       var payload = $auth.getPayload();
@@ -198,10 +244,8 @@ angular
         data: { 'branches_user_id': payload.id },
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
-        var user = data.data
-        $userService.setUser(user);
+        $userService.setUser(data.data);
         $scope.user = $userService.getCurrentUser();
-        console.log($scope.user);
       });
     };
 

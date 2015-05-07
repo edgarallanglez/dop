@@ -44,7 +44,7 @@ angular.module('dopApp')
     $scope.createCoupon = function() {
       var couponInfo = {
         "name": $scope.coupon.name,
-        "branch_id": "2",
+        "branch_id": "4",
         "start_date": $filter('date')($scope.coupon.startDate,'MM-dd-yyyy'),
         "end_date": $filter('date')($scope.coupon.endDate,'MM-dd-yyyy'),
         "min_spent": $scope.coupon.min_spent,
