@@ -64,3 +64,10 @@
 .clear:hover {
   -webkit-transform: scale(1.2);
 }
+
+.pricing-quantities {
+	 font-weight: 300;
+	 font-size: 2.8em;
+	 margin: 0 !important;
+	 color: #3f3f3f;
+}

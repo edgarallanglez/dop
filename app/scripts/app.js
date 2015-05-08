@@ -69,16 +69,18 @@ angular
           userService: function($q, $location, $auth, $http, $userService) {
             var deferred = $q.defer();
             var payload = $auth.getPayload();
-            $http({
-              method: 'POST',
-              url: 'http://104.236.141.44:5000/api/company/me',
-              data: { 'branches_user_id': payload.id },
-              headers: {'Content-Type': 'application/json'}
-            }).success(function(data){
-              var user = data.data
-              $userService.setUser(user);
-              deferred.resolve();
-            });
+            if (!$userService.getCurrentUser()) {
+              $http({
+                method: 'POST',
+                url: 'http://104.236.141.44:5000/api/company/me',
+                data: { 'branches_user_id': payload.id },
+                headers: {'Content-Type': 'application/json'}
+              }).success(function(data){
+                var user = data.data
+                $userService.setUser(user);
+                deferred.resolve();
+              });
+            } else { deferred.resolve(); }
             return deferred.promise;
           }
         }
@@ -110,16 +112,18 @@ angular
           userService: function($q, $location, $auth, $http, $userService) {
             var deferred = $q.defer();
             var payload = $auth.getPayload();
-            $http({
-              method: 'POST',
-              url: 'http://104.236.141.44:5000/api/company/me',
-              data: { 'branches_user_id': payload.id },
-              headers: {'Content-Type': 'application/json'}
-            }).success(function(data){
-              var user = data.data
-              $userService.setUser(user);
-              deferred.resolve();
-            });
+            if (!$userService.getCurrentUser()) {
+              $http({
+                method: 'POST',
+                url: 'http://104.236.141.44:5000/api/company/me',
+                data: { 'branches_user_id': payload.id },
+                headers: {'Content-Type': 'application/json'}
+              }).success(function(data){
+                var user = data.data
+                $userService.setUser(user);
+                deferred.resolve();
+              });
+            } else { deferred.resolve(); }
             return deferred.promise;
           }
         }
@@ -142,16 +146,18 @@ angular
           userService: function($q, $location, $auth, $http, $userService) {
             var deferred = $q.defer();
             var payload = $auth.getPayload();
-            $http({
-              method: 'POST',
-              url: 'http://104.236.141.44:5000/api/company/me',
-              data: { 'branches_user_id': payload.id },
-              headers: {'Content-Type': 'application/json'}
-            }).success(function(data){
-              var user = data.data
-              $userService.setUser(user);
-              deferred.resolve();
-            });
+            if (!$userService.getCurrentUser()) {
+              $http({
+                method: 'POST',
+                url: 'http://104.236.141.44:5000/api/company/me',
+                data: { 'branches_user_id': payload.id },
+                headers: {'Content-Type': 'application/json'}
+              }).success(function(data){
+                var user = data.data
+                $userService.setUser(user);
+                deferred.resolve();
+              });
+            } else { deferred.resolve(); }
             return deferred.promise;
           }
         }

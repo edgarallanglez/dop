@@ -24,8 +24,23 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('CouponCtrl', function ($scope, $state) {
+  .controller('CouponCtrl', function ($scope, $state, $mdDialog) {
     $state.go('coupon.list');
+
+    $scope.showModal = function(ev) {
+
+      $mdDialog.show({
+        clickOutsideToClose: false,
+        controller: "PricingModalCtrl",
+        templateUrl: "../../views/modalViews/pricingModalView.html",
+        targetEvent: ev,
+      })
+      .then(function(answer) {
+        console.log('You said the information was "' + answer + '".');
+      }, function() {
+        $scope.alert = 'You cancelled the dialog.';
+      });
+    };
   });
 
 

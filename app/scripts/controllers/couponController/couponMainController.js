@@ -53,9 +53,9 @@ angular.module('dopApp')
         "coupon_category_id": $scope.couponSelected
       };
 
-      var createCouponUrl='http://104.236.141.44:5000/api/coupon/';
+      var createCouponUrl = 'http://104.236.141.44:5000/api/coupon/';
 
-      switch($scope.couponSelected){
+      switch($scope.couponSelected) {
         case 1:
           couponInfo.bond_size = $scope.coupon.bond_size;
           createCouponUrl += "bond/create";
