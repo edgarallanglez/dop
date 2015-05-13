@@ -1,0 +1,80 @@
+
+
+<md-dialog ng-controller="PricingModalCtrl" md-theme="green" flex="50" aria-label="Compra coupones">
+  <md-dialog-content class="sticky-container">
+    <md-subheader flex>
+      <span>Herramienta de pago con tarjeta</span>
+      <div class="pull-right">
+        <i class="margin-sm fa-2 fa fa-cc-visa"></i>
+        <i class="margin-sm fa-2 fa fa-cc-mastercard"></i>
+        <i class="margin-sm fa-2 fa fa-cc-amex"></i>
+      </div>
+    </md-subheader>
+    <form action="" method="POST" id="card-form" layout-margin md-theme="green">
+
+      <div layout="row">
+        <md-input-container flex>
+          <label>Nombre del tarjetahabiente</label>
+          <input name="name" ng-model="cardData.name" required data-conekta="card[name]">
+          <div ng-messages="userForm.name.$error" ng-show="userForm.name.$dirty">
+            <div ng-message="required">Un nombre es requerido!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row">
+        <md-input-container flex>
+          <label>Número de la tarjeta</label>
+          <input name="card" ng-model="cardData.number" required data-conekta="card[number]">
+          <div ng-messages="userForm.card.$error" ng-show="userForm.card.$dirty">
+            <div ng-message="required">Una tarjeta es requerida!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row">
+        <md-input-container flex>
+          <label>CVC</label>
+          <input name="cvc" ng-model="cardData.cvc" required data-conekta="card[cvc]">
+          <div ng-messages="userForm.cvc.$error" ng-show="userForm.cvc.$dirty">
+            <div ng-message="required">Código de seguridad es requerido!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row">
+
+
+        <label flex="30">Fecha de expiración</label>
+          <div flex="10" layout="start start">
+            <md-select placeholder="MM" ng-model="cardData.expMonth" required data-conekta="card[exp_month]">
+              <md-option ng-value="obj.month" ng-repeat="obj in months">{{obj.month}}</md-option>
+            </md-select>
+            <div ng-messages="userForm.month.$error" ng-show="userForm.month.$dirty">
+              <div ng-message="required">El mes es requerido!</div>
+            </div>
+          </div>
+          <div flex="10" layout="start start">
+            <md-select placeholder="YYYY" ng-model="cardData.expYear" required data-conekta="card[exp_year]">
+              <md-option ng-value="obj.year" ng-repeat="obj in years">{{obj.year}}</md-option>
+            </md-select>
+            <div ng-messages="userForm.year.$error" ng-show="userForm.year.$dirty">
+              <div ng-message="required">El año es requerido!</div>
+            </div>
+          </div>
+          <span flex></span>
+      </div>
+      <!-- <button type="submit">Suscribirse ahora!</button> -->
+    </form>
+    
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()" class="md-button">
+      Cancelar
+    </md-button>
+    <md-button ng-click="sendPayment()" class="md-primary md-accent">
+      Siguiente
+    </md-button>
+  </div>
+</md-dialog>

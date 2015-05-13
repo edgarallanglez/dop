@@ -43,13 +43,13 @@ angular
   })
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
                     $locationProvider, $httpProvider, $authProvider, RestangularProvider) {
-    
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     RestangularProvider.setBaseUrl('http://104.236.141.44:5000/api');
-    RestangularProvider.setDefaultHeaders({ "Content-Type" : "application/json" });
+    RestangularProvider.setDefaultHeaders({ "token" : 'application/json' });
     $authProvider.signupUrl = 'http://104.236.141.44:5000/api/company/auth/signup';
     $authProvider.loginUrl = 'http://104.236.141.44:5000/api/company/auth/login';
+    $authProvider.facebook({ clientId: '927375797314743' });
     $stateProvider
       .state('home', {
         url: '/',
@@ -164,15 +164,6 @@ angular
       });
 
     $urlRouterProvider.otherwise('/');
-
-    $authProvider.facebook({
-      clientId: '379616075568079'
-    });
-
-    $authProvider.google({
-      clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
-    });
-
     // Theme configurations
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey', {
@@ -187,6 +178,30 @@ angular
       .primaryPalette('light-green')
       .accentPalette('light-blue');
 
+  })
+  .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log){
+    $scope.init = function () {
+      if (!$userService.getCurrentUser()) {
+        var payload = $auth.getPayload();
+        $http({
+          method: 'POST',
+          url: 'http://104.236.141.44:5000/api/company/me',
+          data: { 'branches_user_id': payload.id },
+          headers: {'Content-Type': 'application/json'}
+        }).success(function(data){
+          $userService.setUser(data.data);
+          $scope.user = $userService.getCurrentUser();
+        });
+      }
+    };
+    $scope.init();
+
+    $scope.closeWidgets = function() {
+      $mdSidenav('widgets-sidenav').close()
+                                    .then(function(){
+                                      $log.debug("close RIGHT is done");
+                                    });
+    };
   })
   .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth, Restangular){
     $scope.reload = true;
@@ -213,13 +228,13 @@ angular
     $scope.$watch('data.selectedIndex', function () {
       //  paint tab after reload
       if ($scope.data && $scope.reload) {
-        if ($location.url() == '/') {
+        if ($location.path() == '/') {
           $scope.data.selectedIndex = 0;
           $scope.reload = false;
-        } else if ($location.url() == '/coupon') {
+        } else if ($location.path() == '/coupon') {
           $scope.data.selectedIndex = 1;
           $scope.reload = false;
-        } else if ($location.url() == '/report') {
+        } else if ($location.path() == '/report') {
           $scope.data.selectedIndex = 2;
           $scope.reload = false;
         };
@@ -228,45 +243,28 @@ angular
       // tab selected change
       if ($scope.data) {
         if ($scope.data.selectedIndex == 0 ) {
-          $location.url('/');
+          $location.path('/').replace();
         } else if ($scope.data.selectedIndex == 1) {
-          $location.path('/coupon');
+          $location.path('/coupon').replace();
         } else if ($scope.data.selectedIndex == 2) {
-          $location.url('/report');
+          $location.path('/report').replace();
         };
       };
     });
 
   })
   //Controlador SideBar derecho
-  .controller('RightCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http', 
-                    function($scope, $auth, $userService, $timeout, $mdSidenav, $log, $http) {
+  .controller('WeatherCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http', 
+                     function($scope, $auth, $userService, $timeout, $mdSidenav, $log, $http) {
     $scope.loading = true;
-    $scope.init = function () {
-      var payload = $auth.getPayload();
-      $http({
-        method: 'POST',
-        url: 'http://104.236.141.44:5000/api/company/me',
-        data: { 'branches_user_id': payload.id },
-        headers: {'Content-Type': 'application/json'}
-      }).success(function(data){
-        $userService.setUser(data.data);
-        $scope.user = $userService.getCurrentUser();
-      });
-    };
 
-    $scope.closeNotifications = function() {
-      $mdSidenav('notifications-sidenav').close()
-                                          .then(function(){
-                                            $log.debug("close RIGHT is done");
-                                          });
-    };
     $scope.closeWidgets = function() {
       $mdSidenav('widgets-sidenav').close()
                                     .then(function(){
                                       $log.debug("close RIGHT is done");
                                     });
     };
+
     $scope.today = new Date()
     //Obtener clima según locación
     if (navigator.geolocation) {
@@ -284,7 +282,15 @@ angular
           });
       });
     };
-  }]);
+  }])
+  .controller('NotificationCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav, $log){
+        $scope.closeNotifications = function() {
+      $mdSidenav('notifications-sidenav').close()
+                                          .then(function(){
+                                            $log.debug("close RIGHT is done");
+                                          });
+    };
+  }])
 
 
 

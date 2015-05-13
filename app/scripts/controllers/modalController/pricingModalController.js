@@ -11,15 +11,20 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('PricingModalCtrl', function($scope, $mdDialog, SweetAlert, CouponFactory, $userService) {
-    $scope.amountOfCoupon = 1;
+    $scope.amountOfCoupon = 5;
     $scope.expireTime = 1;
 
     $scope.hide = function() {
       $mdDialog.hide();
     };
 
-    $scope.payment = function() {
-      alert("sigue la ventana para la tarjeta de credito");
+    $scope.doPayment = function(ev) {
+      $mdDialog.show({
+          clickOutsideToClose: false,
+          controller: "PaymentModalCtrl",
+          templateUrl: "../../views/modalViews/paymentModalView.html",
+          targetEvent: ev,
+        })
     };
 
   });

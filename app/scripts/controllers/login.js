@@ -25,6 +25,16 @@ angular.module('dopApp')
 
     };
 
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider).then(function() {
+          $alert({
+            content: 'You have successfully logged in',
+            animation: 'fadeZoomFadeDown',
+            type: 'material',
+            duration: 3
+          });
+      })
+    };
     // $scope.setGlobalUser = function () {
     //   var payload = $auth.getPayload();
 

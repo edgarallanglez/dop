@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope,$http,$filter,SweetAlert) {
+  .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService) {
     //var selected_coupon = Coupon.getCoupon();
    // console.log("Cupón seleccionado: "+selected_coupon.name);
 
@@ -44,7 +44,7 @@ angular.module('dopApp')
     $scope.createCoupon = function() {
       var couponInfo = {
         "name": $scope.coupon.name,
-        "branch_id": "4",
+        "branch_id": $userService.getCurrentUser().branch_id,
         "start_date": $filter('date')($scope.coupon.startDate,'MM-dd-yyyy'),
         "end_date": $filter('date')($scope.coupon.endDate,'MM-dd-yyyy'),
         "min_spent": $scope.coupon.min_spent,

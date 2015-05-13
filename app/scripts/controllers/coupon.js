@@ -24,7 +24,7 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('CouponCtrl', function ($scope, $state, $mdDialog) {
+  .controller('CouponCtrl', function ($scope, $state, $mdDialog, SweetAlert) {
     $state.go('coupon.list');
 
     $scope.showModal = function(ev) {
@@ -36,7 +36,7 @@ angular.module('dopApp')
         targetEvent: ev,
       })
       .then(function(answer) {
-        console.log('You said the information was "' + answer + '".');
+        SweetAlert.swal("Cancelado", "Tu pago ha sido cancelado :)", "error");
       }, function() {
         $scope.alert = 'You cancelled the dialog.';
       });
