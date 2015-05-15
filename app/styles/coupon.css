@@ -7,14 +7,14 @@
 .coupon-container{ background: none !important; }
 .coupon-list-card{
 	padding: 0;
-	height: 42em;
+	height: 100% !important;
 	background: white;
 	overflow: hidden;
 }
 .coupon-list{
+  height: 65vh !important;
 	overflow: scroll;
 	padding: 1em;
-	height: 36em;
 }
 .coupon-list-button .action-button{
 	/*box-shadow: none !important;*/
