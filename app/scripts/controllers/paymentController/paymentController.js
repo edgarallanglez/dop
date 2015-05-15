@@ -9,7 +9,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('PaymentModalCtrl', function($scope, $auth, $http, $mdDialog, SweetAlert, CouponFactory, $userService) {
+  .controller('PaymentModalCtrl', function($scope, $auth, $http, $mdDialog, SweetAlert, CouponFactory, $userService, $paymentService) {
     $scope.cardData = {}
     $scope.months = [
       { 'month': '01' }, 
@@ -48,13 +48,15 @@ angular.module('dopApp')
         'exp_month': $scope.cardData.expMonth,
         'exp_year': $scope.cardData.expYear
       }
-
       /* Después de tener una respuesta exitosa, envía la información al servidor */
       var successResponseHandler = function(token) {
         $http({
           method: 'POST',
           url: 'http://104.236.141.44:5000/api/payment/card',
-          data: { 'token_id': token.id },
+          data: {
+            'token_id':token.id,
+            'paymentData': $paymentService.getPaymentData()
+          },
           headers: { 'token': $auth.getToken() }
         }).success(function(message){
           console.log(message)

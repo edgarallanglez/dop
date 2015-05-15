@@ -36,7 +36,7 @@ angular.module('dopApp')
         targetEvent: ev,
       })
       .then(function(answer) {
-        SweetAlert.swal("Cancelado", "Tu pago ha sido cancelado :)", "error");
+        SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
       }, function() {
         $scope.alert = 'You cancelled the dialog.';
       });

@@ -15,6 +15,7 @@ angular.module('dopApp')
     var branch_id = $userService.getCurrentUser().branch_id;
     godCoupon.getAll(branch_id).then(function(data){
       $scope.coupons = data;
+      console.log(data);
     })
 
     $scope.delete = function(coupon) {

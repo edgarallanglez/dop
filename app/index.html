@@ -51,7 +51,7 @@
                 </md-tab>
                 <md-tab id="tab2" aria-controls="tab2-content" class="white">
                   <a href="#/coupon">
-                    Cupones
+                    Promociones
                   </a>
                 </md-tab>
                 <md-tab id="tab3" aria-controls="tab3-content" class="white">
@@ -70,7 +70,10 @@
               </md-button>
             </div>
           </md-toolbar>
-          <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl">
+          <md-card class="loading" flex ng-show="loading" layout-align="center center">
+              <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+          </md-card>
+          <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
             <div role="tabpanel"
                  id="tab1-content"
                  aria-labelledby="tab1"

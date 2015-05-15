@@ -1,9 +1,9 @@
 <div>
     <md-toolbar class="md-primary">
-        <h1 class="md-toolbar-tools">Nuevo Cupón</h1>
+        <h1 class="md-toolbar-tools">Nueva Promoción</h1>
     </md-toolbar>
     <md-content class="md-padding">
-        <md-select ng-model="couponSelected" class="coupon-select"  placeholder="Tipo de Cupón" flex>
+        <md-select ng-model="couponSelected" class="coupon-select"  placeholder="Tipo de Promoción" flex>
                 <md-option ng-value="tag.val" ng-repeat="tag in selectTags">{{tag.label}}</md-option>
         </md-select>
         <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-show="couponSelected!=0">
@@ -22,15 +22,15 @@
                     <label for="name">Nombre</label>
                     <input name="name" id="name" ng-model="coupon.name">
                 </md-input-container>
-                <md-input-container flex="20">
+                <!-- <md-input-container flex="20">
                     <label for="limit">Límite</label>
                     <input name="limit" type="number" id="limit" ng-model="coupon.limit" min="0" max="2000">
-                    <!--                     <div ng-messages="userForm.limit.$error">
+                                        <div ng-messages="userForm.limit.$error">
                       <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
                       <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
                       <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
-                    </div> -->
-                </md-input-container>
+                    </div>
+                </md-input-container> -->
                 <md-input-container flex="20">
                     <label for="min_spent">Compra Mínima</label>
                     <input name="min_spent" type="number" id="min_spent" ng-model="coupon.min_spent" min="0" max="99999" >

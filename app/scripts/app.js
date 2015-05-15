@@ -29,8 +29,10 @@ angular
     '720kb.datepicker',
     'restangular'
   ])
-  .service('$userService', function() {
+  .service('$userService', function($auth, $http) {
     this.currentUser;
+    this.loading = true;
+    var self = this;
 
     this.setUser = function(currentUser) {
       this.currentUser = currentUser
@@ -38,6 +40,19 @@ angular
 
     this.getCurrentUser = function () {
       return this.currentUser
+    }
+
+    this.getMe = function () {
+      var payload = $auth.getPayload();
+      return $http({
+        method: 'POST',
+        url: 'http://104.236.141.44:5000/api/company/me',
+        data: { 'branches_user_id': payload.id },
+        headers: {'Content-Type': 'application/json'}
+      }).then(function(data){
+        self.loading = false;
+        return data.data;
+      });
     }
 
   })
@@ -70,12 +85,7 @@ angular
             var deferred = $q.defer();
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $http({
-                method: 'POST',
-                url: 'http://104.236.141.44:5000/api/company/me',
-                data: { 'branches_user_id': payload.id },
-                headers: {'Content-Type': 'application/json'}
-              }).success(function(data){
+              $userService.getMe().then(function(data){
                 var user = data.data
                 $userService.setUser(user);
                 deferred.resolve();
@@ -113,12 +123,7 @@ angular
             var deferred = $q.defer();
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $http({
-                method: 'POST',
-                url: 'http://104.236.141.44:5000/api/company/me',
-                data: { 'branches_user_id': payload.id },
-                headers: {'Content-Type': 'application/json'}
-              }).success(function(data){
+              $userService.getMe().then(function(data){
                 var user = data.data
                 $userService.setUser(user);
                 deferred.resolve();
@@ -147,12 +152,7 @@ angular
             var deferred = $q.defer();
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $http({
-                method: 'POST',
-                url: 'http://104.236.141.44:5000/api/company/me',
-                data: { 'branches_user_id': payload.id },
-                headers: {'Content-Type': 'application/json'}
-              }).success(function(data){
+              $userService.getMe().then(function(data){
                 var user = data.data
                 $userService.setUser(user);
                 deferred.resolve();
@@ -203,9 +203,15 @@ angular
                                     });
     };
   })
-  .controller('TabController', function($scope, $state, $location, $log, $mdSidenav, $http, $templateCache, $auth, Restangular){
+  .controller('TabController', function($scope, $state, $location, $userService, $log, $mdSidenav, $http, $templateCache, $auth, Restangular){
     $scope.reload = true;
 
+    $scope.$watch(function(){
+      return $userService.loading;
+    }, function (flag) {
+        $scope.loading = flag;
+    });
+    
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
