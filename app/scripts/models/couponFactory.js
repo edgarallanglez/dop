@@ -20,8 +20,8 @@ angular.module('dopApp')
         setCoupon : function(coupon) {
             angular.extend(this, coupon);
         },
-        getAll : function(){
-        	return Restangular.all('coupon/all/get').getList().then(function(data){
+        getAll : function(branch_id){
+        	return Restangular.all('coupon/all/'+ branch_id +'/get').getList().then(function(data){
 	    		return data;
     		});
         },

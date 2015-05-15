@@ -20,17 +20,17 @@ angular.module('dopApp')
        this.coupon = coupon;
     }
   })
-  .controller('LastCouponListWidgetCtrl', function($scope,$http,Restangular,$location,$lastCouponService, $state) {
+  .controller('LastCouponListWidgetCtrl', function($scope, $userService, CouponFactory, $lastCouponService, $state) {
     $scope.loading = true;
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
     }
 
-  	$scope.coupons = [];
-    Restangular.all('coupon/all/get').getList()
-      .then(function(data){
-        $scope.coupons = data;
-        $scope.loading = false;
-      });
+    var godCoupon = new CouponFactory();
+    var branch_id = $userService.getCurrentUser().branch_id;
+    godCoupon.getAll(branch_id).then(function(data){
+      $scope.coupons = data;
+      $scope.loading = false;
+    });
   });

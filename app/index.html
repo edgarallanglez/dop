@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="styles/coupon.css">
 
   <!-- endbuild -->
-  <!-- <base href="/"> -->
+<!--   <base href="/"> -->
 </head>
 
 <body ng-app="dopApp" ng-controller="TabController" class="ng-cloak" style="opacity: 1; margin-left: 0px;">
@@ -51,7 +51,7 @@
                 </md-tab>
                 <md-tab id="tab2" aria-controls="tab2-content" class="white">
                   <a href="#/coupon">
-                    Cupones
+                    Promociones
                   </a>
                 </md-tab>
                 <md-tab id="tab3" aria-controls="tab3-content" class="white">
@@ -70,7 +70,10 @@
               </md-button>
             </div>
           </md-toolbar>
-          <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl">
+          <md-card class="loading" flex ng-show="loading" layout-align="center center">
+              <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+          </md-card>
+          <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
             <div role="tabpanel"
                  id="tab1-content"
                  aria-labelledby="tab1"
@@ -113,20 +116,20 @@
           <md-toolbar class="md-theme-light">
             <h1 class="md-toolbar-tools">Notificaciones</h1>
           </md-toolbar>
-          <md-content ng-controller="RightCtrl" class="md-padding">
+          <md-content ng-controller="NotificationCtrl" class="md-padding">
             <md-button ng-click="closeNotifications()" class="md-primary">
               Cerrar
             </md-button>
           </md-content>
         </md-sidenav>
         <md-sidenav id="utilities-sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav"layout="vertical" layout-fill>
-          <md-toolbar ng-controller="RightCtrl" ng-init="init()" class="md-theme-light">
+          <md-toolbar ng-controller="MeCtrl" class="md-theme-light">
             <h1 class="md-toolbar-tools">{{user.branch.name}}</h1>
             <button id="closeWidgetsBtn" class="cmn-toggle-switch cmn-toggle-switch__htx" ng-click="closeWidgets()">
               <span>toggle menu</span>
             </button>
           </md-toolbar>
-          <md-content ng-controller="RightCtrl" class="md-padding">
+          <md-content ng-controller="WeatherCtrl" class="md-padding">
             <md-card class="loading" flex ng-show="loading" layout-align="center center">
               <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
             </md-card>
@@ -233,6 +236,8 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
+        <script type="text/javascript">Conekta.setPublishableKey('key_FfYRG4sG9AqcoMGkPsX7Mzw');</script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -248,6 +253,8 @@
           <script src="scripts/controllers/reportController/basicReportController.js"></script>
           <script src="scripts/controllers/reportController/middleReportController.js"></script>
           <script src="scripts/controllers/reportController/advanceReportController.js"></script>
+        <script src="scripts/controllers/modalController/pricingModalController.js"></script>
+        <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/vendor/calculator.js"></script>

@@ -1,14 +1,24 @@
-<div ng-controller="CouponCtrl" layout-wrap>
+<div layout-wrap>
     <md-content layout="row" class="coupon-container">
-    	<md-card class="coupon-list-card" flex="20">
+    	<md-card class="coupon-list-card" flex="35">
      		<div ui-view="coupon-list-view">
     	   		
     	    </div>
     	</md-card>
-    	<md-card class="coupon-main-card" flex="78">
-    	    <div ui-view="coupon-main-view">
-    	   		
+    	<div flex>
+            <div class="margin-bottom-md">
+                <md-card class="dialog-demo-content">
+                    <md-button class="md-icon-button" aria-label="Buy cuopons" ng-click="showModal($event)">
+                      <!-- <ng-md-icon icon="favorite" style="fill: lightblue;"></ng-md-icon> -->
+                      Comprar muchos cupones
+                    </md-button>
+                </md-card>
+            </div>
+    	    <div>
+    	   		<md-card class="coupon-main-card" ui-view="coupon-main-view">
+
+                </md-card>
     	    </div>
-    	</md-card>
+    	</div>
     </md-content>
 </div>

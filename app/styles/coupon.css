@@ -19,6 +19,7 @@
 .coupon-list-button .action-button{
 	/*box-shadow: none !important;*/
 	border-radius: 0;
+  width: 98%;
 }
 .coupon-list-button input{
 	width: 100%;
@@ -64,3 +65,59 @@
 .clear:hover {
   -webkit-transform: scale(1.2);
 }
+
+.pricing-quantities {
+		font-weight: 300;
+		font-size: 2.8em;
+		margin: 0 !important;
+		color: #3f3f3f;
+}
+
+.coupon-category-1 {
+	height: 2em !important;
+  width: 2em !important;
+  font-size: 2em;
+  background: #3F51B5;
+  margin: 0 auto!important;
+  border-radius: 40px;
+  line-height: 2;
+  color: white;
+}
+
+.coupon-category-2 {
+	height: 2em !important;
+  width: 2em !important;
+  font-size: 2em;
+  background: #43A047;
+  margin: 0 auto!important;
+  border-radius: 40px;
+  line-height: 2;
+  color: white;
+}
+
+.coupon-category-3 {
+	height: 2.1em !important;
+  width: 2.1em !important;
+  font-size: 1.9em;
+  background: #F44336;
+  margin: 0 auto!important;
+  border-radius: 40px;
+  line-height: 2.1;
+  color: white;
+}
+
+.coupon-title {
+	font-weight: 400 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+

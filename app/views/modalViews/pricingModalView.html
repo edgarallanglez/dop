@@ -1,0 +1,35 @@
+<md-dialog ng-controller="PricingModalCtrl" md-theme="green" flex aria-label="Compra coupones">
+  <md-dialog-content class="sticky-container">
+    <md-subheader class="">Herramienta para compra de cupones</md-subheader>
+    <div layout="row" layout-margin>
+      <span flex="10">Cantidad</span>
+      <md-slider flex aria-label="Cantidad de cupones" ng-model="amountOfCoupon" min="5" max="500" step="5" id="day-slider"></md-slider>
+      <div flex="20" layout layout-align="center center">
+        <h5 class="pricing-quantities" aria-controls="day-slider">{{amountOfCoupon}}</h5>
+      </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" layout-margin>
+      <span flex="10">Expiracíon</span>
+      <md-slider flex aria-label="Caducidad de cupones" ng-model="expireTime" min="1" max="30"></md-slider>
+      <div flex="20" layout layout-align="center center">
+        <h5 class="pricing-quantities" aria-controls="expire-slider">{{expireTime}} días</h5>
+      </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" layout-margin>
+      <span flex></span>
+      <h5 flex="30" class="pricing-quantities" ng-model="total" layout-align="center center">Total: {{(amountOfCoupon/5) * expireTime | currency:"$":1}}</h5>
+    </div>
+    
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()" class="md-button">
+      Cancelar
+    </md-button>
+    <md-button ng-click="doPayment()" class="md-primary md-accent">
+      Siguiente
+    </md-button>
+  </div>
+</md-dialog>

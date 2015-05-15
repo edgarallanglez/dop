@@ -2,6 +2,7 @@
 @import url('dashboard.css');
 @import url('report.css');
 @import url('weather.css');
+@import url('payment.css');
 body { 
     background-color: #eee !important;
     min-height: 100%;
@@ -50,7 +51,7 @@ body {
 
 /* fonts */
 .font-15 { font-size: 15px !important; }
-
+.font-xl { font-size: 2.0em; }
 .center {
     text-align: center !important;
 }

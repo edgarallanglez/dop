@@ -10,11 +10,12 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponListCtrl', function($scope, Restangular, SweetAlert, CouponFactory) {
+  .controller('CouponListCtrl', function($scope, Restangular, SweetAlert, CouponFactory, $userService) {
     var godCoupon = new CouponFactory();
-
-    godCoupon.getAll().then(function(data){
+    var branch_id = $userService.getCurrentUser().branch_id;
+    godCoupon.getAll(branch_id).then(function(data){
       $scope.coupons = data;
+      console.log(data);
     })
 
     $scope.delete = function(coupon) {
