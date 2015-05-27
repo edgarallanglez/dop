@@ -61,8 +61,8 @@
   opacity:0;
 }
 
-.clear { transition: all .3s;}
-.clear:hover {
+.promo .clear { transition: all .3s;}
+.promo .clear:hover {
   -webkit-transform: scale(1.2);
 }
 
