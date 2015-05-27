@@ -27,7 +27,8 @@ angular
     'angular-jwt',
     'oitozero.ngSweetAlert',
     '720kb.datepicker',
-    'restangular'
+    'restangular',
+    'dibari.angular-ellipsis'
   ])
   .service('$userService', function($auth, $http) {
     this.currentUser;

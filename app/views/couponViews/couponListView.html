@@ -12,21 +12,24 @@
 			</div>
 		</div>
 		<div class="coupon-list">
-				<md-list>
-						<md-list-item class="md-3-line" ng-repeat="item in coupons | filter:searchPromo" flex>
-							<div layout="row" layout-align="center center">
-								<div ng-switch on="{{item.coupon_category_id}}" class="left center md-avatar" flex="25">
+				<md-list ng-repeat="item in coupons">
+						<md-list-item class="md-3-line pointer promo" ng-repeat="promo in item | filter:searchPromo" flex ng-click="configCoupon(promo)">
+							<div layout="row" layout-align="center center" class="promo">
+								<div ng-switch on="{{promo.coupon_category_id}}" class="left center md-avatar" flex="25">
+									<div ng-switch-when="0" class="coupon-category-0"><ng-md-icon icon="settings" size="30" style="fill: #FFF"></ng-md-icon></div>
 									<div ng-switch-when="1" class="coupon-category-1">$</div>
 									<div ng-switch-when="2" class="coupon-category-2">%</div>
 									<div ng-switch-when="3" class="coupon-category-3">X</div>
 									<!-- <ng-md-icon icon="percent" style="fill: black" size="30"></ng-md-icon> --> 
 								</div>
 								<div class="right" flex>
-									<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md clear" ng-click="delete(item)"></ng-md-icon>
+									<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md clear" ng-click="delete(promo)"></ng-md-icon>
 									<div class="md-list-item-text">
-											<h3 class="coupon-title margin-bottom-sm">{{ item.name }}</h3>
-											<p class="coupon-description">{{ item.description }}</p>
-											<p class="pull-right">Aplicable hasta el {{ item.end_date | date:'dd' }} de {{ item.end_date | date:'MMMM' }}</p>
+											<h3 class="coupon-title margin-bottom-sm">{{ promo.name }}</h3>
+											<p ng-if="!promo.description" class="coupon-description">Dame un click para configurar la promoción</p>
+											<p ng-if="promo.description" data-ng-bind="promo.description" class="coupon-description" data-ellipsis></p>
+											<p class="pull-right">
+											Aplicable hasta el {{ promo.end_date | date:'dd' }} de {{ promo.end_date | date:'MMMM' }}</p>
 									</div>
 								</div>
 							</div>

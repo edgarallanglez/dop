@@ -1,8 +1,8 @@
 <div>
     <md-toolbar class="md-primary">
-        <h1 class="md-toolbar-tools">Nueva Promoción</h1>
+        <h1 class="md-toolbar-tools">Configuración Promoción</h1>
     </md-toolbar>
-    <md-content class="md-padding">
+    <md-content class="md-padding" ng-show="inSet">
         <md-select ng-model="couponSelected" class="coupon-select"  placeholder="Tipo de Promoción" flex>
                 <md-option ng-value="tag.val" ng-repeat="tag in selectTags">{{tag.label}}</md-option>
         </md-select>
@@ -64,7 +64,7 @@
             <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='1'">
                 <md-input-container flex>
                     <label for="bond">Bonificación</label>
-                    <input name="bond" type="number" id="bond" ng-model="coupon.bond" min="0" max="99999">
+                    <input name="bond" type="number" id="bond" ng-model="coupon.bond_size" min="0" max="99999">
                 </md-input-container>
             </div>
             <!--     -->

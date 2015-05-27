@@ -26,7 +26,7 @@ angular.module('dopApp')
     		});
         },
         getById : function(id){
-        	return Restangular.one('coupon/'+id+'/get').then(function(data){
+        	return Restangular.one('coupon/'+ id +'/get').then(function(data){
     			return data;
     		});
         },

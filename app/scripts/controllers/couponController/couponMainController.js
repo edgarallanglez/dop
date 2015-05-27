@@ -10,10 +10,9 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService) {
+  .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService, $couponService) {
     //var selected_coupon = Coupon.getCoupon();
    // console.log("Cupón seleccionado: "+selected_coupon.name);
-
     $scope.couponSelected = 0;
     $scope.selectTags = [{
         'label': 'Compra X y llevate X',
@@ -50,7 +49,8 @@ angular.module('dopApp')
         "min_spent": $scope.coupon.min_spent,
         "limit": $scope.coupon.limit,
         "description": $scope.coupon.description,
-        "coupon_category_id": $scope.couponSelected
+        "coupon_category_id": $scope.couponSelected,
+        "coupon_id": $couponService.coupon.coupon_id
       };
 
       var createCouponUrl = 'http://104.236.141.44:5000/api/coupon/';
@@ -84,5 +84,14 @@ angular.module('dopApp')
         SweetAlert.swal("Cupón Creado!", "El cupón ha sido creado correctamente ", "success");
       })
     };
+
+    $scope.$watch(function(){
+      return $couponService.coupon;
+    }, function (flag) {
+        if (flag) {
+          $scope.coupon = $couponService.coupon;
+          $scope.inSet = $couponService.inSet;
+        }
+    });
 
   });

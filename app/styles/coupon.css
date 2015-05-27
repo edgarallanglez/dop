@@ -4,24 +4,24 @@
 	width: 48px;
 	margin: 16px; 
 }
-.coupon-container{ background: none !important; }
-.coupon-list-card{
+.coupon-container { background: none !important; }
+.coupon-list-card {
 	padding: 0;
 	height: 100% !important;
 	background: white;
 	overflow: hidden;
 }
-.coupon-list{
+.coupon-list {
   height: 65vh !important;
 	overflow: scroll;
 	padding: 1em;
 }
-.coupon-list-button .action-button{
+.coupon-list-button .action-button {
 	/*box-shadow: none !important;*/
 	border-radius: 0;
   width: 98%;
 }
-.coupon-list-button input{
+.coupon-list-button input {
 	width: 100%;
 	height: 2.2em;
 	border:none;
@@ -33,7 +33,7 @@
 	padding:6px 15px 6px 30px;
 	margin:3px; */
 }
-.coupon-search-container{
+.coupon-search-container {
 	/*padding: 1em;*/
 	padding-top: 5px;
 	background: rgb(240, 240, 240);
@@ -44,7 +44,7 @@
 	height: 100%;
 	transition:all 0.3s ease;
 }
-#create-coupon-btn{
+#create-coupon-btn {
 	float:right;
 	margin-top: 2.2em;
 }
@@ -66,11 +66,24 @@
   -webkit-transform: scale(1.2);
 }
 
+.promo { height: 130px !important; }
+
 .pricing-quantities {
 		font-weight: 300;
 		font-size: 2.8em;
 		margin: 0 !important;
 		color: #3f3f3f;
+}
+
+.coupon-category-0 {
+  height: 2em !important;
+  width: 2em !important;
+  font-size: 2em;
+  background: rgb(55, 71, 79);
+  margin: 0 auto!important;
+  border-radius: 40px;
+  line-height: 2.2;
+  color: white;
 }
 
 .coupon-category-1 {
@@ -110,7 +123,12 @@
 	font-weight: 400 !important;
 }
 
-
+.coupon-description {
+  height: 25px;
+/*  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;*/
+}
 
 
 

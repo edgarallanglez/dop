@@ -110,7 +110,8 @@ md-tab-template div:nth-child(4){
 /* Maps Widget*/
 .angular-google-map-container { height: 400px; }
 
-.coupon-card { padding: 1em; }
+.coupon-card { padding: 1em; height: 130px !important; }
+.coupon-card .coupon-description { height: 70px; }
 .coupon-card p,
 .coupon-card h2 { margin-bottom: 0; }
 .coupon-card h2 { margin-top:0; }
@@ -123,3 +124,8 @@ canvas#genderChart {
 		width: 100% !important;
 		height: auto !important;
 }*/
+
+.new-promo-placeholder {
+    margin: 20px auto;
+    font-weight: 300;
+}

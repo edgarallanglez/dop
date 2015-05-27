@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dopApp.controller:MainCtrl
+ * @name dopApp.controller:LastCouponListCtrl
  * @description
- * # MainCtrl
+ * # LastCouponListCtrl
  * Controller of the dopApp
  */
 angular.module('dopApp')
@@ -20,17 +20,20 @@ angular.module('dopApp')
        this.coupon = coupon;
     }
   })
-  .controller('LastCouponListWidgetCtrl', function($scope, $userService, CouponFactory, $lastCouponService, $state) {
+  .controller('LastCouponListWidgetCtrl', function($scope, $http,$userService, CouponFactory, $lastCouponService, $state) {
     $scope.loading = true;
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
     }
 
-    var godCoupon = new CouponFactory();
     var branch_id = $userService.getCurrentUser().branch_id;
-    godCoupon.getAll(branch_id).then(function(data){
-      $scope.coupons = data;
+
+    $http({
+      method: 'GET',
+      url: 'http://104.236.141.44:5000/api/coupon/all/'+ branch_id + '/get',
+    }).then(function(data){
+      $scope.coupons = data.data;
       $scope.loading = false;
     });
   });

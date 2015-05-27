@@ -8,16 +8,14 @@
 
 /* Using box shadows to create 3D effects */
 #calculator {
-	width: 100%;
+	width: 85%;
 	height: auto;
-	
+	transitions: all 0.4s;
 	margin: 10px auto;
-	padding: 20px 20px 9px;
-	
-	background: #9dd2ea;
-	background: linear-gradient(#9dd2ea, #8bceec);
+	border: 1px solid lightgrey;
+	background: white;
 	border-radius: 3px;
-	box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
 /* Top portion */
@@ -29,20 +27,13 @@
 #calculator .top .screen {
 	height: 40px;
 	width: 172px;
-	
 	float: right;
-	
-	padding: 0 10px;
-	
-	background: rgba(0, 0, 0, 0.2);
-	border-radius: 3px;
-	box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
-	
+	background: white;
+
 	/* Typography */
-	font-size: 17px;
+	font-size: 30px;
 	line-height: 40px;
-	color: white;
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	color: rgb(80, 80, 80);
 	text-align: right;
 	letter-spacing: 1px;
 }
@@ -55,19 +46,10 @@
 	float: left;
 	position: relative;
 	top: 0;
-	
 	cursor: pointer;
-	
 	width: 52px;
 	height: 36px;
-	
-	background: white;
-	border-radius: 3px;
-	box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
-	
 	margin: 0 7px 11px 0;
-	
-	color: #888;
 	line-height: 36px;
 	text-align: center;
 	
@@ -75,59 +57,66 @@
 	user-select: none;
 	
 	/* Smoothing out hover and active states using css3 transitions */
-	transition: all 0.2s ease;
+	transition: all 0.4s ease;
 }
-
+#calculator .keys .nums { 
+	background: #4c4c4c !important;
+	height: 190px;
+	width: 80%;
+}
+#calculator .keys span.num-key {
+	  background: #4c4c4c !important;
+	  color: white;
+}
 /* Remove right margins from operator keys */
 /* style different type of keys (operators/evaluate/clear) differently */
-#calculator .keys span.operator {
-	background: #FFF0F5;
+#calculator .keys span.operator,
+#calculator .keys .operator {
+	background: #1de9b6;
 	margin-right: 0;
+	color: #424242;
 }
 
 #calculator .keys span.eval {
-	background: #f1ff92;
-	box-shadow: 0px 4px #9da853;
 	color: #888e5f;
 }
 
 #calculator .top span.clear {
-	background: #ff9fa8;
-	box-shadow: 0px 4px #ff7c87;
+	background: #2196F3;
 	color: white;
 }
 
 /* Some hover effects */
-#calculator .keys span:hover {
+#calculator .keys span:active {
 	background: #9c89f6;
-	box-shadow: 0px 4px #6b54d3;
+
 	color: white;
 }
 
-#calculator .keys span.eval:hover {
+#calculator .keys span.eval:active {
 	background: #abb850;
-	box-shadow: 0px 4px #717a33;
+
 	color: #ffffff;
 }
 
-#calculator .top span.clear:hover {
+#calculator .top span.clear:active {
 	background: #f68991;
-	box-shadow: 0px 4px #d3545d;
+
 	color: white;
 }
 
 /* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
-#calculator .keys span:active {
-	box-shadow: 0px 0px #6b54d3;
-	top: 4px;
+#calculator .keys span.num-key:active {
+
+	background: lightgrey !important;
 }
 
 #calculator .keys span.eval:active {
-	box-shadow: 0px 0px #717a33;
+
 	top: 4px;
 }
 
 #calculator .top span.clear:active {
 	top: 4px;
-	box-shadow: 0px 0px #d3545d;
+
 }
