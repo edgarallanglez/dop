@@ -26,7 +26,7 @@
 									<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md clear" ng-click="delete(promo)"></ng-md-icon>
 									<div class="md-list-item-text">
 											<h3 class="coupon-title margin-bottom-sm">{{ promo.name }}</h3>
-											<p ng-if="!promo.description" class="coupon-description">Dame un click para configurar la promoción</p>
+											<h3 ng-if="!promo.description" class="coupon-description new-promo-placeholder">Nueva Promoción</h3>
 											<p ng-if="promo.description" data-ng-bind="promo.description" class="coupon-description" data-ellipsis></p>
 											<p class="pull-right" ng-if="promo.end_date" ng-init="dateFormat(promo.end_date)">
 												Aplicable hasta el {{ formattedDate | date:'dd' }} de {{ formattedDate | date:'MMMM' }}

@@ -128,4 +128,5 @@ canvas#genderChart {
 .new-promo-placeholder {
     margin: 20px auto;
     font-weight: 300;
+    text-align: center;
 }
