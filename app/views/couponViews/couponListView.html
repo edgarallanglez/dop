@@ -28,8 +28,9 @@
 											<h3 class="coupon-title margin-bottom-sm">{{ promo.name }}</h3>
 											<p ng-if="!promo.description" class="coupon-description">Dame un click para configurar la promoción</p>
 											<p ng-if="promo.description" data-ng-bind="promo.description" class="coupon-description" data-ellipsis></p>
-											<p class="pull-right">
-											Aplicable hasta el {{ promo.end_date | date:'dd' }} de {{ promo.end_date | date:'MMMM' }}</p>
+											<p class="pull-right" ng-if="promo.end_date" ng-init="dateFormat(promo.end_date)">
+												Aplicable hasta el {{ formattedDate | date:'dd' }} de {{ formattedDate | date:'MMMM' }}
+											</p>
 									</div>
 								</div>
 							</div>
