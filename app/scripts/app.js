@@ -180,9 +180,9 @@ angular
       .accentPalette('light-blue');
 
   })
-  .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log){
+  .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location){
     $scope.init = function () {
-      if (!$userService.getCurrentUser()) {
+      if (!$userService.getCurrentUser() && $auth.isAuthenticated()) {
         var payload = $auth.getPayload();
         $http({
           method: 'POST',
@@ -193,6 +193,8 @@ angular
           $userService.setUser(data.data);
           $scope.user = $userService.getCurrentUser();
         });
+      } else {
+        $location.path('/login');
       }
     };
     $scope.init();
@@ -216,6 +218,7 @@ angular
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
+    
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').open()

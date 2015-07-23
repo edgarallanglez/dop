@@ -25,7 +25,7 @@
       <div layout="row">
         <md-input-container flex>
           <label>Número de la tarjeta</label>
-          <input name="card" ng-model="cardData.number" required data-conekta="card[number]">
+          <input name="card" type="number" ng-model="cardData.number" required data-conekta="card[number]">
           <div ng-messages="userForm.card.$error" ng-show="userForm.card.$dirty">
             <div ng-message="required">Una tarjeta es requerida!</div>
           </div>
@@ -35,7 +35,7 @@
       <div layout="row">
         <md-input-container flex>
           <label>CVC</label>
-          <input name="cvc" ng-model="cardData.cvc" required data-conekta="card[cvc]">
+          <input name="cvc" type="number" ng-model="cardData.cvc" required data-conekta="card[cvc]">
           <div ng-messages="userForm.cvc.$error" ng-show="userForm.cvc.$dirty">
             <div ng-message="required">Código de seguridad es requerido!</div>
           </div>

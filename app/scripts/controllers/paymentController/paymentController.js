@@ -65,7 +65,7 @@ angular.module('dopApp')
 
       /* Después de recibir un error */
       var errorResponseHandler = function(error) {
-        return console.log(error.message);
+        SweetAlert.swal("Error", error.message, "error");
       };
 
       var tokenParams = { 'card': $scope.cardData }
