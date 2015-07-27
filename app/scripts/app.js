@@ -30,7 +30,7 @@ angular
     'restangular',
     'dibari.angular-ellipsis'
   ])
-  .service('$userService', function($auth, $http) {
+  .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser;
     this.loading = true;
     var self = this;
@@ -50,9 +50,12 @@ angular
         url: 'http://104.236.141.44:5000/api/company/me',
         data: { 'branches_user_id': payload.id },
         headers: {'Content-Type': 'application/json'}
-      }).then(function(data){
+      }).success(function(data){
         self.loading = false;
         return data.data;
+      }).error(function(message){
+        SweetAlert.swal("Sergio no ha pagado el servidor", "", "error");
+        self.loading = false;
       });
     }
 
