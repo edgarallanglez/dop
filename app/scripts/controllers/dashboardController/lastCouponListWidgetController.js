@@ -28,7 +28,6 @@ angular.module('dopApp')
     }
 
     var branch_id = $userService.getCurrentUser().branch_id;
-    debugger
     $http({
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
