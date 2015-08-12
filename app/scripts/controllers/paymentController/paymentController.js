@@ -52,7 +52,7 @@ angular.module('dopApp')
       var successResponseHandler = function(token) {
         $http({
           method: 'POST',
-          url: 'http://104.236.141.44:5000/api/coupon/payment/card',
+          url: 'http://45.55.7.118:5000/api/coupon/payment/card',
           data: {
             'token_id':token.id,
             'paymentData': $paymentService.getPaymentData()

@@ -53,7 +53,7 @@ angular.module('dopApp')
         "coupon_id": $couponService.coupon.coupon_id
       };
 
-      var createCouponUrl = 'http://104.236.141.44:5000/api/coupon/';
+      var createCouponUrl = 'http://45.55.7.118:5000/api/coupon/';
 
       switch($scope.couponSelected) {
         case 1:

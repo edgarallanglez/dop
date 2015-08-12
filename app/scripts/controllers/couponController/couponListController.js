@@ -23,10 +23,12 @@ angular.module('dopApp')
     $scope.promod = new Date();
     $http({
       method: 'GET',
-      url: 'http://104.236.141.44:5000/api/coupon/all/'+ branch_id + '/get',
-    }).then(function(data){
-      $scope.coupons = data.data;
-      console.log(data.data);
+      url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
+    }).success(function(data){
+      $scope.coupons = data;
+      console.log($scope.coupons);
+    }).error(function(){
+      SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error")
     });
 
     $scope.dateFormat = function(stringDate) {

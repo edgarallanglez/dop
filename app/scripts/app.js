@@ -47,14 +47,14 @@ angular
       var payload = $auth.getPayload();
       return $http({
         method: 'POST',
-        url: 'http://104.236.141.44:5000/api/company/me',
+        url: 'http://45.55.7.118:5000/api/company/me',
         data: { 'branches_user_id': payload.id },
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
         self.loading = false;
         return data.data;
       }).error(function(message){
-        SweetAlert.swal("Sergio no ha pagado el servidor", "", "error");
+        SweetAlert.swal("Error en el servidor", "", "error");
         self.loading = false;
       });
     }
@@ -64,10 +64,10 @@ angular
                     $locationProvider, $httpProvider, $authProvider, RestangularProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    RestangularProvider.setBaseUrl('http://104.236.141.44:5000/api');
+    RestangularProvider.setBaseUrl('http://45.55.7.118:5000/api');
     RestangularProvider.setDefaultHeaders({ "token" : 'application/json' });
-    $authProvider.signupUrl = 'http://104.236.141.44:5000/api/company/auth/signup';
-    $authProvider.loginUrl = 'http://104.236.141.44:5000/api/company/auth/login';
+    $authProvider.signupUrl = 'http://45.55.7.118:5000/api/company/auth/signup';
+    $authProvider.loginUrl = 'http://45.55.7.118:5000/api/company/auth/login';
     $authProvider.facebook({ clientId: '927375797314743' });
     $stateProvider
       .state('home', {
@@ -89,10 +89,13 @@ angular
             var deferred = $q.defer();
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $userService.getMe().then(function(data){
+              $userService.getMe().success(function(data){
+                debugger
                 var user = data.data
                 $userService.setUser(user);
                 deferred.resolve();
+              }).error(function(message){
+                SweetAlert.swal("Error en el servidor", "error")
               });
             } else { deferred.resolve(); }
             return deferred.promise;
@@ -127,10 +130,13 @@ angular
             var deferred = $q.defer();
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $userService.getMe().then(function(data){
+              $userService.getMe().success(function(data){
                 var user = data.data
+                debugger
                 $userService.setUser(user);
                 deferred.resolve();
+              }).error(function(){
+                SweetAlert.swal("Error en el servidor", "", "error");
               });
             } else { deferred.resolve(); }
             return deferred.promise;
@@ -189,7 +195,7 @@ angular
         var payload = $auth.getPayload();
         $http({
           method: 'POST',
-          url: 'http://104.236.141.44:5000/api/company/me',
+          url: 'http://45.55.7.118:5000/api/company/me',
           data: { 'branches_user_id': payload.id },
           headers: {'Content-Type': 'application/json'}
         }).success(function(data){
