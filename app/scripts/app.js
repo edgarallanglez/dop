@@ -90,7 +90,6 @@ angular
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
-                debugger
                 var user = data.data
                 $userService.setUser(user);
                 deferred.resolve();
@@ -132,7 +131,6 @@ angular
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
                 var user = data.data
-                debugger
                 $userService.setUser(user);
                 deferred.resolve();
               }).error(function(){
