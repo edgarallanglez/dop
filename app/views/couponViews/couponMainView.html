@@ -6,16 +6,16 @@
         <md-select ng-model="couponSelected" class="coupon-select"  placeholder="Tipo de Promoción" flex>
                 <md-option ng-value="tag.val" ng-repeat="tag in selectTags">{{tag.label}}</md-option>
         </md-select>
-        <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-show="couponSelected!=0">
+        <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-show="couponSelected!=1">
             <div layout-wrap layout-sm="column">
-                <md-input-container flex>
+<!--                 <md-input-container flex>
                     <label for="startDate">Fecha de Disponibilidad</label>
                     <input  name="startDate" required type="date" id="startDate" ng-model="coupon.startDate">
                 </md-input-container>
                 <md-input-container flex>
                     <label for="endDate">Fecha de caducidad</label>
                     <input name="endDate" required type="date" id="endDate" ng-model="coupon.endDate">
-                </md-input-container>
+                </md-input-container> -->
             </div>
             <div layout-wrap layout-sm="column">
                 <md-input-container flex>
@@ -43,7 +43,7 @@
             </div>
             <!--Layout según tipo de cupon seleccionado-->
             <!--Compra X y llevate X-->
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='3'">
+            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='4'">
                 <md-input-container flex>
                     <label for="receives">Recibe</label>
                     <input name="receives"  type="number" id="receives" ng-model="coupon.receives" min="0" max="10">
@@ -54,14 +54,14 @@
                 </md-input-container>
             </div>
             <!--Descuento-->
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='2'">
+            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='3'">
                 <md-input-container flex>
-                    <label for="discount"l>Porcentaje de descuento</label>
-                    <input name="discount" type="number" id="discount" ng-model="coupon.discount" min="0" max="100">
+                    <label for="percent"l>Porcentaje de descuento</label>
+                    <input name="percent" type="number" id="percent" ng-model="coupon.percent" min="0" max="100">
                 </md-input-container>
             </div>
             <!--Bono-->
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='1'">
+            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='2'">
                 <md-input-container flex>
                     <label for="bond">Bonificación</label>
                     <input name="bond" type="number" id="bond" ng-model="coupon.bond_size" min="0" max="99999">

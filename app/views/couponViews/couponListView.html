@@ -16,10 +16,10 @@
 						<md-list-item class="md-3-line pointer promo" ng-repeat="promo in item | filter:searchPromo" flex ng-click="configCoupon(promo)">
 							<div layout="row" layout-align="center center" class="promo">
 								<div ng-switch on="{{promo.coupon_category_id}}" class="left center md-avatar" flex="25">
-									<div ng-switch-when="0" class="coupon-category-0"><ng-md-icon icon="settings" size="30" style="fill: #FFF"></ng-md-icon></div>
-									<div ng-switch-when="1" class="coupon-category-1">$</div>
-									<div ng-switch-when="2" class="coupon-category-2">%</div>
-									<div ng-switch-when="3" class="coupon-category-3">X</div>
+									<div ng-switch-when="1" class="coupon-category-1"><ng-md-icon icon="settings" size="30" style="fill: #FFF"></ng-md-icon></div>
+									<div ng-switch-when="2" class="coupon-category-2">$</div>
+									<div ng-switch-when="3" class="coupon-category-3">%</div>
+									<div ng-switch-when="4" class="coupon-category-4">X</div>
 									<!-- <ng-md-icon icon="percent" style="fill: black" size="30"></ng-md-icon> --> 
 								</div>
 								<div class="right" flex>
