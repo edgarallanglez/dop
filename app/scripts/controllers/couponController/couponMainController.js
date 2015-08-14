@@ -11,8 +11,8 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService, $couponService) {
-    //var selected_coupon = Coupon.getCoupon();
-   // console.log("Cupón seleccionado: "+selected_coupon.name);
+    //  var selected_coupon = Coupon.getCoupon();
+    //  console.log("Cupón seleccionado: "+selected_coupon.name);
     $scope.selectTags = [{
         'label': 'Compra X y llevate X',
         'val': 4 
@@ -26,10 +26,10 @@ angular.module('dopApp')
         'val': 2
     }];
   	$scope.coupon = { 
-    //   'startDate': new Date(), 
-    // 'endDate': new Date(), 
+    //  'startDate': new Date(), 
+    //  'endDate': new Date(), 
       'name':'', 
-      // 'limit':0,
+    //  'limit':0,
       'min_spent':0,
       'receives':0,
       'buy':0,
@@ -81,8 +81,8 @@ angular.module('dopApp')
     }, function (flag) {
         if (flag) {
           $scope.coupon = $couponService.coupon;
-          $scope.inSet = $couponService.inSet;
           $scope.couponSelected = $scope.coupon.coupon_category_id
+          $scope.inSet = $couponService.inSet;
         }
     });
 
