@@ -80,7 +80,7 @@ angular
             if (!$auth.isAuthenticated()) {
               $rootScope.$apply(function() {
                 $location.path('/login');
-              )};
+              });
             } else {
               deferred.resolve();
             }
