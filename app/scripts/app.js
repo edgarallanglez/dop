@@ -75,7 +75,7 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth, $state) {
+          authenticated: function($q, $location, $auth, $state, $rootScope)å {
             var deferred = $q.defer();
             if (!$auth.isAuthenticated()) {
               $rootScope.$apply(function() {
