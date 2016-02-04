@@ -78,8 +78,9 @@ angular
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if (!$auth.isAuthenticated()) {
-              debugger
-              $location.path('/login');
+              $rootScope.$apply(function() {
+                $location.path('/login');
+              )};
             } else {
               deferred.resolve();
             }
