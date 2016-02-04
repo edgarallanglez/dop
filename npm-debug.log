@@ -1,87 +1,75 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'sshexec' ]
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'grunt-autoprefixe' ]
 2 info using npm@1.4.28
-3 info using node@v0.10.33
-4 warn package.json dop@0.0.0 No description
-5 warn package.json dop@0.0.0 No repository field.
-6 warn package.json dop@0.0.0 No README data
-7 verbose readDependencies using package.json deps
-8 verbose cache add [ 'sshexec', null ]
-9 verbose cache add name=undefined spec="sshexec" args=["sshexec",null]
-10 verbose parsed url { protocol: null,
-10 verbose parsed url   slashes: null,
-10 verbose parsed url   auth: null,
-10 verbose parsed url   host: null,
-10 verbose parsed url   port: null,
-10 verbose parsed url   hostname: null,
-10 verbose parsed url   hash: null,
-10 verbose parsed url   search: null,
-10 verbose parsed url   query: null,
-10 verbose parsed url   pathname: 'sshexec',
-10 verbose parsed url   path: 'sshexec',
-10 verbose parsed url   href: 'sshexec' }
-11 silly lockFile adc5bc65-sshexec sshexec
-12 verbose lock sshexec /Users/Allan/.npm/adc5bc65-sshexec.lock
-13 silly lockFile adc5bc65-sshexec sshexec
-14 silly lockFile adc5bc65-sshexec sshexec
-15 verbose addNamed [ 'sshexec', '' ]
-16 verbose addNamed [ null, '*' ]
-17 silly lockFile c0a9e852-sshexec sshexec@
-18 verbose lock sshexec@ /Users/Allan/.npm/c0a9e852-sshexec.lock
-19 silly addNameRange { name: 'sshexec', range: '*', hasData: false }
-20 verbose request where is /sshexec
-21 verbose request registry https://registry.npmjs.org/
-22 verbose request id 7237d332fae0cab1
-23 verbose url raw /sshexec
-24 verbose url resolving [ 'https://registry.npmjs.org/', './sshexec' ]
-25 verbose url resolved https://registry.npmjs.org/sshexec
-26 verbose request where is https://registry.npmjs.org/sshexec
-27 info trying registry request attempt 1 at 15:39:18
-28 http GET https://registry.npmjs.org/sshexec
-29 http 404 https://registry.npmjs.org/sshexec
-30 verbose headers { date: 'Thu, 30 Apr 2015 21:39:18 GMT',
-30 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-30 verbose headers   'content-type': 'application/json',
-30 verbose headers   'cache-control': 'max-age=0',
-30 verbose headers   'content-length': '51',
-30 verbose headers   'accept-ranges': 'bytes',
-30 verbose headers   via: '1.1 varnish',
-30 verbose headers   age: '0',
-30 verbose headers   'x-served-by': 'cache-lax1424-LAX',
-30 verbose headers   'x-cache': 'MISS',
-30 verbose headers   'x-cache-hits': '0',
-30 verbose headers   'x-timer': 'S1430429958.609681,VS0,VE50',
-30 verbose headers   'keep-alive': 'timeout=10, max=50',
-30 verbose headers   connection: 'Keep-Alive' }
+3 info using node@v0.10.40
+4 verbose node symlink /usr/bin/node
+5 warn package.json dop@0.0.0 No description
+6 warn package.json dop@0.0.0 No repository field.
+7 warn package.json dop@0.0.0 No README data
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'grunt-autoprefixe', null ]
+10 verbose cache add name=undefined spec="grunt-autoprefixe" args=["grunt-autoprefixe",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'grunt-autoprefixe',
+11 verbose parsed url   path: 'grunt-autoprefixe',
+11 verbose parsed url   href: 'grunt-autoprefixe' }
+12 silly lockFile 6fdc545b-grunt-autoprefixe grunt-autoprefixe
+13 verbose lock grunt-autoprefixe /root/.npm/6fdc545b-grunt-autoprefixe.lock
+14 silly lockFile 6fdc545b-grunt-autoprefixe grunt-autoprefixe
+15 silly lockFile 6fdc545b-grunt-autoprefixe grunt-autoprefixe
+16 verbose addNamed [ 'grunt-autoprefixe', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile 1abd0d66-grunt-autoprefixe grunt-autoprefixe@
+19 verbose lock grunt-autoprefixe@ /root/.npm/1abd0d66-grunt-autoprefixe.lock
+20 silly addNameRange { name: 'grunt-autoprefixe', range: '*', hasData: false }
+21 verbose request where is /grunt-autoprefixe
+22 verbose request registry https://registry.npmjs.org/
+23 verbose request id 8bea43afc6ef5d39
+24 verbose url raw /grunt-autoprefixe
+25 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-autoprefixe' ]
+26 verbose url resolved https://registry.npmjs.org/grunt-autoprefixe
+27 verbose request where is https://registry.npmjs.org/grunt-autoprefixe
+28 info trying registry request attempt 1 at 09:53:27
+29 http GET https://registry.npmjs.org/grunt-autoprefixe
+30 http 404 https://registry.npmjs.org/grunt-autoprefixe
 31 silly registry.get cb [ 404,
-31 silly registry.get   { date: 'Thu, 30 Apr 2015 21:39:18 GMT',
-31 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-31 silly registry.get     'content-type': 'application/json',
+31 silly registry.get   { 'content-type': 'application/json',
 31 silly registry.get     'cache-control': 'max-age=0',
-31 silly registry.get     'content-length': '51',
+31 silly registry.get     'content-length': '2',
 31 silly registry.get     'accept-ranges': 'bytes',
+31 silly registry.get     date: 'Thu, 04 Feb 2016 16:53:27 GMT',
 31 silly registry.get     via: '1.1 varnish',
 31 silly registry.get     age: '0',
-31 silly registry.get     'x-served-by': 'cache-lax1424-LAX',
+31 silly registry.get     connection: 'keep-alive',
+31 silly registry.get     'x-served-by': 'cache-sjc3135-SJC',
 31 silly registry.get     'x-cache': 'MISS',
 31 silly registry.get     'x-cache-hits': '0',
-31 silly registry.get     'x-timer': 'S1430429958.609681,VS0,VE50',
-31 silly registry.get     'keep-alive': 'timeout=10, max=50',
-31 silly registry.get     connection: 'Keep-Alive' } ]
-32 silly lockFile c0a9e852-sshexec sshexec@
-33 silly lockFile c0a9e852-sshexec sshexec@
-34 error 404 404 Not Found: sshexec
+31 silly registry.get     'x-timer': 'S1454604807.069520,VS0,VE90' } ]
+32 silly lockFile 1abd0d66-grunt-autoprefixe grunt-autoprefixe@
+33 silly lockFile 1abd0d66-grunt-autoprefixe grunt-autoprefixe@
+34 error 404 Not Found
 34 error 404
-34 error 404 'sshexec' is not in the npm registry.
+34 error 404 'grunt-autoprefixe' is not in the npm registry.
 34 error 404 You should bug the author to publish it
 34 error 404 It was specified as a dependency of 'dop'
 34 error 404
 34 error 404 Note that you can also install from a
 34 error 404 tarball, folder, or http url, or git url.
-35 error System Darwin 14.3.0
-36 error command "node" "/usr/local/bin/npm" "install" "sshexec"
-37 error cwd /Users/Allan/Develop/dop
-38 error node -v v0.10.33
+35 error System Linux 3.13.0-57-generic
+36 error command "/usr/bin/node" "/usr/bin/npm" "install" "grunt-autoprefixe"
+37 error cwd /var/www/dop
+38 error node -v v0.10.40
 39 error npm -v 1.4.28
 40 error code E404
 41 verbose exit [ 1, true ]
