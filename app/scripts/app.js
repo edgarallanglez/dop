@@ -63,6 +63,17 @@ angular
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
                     $locationProvider, $httpProvider, $authProvider, RestangularProvider) {
     $httpProvider.defaults.useXDomain = true;
+    if(window.history && window.history.pushState){
+            //$locationProvider.html5Mode(true); will cause an error $location in HTML5 mode requires a  tag to be present! Unless you set baseUrl tag after head tag like so: <head> <base href="/">
+
+         // to know more about setting base URL visit: https://docs.angularjs.org/error/$location/nobase
+
+         // if you don't wish to set base URL then use this
+         $locationProvider.html5Mode({
+                 enabled: true,
+                 requireBase: false
+          });
+    }
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     RestangularProvider.setBaseUrl('https://inmoon.com.mx/api');
     RestangularProvider.setDefaultHeaders({ "token" : 'application/json' });
@@ -75,12 +86,10 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth, $state, $rootScope)å {
+          authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if (!$auth.isAuthenticated()) {
-              $rootScope.$apply(function() {
-                $location.path('/login');
-              });
+              $location.path('/login');
             } else {
               deferred.resolve();
             }
@@ -261,7 +270,7 @@ angular
 
       // tab selected change
       if ($scope.data) {
-        if ($scope.data.selectedIndex == 0 ) {
+        if ($scope.data.selectedIndex == 0 && $auth.isAuthenticated() ) {
           $location.path('/').replace();
         } else if ($scope.data.selectedIndex == 1) {
           $location.path('/coupon').replace();
