@@ -61,13 +61,6 @@
                 </md-tab>
               </md-tabs>
               <span flex></span>
-
-              <md-button ng-click="toggleRightNotifications()" class="notification md-fab md-primary md-hue-3" aria-label="Notification">
-                  <span class="white">5</span>
-              </md-button>
-              <md-button ng-click="toggleRightWidgets()" class="" aria-label="Menu">
-                <i class="fa fa-bars menu-icon margin-sm"></i>
-              </md-button>
             </div>
           </md-toolbar>
           <md-card class="loading" flex ng-show="loading" layout-align="center center">
@@ -112,78 +105,6 @@
             </div>
           </ng-switch>
         </div>
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="notifications-sidenav" layout="vertical" layout-fill>
-          <md-toolbar class="md-theme-light">
-            <h1 class="md-toolbar-tools">Notificaciones</h1>
-          </md-toolbar>
-          <md-content ng-controller="NotificationCtrl" class="md-padding">
-            <md-button ng-click="closeNotifications()" class="md-primary">
-              Cerrar
-            </md-button>
-          </md-content>
-        </md-sidenav>
-        <md-sidenav id="utilities-sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav"layout="vertical" layout-fill>
-          <md-toolbar ng-controller="MeCtrl" class="md-theme-light">
-            <h1 class="md-toolbar-tools">{{user.branch.name}}</h1>
-            <button id="closeWidgetsBtn" class="cmn-toggle-switch cmn-toggle-switch__htx" ng-click="closeWidgets()">
-              <span>toggle menu</span>
-            </button>
-          </md-toolbar>
-          <md-content ng-controller="WeatherCtrl" class="md-padding">
-            <md-card class="loading" flex ng-show="loading" layout-align="center center">
-              <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-            </md-card>
-            <div id="weather" class="animated fadeInLeft" ng-show="!loading">
-              <md-content>
-                <div layout="column" layout-align="center center">
-                  <h1 class="location no-margin-bottom" flex="100">{{data.name}}</h1>
-                  <p class="date no-margin-bottom" flex="100">{{today | date: 'EEEE, dd MMMM H:mm'}}</p>
-                </div>
-
-                <div layout="row" class="weather-wrapper">    
-                  <p class="temp" id="temperature" flex>{{data.main.temp - 273.15 | number: 0}}°</p>
-                  <div class="weather-icon sun"></div>
-                </div>
-              </md-content>
-            </div>
-
-            <div id="calculator">
-              <!-- Screen and clear key -->
-              <div class="top">
-                <span class="clear">C</span>
-                <div class="screen"></div>
-              </div>
-              
-              <div class="keys" layout="row">
-                <!-- operators and other keys -->
-                <div class="nums">
-                    <span class="num-key">7</span>
-                    <span class="num-key">8</span>
-                    <span class="num-key">9</span>
-                    <span class="num-key">4</span>
-                    <span class="num-key">5</span>
-                    <span class="num-key">6</span>
-                    <span class="num-key">1</span>
-                    <span class="num-key">2</span>
-                    <span class="num-key">3</span>
-                    <span class="num-key">0</span>
-                    <span class="num-key">.</span>
-                    <span class="num-key eval">=</span>
-                </div>
-                <div class="operator" layout="column">
-                  <span class="operator">+</span>
-                  <span class="operator">-</span>
-                  <span class="operator">÷</span>
-                  <span class="operator">x</span>
-                </div>
-              </div>
-            </div>
-
-            <md-button ng-click="closeWidgets()" class="md-primary">
-              Cerrar
-            </md-button>
-          </md-content>
-        </md-sidenav>
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
