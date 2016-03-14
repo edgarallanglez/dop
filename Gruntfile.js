@@ -26,7 +26,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     sshconfig: {
       awesome: {
-        host: '104.236.141.44',
+        host: '45.55.1.118',
         port: '9000',
         privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/id_rsa'),
         username: 'root',
@@ -39,7 +39,7 @@ module.exports = function (grunt) {
           'cd /var/www',
           'git fetch --all',
           'git reset --hard origin/master',
-          'cd /var/www/project/dist',
+          'cd /var/www/dop/dist',
           'npm install',
           'pm2 restart app'
         ].join(' ; '),
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          open: true,
+          open: false,
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
@@ -425,7 +425,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
+    //'newer:jshint',
     'test',
     'build'
   ]);
