@@ -36,14 +36,45 @@
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;" ng-cloak>
     <!-- Fixed navbar -->
     <div id="webApp" ng-show="isAuthenticated()">
-        <div layout="column"layout-fill>
-          <md-toolbar>
-            <div class="md-toolbar-tools">
+          <md-content>
+          <div class="md-toolbar-tools">
+              <img id="main-logo" src="images/dop_logo_w.png">
+  
+    <!--         <a ng-href="#/">
+                <img id="main-logo" src="images/dop_logo_w.png">
+            </a> -->
+              <md-tabs class="md-defaults-theme" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+                <md-tab id="tab1">
+                  <md-tab-label>INICIO</md-tab-label>
+              <!--     <md-tab-body>
+                    View for Item #1 <br/>
+                    data.selectedIndex = 0;
+                  </md-tab-body> -->
+                </md-tab>
+                <md-tab id="tab2">
+                  <md-tab-label>CUPONES</md-tab-label>
+              <!--     <md-tab-body>
+                    View for Item #2 <br/>
+                    data.selectedIndex = 1;
+                  </md-tab-body> -->
+                </md-tab>
+                <md-tab id="tab3">
+                  <md-tab-label>REPORTES</md-tab-label>
+         <!--          <md-tab-body>
+                    View for Item #3 <br/>
+                    data.selectedIndex = 2;
+                  </md-tab-body>
+   -->              </md-tab>
+              </md-tabs>
+            </div>
+          </md-content>
+<!-- 
+            <md-content>
               <a ng-href="#/">
                 <img id="main-logo" src="images/dop_logo_w.png">
-              </a>
+              </a> -->
               <!-- fill up the space between left and right area -->
-              <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
+<!--               <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
                 <md-tab id="tab1" aria-controls="tab1-content" >
                   <a href="#/">
                     Inicio
@@ -61,9 +92,9 @@
                 </md-tab>
               </md-tabs>
               <span flex></span>
-            </div>
-          </md-toolbar>
-          <md-card class="loading" flex ng-show="loading" layout-align="center center">
+            </md-content>
+ -->
+         <md-card class="loading" flex ng-show="loading" layout-align="center center">
               <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
           </md-card>
           <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
@@ -75,7 +106,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
-                    <!-- tab's content -->
+                    content
                   </div>
                 </md-content>
             </div>
@@ -87,7 +118,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
-                    <!-- tab's content -->
+                    content
                   </div>
                 </md-content>
             </div>
@@ -99,12 +130,12 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
                   <div flex ui-view>
-                    <!-- tab's content -->
+                    content
                   </div>
                 </md-content>
             </div>
           </ng-switch>
-        </div>
+
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">

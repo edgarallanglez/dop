@@ -174,47 +174,45 @@ angular
     $urlRouterProvider.otherwise('/');
     // Theme configurations
     
-    /*$mdThemingProvider.theme('default')
-      .primaryPalette('blue-grey', {
-        'default': '800',
-        'hue-1': '100',
-        'hue-3': '300'
-      })
-      .accentPalette('red', {
-        'default': '600'
-      });
+    // $mdThemingProvider.theme('default')
+    //   .primaryPalette('blue-grey', {
+    //     'default': '800',
+    //     'hue-1': '100',
+    //     'hue-3': '300'
+    //   })
+    //   .accentPalette('red', {
+    //     'default': '600'
+    //   });
     $mdThemingProvider.theme('green')
       .primaryPalette('light-green')
       .accentPalette('light-blue');
 
-  })*/
-  $mdThemingProvider.definePalette('dopPalette', {
-    '50': 'ffebee',
-    '100': 'ffcdd2',
-    '200': 'ef9a9a',
-    '300': 'e57373',
-    '400': 'ef5350',
-    '500': 'ffffff',
-    '600': 'e53935',
-    '700': 'd32f2f',
-    '800': 'c62828',
-    '900': 'b71c1c',
-    'A100': 'fb226f',
-    'A200': 'ff5252',
-    'A400': 'ff1744',
-    'A700': 'd50000',
-    'contrastDefaultColor': 'light',    // whether, by default, text (contrast)
-                                        // on this palette should be dark or light
-    'contrastDarkColors': ['50', '100', //hues which contrast should be 'dark' by default
-     '200', '300', '400', 'A100'],
-    'contrastLightColors': undefined    // could also specify this if default was 'dark'
-  });
-  $mdThemingProvider.theme('default')
-    .primaryPalette('dopPalette', {
-        'default': '500',
-        'hue-1': '100',
-        'hue-2': '500'
-    })
+
+    $mdThemingProvider.definePalette('dopPalette', {
+      '50': '#ffffff',
+      '100': '#fedbe8',
+      '200': '#fda4c4',
+      '300': '#fc5e96',
+      '400': '#fc4083',
+      '500': '#fb226f',
+      '600': '#fa055c',
+      '700': '#dc0451',
+      '800': '#be0346',
+      '900': '#a0033b',
+      'A100': '#ffffff',
+      'A200': '#fedbe8',
+      'A400': '#fc4083',
+      'A700': '#dc0451',
+      'contrastDefaultColor': 'light',
+      'contrastDarkColors': '50 100 200 300 A100 A200'
+    });
+    
+    $mdThemingProvider.theme('defaults')
+      .primaryPalette('dopPalette', {
+          'default': '400',
+          'hue-1': '100',
+          'hue-2': '300'
+      })
 })
   .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location){
     $scope.init = function () {
