@@ -34,28 +34,27 @@
 </head>
 
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;" ng-cloak>
-    <md-content class="md-padding">
     <!-- Fixed navbar -->
     <div id="webApp" ng-show="isAuthenticated()">
         <div layout="column"layout-fill>
           <md-toolbar>
             <div class="md-toolbar-tools">
               <a ng-href="#/">
-                <img id="main-logo" src="images/white_logo.png">
+                <img id="main-logo" src="images/dop_logo_w.png">
               </a>
               <!-- fill up the space between left and right area -->
               <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
-                <md-tab id="tab1" aria-controls="tab1-content" class="white">
+                <md-tab id="tab1" aria-controls="tab1-content" >
                   <a href="#/">
                     Inicio
                   </a>
                 </md-tab>
-                <md-tab id="tab2" aria-controls="tab2-content" class="white">
+                <md-tab id="tab2" aria-controls="tab2-content">
                   <a href="#/coupon">
                     Promociones
                   </a>
                 </md-tab>
-                <md-tab id="tab3" aria-controls="tab3-content" class="white">
+                <md-tab id="tab3" aria-controls="tab3-content">
                   <a href="#/report">
                     Reportes
                   </a>

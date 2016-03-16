@@ -30,7 +30,7 @@ angular.module('dopApp')
     var branch_id = $userService.getCurrentUser().branch_id;
     $http({
       method: 'GET',
-      url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
+      url: 'http://45.55.7.118:5000/api/coupon/latest/stats/'+ branch_id,
     }).then(function(data){
       $scope.coupons = data.data;
       $scope.loading = false;
