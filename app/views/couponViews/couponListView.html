@@ -1,13 +1,8 @@
 <div>
-		<div class="coupon-list-button">
-			<div layout-align="center center">
-					<md-button class="md-raised center margin-sm action-button" flex="100" flex-order="1">Todas</md-button>
-					<md-button class="md-raised center margin-sm action-button" flex="100" flex-order="2">Activas</md-button>
-					<md-button class="md-raised center margin-sm action-button" flex="100" flex-order="3">Finalizadas</md-button>
-			</div>
+<!-- 		<div class="coupon-list-button">
 			
 			<div class="coupon-search-container" flex="100">
-					<!--<i class="fa fa-search"></i>-->
+					<i class="fa fa-search"></i>
 					<input placeholder="Buscar" type="text" ng-model="searchPromo"/>
 			</div>
 		</div>
@@ -20,7 +15,7 @@
 									<div ng-switch-when="2" class="coupon-category-2">$</div>
 									<div ng-switch-when="3" class="coupon-category-3">%</div>
 									<div ng-switch-when="4" class="coupon-category-4">X</div>
-									<!-- <ng-md-icon icon="percent" style="fill: black" size="30"></ng-md-icon> --> 
+									<ng-md-icon icon="percent" style="fill: black" size="30"></ng-md-icon> 
 								</div>
 								<div class="right" flex>
 									<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md clear" ng-click="delete(promo)"></ng-md-icon>
@@ -37,5 +32,40 @@
 							<md-divider layout="row"></md-divider>
 						</md-list-item>
 				</md-list>
-		</div>
+		</div> -->
+
+
+    <div layout-fill layout="row" layout-wrap style="margin: 0 auto;">
+        <md-card class="loading" flex ng-show="loading" layout-align="center center">
+          <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+        </md-card>
+      <div ng-repeat="item in coupons" layout="row" layout-wrap layout-fill layout-align="center start">
+      	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex-md="50"  flex>
+                  <div class="info">
+                    <h2 class="margin-sm">{{promo.name}}</h2>
+                    <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
+                    </span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
+                  </div>
+                  <div class="statistics"> 
+                      <ul layout="row" layout-wrap>
+                        <li flex>
+                          <i class="fa fa-bullseye" ></i>
+                          <h3>{{promo.views}}</h3>
+                          <p class="transparent-text">Aperturas</p>
+                        </li>
+                        <li flex>
+                          <i class="fa fa-heart"></i>
+                          <h3>{{promo.total_likes}}</h3>
+                          <p class="transparent-text">Me gusta</p>
+                        </li>
+                        <li flex>
+                          <i class="fa fa-ticket "></i>
+                          <h3>{{promo.total_uses}}</h3>
+                          <p class="transparent-text">Usos</p>
+                        </li>
+                      </ul>
+                  </div>
+        </md-card>
+      </div>
+    </div>
 </div>
