@@ -3,10 +3,9 @@
         <md-card class="loading" flex ng-show="loading" layout-align="center center">
           <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
         </md-card>
-      <div ng-repeat="item in coupons" layout="row" layout-wrap>
-      	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-sm="100" flex-md="49"  flex>
+      <div ng-repeat="item in coupons" layout="row" layout-wrap layout-align="center start">
+      	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex-md="49"  flex>
                   <div class="info">
-                    <img class="category" src="http://placehold.it/160">
                     <h2 class="margin-sm">{{promo.name}}</h2>
                     <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
                     </span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
@@ -16,7 +15,7 @@
                         <li flex>
                           <i class="fa fa-bullseye" ></i>
                           <h3>{{promo.views}}</h3>
-                          <p class="transparent-text">Veces vista</p>
+                          <p class="transparent-text">Aperturas</p>
                         </li>
                         <li flex>
                           <i class="fa fa-heart"></i>
@@ -25,7 +24,7 @@
                         </li>
                         <li flex>
                           <i class="fa fa-ticket "></i>
-                          <h3>{{promo.views}}</h3>
+                          <h3>{{promo.total_uses}}</h3>
                           <p class="transparent-text">Usos</p>
                         </li>
                       </ul>
