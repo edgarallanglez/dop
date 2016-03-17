@@ -6,19 +6,68 @@
  * @description
  * # LocationWidgetCtrl
  * Controller of the dopApp
+ 
  */
 angular.module('dopApp')
-  .config(function($stateProvider){
+  .config(function($stateProvider, uiGmapGoogleMapApiProvider){
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyDwxoEs4X719_XHnhIjv0dUA-nkXlL26Tw',
+      v: '3.17',
+      libraries: 'weather,geometry,visualization'
+    });
   })
-  .controller('LocationWidgetCtrl', function($scope) {
+
+  .controller('LocationWidgetCtrl', function($scope, $http, $userService, uiGmapGoogleMapApi, uiGmapIsReady) {
+    uiGmapGoogleMapApi.then(function(maps) {
+      if( typeof _.contains === 'undefined' ) {
+        _.contains = _.includes;
+        _.prototype.contains = _.includes;
+      }
+      if( typeof _.object === 'undefined' ) {
+          _.object = _.zipObject;
+      }
+    });
+    uiGmapIsReady.promise().then(function() {
+      $scope.mapLoaded = true;
+    });
 
     $scope.map = {
       center: { 
         latitude: 24.78,
         longitude: -107.43
       },
-      zoom: 11
+      zoom: 13
     };
+
+
+    var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.markers = [];
+    $http({
+      method: 'GET',
+      url: 'http://45.55.7.118:5000/api/coupon/taken/location/'+ branch_id,
+    }).then(function(data){
+
+      for(var i=0; i < data.data.data.length; i++){
+        var object = data.data.data[i];
+        //var position = new google.maps.LatLng(object.latitude, object.longitude)
+        var marker = {
+          id: i,
+          latitude: object.latitude, 
+          longitude: object.longitude,
+          name: object.name, 
+          icon: 'images/marker.png',
+          /*options: {
+            animation: google.maps.Animation.DROP
+          }*/
+        }
+        $scope.markers.push(marker);
+      }
+
+      /*var bounds = new google.maps.LatLngBounds();
+      for (var i in $scope.markers) 
+        bounds.extend($scope.markers[i].position) */
+
+    });
 
     $scope.options = {
       scrollwheel: false,
@@ -205,4 +254,5 @@ angular.module('dopApp')
         }
       ]
      };
+    
   });
