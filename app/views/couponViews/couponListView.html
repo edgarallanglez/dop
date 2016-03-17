@@ -36,11 +36,11 @@
 
 
     <div layout-fill layout="row" layout-wrap style="margin: 0 auto;">
-        <md-card class="loading" flex ng-show="loading" layout-align="center center">
+        <div class="loading" flex ng-show="loading" layout-align="center center">
           <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-        </md-card>
-      <div ng-repeat="item in coupons" layout="row" layout-wrap layout-fill layout-align="center start">
-      	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex-md="50"  flex>
+        </div>
+      <div ng-repeat="item in coupons" layout-wrap layout-align="center center">
+      	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="33">
                   <div class="info">
                     <h2 class="margin-sm">{{promo.name}}</h2>
                     <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
