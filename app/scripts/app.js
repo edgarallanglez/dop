@@ -32,16 +32,19 @@ angular
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser;
+    this.location;
     this.loading = true;
     var self = this;
 
     this.setUser = function(currentUser) {
-      this.currentUser = currentUser
-    }
-
+      this.currentUser = currentUser;
+    };
+    this.setLocation = function(location) {
+      this.location = location;
+    };
     this.getCurrentUser = function () {
-      return this.currentUser
-    }
+      return this.currentUser;
+    };
 
     this.getMe = function () {
       var payload = $auth.getPayload();
@@ -51,13 +54,14 @@ angular
         data: { 'branches_user_id': payload.id },
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
+
         self.loading = false;
         return data.data;
       }).error(function(message){
         SweetAlert.swal("Error en el servidor", "", "error");
         self.loading = false;
       });
-    }
+    };
 
   })
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
@@ -81,7 +85,7 @@ angular
               $location.path('/login');
             } else {
               deferred.resolve();
-            }
+            };
 
             return deferred.promise;
           },
@@ -92,6 +96,7 @@ angular
               $userService.getMe().success(function(data){
                 var user = data.data
                 $userService.setUser(user);
+                //$userService.setLocation(user.location)
                 deferred.resolve();
               }).error(function(message){
                 SweetAlert.swal("Error en el servidor", "error")
@@ -224,7 +229,7 @@ angular
           data: { 'branches_user_id': payload.id },
           headers: {'Content-Type': 'application/json'}
         }).success(function(data){
-          $userService.setUser(data.data);
+          $userService.setUser(data.data[0]);
           $scope.user = $userService.getCurrentUser();
         });
       } else {

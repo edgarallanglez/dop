@@ -55,7 +55,7 @@ angular.module('dopApp')
           latitude: object.latitude, 
           longitude: object.longitude,
           name: object.name, 
-          icon: 'images/marker.png',
+          icon: 'images/marker.png'
           /*options: {
             animation: google.maps.Animation.DROP
           }*/
