@@ -15,7 +15,6 @@ angular.module('dopApp')
     this.getCoupon = function () {
         return this.coupon;
     }
-
     this.setCoupon = function(coupon){
        this.coupon = coupon;
     }
