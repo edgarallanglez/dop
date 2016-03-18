@@ -60,7 +60,7 @@ angular
     }
 
   })
-  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
+  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
                     $locationProvider, $httpProvider, $authProvider, RestangularProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -90,7 +90,7 @@ angular
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
-                var user = data.data
+                var user = data.data[0]
                 $userService.setUser(user);
                 deferred.resolve();
               }).error(function(message){
@@ -173,7 +173,7 @@ angular
 
     $urlRouterProvider.otherwise('/');
     // Theme configurations
-    
+
     // $mdThemingProvider.theme('default')
     //   .primaryPalette('blue-grey', {
     //     'default': '800',
@@ -206,7 +206,7 @@ angular
       'contrastDefaultColor': 'light',
       'contrastDarkColors': '50 100 200 300 A100 A200'
     });
-    
+
     $mdThemingProvider.theme('defaults')
       .primaryPalette('dopPalette', {
           'default': '400',
@@ -248,11 +248,11 @@ angular
     }, function (flag) {
         $scope.loading = flag;
     });
-    
+
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
-    
+
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').open()
@@ -299,7 +299,7 @@ angular
 
   })
   //Controlador SideBar derecho
-  .controller('WeatherCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http', 
+  .controller('WeatherCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http',
                      function($scope, $auth, $userService, $timeout, $mdSidenav, $log, $http) {
     $scope.loading = true;
 
@@ -318,7 +318,7 @@ angular
 
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
-            var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';        
+            var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';
             $http.jsonp(url).success(function(data) {
               $scope.data = data;
               $scope.icon = data.weather[0].icon;
@@ -336,7 +336,3 @@ angular
                                           });
     };
   }])
-
-
-
-     

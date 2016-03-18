@@ -24,7 +24,7 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('CouponCtrl', function ($scope, $state, $mdDialog, SweetAlert) {
+  .controller('CouponCtrl', function ($scope, $state, $mdDialog, SweetAlert, $couponService) {
     $state.go('coupon.list');
 
     $scope.showModal = function(ev) {
@@ -35,6 +35,22 @@ angular.module('dopApp')
         templateUrl: "../../views/modalViews/pricingModalView.html",
         targetEvent: ev,
       })
+
+      .then(function(answer) {
+        SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
+      }, function() {
+        $scope.alert = 'You cancelled the dialog.';
+      });
+    };
+
+    $scope.showConfigModal = function(promo) {
+			$couponService.coupon = promo
+      $mdDialog.show({
+        clickOutsideToClose: false,
+        controller: "CouponMainCtrl",
+        templateUrl: '../../views/couponViews/couponMainView.html',
+        targetEvent: promo,
+      })
       .then(function(answer) {
         SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
       }, function() {
@@ -42,9 +58,3 @@ angular.module('dopApp')
       });
     };
   });
-
-
-
-    
-    
- 
