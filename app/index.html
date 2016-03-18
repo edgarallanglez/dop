@@ -33,44 +33,69 @@
   <!-- <base href="/"> -->
 </head>
 
-<body ng-app="dopApp" ng-controller="TabController" class="ng-cloak" style="opacity: 1; margin-left: 0px;">
+<body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;" ng-cloak>
     <!-- Fixed navbar -->
     <div id="webApp" ng-show="isAuthenticated()">
-        <div layout="column"layout-fill>
-          <md-toolbar>
-            <div class="md-toolbar-tools">
+          <md-content>
+          <div class="md-toolbar-tools">
+              <img id="main-logo" src="images/dop_logo_w.png">
+  
+    <!--         <a ng-href="#/">
+                <img id="main-logo" src="images/dop_logo_w.png">
+            </a> -->
+              <md-tabs class="md-defaults-theme" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+                <md-tab id="tab1">
+                  <md-tab-label>INICIO</md-tab-label>
+              <!--     <md-tab-body>
+                    View for Item #1 <br/>
+                    data.selectedIndex = 0;
+                  </md-tab-body> -->
+                </md-tab>
+                <md-tab id="tab2">
+                  <md-tab-label>CAMPAÑAS</md-tab-label>
+              <!--     <md-tab-body>
+                    View for Item #2 <br/>
+                    data.selectedIndex = 1;
+                  </md-tab-body> -->
+                </md-tab>
+                <md-tab id="tab3">
+                  <md-tab-label>REPORTES</md-tab-label>
+         <!--          <md-tab-body>
+                    View for Item #3 <br/>
+                    data.selectedIndex = 2;
+                  </md-tab-body>
+   -->              </md-tab>
+              </md-tabs>
+              <span>$ 5000.00</span>
+            </div>
+          </md-content>
+<!-- 
+            <md-content>
               <a ng-href="#/">
-                <img id="main-logo" src="images/white_logo.png">
-              </a>
+                <img id="main-logo" src="images/dop_logo_w.png">
+              </a> -->
               <!-- fill up the space between left and right area -->
-              <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
-                <md-tab id="tab1" aria-controls="tab1-content" class="white">
+<!--               <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
+                <md-tab id="tab1" aria-controls="tab1-content" >
                   <a href="#/">
                     Inicio
                   </a>
                 </md-tab>
-                <md-tab id="tab2" aria-controls="tab2-content" class="white">
+                <md-tab id="tab2" aria-controls="tab2-content">
                   <a href="#/coupon">
                     Promociones
                   </a>
                 </md-tab>
-                <md-tab id="tab3" aria-controls="tab3-content" class="white">
+                <md-tab id="tab3" aria-controls="tab3-content">
                   <a href="#/report">
                     Reportes
                   </a>
                 </md-tab>
               </md-tabs>
               <span flex></span>
-
-              <md-button ng-click="toggleRightNotifications()" class="notification md-fab md-primary md-hue-3" aria-label="Notification">
-                  <span class="white">5</span>
-              </md-button>
-              <md-button ng-click="toggleRightWidgets()" class="" aria-label="Menu">
-                <i class="fa fa-bars menu-icon margin-sm"></i>
-              </md-button>
-            </div>
-          </md-toolbar>
-          <md-card class="loading" flex ng-show="loading" layout-align="center center">
+            </md-content>
+ -->
+         <md-card class="loading" flex ng-show="loading" layout-align="center center">
               <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
           </md-card>
           <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
@@ -82,7 +107,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
-                    <!-- tab's content -->
+                    
                   </div>
                 </md-content>
             </div>
@@ -94,7 +119,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
-                    <!-- tab's content -->
+                    
                   </div>
                 </md-content>
             </div>
@@ -106,84 +131,12 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
                   <div flex ui-view>
-                    <!-- tab's content -->
+                    
                   </div>
                 </md-content>
             </div>
           </ng-switch>
-        </div>
-        <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="notifications-sidenav" layout="vertical" layout-fill>
-          <md-toolbar class="md-theme-light">
-            <h1 class="md-toolbar-tools">Notificaciones</h1>
-          </md-toolbar>
-          <md-content ng-controller="NotificationCtrl" class="md-padding">
-            <md-button ng-click="closeNotifications()" class="md-primary">
-              Cerrar
-            </md-button>
-          </md-content>
-        </md-sidenav>
-        <md-sidenav id="utilities-sidenav" class="md-sidenav-right md-whiteframe-z2" md-component-id="widgets-sidenav"layout="vertical" layout-fill>
-          <md-toolbar ng-controller="MeCtrl" class="md-theme-light">
-            <h1 class="md-toolbar-tools">{{user.branch.name}}</h1>
-            <button id="closeWidgetsBtn" class="cmn-toggle-switch cmn-toggle-switch__htx" ng-click="closeWidgets()">
-              <span>toggle menu</span>
-            </button>
-          </md-toolbar>
-          <md-content ng-controller="WeatherCtrl" class="md-padding">
-            <md-card class="loading" flex ng-show="loading" layout-align="center center">
-              <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-            </md-card>
-            <div id="weather" class="animated fadeInLeft" ng-show="!loading">
-              <md-content>
-                <div layout="column" layout-align="center center">
-                  <h1 class="location no-margin-bottom" flex="100">{{data.name}}</h1>
-                  <p class="date no-margin-bottom" flex="100">{{today | date: 'EEEE, dd MMMM H:mm'}}</p>
-                </div>
 
-                <div layout="row" class="weather-wrapper">    
-                  <p class="temp" id="temperature" flex>{{data.main.temp - 273.15 | number: 0}}°</p>
-                  <div class="weather-icon sun"></div>
-                </div>
-              </md-content>
-            </div>
-
-            <div id="calculator">
-              <!-- Screen and clear key -->
-              <div class="top">
-                <span class="clear">C</span>
-                <div class="screen"></div>
-              </div>
-              
-              <div class="keys" layout="row">
-                <!-- operators and other keys -->
-                <div class="nums">
-                    <span class="num-key">7</span>
-                    <span class="num-key">8</span>
-                    <span class="num-key">9</span>
-                    <span class="num-key">4</span>
-                    <span class="num-key">5</span>
-                    <span class="num-key">6</span>
-                    <span class="num-key">1</span>
-                    <span class="num-key">2</span>
-                    <span class="num-key">3</span>
-                    <span class="num-key">0</span>
-                    <span class="num-key">.</span>
-                    <span class="num-key eval">=</span>
-                </div>
-                <div class="operator" layout="column">
-                  <span class="operator">+</span>
-                  <span class="operator">-</span>
-                  <span class="operator">÷</span>
-                  <span class="operator">x</span>
-                </div>
-              </div>
-            </div>
-
-            <md-button ng-click="closeWidgets()" class="md-primary">
-              Cerrar
-            </md-button>
-          </md-content>
-        </md-sidenav>
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
@@ -262,7 +215,6 @@
         <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/vendor/calculator.js"></script>
         <script src="scripts/vendor/demo.js"></script>
         <script src="scripts/vendor/angular-locale_es-mx.js"></script>
 

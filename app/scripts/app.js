@@ -32,16 +32,19 @@ angular
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser;
+    this.location;
     this.loading = true;
     var self = this;
 
     this.setUser = function(currentUser) {
-      this.currentUser = currentUser
-    }
-
+      this.currentUser = currentUser;
+    };
+    this.setLocation = function(location) {
+      this.location = location;
+    };
     this.getCurrentUser = function () {
-      return this.currentUser
-    }
+      return this.currentUser;
+    };
 
     this.getMe = function () {
       var payload = $auth.getPayload();
@@ -51,16 +54,17 @@ angular
         data: { 'branches_user_id': payload.id },
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
+
         self.loading = false;
         return data.data;
       }).error(function(message){
         SweetAlert.swal("Error en el servidor", "", "error");
         self.loading = false;
       });
-    }
+    };
 
   })
-  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, 
+  .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider,
                     $locationProvider, $httpProvider, $authProvider, RestangularProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -81,7 +85,7 @@ angular
               $location.path('/login');
             } else {
               deferred.resolve();
-            }
+            };
 
             return deferred.promise;
           },
@@ -90,8 +94,9 @@ angular
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
-                var user = data.data
+                var user = data.data[0]
                 $userService.setUser(user);
+                //$userService.setLocation(user.location)
                 deferred.resolve();
               }).error(function(message){
                 SweetAlert.swal("Error en el servidor", "error")
@@ -173,20 +178,47 @@ angular
 
     $urlRouterProvider.otherwise('/');
     // Theme configurations
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue-grey', {
-        'default': '800',
-        'hue-1': '100',
-        'hue-3': '300'
-      })
-      .accentPalette('red', {
-        'default': '600'
-      });
+
+    // $mdThemingProvider.theme('default')
+    //   .primaryPalette('blue-grey', {
+    //     'default': '800',
+    //     'hue-1': '100',
+    //     'hue-3': '300'
+    //   })
+    //   .accentPalette('red', {
+    //     'default': '600'
+    //   });
     $mdThemingProvider.theme('green')
       .primaryPalette('light-green')
       .accentPalette('light-blue');
 
-  })
+
+    $mdThemingProvider.definePalette('dopPalette', {
+      '50': '#ffffff',
+      '100': '#fedbe8',
+      '200': '#fda4c4',
+      '300': '#fc5e96',
+      '400': '#fc4083',
+      '500': '#fb226f',
+      '600': '#fa055c',
+      '700': '#dc0451',
+      '800': '#be0346',
+      '900': '#a0033b',
+      'A100': '#ffffff',
+      'A200': '#fedbe8',
+      'A400': '#fc4083',
+      'A700': '#dc0451',
+      'contrastDefaultColor': 'light',
+      'contrastDarkColors': '50 100 200 300 A100 A200'
+    });
+
+    $mdThemingProvider.theme('defaults')
+      .primaryPalette('dopPalette', {
+          'default': '400',
+          'hue-1': '100',
+          'hue-2': '300'
+      })
+})
   .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location){
     $scope.init = function () {
       if (!$userService.getCurrentUser() && $auth.isAuthenticated()) {
@@ -197,7 +229,7 @@ angular
           data: { 'branches_user_id': payload.id },
           headers: {'Content-Type': 'application/json'}
         }).success(function(data){
-          $userService.setUser(data.data);
+          $userService.setUser(data.data[0]);
           $scope.user = $userService.getCurrentUser();
         });
       } else {
@@ -221,11 +253,11 @@ angular
     }, function (flag) {
         $scope.loading = flag;
     });
-    
+
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
-    
+
     //Llamar SideBar derecho
     $scope.toggleRightNotifications = function() {
       $mdSidenav('notifications-sidenav').open()
@@ -260,7 +292,8 @@ angular
       // tab selected change
       if ($scope.data) {
         if ($scope.data.selectedIndex == 0 && $auth.isAuthenticated() ) {
-          $location.path('/').replace();
+          $location.url("/");
+          //$location.path('/').replace();
         } else if ($scope.data.selectedIndex == 1) {
           $location.path('/coupon').replace();
         } else if ($scope.data.selectedIndex == 2) {
@@ -271,7 +304,7 @@ angular
 
   })
   //Controlador SideBar derecho
-  .controller('WeatherCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http', 
+  .controller('WeatherCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http',
                      function($scope, $auth, $userService, $timeout, $mdSidenav, $log, $http) {
     $scope.loading = true;
 
@@ -290,7 +323,7 @@ angular
 
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
-            var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';        
+            var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';
             $http.jsonp(url).success(function(data) {
               $scope.data = data;
               $scope.icon = data.weather[0].icon;
@@ -308,7 +341,3 @@ angular
                                           });
     };
   }])
-
-
-
-     

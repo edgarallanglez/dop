@@ -8,7 +8,7 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('LoginCtrl', function($userService, $scope, $auth, $http, $templateCache, SweetAlert) {
+  .controller('LoginCtrl', function($userService, $scope, $auth, $http, $templateCache, SweetAlert, $location) {
 
     $scope.login = function() {
       $auth.login({
@@ -17,6 +17,7 @@ angular.module('dopApp')
       })
       .then(function(response) {
         $auth.setToken(response.data.token, false);
+        $location.path('/');
         // $scope.setGlobalUser();
       })
       .catch(function(response) {

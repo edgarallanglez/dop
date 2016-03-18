@@ -130,6 +130,11 @@
   text-overflow: ellipsis;*/
 }
 
+.add-campaign-button {
+	position: fixed;
+	right: 35px;
+	bottom: 35px;
+}
 
 
 
