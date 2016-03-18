@@ -135,7 +135,7 @@ angular
             var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
-                var user = data.data
+                var user = data.data[0]
                 $userService.setUser(user);
                 deferred.resolve();
               }).error(function(){

@@ -1,75 +1,37 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node',
-1 verbose cli   '/usr/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   'grunt-autoprefixe' ]
-2 info using npm@1.4.28
-3 info using node@v0.10.40
-4 verbose node symlink /usr/bin/node
-5 warn package.json dop@0.0.0 No description
-6 warn package.json dop@0.0.0 No repository field.
-7 warn package.json dop@0.0.0 No README data
-8 verbose readDependencies using package.json deps
-9 verbose cache add [ 'grunt-autoprefixe', null ]
-10 verbose cache add name=undefined spec="grunt-autoprefixe" args=["grunt-autoprefixe",null]
-11 verbose parsed url { protocol: null,
-11 verbose parsed url   slashes: null,
-11 verbose parsed url   auth: null,
-11 verbose parsed url   host: null,
-11 verbose parsed url   port: null,
-11 verbose parsed url   hostname: null,
-11 verbose parsed url   hash: null,
-11 verbose parsed url   search: null,
-11 verbose parsed url   query: null,
-11 verbose parsed url   pathname: 'grunt-autoprefixe',
-11 verbose parsed url   path: 'grunt-autoprefixe',
-11 verbose parsed url   href: 'grunt-autoprefixe' }
-12 silly lockFile 6fdc545b-grunt-autoprefixe grunt-autoprefixe
-13 verbose lock grunt-autoprefixe /root/.npm/6fdc545b-grunt-autoprefixe.lock
-14 silly lockFile 6fdc545b-grunt-autoprefixe grunt-autoprefixe
-15 silly lockFile 6fdc545b-grunt-autoprefixe grunt-autoprefixe
-16 verbose addNamed [ 'grunt-autoprefixe', '' ]
-17 verbose addNamed [ null, '*' ]
-18 silly lockFile 1abd0d66-grunt-autoprefixe grunt-autoprefixe@
-19 verbose lock grunt-autoprefixe@ /root/.npm/1abd0d66-grunt-autoprefixe.lock
-20 silly addNameRange { name: 'grunt-autoprefixe', range: '*', hasData: false }
-21 verbose request where is /grunt-autoprefixe
-22 verbose request registry https://registry.npmjs.org/
-23 verbose request id 8bea43afc6ef5d39
-24 verbose url raw /grunt-autoprefixe
-25 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-autoprefixe' ]
-26 verbose url resolved https://registry.npmjs.org/grunt-autoprefixe
-27 verbose request where is https://registry.npmjs.org/grunt-autoprefixe
-28 info trying registry request attempt 1 at 09:53:27
-29 http GET https://registry.npmjs.org/grunt-autoprefixe
-30 http 404 https://registry.npmjs.org/grunt-autoprefixe
-31 silly registry.get cb [ 404,
-31 silly registry.get   { 'content-type': 'application/json',
-31 silly registry.get     'cache-control': 'max-age=0',
-31 silly registry.get     'content-length': '2',
-31 silly registry.get     'accept-ranges': 'bytes',
-31 silly registry.get     date: 'Thu, 04 Feb 2016 16:53:27 GMT',
-31 silly registry.get     via: '1.1 varnish',
-31 silly registry.get     age: '0',
-31 silly registry.get     connection: 'keep-alive',
-31 silly registry.get     'x-served-by': 'cache-sjc3135-SJC',
-31 silly registry.get     'x-cache': 'MISS',
-31 silly registry.get     'x-cache-hits': '0',
-31 silly registry.get     'x-timer': 'S1454604807.069520,VS0,VE90' } ]
-32 silly lockFile 1abd0d66-grunt-autoprefixe grunt-autoprefixe@
-33 silly lockFile 1abd0d66-grunt-autoprefixe grunt-autoprefixe@
-34 error 404 Not Found
-34 error 404
-34 error 404 'grunt-autoprefixe' is not in the npm registry.
-34 error 404 You should bug the author to publish it
-34 error 404 It was specified as a dependency of 'dop'
-34 error 404
-34 error 404 Note that you can also install from a
-34 error 404 tarball, folder, or http url, or git url.
-35 error System Linux 3.13.0-57-generic
-36 error command "/usr/bin/node" "/usr/bin/npm" "install" "grunt-autoprefixe"
-37 error cwd /var/www/dop
-38 error node -v v0.10.40
-39 error npm -v 1.4.28
-40 error code E404
-41 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@2.14.12
+3 info using node@v4.2.6
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info prestart dop@0.0.0
+6 info start dop@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info dop@0.0.0 Failed to exec start script
+9 verbose stack Error: dop@0.0.0 start: `grunt serve`
+9 verbose stack Exit status 3
+9 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at EventEmitter.emit (events.js:172:7)
+9 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+9 verbose stack     at emitTwo (events.js:87:13)
+9 verbose stack     at ChildProcess.emit (events.js:172:7)
+9 verbose stack     at maybeClose (internal/child_process.js:821:16)
+9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+10 verbose pkgid dop@0.0.0
+11 verbose cwd /Users/Edgar/Documents/Develop/dop
+12 error Darwin 15.3.0
+13 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+14 error node v4.2.6
+15 error npm  v2.14.12
+16 error code ELIFECYCLE
+17 error dop@0.0.0 start: `grunt serve`
+17 error Exit status 3
+18 error Failed at the dop@0.0.0 start script 'grunt serve'.
+18 error This is most likely a problem with the dop package,
+18 error not with npm itself.
+18 error Tell the author that this fails on your system:
+18 error     grunt serve
+18 error You can get their info via:
+18 error     npm owner ls dop
+18 error There is likely additional logging output above.
+19 verbose exit [ 1, true ]

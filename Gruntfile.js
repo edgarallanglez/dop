@@ -28,7 +28,7 @@ module.exports = function (grunt) {
       awesome: {
         host: '45.55.1.118',
         port: '9000',
-        privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/authorized_keys'),
+        privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/id_rsa'),
         username: 'root',
         agent: process.env.SSH_AUTH_SOCK
       }
