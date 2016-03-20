@@ -32,15 +32,11 @@ angular
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser;
-    this.location;
     this.loading = true;
     var self = this;
 
     this.setUser = function(currentUser) {
       this.currentUser = currentUser;
-    };
-    this.setLocation = function(location) {
-      this.location = location;
     };
     this.getCurrentUser = function () {
       return this.currentUser;

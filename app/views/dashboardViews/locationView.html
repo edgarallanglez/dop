@@ -20,9 +20,12 @@
     <div class="card-body card-padding">
         <div class="padding-xl">
           <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
-            <!--<ui-gmap-marker idKey='marker.id' coords='marker.coords'>
-            </ui-gmap-marker>-->
-            <ui-gmap-markers ng-show="mapLoaded" models="markers" coords="'self'" icon="'icon'" options="'options'" fit="true">
+            <ui-gmap-marker idKey='marker.id' coords='marker.coords' icon='marker.icon'>
+            </ui-gmap-marker>
+            <ui-gmap-markers ng-show="mapLoaded" models="markers" coords="'self'" icon="'icon'"  options="'options'" fit="true">
+                <ui-gmap-window coords="map.center" show="windowOptions.show" closeClick="closeClick()" >
+                    <div ng-non-bindable>{{name}} <br> {{taken_date | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+                </ui-gmap-window>
             </ui-gmap-markers>
           </ui-gmap-google-map>
         </div>

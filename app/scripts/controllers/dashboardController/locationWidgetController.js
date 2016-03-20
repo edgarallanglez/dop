@@ -39,6 +39,13 @@ angular.module('dopApp')
       zoom: 13
     };
 
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: $userService.getCurrentUser().latitude,
+        longitude: $userService.getCurrentUser().longitude
+      }
+    }
 
     var branch_id = $userService.getCurrentUser().branch_id;
     $scope.markers = [];
@@ -49,12 +56,14 @@ angular.module('dopApp')
 
       for(var i=0; i < data.data.data.length; i++){
         var object = data.data.data[i];
+        console.log(object);
         //var position = new google.maps.LatLng(object.latitude, object.longitude)
         var marker = {
           id: i,
           latitude: object.latitude, 
           longitude: object.longitude,
           name: object.name, 
+          taken_date: object.taken_date, 
           icon: 'images/marker.png'
           /*options: {
             animation: google.maps.Animation.DROP
@@ -68,6 +77,22 @@ angular.module('dopApp')
         bounds.extend($scope.markers[i].position) */
 
     });
+
+    $scope.windowOptions = {
+        show: false
+    };
+
+    $scope.onClick = function (data) {
+        $scope.windowOptions.show = !$scope.windowOptions.show;
+        console.log('$scope.windowOptions.show: ', $scope.windowOptions.show);
+        console.log('This is a ' + data);
+        //alert('This is a ' + data);
+    };
+
+    $scope.closeClick = function () {
+        $scope.windowOptions.show = false;
+    };
+
 
     $scope.options = {
       scrollwheel: false,
