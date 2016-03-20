@@ -2,7 +2,7 @@
 	border-radius: 30px;
 	border: 1px solid #ddd;
 	width: 48px;
-	margin: 16px; 
+	margin: 16px;
 }
 .coupon-container { background: none !important; }
 .coupon-list-card {
@@ -39,14 +39,15 @@
 	background: rgb(240, 240, 240);
 	border-bottom: 1px solid rgba(0,0,0,0.12);
 }
-.coupon-main-card{ 
+.coupon-main-card{
 	background: white;
 	height: 100%;
 	transition:all 0.3s ease;
 }
 #create-coupon-btn {
-	float:right;
-	margin-top: 2.2em;
+	float: right;
+	right: -75px;
+	bottom: 0;
 }
 .coupon-select{
 	margin-bottom: 2.2em;
@@ -135,12 +136,3 @@
 	right: 35px;
 	bottom: 35px;
 }
-
-
-
-
-
-
-
-
-

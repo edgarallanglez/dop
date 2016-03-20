@@ -6,8 +6,8 @@
 .tabsdemoStaticTabs .sample md-tab-content:nth-child(3) { background-color: #26C6DA; }
 .sample section.md-header { height: 50px !important; }
 .sample md-tabs { width: 100% !important; }
-.tabsdemoStaticTabs .sample .md-tabs-content{ 
-	height: calc(100% - 50px); 
+.tabsdemoStaticTabs .sample .md-tabs-content{
+	height: calc(100% - 50px);
 }
 .md-tab-content{
 	padding: 1em;
@@ -110,12 +110,12 @@ md-tab-template div:nth-child(4){
 /* Maps Widget*/
 .angular-google-map-container { height: 400px; }
 
-.coupon-card { padding: 0em; }
+.coupon-card { padding: 0em; cursor: pointer; }
 .coupon-card .info { padding: 1em; text-align: center; }
 .coupon-card p,
 .coupon-card h2 { margin-bottom: 0; }
 .coupon-card h2 { margin-top:0; }
-/*canvas#ageChart { 
+/*canvas#ageChart {
 		width: 100% !important;
 		height: auto !important;
 }

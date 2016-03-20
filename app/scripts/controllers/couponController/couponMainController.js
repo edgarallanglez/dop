@@ -13,22 +13,17 @@ angular.module('dopApp')
   .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService, $couponService) {
     //  var selected_coupon = Coupon.getCoupon();
     //  console.log("Cupón seleccionado: "+selected_coupon.name);
-    $scope.selectTags = [{
-        'label': 'Compra X y llevate X',
-        'val': 4 
-      },
-      { 
-        'label': 'Descuento',
-        'val': 3
-      },
-      {
-        'label': 'Bono',
-        'val': 2
-    }];
-  	$scope.coupon = { 
-    //  'startDate': new Date(), 
-    //  'endDate': new Date(), 
-      'name':'', 
+    //  $scope.couponSelected = 0;
+    $scope.selectTags = [
+      { label: 'Compra X y llevate X', val: 4 },
+      { label: 'Descuento', val: 3 },
+      { label: 'Bono', val: 2 }
+    ];
+
+  	$scope.coupon = {
+    //  'startDate': new Date(),
+    //  'endDate': new Date(),
+      'name':'',
     //  'limit':0,
       'min_spent':0,
       'receives':0,
@@ -61,7 +56,7 @@ angular.module('dopApp')
           couponInfo.n2 = $scope.coupon.buy;
           break;
       }
-      
+
       $http({
         method: 'POST',
         url: 'http://45.55.7.118:5000/api/coupon/customize',

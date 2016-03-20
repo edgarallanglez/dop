@@ -19,7 +19,6 @@ angular
     'ngRoute',
     'ui.router',
     'ngSanitize',
-    'ngTouch',
     'ngMaterial',
     'chart.js',
     'uiGmapgoogle-maps',
@@ -122,12 +121,11 @@ angular
         resolve: {
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if (!$auth.isAuthenticated()) {
-              $location.path('/login');
-            } else {
+            if ($auth.isAuthenticated()) {
               deferred.resolve();
+            } else {
+              $location.path('/login');
             }
-
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
@@ -153,12 +151,11 @@ angular
         resolve: {
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if (!$auth.isAuthenticated()) {
-              $location.path('/login');
-            } else {
+            if ($auth.isAuthenticated()) {
               deferred.resolve();
+            } else {
+              $location.path('/login');
             }
-
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
@@ -190,7 +187,7 @@ angular
     //   });
     $mdThemingProvider.theme('green')
       .primaryPalette('light-green')
-      .accentPalette('light-blue');
+      .accentPalette('blue');
 
 
     $mdThemingProvider.definePalette('dopPalette', {
@@ -292,11 +289,10 @@ angular
       // tab selected change
       if ($scope.data) {
         if ($scope.data.selectedIndex == 0 && $auth.isAuthenticated() ) {
-          $location.url("/");
-          //$location.path('/').replace();
-        } else if ($scope.data.selectedIndex == 1) {
+          $location.path('/').replace();
+        } else if ($scope.data.selectedIndex == 1 && $auth.isAuthenticated()) {
           $location.path('/coupon').replace();
-        } else if ($scope.data.selectedIndex == 2) {
+        } else if ($scope.data.selectedIndex == 2 && $auth.isAuthenticated()) {
           $location.path('/report').replace();
         };
       };

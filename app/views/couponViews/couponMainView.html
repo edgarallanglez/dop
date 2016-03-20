@@ -1,70 +1,79 @@
-<md-dialog ng-controller="CouponMainCtrl" md-theme="defaults" flex="60" flex-xs="89" aria-label="Compra coupones">
+<md-dialog ng-controller="CouponMainCtrl as ctrl" md-theme="defaults" flex="60" flex-sm="85" flex-xs="89" aria-label="Configura campaña" class="md-inline-form">
   <md-toolbar class="md-primary">
-      <h1 class="md-toolbar-tools">Configuración Promoción</h1>
+      <h1 class="md-toolbar-tools">Configúra tu Campaña</h1>
   </md-toolbar>
-  <md-dialog-content class="sticky-container" flex>
-        <md-select ng-model="couponSelected" class="coupon-select"  placeholder="Tipo de Promoción" flex>
-                <md-option ng-value="tag.val" ng-repeat="tag in selectTags">{{tag.label}}</md-option>
-        </md-select>
-        <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-show="couponSelected!=1" flex>
-            <div layout-wrap layout-sm="column">
-                <md-input-container flex>
-                    <label for="name">Nombre</label>
-                    <input name="name" id="name" ng-model="coupon.name">
-                </md-input-container>
-                 <md-input-container flex="20">
-                    <label for="limit">Límite</label>
-                    <input name="limit" type="number" id="limit" ng-model="coupon.limit" min="0" max="2000">
-                                        <div ng-messages="userForm.limit.$error">
-                      <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
-                      <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
-                      <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container flex="20">
-                    <label for="min_spent">Compra Mínima</label>
-                    <input name="min_spent" type="number" id="min_spent" ng-model="coupon.min_spent" min="0" max="99999" >
-                                        <div ng-messages="userForm.limit.$error">
-                      <div ng-message="required">You've got to charge something! You can't just <b>give away</b> a Missile Defense System.</div>
-                      <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
-                      <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
-                    </div>
-                </md-input-container>
-            </div>
-            <!-- Layout según tipo de cupon seleccionado -->
-            Compra X y llevate X
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='4'">
-                <md-input-container flex>
-                    <label for="receives">Recibe</label>
-                    <input name="receives"  type="number" id="receives" ng-model="coupon.receives" min="0" max="10">
-                </md-input-container>
-                <md-input-container flex>
-                    <label for="buy">Compra</label>
-                    <input name="buy" type="number" id="buy" ng-model="coupon.buy" min="0" max="10">
-                </md-input-container>
-            </div>
-            Descuento
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='3'">
-                <md-input-container flex>
-                    <label for="percent"l>Porcentaje de descuento</label>
-                    <input name="percent" type="number" id="percent" ng-model="coupon.percent" min="0" max="100">
-                </md-input-container>
-            </div>
-            Bono
-            <div layout-wrap class="coupon-type-layout" ng-show="couponSelected=='2'">
-                <md-input-container flex>
-                    <label for="bond">Bonificación</label>
-                    <input name="bond" type="number" id="bond" ng-model="coupon.bond_size" min="0" max="99999">
-                </md-input-container>
-            </div>
-
-            <md-input-container flex>
-                <label for="description">Descripción</label>
-                <textarea name="description" ng-model="coupon.description" id="description" columns="1" md-maxlength="100"></textarea>
+  <md-dialog-content class="sticky-container" layout="row" layout-align="center center" layout-wrap layout-fill>
+      <div flex="80">
+            <md-input-container>
+                <md-select ng-model="couponSelected" class="coupon-select" placeholder="Tipo de Promoción" flex>
+                        <md-option ng-repeat="tag in selectTags" ng-value="{{tag.val}}">{{tag.label}}</md-option>
+                </md-select>
             </md-input-container>
-            <md-button type="submit" id="create-coupon-btn" class="md-fab md-accent md-hue-2" aria-label="Crear">
-                 <i class="fa fa-check menu-icon margin-sm"></i>
-            </md-button>
-        </form>
+            <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-show="couponSelected!=1" layout-wrap layout-fill layout="row" flex>
+                <div layout="row" layout-fill>
+                    <md-input-container flex-gt-xs>
+                        <label for="name">Nombre</label>
+                        <input name="name" id="name" ng-model="coupon.name">
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-fill>
+                    <md-input-container flex-gt-xs>
+                        <label for="limit">Límite</label>
+                        <input name="limit" type="number" id="limit" ng-model="coupon.limit" min="0" max="2000">
+                                            <div ng-messages="userForm.limit.$error">
+                          <div ng-message="required">Este campo es obligatorio.</div>
+                          <div ng-message="min">El mínimo solo puede ser de 0 hacia arriba.</div>
+                          <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex-gt-xs>
+                        <label for="min_spent">Compra Mínima</label>
+                        <input name="min_spent" type="number" id="min_spent" ng-model="coupon.min_spent" min="0" max="99999" >
+                                            <div ng-messages="userForm.limit.$error">
+                          <div ng-message="required">Este campo es obligatorio.</div>
+                          <div ng-message="min">You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!</div>
+                          <div ng-message="max">$5,000 an hour? That's a little ridiculous. I doubt event Bill Clinton could afford that.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <!-- Layout según tipo de cupon seleccionado -->
+                <!-- Compra X y llevate X -->
+                <div layout="row" layout-fill class="coupon-type-layout" ng-show="couponSelected=='4'">
+                    <md-input-container flex-gt-xs>
+                        <label for="receives">Recibe</label>
+                        <input name="receives"  type="number" id="receives" ng-model="coupon.receives" min="0" max="10">
+                    </md-input-container>
+                    <md-input-container flex-gt-xs>
+                        <label for="buy">Compra</label>
+                        <input name="buy" type="number" id="buy" ng-model="coupon.buy" min="0" max="10">
+                    </md-input-container>
+                </div>
+                <!-- Descuento -->
+                <div layout="row" layout-fill class="coupon-type-layout" ng-show="couponSelected=='3'">
+                    <md-input-container flex-gt-xs>
+                        <label for="percent"l>Porcentaje de descuento</label>
+                        <input name="percent" type="number" id="percent" ng-model="coupon.percent" min="0" max="100">
+                    </md-input-container>
+                </div>
+                <!-- Bono -->
+                <div layout="row" layout-fill layout-wrap class="coupon-type-layout" ng-show="couponSelected=='2'">
+                    <md-input-container flex-gt-xs>
+                        <label for="bond">Bonificación</label>
+                        <input name="bond" type="number" id="bond" ng-model="coupon.bond_size" min="0" max="99999">
+                    </md-input-container>
+                </div>
+
+                <md-input-container flex="100">
+                    <label for="description">Descripción</label>
+                    <textarea name="description" ng-model="coupon.description" id="description" columns="1" md-maxlength="100"></textarea>
+                </md-input-container>
+
+                <div layout="row" layout-fill layout-align="end center">
+                    <md-button type="submit" id="create-coupon-btn" class="md-fab md-green-theme" aria-label="Crear" style="line-height: 65px;">
+                         <i class="fa fa-check menu-icon margin-sm"></i>
+                    </md-button>
+                </div>
+            </form>
+        </div>
   </md-dialog-content>
 </md-dialog>
