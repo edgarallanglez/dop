@@ -19,7 +19,7 @@ angular.module('dopApp')
        this.coupon = coupon;
     }
   })
-  .controller('LastCouponListWidgetCtrl', function($scope, $http,$userService, CouponFactory, $lastCouponService, $state) {
+  .controller('LastCouponListWidgetCtrl', function($scope, $http, $userService, CouponFactory, $lastCouponService, $state) {
     $scope.loading = true;
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);

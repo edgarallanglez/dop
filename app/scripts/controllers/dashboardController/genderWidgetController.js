@@ -10,10 +10,28 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('GenderWidgetCtrl', function($rootScope, $scope) {
+  .controller('GenderWidgetCtrl', function($rootScope, $scope, $http, $userService) {
+  	var branch_id = $userService.getCurrentUser().branch_id;
+
+  	$http({
+      method: 'GET',
+      url: 'http://45.55.7.118:5000/api/coupon/used/gender/'+ branch_id,
+    }).then(function(data){
+      $scope.genders = data.data;
+      angular.forEach($scope.genders.data, function(value, key) {
+        if(value.gender == 'male'){
+          $scope.data[0] = value.count;
+        }else{
+	        if(value.gender == 'female'){
+	          $scope.data[1] = value.count;
+	        }
+	    }
+      });
+      //$scope.loading = false;
+    });
 
     $scope.labels = ['Hombres', 'Mujeres'];
-    $scope.data = [55, 23];
+    $scope.data = [0, 0];
     $scope.colours = ['#1976D2', '#E53935'];  
 
   });
