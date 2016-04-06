@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name dopApp.controller:MainCtrl
+ * @name dopApp.controller:PricingModalCtrl
  * @description
- * # MainCtrl
+ * # PricingModalCtrl
  * Controller of the dopApp
  */
 angular.module('dopApp')

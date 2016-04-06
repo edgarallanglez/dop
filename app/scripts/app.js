@@ -30,7 +30,7 @@ angular
     'dibari.angular-ellipsis'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
-    this.currentUser;
+    this.currentUser = null;
     this.loading = true;
     var self = this;
 
@@ -52,8 +52,8 @@ angular
 
         self.loading = false;
         return data.data;
-      }).error(function(message){
-        SweetAlert.swal("Error en el servidor", "", "error");
+      }).error(function(message) {
+        SweetAlert.swal(message, '', 'error');
         self.loading = false;
       });
     };
@@ -64,7 +64,7 @@ angular
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     RestangularProvider.setBaseUrl('https://inmoon.com.mx/api');
-    RestangularProvider.setDefaultHeaders({ "token" : 'application/json' });
+    RestangularProvider.setDefaultHeaders({ 'token' : 'application/json' });
     $authProvider.signupUrl = 'https://inmoon.com.mx/api/company/auth/signup';
     $authProvider.loginUrl = 'https://inmoon.com.mx/api/company/auth/login';
     $authProvider.facebook({ clientId: '927375797314743' });
@@ -80,21 +80,21 @@ angular
               $location.path('/login');
             } else {
               deferred.resolve();
-            };
+            }
 
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
-            var payload = $auth.getPayload();
+            //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
-                var user = data.data[0]
+                var user = data.data[0];
                 $userService.setUser(user);
                 //$userService.setLocation(user.location)
                 deferred.resolve();
               }).error(function(message){
-                SweetAlert.swal("Error en el servidor", "error")
+                SweetAlert.swal(message, 'error');
               });
             } else { deferred.resolve(); }
             return deferred.promise;
@@ -126,14 +126,14 @@ angular
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
-            var payload = $auth.getPayload();
+            //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().success(function(data){
-                var user = data.data[0]
+                var user = data.data[0];
                 $userService.setUser(user);
                 deferred.resolve();
               }).error(function(){
-                SweetAlert.swal("Error en el servidor", "", "error");
+                SweetAlert.swal('Error en el servidor', '', 'error');
               });
             } else { deferred.resolve(); }
             return deferred.promise;
@@ -156,10 +156,10 @@ angular
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
-            var payload = $auth.getPayload();
+            //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
               $userService.getMe().then(function(data){
-                var user = data.data
+                var user = data.data;
                 $userService.setUser(user);
                 deferred.resolve();
               });
@@ -210,7 +210,7 @@ angular
           'default': '400',
           'hue-1': '100',
           'hue-2': '300'
-      })
+      });
 })
   .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location){
     $scope.init = function () {
@@ -234,14 +234,14 @@ angular
     $scope.closeWidgets = function() {
       $mdSidenav('widgets-sidenav').close()
                                     .then(function(){
-                                      $log.debug("close RIGHT is done");
+                                      $log.debug('close RIGHT is done');
                                     });
     };
   })
-  .controller('TabController', function($scope, $state, $location, $userService, $log, $mdSidenav, $http, $templateCache, $auth, Restangular){
+  .controller('TabController', function($scope, $state, $location, $userService, $log, $mdSidenav, $http, $templateCache, $auth, $mdDialog){
     $scope.reload = true;
 
-    $scope.$watch(function(){
+    $scope.$watch(function() {
       return $userService.loading;
     }, function (flag) {
         $scope.loading = flag;
@@ -267,69 +267,55 @@ angular
                                     });
     };
 
+    $scope.showCreditModal = function(ev) {
+
+      $mdDialog.show({
+        clickOutsideToClose: false,
+        controller: 'AddCreditModalCtrl',
+        templateUrl: '../views/modalViews/addCreditModalView.html',
+        targetEvent: ev,
+      })
+
+      .then(function(answer) {
+        //SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
+      }, function() {
+        $scope.alert = 'You cancelled the dialog.';
+      });
+    };
+
     $scope.$watch('data.selectedIndex', function () {
       //  paint tab after reload
       if ($scope.data && $scope.reload) {
-        if ($location.path() == '/') {
+        if ($location.path() === '/') {
           $scope.data.selectedIndex = 0;
           $scope.reload = false;
-        } else if ($location.path() == '/coupon') {
+        } else if ($location.path() === '/coupon') {
           $scope.data.selectedIndex = 1;
           $scope.reload = false;
-        } else if ($location.path() == '/report') {
+        } else if ($location.path() === '/report') {
           $scope.data.selectedIndex = 2;
           $scope.reload = false;
-        };
-      };
+        }
+      }
 
       // tab selected change
       if ($scope.data) {
-        if ($scope.data.selectedIndex == 0 && $auth.isAuthenticated() ) {
+        if ($scope.data.selectedIndex === 0 && $auth.isAuthenticated() ) {
           $location.path('/').replace();
-        } else if ($scope.data.selectedIndex == 1 && $auth.isAuthenticated()) {
+        } else if ($scope.data.selectedIndex === 1 && $auth.isAuthenticated()) {
           $location.path('/coupon').replace();
-        } else if ($scope.data.selectedIndex == 2 && $auth.isAuthenticated()) {
+        } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
           $location.path('/report').replace();
-        };
-      };
+        }
+      }
     });
 
   })
-  //Controlador SideBar derecho
-  .controller('WeatherCtrl', ['$scope', '$auth', '$userService', '$timeout', '$mdSidenav', '$log', '$http',
-                     function($scope, $auth, $userService, $timeout, $mdSidenav, $log, $http) {
-    $scope.loading = true;
-
-    $scope.closeWidgets = function() {
-      $mdSidenav('widgets-sidenav').close()
-                                    .then(function(){
-                                      $log.debug("close RIGHT is done");
-                                    });
-    };
-
-    $scope.today = new Date()
-    //Obtener clima según locación
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position){
-          $scope.$apply(function(){
-
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&callback=JSON_CALLBACK';
-            $http.jsonp(url).success(function(data) {
-              $scope.data = data;
-              $scope.icon = data.weather[0].icon;
-              $scope.loading = false;
-            });
-          });
-      });
-    };
-  }])
   .controller('NotificationCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav, $log){
         $scope.closeNotifications = function() {
       $mdSidenav('notifications-sidenav').close()
                                           .then(function(){
-                                            $log.debug("close RIGHT is done");
+                                            $log.debug('close RIGHT is done');
                                           });
     };
-  }])
+  }]);

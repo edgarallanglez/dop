@@ -3,12 +3,12 @@
 @import url('report.css');
 @import url('weather.css');
 @import url('payment.css');
-body { 
+body {
     background-color: #eee !important;
     min-height: 100%;
     height: auto;
     font-size: 1.6rem;
-    font-family: Roboto, sans-serif !important; 
+    font-family: Roboto, sans-serif !important;
     font-weight: 300;
 }
 
@@ -17,6 +17,8 @@ body h1, h2, h3, h4, h5, h6 { font-weight: 300 !important; }
 .background-white { background-color: white !important; }
 .no-background { background-color: transparent !important; }
 .no-margin-bottom { margin-bottom: 0; }
+.no-padding-bottom { padding-bottom: 0 !important; }
+.no-margin { margin: 0 !important; }
 /* General paddings */
 .padding-sm { padding: 5px !important; }
 .padding-md { padding: 10px !important; }
@@ -27,6 +29,12 @@ body h1, h2, h3, h4, h5, h6 { font-weight: 300 !important; }
 .padding-bottom-md { padding-bottom: 10px !important; }
 .padding-bottom-lg { padding-bottom: 15px !important; }
 .padding-bottom-xl { padding-bottom: 20px !important; }
+
+/* Padding for top */
+.padding-top-sm { padding-top: 5px !important; }
+.padding-top-md { padding-top: 10px !important; }
+.padding-top-lg { padding-top: 15px !important; }
+.padding-top-xl { padding-top: 20px !important; }
 
 /*padding-auto */
 .padding-auto-sm { padding: 0 5px 0 5px !important; }
@@ -65,7 +73,7 @@ body h1, h2, h3, h4, h5, h6 { font-weight: 300 !important; }
 }
 
 .navbar .active a {
-    background-color: #222222 !important;   
+    background-color: #222222 !important;
 }
 
 #main-logo {
@@ -89,13 +97,13 @@ md-tabs.md-default-theme md-tab.active{
     color: #fb226f;
 }
 
-.md-button.md-fab.notification { 
+.md-button.md-fab.notification {
     width: 40px !important;
     height: 40px !important;
 }
 
-.loading { 
-    box-shadow: none !important; 
+.loading {
+    box-shadow: none !important;
     height: 100px;
 }
 .transparent-text{
@@ -104,4 +112,28 @@ md-tabs.md-default-theme md-tab.active{
 
 #webApp .md-toolbar-tools {
   height: 48px !important;
+}
+
+.ripplelink {
+  display:block;
+  float:left;
+  width:49.6%;
+  margin:0.2%;
+  height:10em;
+  text-align:center;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  background: white !important;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  z-index:0;
+}
+
+.dark-font {
+  font-size: 3em;
+  font-weight: 300;
+  color: #404040 !important;
 }

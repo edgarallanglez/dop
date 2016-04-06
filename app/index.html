@@ -23,8 +23,8 @@
 
   <!-- Template CSS -->
   <!-- build:css(.tmp) dop/dist/styles/main.css -->
-  <link rel="stylesheet" href="styles/general.css"> 
-  <link rel="stylesheet" href="styles/calculator.css"> 
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/calculator.css">
   <link rel="stylesheet" href="styles/demo.css">
   <link rel="stylesheet" href="styles/login.css">
   <link rel="stylesheet" href="styles/coupon.css">
@@ -39,7 +39,7 @@
           <md-content>
           <div class="md-toolbar-tools">
               <img id="main-logo" src="images/dop_logo_w.png">
-  
+
     <!--         <a ng-href="#/">
                 <img id="main-logo" src="images/dop_logo_w.png">
             </a> -->
@@ -66,10 +66,14 @@
                   </md-tab-body>
    -->              </md-tab>
               </md-tabs>
-              <span>$ 5000.00</span>
+              <span>
+                <md-button class="md-fab md-mini md-green-theme" aria-label="Agregar Creditos" ng-click="showCreditModal($event)">
+                    <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 59px!important;"></ng-md-icon>
+                </md-button>
+              </span>
             </div>
           </md-content>
-<!-- 
+<!--
             <md-content>
               <a ng-href="#/">
                 <img id="main-logo" src="images/dop_logo_w.png">
@@ -107,7 +111,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
-                    
+
                   </div>
                 </md-content>
             </div>
@@ -119,7 +123,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
                   <div flex ui-view>
-                    
+
                   </div>
                 </md-content>
             </div>
@@ -131,7 +135,7 @@
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
                   <div flex ui-view>
-                    
+
                   </div>
                 </md-content>
             </div>
@@ -178,7 +182,7 @@
         <script src="bower_components/Chart.js/Chart.js"></script>
         <script src="bower_components/chartjs/Chart.js"></script>
         <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
-        <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+        <script src="bower_components/lodash/lodash.js"></script>
         <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
         <script src="bower_components/satellizer/satellizer.js"></script>
@@ -189,8 +193,6 @@
         <script src="bower_components/angular-moment/angular-moment.js"></script>
         <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
         <script src="bower_components/restangular/dist/restangular.js"></script>
-        <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-        <script src="bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
         <script src="bower_components/angular-ellipsis/src/angular-ellipsis.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
@@ -214,13 +216,14 @@
           <script src="scripts/controllers/reportController/middleReportController.js"></script>
           <script src="scripts/controllers/reportController/advanceReportController.js"></script>
         <script src="scripts/controllers/modalController/pricingModalController.js"></script>
+        <script src="scripts/controllers/modalController/addCreditModalController.js"></script>
         <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/vendor/demo.js"></script>
         <script src="scripts/vendor/angular-locale_es-mx.js"></script>
 
-         
+
         <!-- endbuild -->
 
 

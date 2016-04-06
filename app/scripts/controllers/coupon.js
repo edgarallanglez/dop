@@ -31,8 +31,8 @@ angular.module('dopApp')
 
       $mdDialog.show({
         clickOutsideToClose: false,
-        controller: "PricingModalCtrl",
-        templateUrl: "../../views/modalViews/pricingModalView.html",
+        controller: 'PricingModalCtrl',
+        templateUrl: '../../views/modalViews/pricingModalView.html',
         targetEvent: ev,
       })
 
@@ -44,15 +44,15 @@ angular.module('dopApp')
     };
 
     $scope.showConfigModal = function(promo) {
-			$couponService.coupon = promo
+			$couponService.coupon = promo;
       $mdDialog.show({
         clickOutsideToClose: true,
-        controller: "CouponMainCtrl",
+        controller: 'CouponMainCtrl',
         templateUrl: '../../views/couponViews/couponMainView.html',
         targetEvent: promo,
       })
       .then(function(answer) {
-        SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
+        SweetAlert.swal('Cancelado', 'Tu compra ha sido cancelada :)', 'error');
       }, function() {
         $scope.alert = 'You cancelled the dialog.';
       });

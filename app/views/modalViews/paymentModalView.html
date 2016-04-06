@@ -1,5 +1,4 @@
 
-
 <md-dialog ng-controller="PricingModalCtrl" md-theme="green" flex="50" aria-label="Compra coupones">
   <md-dialog-content class="sticky-container">
     <md-subheader flex>
@@ -45,24 +44,32 @@
       <div layout="row">
 
 
-        <label flex="30">Fecha de expiración</label>
+        <label layout="row" layout-align="start center" flex="25" class="padding-bottom-xl" style="color: #505050;">FECHA EXPIRACIÓN</label>
           <div flex="10" layout="start start">
-            <md-select placeholder="MM" ng-model="cardData.expMonth" required data-conekta="card[exp_month]">
-              <md-option ng-value="obj.month" ng-repeat="obj in months">{{obj.month}}</md-option>
-            </md-select>
-            <div ng-messages="userForm.month.$error" ng-show="userForm.month.$dirty">
-              <div ng-message="required">El mes es requerido!</div>
-            </div>
+            <md-input-container flex>
+              <label>MM</label>
+              <input name="MM" type="number" ng-model="cardData.expMonth" required data-conekta="card[exp_month]">
+              <div ng-messages="userForm.month.$error" ng-show="userForm.month.$dirty">
+                <div ng-message="required">El mes es requerido!</div>
+              </div>
+            </md-input-container>
           </div>
           <div flex="10" layout="start start">
-            <md-select placeholder="YYYY" ng-model="cardData.expYear" required data-conekta="card[exp_year]">
-              <md-option ng-value="obj.year" ng-repeat="obj in years">{{obj.year}}</md-option>
-            </md-select>
-            <div ng-messages="userForm.year.$error" ng-show="userForm.year.$dirty">
-              <div ng-message="required">El año es requerido!</div>
-            </div>
+            <md-input-container flex>
+              <label>YYYY</label>
+              <input name="YYYY" type="number" ng-model="cardData.expYear" required data-conekta="card[exp_year]">
+              <div ng-messages="userForm.year.$error" ng-show="userForm.year.$dirty">
+                <div ng-message="required">El año es requerido!</div>
+              </div>
+            </md-input-container>
           </div>
-          <span flex></span>
+
+          <div flex layout="row" layout-align="end center">
+            <md-input-container flex="40">
+              <label>TOTAL A PAGAR</label>
+              <input name="TOTAL A PAGAR" type="number" ng-model="total" required>
+            </md-input-container>
+          </div>
       </div>
       <!-- <button type="submit">Suscribirse ahora!</button> -->
     </form>

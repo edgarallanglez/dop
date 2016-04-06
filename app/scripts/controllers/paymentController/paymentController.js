@@ -10,34 +10,35 @@ angular.module('dopApp')
   .config(function($stateProvider){
   })
   .controller('PaymentModalCtrl', function($scope, $auth, $http, $mdDialog, SweetAlert, CouponFactory, $userService, $paymentService) {
+    $scope.total = $paymentService.paymentData.total
     $scope.cardData = {}
     $scope.months = [
-      { 'month': '01' }, 
-      { 'month': '02' }, 
-      { 'month': '03' }, 
-      { 'month': '04' }, 
-      { 'month': '05' }, 
-      { 'month': '06' }, 
-      { 'month': '07' }, 
-      { 'month': '08' }, 
-      { 'month': '09' }, 
-      { 'month': '10' }, 
-      { 'month': '11' }, 
+      { 'month': '01' },
+      { 'month': '02' },
+      { 'month': '03' },
+      { 'month': '04' },
+      { 'month': '05' },
+      { 'month': '06' },
+      { 'month': '07' },
+      { 'month': '08' },
+      { 'month': '09' },
+      { 'month': '10' },
+      { 'month': '11' },
       { 'month': '12' }
     ];
 
     $scope.years = [
-      { 'year': '2015' }, 
-      { 'year': '2016' }, 
-      { 'year': '2017' }, 
-      { 'year': '2018' }, 
-      { 'year': '2019' }, 
-      { 'year': '2020' }, 
-      { 'year': '2021' }, 
-      { 'year': '2022' }, 
-      { 'year': '2023' }, 
-      { 'year': '2024' }, 
-      { 'year': '2025' }, 
+      { 'year': '2015' },
+      { 'year': '2016' },
+      { 'year': '2017' },
+      { 'year': '2018' },
+      { 'year': '2019' },
+      { 'year': '2020' },
+      { 'year': '2021' },
+      { 'year': '2022' },
+      { 'year': '2023' },
+      { 'year': '2024' },
+      { 'year': '2025' },
       { 'year': '2026' }
     ];
     $scope.sendPayment = function() {
@@ -48,13 +49,14 @@ angular.module('dopApp')
         'exp_month': $scope.cardData.expMonth,
         'exp_year': $scope.cardData.expYear
       }
+
       /* Después de tener una respuesta exitosa, envía la información al servidor */
       var successResponseHandler = function(token) {
         $http({
           method: 'POST',
           url: 'http://45.55.7.118:5000/api/coupon/payment/card',
           data: {
-            'token_id':token.id,
+            'token_id': token.id,
             'paymentData': $paymentService.getPaymentData()
           },
           headers: { 'token': $auth.getToken() }
