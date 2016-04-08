@@ -247,6 +247,15 @@ angular
         $scope.loading = flag;
     });
 
+    $scope.openMenu = function($mdOpenMenu, ev) {
+      var  originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
+    $scope.notificationsEnabled = true;
+    $scope.toggleNotifications = function() {
+      $scope.notificationsEnabled = !$scope.notificationsEnabled;
+    };
+
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
