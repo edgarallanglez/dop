@@ -26,7 +26,6 @@ angular.module('dopApp')
   })
   .controller('CouponCtrl', function ($scope, $state, $mdDialog, SweetAlert, $couponService) {
     $state.go('coupon.list');
-
     $scope.showModal = function(ev) {
 
       $mdDialog.show({

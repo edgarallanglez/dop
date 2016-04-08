@@ -26,6 +26,21 @@ angular.module('dopApp')
       $state.go('coupon');
     }
 
+    $scope.export_action = 'pdf';
+
+    $scope.exportAction = function(){
+      var element = angular.element( document.querySelector( '#report-table' ) );
+      element.tableExport({type:'pdf', escape: 'false', fileName:'reporte'});
+     }
+
+     $http({
+       method: 'GET',
+       url: 'http://45.55.7.118:5000/api/report/uses/'+ 11,
+     }).then(function(data){
+       $scope.report_rows = data.data.data;
+       console.log($scope.report_rows);
+     });
+
     var branch_id = $userService.getCurrentUser().branch_id;
     $http({
       method: 'GET',
@@ -34,4 +49,5 @@ angular.module('dopApp')
       $scope.coupons = data.data;
       $scope.loading = false;
     });
+
   });

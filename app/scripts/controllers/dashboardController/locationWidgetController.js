@@ -6,7 +6,7 @@
  * @description
  * # LocationWidgetCtrl
  * Controller of the dopApp
- 
+
  */
 angular.module('dopApp')
   .config(function($stateProvider, uiGmapGoogleMapApiProvider){
@@ -32,7 +32,7 @@ angular.module('dopApp')
     });
 
     $scope.map = {
-      center: { 
+      center: {
         latitude: 24.78,
         longitude: -107.43
       },
@@ -56,14 +56,13 @@ angular.module('dopApp')
 
       for(var i=0; i < data.data.data.length; i++){
         var object = data.data.data[i];
-        console.log(object);
         //var position = new google.maps.LatLng(object.latitude, object.longitude)
         var marker = {
           id: i,
-          latitude: object.latitude, 
+          latitude: object.latitude,
           longitude: object.longitude,
-          name: object.name, 
-          taken_date: object.taken_date, 
+          name: object.name,
+          taken_date: object.taken_date,
           icon: 'images/marker.png'
           /*options: {
             animation: google.maps.Animation.DROP
@@ -73,7 +72,7 @@ angular.module('dopApp')
       }
 
       /*var bounds = new google.maps.LatLngBounds();
-      for (var i in $scope.markers) 
+      for (var i in $scope.markers)
         bounds.extend($scope.markers[i].position) */
 
     });
@@ -279,5 +278,5 @@ angular.module('dopApp')
         }
       ]
      };
-    
+
   });
