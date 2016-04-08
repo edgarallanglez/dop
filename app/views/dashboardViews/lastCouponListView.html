@@ -10,7 +10,7 @@
                     <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
                     </span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
                   </div>
-                  <div class="statistics"> 
+                  <div class="statistics">
                       <ul layout="row" layout-wrap>
                         <li flex>
                           <i class="fa fa-bullseye" ></i>
@@ -30,5 +30,16 @@
                       </ul>
                   </div>
         </md-card>
+
       </div>
+      <table id="report-table" class="table table-striped" ng-click="exportAction()">
+        <tr>
+          <td><strong>Dia</strong></td>
+          <td><strong>Usos</strong></td>
+        </tr>
+        <tr ng-repeat="row in report_rows">
+          <td>{{row.day | date:'MM/dd/yyyy'}}</td>
+          <td>{{ row.count }}</td>
+        </tr>
+      </table>
     </div>

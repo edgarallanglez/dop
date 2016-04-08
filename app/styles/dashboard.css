@@ -135,3 +135,7 @@ canvas#genderChart {
     font-weight: 300;
     text-align: center;
 }
+.export-table{
+	background-color: black !important;
+	color: red !important;
+}

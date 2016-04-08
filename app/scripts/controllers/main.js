@@ -33,7 +33,7 @@ angular.module('dopApp')
             'couponList': {
               templateUrl: '../../views/dashboardViews/lastCouponListView.html',
               controller: 'CouponListWidgetCtrl'
-            },              
+            },
             'locationChart': {
               templateUrl: '../../views/dashboardViews/locationView.html',
               controller: 'LocationWidgetCtrl'
@@ -43,7 +43,5 @@ angular.module('dopApp')
   })
   .controller('MainCtrl', function($scope, $state) {
     $state.go('home.dashboard');
+
   });
-
-
-  
