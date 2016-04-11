@@ -27,7 +27,8 @@ angular
     'oitozero.ngSweetAlert',
     '720kb.datepicker',
     'restangular',
-    'dibari.angular-ellipsis'
+    'dibari.angular-ellipsis',
+    'md.data.table'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;
@@ -158,10 +159,12 @@ angular
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $userService.getMe().then(function(data){
-                var user = data.data;
+              $userService.getMe().success(function(data){
+                var user = data.data[0];
                 $userService.setUser(user);
                 deferred.resolve();
+              }).error(function(){
+                SweetAlert.swal('Error en el servidor', '', 'error');
               });
             } else { deferred.resolve(); }
             return deferred.promise;

@@ -53,9 +53,11 @@ angular.module('dopApp')
         controller: 'AdvanceReportCtrl'
       });
   })
-  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log) {
+  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log, $userService, $http) {
     $scope.reportData = $reportService.reportData;
 
+    $scope.selected = [];
+    
     $scope.toggleRight = function (current) {
       $mdSidenav('reportData').open()
                           .then(function(){
@@ -66,13 +68,26 @@ angular.module('dopApp')
     $scope.createReport = function (kindReport) {
 
       $log.debug($scope.reportData);
-      
+
     };
+
+    var branch_id = $userService.getCurrentUser().branch_id;
+
+    $http({
+      method: 'GET',
+      url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
+    }).success(function(data){
+      $scope.coupons = data;
+      console.log($scope.coupons);
+    }).error(function(){
+      SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error")
+    });
+
 
     // $scope.close = function() {
     //   $mdSidenav('right').close()
     //                       .then(function(){
-                           
+
     //                       });
     // };
 
