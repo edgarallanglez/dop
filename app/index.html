@@ -66,56 +66,30 @@
                   </md-tab-body>
    -->              </md-tab>
               </md-tabs>
-              <div>
+              <div ng-controller="MeCtrl" class="pull-right" flex="100" ng-init="init()">
                 <!-- <md-button class="md-fab md-mini md-green-theme" aria-label="Agregar Creditos" ng-click="showCreditModal($event)">
                     <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 59px!important;"></ng-md-icon>
                 </md-button> -->
-                <md-menu>
-                  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-                    <md-icon md-menu-origin md-svg-icon="call:phone"></md-icon>
+                <md-menu md-position-mode="target-right target">
+                  <md-button aria-label="Open phone interactions menu" ng-click="openMenu($mdOpenMenu, $event)">
+                    <img ng-src="https://inmoon.com.mx/branches/images/{{user.company_id}}/{{user.logo}}" class="branch-logo"/>
+                    {{user.name}}
+                    <ng-md-icon icon="arrow_drop_down" size="18" style="fill: #000000; vertical-align: sub;"></ng-md-icon>
                   </md-button>
                   <md-menu-content width="4">
                     <md-menu-item>
-                      <md-button ng-click="ctrl.redial($event)">
-                        <md-icon md-svg-icon="call:dialpad" md-menu-align-target></md-icon>
-                        Configurar Cuenta
-                      </md-button>
-                    </md-menu-item>
-                    <md-menu-item>
-                      <md-button ng-click="ctrl.checkVoicemail()">
-                        <md-icon md-svg-icon="call:voicemail"></md-icon>
+                      <md-button ng-click="showCreditModal($event)">
                         Agregar Créditos
                       </md-button>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
                     <md-menu-item>
-                      <md-button ng-click="toggleNotifications()">
-                        <md-icon md-svg-icon="social:notifications-{{notificationsEnabled ? 'off' : 'on'}}"></md-icon>
-                          Cerrar Sesión
+                      <md-button ng-click="logout()">
+                        Cerrar Sesión
                       </md-button>
                     </md-menu-item>
                   </md-menu-content>
                 </md-menu>
-                <!-- <ul class="nav-right pull-right list-inline">
-                    <li class="dropdown nav-profile">
-                        <a href class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="assets/images/profile-photo.jpg" alt="" class="img-circle size-30x30">
-                            <span>Cinepolis <i class="fa fa-angle-down"></i></span>
-                        </a>
-                        <ul class="dropdown-menu animated littleFadeInRight" role="menu">
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-user"></i>Editar perfil
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-sign-out"></i>Salir
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul> -->
               </div>
             </div>
           </md-content>
