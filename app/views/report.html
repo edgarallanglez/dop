@@ -1,31 +1,31 @@
 <md-card>
-	<md-toolbar class="md-table-toolbar md-default" ng-hide="filter.show">
+	<md-toolbar class="md-table-toolbar md-default" ng-hide="showSearch">
 		<div class="md-toolbar-tools">
 			<h2>Campañas</h2>
 			<div flex="" class="flex"></div>
-			<md-button class="md-icon-button" ng-click="filter.show">
+			<md-button class="md-icon-button" ng-click="showSearch = ! showSearch">
 				<ng-md-icon icon="search" size="24"></ng-md-icon>
 			</md-button>
 		</div>
 	</md-toolbar>
-	<!--<md-toolbar class="md-table-toolbar md-default" ng-show="filter.show &amp;&amp; !selected.length" aria-hidden="false" style="">
+	<md-toolbar class="md-table-toolbar md-default" ng-show="showSearch">
 	  <div class="md-toolbar-tools">
-			<ng-md-icon icon="search" size="30"></ng-md-icon>
+			<ng-md-icon icon="search" size="24"></ng-md-icon>
 	    <form flex name="filter.form" class="ng-pristine ng-valid flex">
-	      <input type="text" ng-model="query.filter" ng-model-options="filter.options" placeholder="search" class="ng-pristine ng-valid ng-touched" aria-invalid="false" style="">
+	      <input type="text"  placeholder="Buscar" class="ng-pristine ng-valid ng-touched" aria-invalid="false">
 	    </form>
-			<md-button class="md-icon-button" ng-click="removeFilter()">
+			<md-button class="md-icon-button" ng-click="showSearch = ! showSearch">
 				<ng-md-icon icon="close" size="24"></ng-md-icon>
 			</md-button>
 	  </div>
-	</md-toolbar>-->
+	</md-toolbar>
 	<md-table-container>
 	  <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
 	    <thead md-head md-order="query.order" md-on-reorder="getCoupons">
 	      <tr md-row>
 	        <th md-column md-order-by="nameToLower"><span>Campaña</span></th>
 	        <th md-column md-numeric md-order-by="calories.value"><span>Fecha</span></th>
-	        <th md-column md-numeric>Acción (g)</th>
+	        <th md-column md-numeric>Acción</th>
 	      </tr>
 	    </thead>
 	    <tbody md-body>
