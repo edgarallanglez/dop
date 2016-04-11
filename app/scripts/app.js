@@ -227,12 +227,24 @@ angular
         }).success(function(data){
           $userService.setUser(data.data[0]);
           $scope.user = $userService.getCurrentUser();
+          console.log(data.data[0]);
         });
       } else {
         $location.path('/login');
       }
     };
     $scope.init();
+
+    $scope.logout = function() {
+      if (!$auth.isAuthenticated()) { return; }
+      $auth.logout()
+        .then(function() {
+          // toastr.info('You have been logged out');
+          $userService.currentUser = null;
+          // $location.path('/login');
+          location.reload();
+        });
+    };
 
     $scope.closeWidgets = function() {
       $mdSidenav('widgets-sidenav').close()
@@ -250,13 +262,15 @@ angular
         $scope.loading = flag;
     });
 
+    $scope.$watch(function() {
+      return $userService.currentUser;
+    }, function(user) {
+      $scope.user = user;
+    });
+
     $scope.openMenu = function($mdOpenMenu, ev) {
       var  originatorEv = ev;
       $mdOpenMenu(ev);
-    };
-    $scope.notificationsEnabled = true;
-    $scope.toggleNotifications = function() {
-      $scope.notificationsEnabled = !$scope.notificationsEnabled;
     };
 
     $scope.isAuthenticated = function() {
@@ -296,6 +310,17 @@ angular
     };
 
     $scope.$watch('data.selectedIndex', function () {
+      // tab selected change
+      if ($scope.data) {
+        if ($scope.data.selectedIndex === 0 && $auth.isAuthenticated() ) {
+          $location.path('/').replace();
+        } else if ($scope.data.selectedIndex === 1 && $auth.isAuthenticated()) {
+          $location.path('/coupon').replace();
+        } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
+          $location.path('/report').replace();
+        }
+      }
+
       //  paint tab after reload
       if ($scope.data && $scope.reload) {
         if ($location.path() === '/') {
@@ -310,16 +335,6 @@ angular
         }
       }
 
-      // tab selected change
-      if ($scope.data) {
-        if ($scope.data.selectedIndex === 0 && $auth.isAuthenticated() ) {
-          $location.path('/').replace();
-        } else if ($scope.data.selectedIndex === 1 && $auth.isAuthenticated()) {
-          $location.path('/coupon').replace();
-        } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
-          $location.path('/report').replace();
-        }
-      }
     });
 
   })

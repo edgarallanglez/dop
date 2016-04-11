@@ -1,4 +1,4 @@
-.login-container { 
+.login-container {
 		height: inherit !important;
 		padding-top: 2em;
 }
@@ -7,10 +7,10 @@
 .login-container .login-card { width: 29em; }
 .login-container .login-button { float: right; }
 label { font-weight: normal !important; }
-.login-container button { color: white !important; }
+/*.login-container button { color: white !important; }*/
 .login-container .login-top img {
 		width: 9em;
-		padding: 2em 0 0 0; 
+		padding: 2em 0 0 0;
 		display: inline-block;
 		margin: 0 auto;
 }
