@@ -1,4 +1,84 @@
-<div>
+<md-card>
+	<md-toolbar class="md-table-toolbar md-default" ng-hide="filter.show">
+		<div class="md-toolbar-tools">
+			<h2>Campañas</h2>
+			<div flex="" class="flex"></div>
+			<md-button class="md-icon-button" ng-click="filter.show">
+				<ng-md-icon icon="search" size="24"></ng-md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	<!--<md-toolbar class="md-table-toolbar md-default" ng-show="filter.show &amp;&amp; !selected.length" aria-hidden="false" style="">
+	  <div class="md-toolbar-tools">
+			<ng-md-icon icon="search" size="30"></ng-md-icon>
+	    <form flex name="filter.form" class="ng-pristine ng-valid flex">
+	      <input type="text" ng-model="query.filter" ng-model-options="filter.options" placeholder="search" class="ng-pristine ng-valid ng-touched" aria-invalid="false" style="">
+	    </form>
+			<md-button class="md-icon-button" ng-click="removeFilter()">
+				<ng-md-icon icon="close" size="24"></ng-md-icon>
+			</md-button>
+	  </div>
+	</md-toolbar>-->
+	<md-table-container>
+	  <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
+	    <thead md-head md-order="query.order" md-on-reorder="getCoupons">
+	      <tr md-row>
+	        <th md-column md-order-by="nameToLower"><span>Campaña</span></th>
+	        <th md-column md-numeric md-order-by="calories.value"><span>Fecha</span></th>
+	        <th md-column md-numeric>Acción (g)</th>
+	      </tr>
+	    </thead>
+	    <tbody md-body>
+	      <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="item in coupons.data">
+	        <td md-cell>{{item.name}}</td>
+	        <td md-cell>{{item.description}}</td>
+	        <td md-cell>Hola</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</md-table-container>
+	<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+</md-card>
+<!--<div class="coupon-container">
+	<div>
+ 		<div ui-view="coupon-list-view" layout-fill layout="row" layout-wrap>
+      <div layout-fill layout="row" layout-wrap style="margin: 0 auto;">
+              <div class="loading" flex ng-show="loading" layout-align="start center">
+                	<md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+              </div>
+           	<div ng-repeat="item in coupons" layout="row" layout-fill layout-wrap layout-align="center center">
+      		      	<md-card class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)">
+      					<div class="info">
+      						<h2 class="margin-sm">{{promo.name}}</h2>
+      						<h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
+      						</span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
+      					</div>
+      					<div class="statistics">
+      						<ul layout="row">
+      							<li flex>
+      								<i class="fa fa-bullseye" ></i>
+      								<h3>{{promo.views}}0</h3>
+      								<p class="transparent-text">Aperturas</p>
+      							</li>
+      							<li flex>
+      								<i class="fa fa-heart"></i>
+      								<h3>{{promo.total_likes}}0</h3>
+      								<p class="transparent-text">Me gusta</p>
+      							</li>
+      							<li flex>
+      								<i class="fa fa-ticket "></i>
+      								<h3>{{promo.total_uses}}0</h3>
+      								<p class="transparent-text">Usos</p>
+      							</li>
+      						</ul>
+      					</div>
+      		        </md-card>
+            	</div>
+      </div>
+	  </div>
+  </div>
+</div>-->
+<!--<div>
     <div ui-view>
         <div ng-show="!isInView" class="report-height" layout="row" layout-align="center" layout-margin layout-wrap>
             <div flex flex-order="1" flex-sm="100">
@@ -87,4 +167,4 @@
             </md-content>
         </md-sidenav>
     </section>
-</div>
+</div>-->
