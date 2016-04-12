@@ -1,6 +1,6 @@
 <md-dialog ng-controller="AddCreditModalCtrl" md-theme="green" flex="80" aria-label="Compra coupones">
   <md-dialog-content class="sticky-container" style="background-color: #f2f2f2">
-    <md-subheader class="">Herramienta para compra de creditos</md-subheader>
+    <md-subheader class="subtitle">CRÉDITOS</md-subheader>
     <div layout="row" class="no-padding-bottom padding-top-md">
       <!-- first credit package -->
       <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(50)">
@@ -21,21 +21,21 @@
 
     <div layout="row">
       <!-- fourth credit package -->
-      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(500)">
+      <md-button class="md-raised ripplelink md-green-theme" flex="33" ng-click="doPayment(500)">
         <span class="dark-font" layout-align="center center">$ 1000</span><br>
-                                                               <span class="md-green md-primary">+ 100 </span>
+                                                               <span class="success-font subtitle">+ 100 </span>
       </md-button>
 
       <!-- fifth credit package -->
       <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(1000)">
         <span class="dark-font" layout-align="center center">$ 2000</span><br>
-                                                               <span>+ 500 </span>
+                                                               <span class="success-font subtitle">+ 500 </span>
      </md-button>
 
       <!-- sixth credit package -->
       <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(2000)">
         <span class="dark-font" layout-align="center center">$ 5000 </span><br>
-                                                            <span>+ 2000 </span>
+                                                            <span class="success-font subtitle">+ 2000 </span>
      </md-button>
     </div>
 
