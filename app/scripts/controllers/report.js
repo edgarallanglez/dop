@@ -57,7 +57,20 @@ angular.module('dopApp')
     $scope.reportData = $reportService.reportData;
 
     $scope.selected = [];
-    
+
+    $scope.query = {
+      order: 'name',
+      limit: 5,
+      page: 1
+    };
+
+    function success(desserts) {
+      $scope.desserts = desserts;
+    }
+
+    $scope.getCoupons = function () {
+      //$scope.promise = $nutrition.desserts.get($scope.query, success).$promise;
+    };
     $scope.toggleRight = function (current) {
       $mdSidenav('reportData').open()
                           .then(function(){
