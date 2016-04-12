@@ -1,1 +1,4 @@
 .checkbox-container md-checkbox { margin: 8px !important; }
+form { margin-left: 0.5em; width: 100%;}
+md-toolbar ng-md-icon { width: 24px; height: 24px; fill: rgba(0,0,0,0.67);}
+md-toolbar form input { width: 100%; border: none; outline: none;}

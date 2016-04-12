@@ -1,43 +1,41 @@
 <md-card>
-	<md-toolbar class="md-table-toolbar md-default" ng-hide="filter.show">
+	<!--<md-toolbar class="md-table-toolbar md-default" ng-hide="showSearch">
 		<div class="md-toolbar-tools">
 			<h2>Campañas</h2>
 			<div flex="" class="flex"></div>
-			<md-button class="md-icon-button" ng-click="filter.show">
+			<md-button class="md-icon-button" ng-click="showSearch = ! showSearch">
 				<ng-md-icon icon="search" size="24"></ng-md-icon>
 			</md-button>
 		</div>
-	</md-toolbar>
-	<!--<md-toolbar class="md-table-toolbar md-default" ng-show="filter.show &amp;&amp; !selected.length" aria-hidden="false" style="">
-	  <div class="md-toolbar-tools">
-			<ng-md-icon icon="search" size="30"></ng-md-icon>
-	    <form flex name="filter.form" class="ng-pristine ng-valid flex">
-	      <input type="text" ng-model="query.filter" ng-model-options="filter.options" placeholder="search" class="ng-pristine ng-valid ng-touched" aria-invalid="false" style="">
-	    </form>
-			<md-button class="md-icon-button" ng-click="removeFilter()">
-				<ng-md-icon icon="close" size="24"></ng-md-icon>
-			</md-button>
-	  </div>
 	</md-toolbar>-->
+	<md-toolbar class="md-table-toolbar md-default">
+	  <div class="md-toolbar-tools">
+			<ng-md-icon icon="search" size="24"></ng-md-icon>
+	    <form name="filter.form">
+	      <input type="text"  placeholder="Buscar" class="ng-pristine ng-valid ng-touched" aria-invalid="false">
+	    </form>
+	  </div>
+	</md-toolbar>
 	<md-table-container>
 	  <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
 	    <thead md-head md-order="query.order" md-on-reorder="getCoupons">
 	      <tr md-row>
-	        <th md-column md-order-by="nameToLower"><span>Campaña</span></th>
-	        <th md-column md-numeric md-order-by="calories.value"><span>Fecha</span></th>
-	        <th md-column md-numeric>Acción (g)</th>
+	        <th md-column md-order-by="name"><span>Campaña</span></th>
+	        <th md-column>Fecha</th>
+	        <th md-column>Estado</th>
 	      </tr>
 	    </thead>
 	    <tbody md-body>
-	      <tr md-row md-select="dessert" md-select-id="name" md-auto-select ng-repeat="item in coupons.data">
-	        <td md-cell>{{item.name}}</td>
-	        <td md-cell>{{item.description}}</td>
-	        <td md-cell>Hola</td>
+	      <tr  ng-disabled="!item.name" md-row md-select="item" md-select-id="item.coupon_id" md-auto-select ng-repeat="item in coupons.data">
+	        <td md-cell ng-if="item.name"><p>{{item.name}}</p></td>
+					<td md-cell ng-if="!item.name"><p>(Sin configurar)</p></td>
+	        <td md-cell>{{item.start_date | date:'yyyy'}}</td>
+	        <td md-cell>Inactiva</td>
 	      </tr>
 	    </tbody>
 	  </table>
 	</md-table-container>
-	<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{desserts.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
+	<md-table-pagination md-label="{page: 'Página:', rowsPerPage: 'Resultados por página:', of: 'de'}" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{coupons.data.count}}" md-on-paginate="getCoupons" md-page-select></md-table-pagination>
 </md-card>
 <!--<div class="coupon-container">
 	<div>
