@@ -79,6 +79,11 @@
                   </md-button>
                   <md-menu-content width="4">
                     <md-menu-item>
+                      <md-button>
+                        {{user.credits | currency:$:2}}
+                      </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
                       <md-button ng-click="showCreditModal($event)">
                         Agregar Créditos
                       </md-button>

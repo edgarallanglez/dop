@@ -3,7 +3,7 @@
     <md-subheader class="">MÉTODO DE PAGO</md-subheader>
     <div layout="row" class="no-padding-bottom padding-top-md">
       <!-- first credit package -->
-      <md-card layout="column" class="md-raised" flex="50" ng-click="selectPaymentMethod('card')">
+      <md-card layout="column" class="md-raised" flex="50" ng-click="selectPaymentMethod('credits')">
         <div class="" layout="row" layout-align="center center" flex="100">
           <img ng-src="../../images/dop_logo_w.png" class="md-card-image image-shadow" alt="Créditos" flex="20">
         </div>
@@ -15,7 +15,7 @@
       </md-card>
 
       <!-- second credit package -->
-      <md-card layout="column" class="md-raised" flex="50" ng-click="selectPaymentMethod('card')">
+      <md-card layout="column" class="md-raised" flex="50" ng-click="doPayment()">
         <div class="margin-top-xl" layout="row" layout-align="center center" flex="100">
           <img ng-src="../../images/credit_cards.png" class="md-card-image" alt="Tarjeta" flex="70">
         </div>

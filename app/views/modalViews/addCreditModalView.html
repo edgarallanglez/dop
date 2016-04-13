@@ -3,37 +3,37 @@
     <md-subheader class="subtitle">CRÉDITOS</md-subheader>
     <div layout="row" class="no-padding-bottom padding-top-md">
       <!-- first credit package -->
-      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(50)">
+      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(100)">
         <span class="dark-font" layout-align="center center">$ 100</span>
 
       </md-button>
 
       <!-- second credit package -->
-      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(200)">
+      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(300)">
         <span class="dark-font" layout-align="center center">$ 300</span>
       </md-button>
 
       <!-- third credit package -->
-      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(300)">
+      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(500)">
         <span class="dark-font" layout-align="center center">$ 500</span>
       </md-button>
     </div>
 
     <div layout="row">
       <!-- fourth credit package -->
-      <md-button class="md-raised ripplelink md-green-theme" flex="33" ng-click="doPayment(500)">
+      <md-button class="md-raised ripplelink md-green-theme" flex="33" ng-click="doPayment(1000)">
         <span class="dark-font" layout-align="center center">$ 1000</span><br>
                                                                <span class="success-font subtitle">+ 100 </span>
       </md-button>
 
       <!-- fifth credit package -->
-      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(1000)">
+      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(2000)">
         <span class="dark-font" layout-align="center center">$ 2000</span><br>
                                                                <span class="success-font subtitle">+ 500 </span>
      </md-button>
 
       <!-- sixth credit package -->
-      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(2000)">
+      <md-button class="md-raised ripplelink" flex="33" ng-click="doPayment(5000)">
         <span class="dark-font" layout-align="center center">$ 5000 </span><br>
                                                             <span class="success-font subtitle">+ 2000 </span>
      </md-button>
@@ -41,18 +41,29 @@
 
     <div layout="row" flex>
       <!-- custom credit package -->
-      <div flex="50" layout="row" layout-align="start end">
-        <md-card layout="row" layout-align="start end" class="padding-md" style="height: 4.5em;" flex>
+      <div flex="50" layout="row" layout-align="start center" ng-cloak>
+        <md-card layout="row" layout-align="start center" class="padding-md" style="height: 9em;" flex>
           <label class="" flex="33">
-            <span class="font" layout-align="center center">OTRA CANTIDAD</span>
+            <span class="font" layout-align="start start">OTRA CANTIDAD</span>
           </label>
-          <md-input-container class="no-margin" layout="row" flex="66">
-            <label>Creditos</label>
-            <input name="Créditos" type="number" ng-model="credits" required>
-            <div ng-messages="credits.$error" ng-show="credits.$dirty">
-              <div ng-message="required">Ingrese cantidad</div>
-            </div>
-          </md-input-container>
+          <form name="creditsForm">
+            <md-input-container class="no-margin md-block" layout="row" flex="66">
+              <label>Créditos</label>
+              <input name="credits" type="number" ng-model="credits" min="100" max="5000" ng-pattern="/^1000$/" />
+              <div ng-messages="creditsForm.credits.$error" multiple md-auto-hide="false">
+                <div ng-message="min" style="font-size: 13px;">
+                   Debes cargar al menos 100 créditos.
+                </div>
+                <div ng-message="max" style="font-size: 13px;">
+                   Oops! {{creditsForm.credits.$viewValue | currency:"$":0}}? Por tu seguridad, solo podemos cargarte 5,000
+                   créditos por transacción.
+                </div>
+                <div ng-message="pattern" class="md-green-theme md-primary" style="font-size: 13px;">
+                  A partir de $1,000. obtendrás créditos extras para tu cuenta como regalo.
+                </div>
+              </div>
+            </md-input-container>
+          </form>
         </md-card>
       </div>
     </div>

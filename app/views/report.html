@@ -29,7 +29,7 @@
 	      <tr  ng-disabled="!item.name" md-row md-select="item" md-select-id="item.coupon_id" md-auto-select ng-repeat="item in coupons.data">
 	        <td md-cell ng-if="item.name"><p>{{item.name}}</p></td>
 					<td md-cell ng-if="!item.name"><p>(Sin configurar)</p></td>
-	        <td md-cell>{{item.start_date | date:'yyyy'}}</td>
+	        <td md-cell>{{item.start_date | date:"dd/MM/yyyy"}}</td>
 	        <td md-cell>Inactiva</td>
 	      </tr>
 	    </tbody>

@@ -12,6 +12,14 @@ angular.module('dopApp')
   .controller('PaymentModalCtrl', function($scope, $auth, $http, $mdDialog, SweetAlert, CouponFactory, $userService, $paymentService) {
     $scope.total = $paymentService.paymentData.total;
     $scope.total_label = $scope.total / 100;
+
+    // Bonus calculation.
+    var bonus;
+
+    if ($scope.total >= 100000 && $scope.total < 200000) { bonus = $scope.total * 0.1; }
+    if ($scope.total >= 200000 && $scope.total < 500000) { bonus = $scope.total * 0.25; }
+    if ($scope.total >= 500000) { bonus = $scope.total * 0.4; }
+
     $scope.cardData = {};
     $scope.branch_id = $userService.currentUser.branch_id;
     $scope.sendPayment = function() {

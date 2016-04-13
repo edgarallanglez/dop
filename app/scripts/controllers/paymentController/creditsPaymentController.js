@@ -7,8 +7,7 @@ angular.module('dopApp')
     };
 
     $scope.doPayment = function(ev) {
-      $scope.total = 300;
-      $paymentService.setPayment(15, 1, $scope.total, 'campaign');
+      console.log($paymentService.paymentData);
       $mdDialog.show({
           clickOutsideToClose: false,
           controller: "PaymentModalCtrl",
@@ -17,4 +16,7 @@ angular.module('dopApp')
         });
     };
 
+    $scope.doCreditsPayment = function(ev) {
+      
+    }
   });

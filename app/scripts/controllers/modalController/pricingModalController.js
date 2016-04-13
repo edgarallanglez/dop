@@ -36,7 +36,7 @@ angular.module('dopApp')
     };
 
     $scope.doPayment = function(ev) {
-      $scope.total = (($scope.amountOfCoupon/5) * $scope.expireTime) * 100;
+      $scope.total = (($scope.amountOfCoupon * 0.9) + ($scope.expireTime * 50)) * 100;
       $paymentService.setPayment($scope.amountOfCoupon, $scope.expireTime, $scope.total, 'campaign');
       $mdDialog.show({
           clickOutsideToClose: false,
@@ -47,6 +47,9 @@ angular.module('dopApp')
     };
 
     $scope.selectPaymentMethod = function(ev) {
+      $scope.total = (($scope.amountOfCoupon * 0.9) + ($scope.expireTime * 50)) * 100;
+      $paymentService.setPayment($scope.amountOfCoupon, $scope.expireTime, $scope.total, 'campaign');
+
       var controller = 'CreditsModalCtrl';
       var template = '../../views/modalViews/creditsModalView.html';
       $mdDialog.show({
