@@ -12,32 +12,39 @@
 	  <div class="md-toolbar-tools">
 			<ng-md-icon icon="search" size="24"></ng-md-icon>
 	    <form name="filter.form">
-	      <input type="text"  placeholder="Buscar" class="ng-pristine ng-valid ng-touched" aria-invalid="false">
+	      <input type="text"  placeholder="Buscar" class="ng-pristine ng-valid ng-touched" aria-invalid="false" ng-model="searchCoupon.name">
 	    </form>
 	  </div>
 	</md-toolbar>
 	<md-table-container>
 	  <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
-	    <thead md-head md-order="query.order" md-on-reorder="getCoupons">
+	    <thead md-head md-order="name" md-on-reorder="getCoupons">
 	      <tr md-row>
 	        <th md-column md-order-by="name"><span>Campaña</span></th>
-	        <th md-column>Fecha</th>
-	        <th md-column>Estado</th>
+	        <th md-column md-order-by="start_date">Fecha</th>
+	        <th md-column md-order-by="active">Estado</th>
 	      </tr>
 	    </thead>
 	    <tbody md-body>
-	      <tr  ng-disabled="!item.name" md-row md-select="item" md-select-id="item.coupon_id" md-auto-select ng-repeat="item in coupons.data">
-	        <td md-cell ng-if="item.name"><p>{{item.name}}</p></td>
-					<td md-cell ng-if="!item.name"><p>(Sin configurar)</p></td>
-					<td md-cell ng-if="item.name">{{item.start_date | date:'dd/MM/yyyy'}}</td>
-	        <td md-cell ng-if="!item.name"></td>
-	        <td md-cell ng-if="item.active"><i class="fa fa-circle success-font"></i>Activa</td>
-					<td md-cell ng-if="!item.active"><i class="fa fa-circle">Inactiva</i></td>
+	      <tr  ng-disabled="!item.active" md-row md-select="item" md-select-id="item.coupon_id" md-auto-select ng-repeat="item in coupons.data | orderBy: name | filter:searchCoupon">
+	        <td md-cell><p>{{item.name}}</p></td>
+
+					<td md-cell ng-if="item.active && !item.completed">{{item.start_date | date:'dd MMM yyyy'}}</td>
+					<td md-cell ng-if="item.active && item.completed">{{item.start_date | date:'dd MMM yyyy'}}</td>
+	        <td md-cell ng-if="!item.active"></td>
+
+					<!-- ACTIVE -->
+	        <td md-cell ng-if="item.active && !item.completed"><i class="fa fa-circle success-font"></i>ACTIVA</td>
+					<!-- INACTIVE -->
+					<td md-cell ng-if="!item.active && !item.completed && item.coupon_category_id==1"><i class="fa fa-circle disabled-font"></i>SIN CONFIGURAR</td>
+					<td md-cell ng-if="!item.active && !item.completed && item.coupon_category_id!=1"><i class="fa fa-circle warning-font"></i>INACTIVA</td>
+					<!-- COMPLETED-->
+					<td md-cell ng-if="item.completed"><i class="fa fa-circle accent-font"></i>FINALIZADA</td>
 	      </tr>
 	    </tbody>
 	  </table>
 	</md-table-container>
-	<md-table-pagination md-label="{page: 'Página:', rowsPerPage: 'Resultados por página:', of: 'de'}" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{coupons.data.count}}" md-on-paginate="getCoupons" md-page-select></md-table-pagination>
+	<!--<md-table-pagination md-label="{page: 'Página:', rowsPerPage: 'Resultados por página:', of: 'de'}" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{coupons.data.length}}" md-on-paginate="getCoupons" md-page-select></md-table-pagination>-->
 </md-card>
 <!--<div class="coupon-container">
 	<div>
