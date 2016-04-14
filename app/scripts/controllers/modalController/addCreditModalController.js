@@ -29,5 +29,4 @@ angular.module('dopApp')
           targetEvent: amount,
         });
     };
-
   });
