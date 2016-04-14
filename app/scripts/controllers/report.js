@@ -90,8 +90,13 @@ angular.module('dopApp')
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
     }).success(function(data) {
+      angular.forEach(data.data, function(value, key){
+        console.log(value.name);
+          if(value.name == null){
+            value.name = "Nueva Campaña";
+          }
+      });
       $scope.coupons = data;
-      console.log($scope.coupons);
     }).error(function(){
       SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
     });
