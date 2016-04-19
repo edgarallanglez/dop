@@ -9,16 +9,15 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('PaymentModalCtrl', function($scope, $auth, $http, $mdDialog, SweetAlert, CouponFactory, $userService, $paymentService) {
+  .controller('PaymentModalCtrl', function($scope, $auth, $http, $mdDialog, $mdToast, SweetAlert, CouponFactory, $userService, $paymentService) {
     $scope.total = $paymentService.paymentData.total;
     $scope.total_label = $scope.total / 100;
 
     // Bonus calculation.
-    var bonus;
 
-    if ($scope.total >= 100000 && $scope.total < 200000) { bonus = $scope.total * 0.1; }
-    if ($scope.total >= 200000 && $scope.total < 500000) { bonus = $scope.total * 0.25; }
-    if ($scope.total >= 500000) { bonus = $scope.total * 0.4; }
+    if ($scope.total >= 100000 && $scope.total < 200000) { $scope.bonus = $scope.total * 0.1; }
+    if ($scope.total >= 200000 && $scope.total < 500000) { $scope.bonus = $scope.total * 0.25; }
+    if ($scope.total >= 500000) { $scope.bonus = $scope.total * 0.4; }
 
     $scope.cardData = {};
     $scope.branch_id = $userService.currentUser.branch_id;
@@ -47,7 +46,15 @@ angular.module('dopApp')
           },
           headers: { 'token': $auth.getToken() }
         }).success(function(message){
-          console.log(message);
+          $userService.currentUser.credits = $userService.currentUser.credits + ($scope.total / 100) + $scope.bonus;
+          $scope.hide();
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('FELICIDADES! AHORA CUENTAS CON ' + $userService.currentUser.credits +' CRÉDITOS.')
+              .position('top right')
+              .hideDelay(3500)
+              .theme('success-toast')
+          );
         });
       };
 
@@ -58,5 +65,9 @@ angular.module('dopApp')
 
       var tokenParams = { 'card': $scope.cardData };
       Conekta.token.create(tokenParams, successResponseHandler, errorResponseHandler);
+    };
+
+    $scope.hide = function() {
+      $mdDialog.hide();
     };
   });

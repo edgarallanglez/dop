@@ -28,7 +28,7 @@ angular.module('dopApp')
       if ($scope.total >= 100000 && $scope.total < 200000) { bonus = $scope.total * 0.1; }
       if ($scope.total >= 200000 && $scope.total < 500000) { bonus = $scope.total * 0.25; }
       if ($scope.total >= 500000) { bonus = $scope.total * 0.4; }
-      $scope.url = 'http://45.55.7.118:5000/api/company/'+$scope.branch_id+'/credits/payment';
+      $scope.url = 'http://45.55.7.118:5000/api/coupon/'+$scope.branch_id+'/credits/payment';
 
       var confirm = $mdDialog.confirm()
       .title('¡HEY!')
@@ -52,6 +52,7 @@ angular.module('dopApp')
               .hideDelay(3500)
               .theme('success-toast')
           );
+          $userService.currentUser.credits = message.balance;
         }).error(function(message) {
           console.log(message);
         });

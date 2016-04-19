@@ -58,6 +58,9 @@ angular.module('dopApp')
 
     $scope.selected = [];
 
+
+
+
     $scope.query = {
       order: 'name',
       limit: 5,
@@ -92,21 +95,20 @@ angular.module('dopApp')
     }).success(function(data) {
       angular.forEach(data.data, function(value, key){
         console.log(value.name);
-          if(value.name == null){
+          if(value.name === null){
             value.name = "Nueva Campaña";
           }
       });
       $scope.coupons = data;
+
     }).error(function(){
-      SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
+      //SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
     });
 
-
-    // $scope.close = function() {
-    //   $mdSidenav('right').close()
-    //                       .then(function(){
-
-    //                       });
-    // };
-
+    $scope.getPDF = function() {
+      var pdf = jsPDF('p', 'pt');
+      var myTables = pdf.autoTableHtmlToJson(document.getElementById('table'));
+      pdf.autoTable(myTables.columns, myTables.data, {startY: 60});
+      pdf.save('Test.pdf') ;
+    };
   });
