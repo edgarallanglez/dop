@@ -96,6 +96,17 @@ angular.module('dopApp')
             value.name = "Nueva Campaña";
           }
       });
+
+      var pdf = new jsPDF();
+
+
+      pdf.fromHTML(document.getElementsByTagName("body")[0], 15, 15, {
+      	'width': 170
+      });
+
+      //pdf.save('Test.pdf');
+
+      /*doc.text(20, 20, 'Hello world.');*/
       $scope.coupons = data;
     }).error(function(){
       SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
