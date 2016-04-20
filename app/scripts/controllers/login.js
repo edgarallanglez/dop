@@ -18,7 +18,7 @@ angular.module('dopApp')
       .then(function(response) {
         $auth.setToken(response.data.token, false);
         $location.path('/');
-        // $scope.setGlobalUser();
+        $userService.fromLogin = true;
       })
       .catch(function(response) {
           SweetAlert.swal("Oops!", "El usuario y/o contraseña son incorrectos ", "error");

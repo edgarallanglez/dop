@@ -53,7 +53,7 @@ angular.module('dopApp')
         controller: 'AdvanceReportCtrl'
       });
   })
-  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log, $userService, $http) {
+  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log, $userService, $http, $mdDialog, $mdMedia) {
     $scope.reportData = $reportService.reportData;
 
     $scope.selected = [];
@@ -92,7 +92,7 @@ angular.module('dopApp')
     }).success(function(data) {
       angular.forEach(data.data, function(value, key){
         console.log(value.name);
-          if(value.name == null){
+          if(value.name === null){
             value.name = "Nueva Campaña";
           }
       });
@@ -108,16 +108,50 @@ angular.module('dopApp')
 
       /*doc.text(20, 20, 'Hello world.');*/
       $scope.coupons = data;
+
     }).error(function(){
-      SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
+      //SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
     });
 
+    $scope.getPDF = function() {
+      var pdf = jsPDF('p', 'pt');
+      var myTables = pdf.autoTableHtmlToJson(document.getElementById('table'));
+      pdf.autoTable(myTables.columns, myTables.data, {startY: 60, theme:'striped'});
+      pdf.save('Test.pdf') ;
+    };
 
-    // $scope.close = function() {
-    //   $mdSidenav('right').close()
-    //                       .then(function(){
+    $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
-    //                       });
-    // };
-
+    $scope.showAdvanced = function(ev) {
+      var useFullScreen = $scope.customFullscreen;
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: 'views/reportViews/reportPreview.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen,
+      })
+      .then(function(answer) {
+        $scope.status = 'You said the information was "' + answer + '".';
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
+      $scope.$watch(function() {
+        return $mdMedia('xs') || $mdMedia('sm');
+      }, function(wantsFullScreen) {
+        $scope.customFullscreen = (wantsFullScreen === true);
+      });
+    };
   });
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }

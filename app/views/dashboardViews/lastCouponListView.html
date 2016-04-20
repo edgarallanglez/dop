@@ -8,7 +8,7 @@
                   <div class="info">
                     <h2 class="margin-sm">{{promo.name}}</h2>
                     <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
-                    </span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
+                    <span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p></span>
                   </div>
                   <div class="statistics">
                       <ul layout="row" layout-wrap>
@@ -32,7 +32,7 @@
         </md-card>
 
       </div>
-      <table id="report-table" class="table table-striped" ng-click="exportAction()">
+      <!-- <table id="report-table" class="table table-striped" ng-click="exportAction()">
         <tr>
           <td><strong>Dia</strong></td>
           <td><strong>Usos</strong></td>
@@ -41,5 +41,5 @@
           <td>{{row.day | date:'MM/dd/yyyy'}}</td>
           <td>{{ row.count }}</td>
         </tr>
-      </table>
+      </table> -->
     </div>

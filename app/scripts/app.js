@@ -32,7 +32,8 @@ angular
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;
-    this.loading = true;
+    this.loading = false;
+    this.fromLogin = false;
     var self = this;
 
     this.setUser = function(currentUser) {
@@ -92,7 +93,6 @@ angular
               $userService.getMe().success(function(data){
                 var user = data.data[0];
                 $userService.setUser(user);
-                //$userService.setLocation(user.location)
                 deferred.resolve();
               }).error(function(message){
                 SweetAlert.swal(message, 'error');
@@ -245,17 +245,10 @@ angular
           location.reload();
         });
     };
-
-    $scope.closeWidgets = function() {
-      $mdSidenav('widgets-sidenav').close()
-                                    .then(function(){
-                                      $log.debug('close RIGHT is done');
-                                    });
-    };
   })
   .controller('TabController', function($scope, $state, $location, $userService, $log, $mdSidenav, $http, $templateCache, $auth, $mdDialog){
+    // if (!$userService.fromLogin) { $scope.reload = false; } else { $scope.reload = true; }
     $scope.reload = true;
-
     $scope.$watch(function() {
       return $userService.loading;
     }, function (flag) {
@@ -267,6 +260,14 @@ angular
     }, function(user) {
       $scope.user = user;
     });
+
+    if ($userService.currentUser !== null) {
+      $scope.$watch(function() {
+        return $userService.currentUser.credits;
+      }, function(credits) {
+        $scope.user.credits = credits;
+      });
+    }
 
     $scope.openMenu = function($mdOpenMenu, ev) {
       var  originatorEv = ev;
@@ -311,13 +312,17 @@ angular
 
     $scope.$watch('data.selectedIndex', function () {
       // tab selected change
-      if ($scope.data) {
+      if ($userService.fromLogin) { $scope.reload = false; }
+      if ($scope.data && !$scope.reload) {
         if ($scope.data.selectedIndex === 0 && $auth.isAuthenticated() ) {
           $location.path('/').replace();
+          $userService.fromLogin = false;
         } else if ($scope.data.selectedIndex === 1 && $auth.isAuthenticated()) {
           $location.path('/coupon').replace();
+          $userService.fromLogin = false;
         } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
           $location.path('/report').replace();
+          $userService.fromLogin = false;
         }
       }
 
@@ -334,15 +339,6 @@ angular
           $scope.reload = false;
         }
       }
-
     });
 
-  })
-  .controller('NotificationCtrl', ['$scope', '$mdSidenav', function($scope, $mdSidenav, $log){
-        $scope.closeNotifications = function() {
-      $mdSidenav('notifications-sidenav').close()
-                                          .then(function(){
-                                            $log.debug('close RIGHT is done');
-                                          });
-    };
-  }]);
+  });

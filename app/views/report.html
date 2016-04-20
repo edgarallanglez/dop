@@ -1,4 +1,4 @@
-<md-card>
+<md-card >
 	<!--<md-toolbar class="md-table-toolbar md-default" ng-hide="showSearch">
 		<div class="md-toolbar-tools">
 			<h2>Campañas</h2>
@@ -17,7 +17,7 @@
 	  </div>
 	</md-toolbar>
 	<md-table-container>
-	  <table md-table md-row-select multiple ng-model="selected" md-progress="promise">
+	  <table id="table" md-table md-row-select multiple ng-model="selected" md-progress="promise">
 	    <thead md-head md-order="name" md-on-reorder="getCoupons">
 	      <tr md-row>
 	        <th md-column md-order-by="name"><span>Campaña</span></th>
@@ -26,7 +26,7 @@
 	      </tr>
 	    </thead>
 	    <tbody md-body>
-	      <tr  ng-disabled="!item.active" md-row md-select="item" md-select-id="item.coupon_id" md-auto-select ng-repeat="item in coupons.data | orderBy: name | filter:searchCoupon">
+	      <tr  ng-disabled="!item.active" md-row md-select="item" md-select-id="item.coupon_id" ng-repeat="item in coupons.data | orderBy: name | filter:searchCoupon" ng-click="!item.active || showAdvanced($event)">
 	        <td md-cell><p>{{item.name}}</p></td>
 
 					<td md-cell ng-if="item.active && !item.completed">{{item.start_date | date:'dd MMM yyyy'}}</td>
@@ -44,6 +44,7 @@
 	    </tbody>
 	  </table>
 	</md-table-container>
+	<md-button class="md-rised"ng-click="getPDF()">pdf</md-button>
 	<!--<md-table-pagination md-label="{page: 'Página:', rowsPerPage: 'Resultados por página:', of: 'de'}" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{coupons.data.length}}" md-on-paginate="getCoupons" md-page-select></md-table-pagination>-->
 </md-card>
 <!--<div class="coupon-container">
