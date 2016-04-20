@@ -65,7 +65,14 @@
                     View for Item #3 <br/>
                     data.selectedIndex = 2;
                   </md-tab-body>
-   -->              </md-tab>
+   -->          </md-tab>
+                <md-tab id="tab4">
+                 <md-tab-label>IMAGEN</md-tab-label>
+                <!--          <md-tab-body>
+                   View for Item #3 <br/>
+                   data.selectedIndex = 2;
+                 </md-tab-body>
+-->             </md-tab>
               </md-tabs>
               <div ng-controller="MeCtrl" class="pull-right" flex="100" ng-init="init()">
                 <!-- <md-button class="md-fab md-mini md-green-theme" aria-label="Agregar Creditos" ng-click="showCreditModal($event)">
@@ -165,6 +172,18 @@
                   </div>
                 </md-content>
             </div>
+            <div role="tabpanel"
+                 id="tab4-content"
+                 aria-labelledby="tab4"
+                 ng-switch-when="3"
+                 md-swipe-left="next()"
+                 md-swipe-right="previous()" >
+                <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
+                  <div flex ui-view>
+
+                  </div>
+                </md-content>
+            </div>
           </ng-switch>
 
     </div>
@@ -227,6 +246,7 @@
         <script src="bower_components/tableExport.jquery.plugin/tableExport.min.js"></script>
         <script src="bower_components/sprintf/src/sprintf.js"></script>
         <script src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
+        <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

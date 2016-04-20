@@ -28,7 +28,8 @@ angular
     '720kb.datepicker',
     'restangular',
     'dibari.angular-ellipsis',
-    'md.data.table'
+    'md.data.table',
+    'ngImgCrop'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;
@@ -170,6 +171,36 @@ angular
             return deferred.promise;
           }
         }
+      })
+      .state('image', {
+        url: '/image',
+        templateUrl: 'views/image.html',
+        controller: 'ImageCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth, $state) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) {
+              deferred.resolve();
+            } else {
+              $location.path('/login');
+            }
+            return deferred.promise;
+          },
+          userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
+            var deferred = $q.defer();
+            //var payload = $auth.getPayload();
+            if (!$userService.getCurrentUser()) {
+              $userService.getMe().success(function(data){
+                var user = data.data[0];
+                $userService.setUser(user);
+                deferred.resolve();
+              }).error(function(){
+                SweetAlert.swal('Error en el servidor', '', 'error');
+              });
+            } else { deferred.resolve(); }
+            return deferred.promise;
+          }
+        }
       });
 
     $urlRouterProvider.otherwise('/');
@@ -285,9 +316,10 @@ angular
                                             //Transición terminada
                                           });
     };
+    
     $scope.toggleRightWidgets = function() {
       var closeWidgetsBtn=document.getElementById('closeWidgetsBtn');
-      setTimeout(function(){ closeWidgetsBtn.classList.add('active'); },450);
+      setTimeout(function(){ closeWidgetsBtn.classList.add('active'); }, 450);
       $mdSidenav('widgets-sidenav').open()
                                     .then(function(){
                                       //Transición terminada
@@ -323,6 +355,9 @@ angular
         } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
           $location.path('/report').replace();
           $userService.fromLogin = false;
+        } else if ($scope.data.selectedIndex === 3 && $auth.isAuthenticated()) {
+          $location.path('/image').replace();
+          $userService.fromLogin = false;
         }
       }
 
@@ -336,6 +371,9 @@ angular
           $scope.reload = false;
         } else if ($location.path() === '/report') {
           $scope.data.selectedIndex = 2;
+          $scope.reload = false;
+        } else if ($location.path() === '/image') {
+          $scope.data.selectedIndex = 3;
           $scope.reload = false;
         }
       }

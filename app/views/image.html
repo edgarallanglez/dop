@@ -1,0 +1,19 @@
+<div ng-controller="ImageCtrl">
+  <md-card>
+    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button class="md-icon-button" aria-label="Favorite">
+        <ng-md-icon icon="favorite" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
+
+      </md-button>
+      <md-button class="md-icon-button" aria-label="Settings">
+        <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
+        <!-- <md-icon md-svg-icon="img/icons/menu.svg"></md-icon> -->
+      </md-button>
+      <md-button class="share-arrow" aria-label="Share">
+        <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
+        <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+      </md-button>
+    </md-card-actions>
+  </md-card>
+</div>
