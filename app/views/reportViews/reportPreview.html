@@ -1,0 +1,48 @@
+<md-dialog aria-label="Reporte" ng-controller="ReportPreviewCtrl" flex>
+    <md-toolbar class="md-accent">
+      <div class="md-toolbar-tools">
+        <h2>Reporte</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" layout="row" layout-align="center center">
+        <md-progress-circular ng-show="loading" class="md-accent" md-mode="indeterminate"></md-progress-circular>
+
+        <md-table-container ng-hide="loading" id="preview_table_container">
+          <table id="preview_table" md-table md-row-select multiple ng-model="selected" md-progress="promise">
+            <thead md-head md-order="name" md-on-reorder="getCoupons">
+              <tr md-row>
+                <th md-column md-order-by="name"><span>Fecha</span></th>
+                <th md-column md-order-by="start_date">Usos</th>
+              </tr>
+            </thead>
+            <tbody md-body>
+              <tr  ng-disabled="!item.active" md-row md-select="item" md-select-id="item.coupon_id" ng-repeat="item in coupons.data | orderBy: name | filter:searchCoupon" ng-click="!item.active || showAdvanced($event)">
+                <td md-cell><p>{{item.name}}</p></td>
+
+                <td md-cell>{{item.start_date | date:'dd MMM yyyy'}}</td>
+                <td md-cell>{{item.start_date | date:'dd MMM yyyy'}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" ng-hide="loading" flex>
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       Not Useful
+      </md-button>
+      <md-button ng-click="answer('useful')" style="margin-right:20px;">
+        Useful
+      </md-button>
+    </md-dialog-actions>
+</md-dialog>

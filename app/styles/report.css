@@ -7,3 +7,6 @@ table i { margin-right: 0.5em; }
 table { font-weight: 400 !important! }
 table th{ font-size: 1.1em !important;}
 md-table-pagination label { color: black !important; }
+table tr {outline: none;}
+table tr[disabled="disabled"]:hover{ cursor: default; }
+#preview_table_container { width: 100%; }
