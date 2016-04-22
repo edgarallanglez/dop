@@ -1,19 +1,16 @@
-<div ng-controller="ImageCtrl">
-  <md-card>
-    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button class="md-icon-button" aria-label="Favorite">
-        <ng-md-icon icon="favorite" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
+<div layout="row" layout-fill layout-wrap layout-align="center start">
 
-      </md-button>
-      <md-button class="md-icon-button" aria-label="Settings">
-        <ng-md-icon icon="menu" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
-        <!-- <md-icon md-svg-icon="img/icons/menu.svg"></md-icon> -->
-      </md-button>
-      <md-button class="md-icon-button" aria-label="Share">
-        <ng-md-icon icon="share-arrow" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
-        <!-- <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon> -->
-      </md-button>
-    </md-card-actions>
+  <md-card class="drag-drop" layout="column" style="width: 250px; height: 250px;">
+    <!-- <div><input type="file"  /></div> -->
+    <droplet-upload-single ng-model="interface" id="logoInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;"></droplet-upload-single>
+    <ng-md-icon icon="file_upload" size="48" class="drag-drop-icon"></ng-md-icon>
+    <!-- <span class="dark-font">Logo</span> -->
+  </md-card>
+
+  <md-card class="drag-drop" layout="column" flex="70">
+    <!-- <div><input type="file"  /></div> -->
+    <droplet-upload-single ng-model="interface"  id="bannerInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;" flex="100"></droplet-upload-single>
+    <ng-md-icon icon="file_upload" size="48" class="drag-drop-icon"></ng-md-icon>
+    <!-- <span class="dark-font">BANNER</span> -->
   </md-card>
 </div>

@@ -29,7 +29,8 @@ angular
     'restangular',
     'dibari.angular-ellipsis',
     'md.data.table',
-    'ngImgCrop'
+    'ngImgCrop',
+    'ngDroplet'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;
@@ -316,7 +317,7 @@ angular
                                             //Transición terminada
                                           });
     };
-    
+
     $scope.toggleRightWidgets = function() {
       var closeWidgetsBtn=document.getElementById('closeWidgetsBtn');
       setTimeout(function(){ closeWidgetsBtn.classList.add('active'); }, 450);
