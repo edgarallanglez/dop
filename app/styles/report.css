@@ -10,3 +10,4 @@ md-table-pagination label { color: black !important; }
 table tr {outline: none;}
 table tr[disabled="disabled"]:hover{ cursor: default; }
 #preview_table_container { width: 100%; }
+md-dialog-actions{ background: #F7F7F7; }

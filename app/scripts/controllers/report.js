@@ -82,9 +82,7 @@ angular.module('dopApp')
     };
 
     $scope.createReport = function (kindReport) {
-
       $log.debug($scope.reportData);
-
     };
 
     var branch_id = $userService.getCurrentUser().branch_id;
@@ -93,24 +91,19 @@ angular.module('dopApp')
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
     }).success(function(data) {
+
       angular.forEach(data.data, function(value, key){
-        console.log(value.name);
           if(value.name === null){
             value.name = "Nueva Campaña";
           }
-      });
-
-      var pdf = new jsPDF();
-
-
-      pdf.fromHTML(document.getElementsByTagName("body")[0], 15, 15, {
-      	'width': 170
       });
 
       //pdf.save('Test.pdf');
 
       /*doc.text(20, 20, 'Hello world.');*/
       $scope.coupons = data;
+
+      console.log($scope.coupons);
 
     }).error(function(){
       //SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error");
@@ -126,15 +119,17 @@ angular.module('dopApp')
 
     $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
-    $scope.showAdvanced = function(ev) {
+    $scope.showAdvanced = function(item) {
       var useFullScreen = $scope.customFullscreen;
       $mdDialog.show({
-        controller: DialogController,
+        controller: 'ReportPreviewCtrl',
         templateUrl: 'views/reportViews/reportPreview.html',
         parent: angular.element(document.body),
-        targetEvent: ev,
         clickOutsideToClose:true,
         fullscreen: useFullScreen,
+        locals: {
+            coupon : item
+        }
       })
       .then(function(answer) {
         $scope.status = 'You said the information was "' + answer + '".';
@@ -148,14 +143,3 @@ angular.module('dopApp')
       });
     };
   });
-  function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-      $mdDialog.hide();
-    };
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
-  }
