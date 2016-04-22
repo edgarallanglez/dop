@@ -16,6 +16,24 @@ angular.module('dopApp')
     $scope.myImage = $imageService.myImage;
     $scope.myCroppedImage = '';
 
+    var handleLogoSelect=function(evt) {
+      var file = evt.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt) {
+        $scope.$apply(function($scope){
+          $imageService.myImage = evt.target.result;
+          $mdDialog.show({
+            clickOutsideToClose: true,
+            controller: 'ImageCtrl',
+            templateUrl: '../../views/modalViews/imageCropModalView.html',
+            targetEvent: 'testing',
+          });
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+    angular.element(document.querySelector('#logoInput')).on('change', handleLogoSelect);
+
     var handleBannerSelect=function(evt) {
       var file = evt.currentTarget.files[0];
       var reader = new FileReader();

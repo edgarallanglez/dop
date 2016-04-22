@@ -192,4 +192,5 @@ md-toast.md-success-toast-theme .md-toast-content {
   left: calc(50% - 24px);
   fill: #E4E4E4;
   position: absolute;
+  pointer-events: none;
 }
