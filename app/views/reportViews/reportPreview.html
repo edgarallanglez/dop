@@ -1,32 +1,26 @@
-<md-dialog aria-label="Reporte" ng-controller="ReportPreviewCtrl" flex>
+<md-dialog aria-label="Reporte" flex>
     <md-toolbar class="md-accent">
       <div class="md-toolbar-tools">
-        <h2>Reporte</h2>
+        <h2>{{coupon.name}}</h2>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-        </md-button>
       </div>
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content" layout="row" layout-align="center center">
         <md-progress-circular ng-show="loading" class="md-accent" md-mode="indeterminate"></md-progress-circular>
 
-        <md-table-container ng-hide="loading" id="preview_table_container">
-          <table id="preview_table" md-table md-row-select multiple ng-model="selected" md-progress="promise">
-            <thead md-head md-order="name" md-on-reorder="getCoupons">
+        <md-table-container ng-hide="loading" id="preview_table_container" flex>
+          <table id="preview_table" md-table multiple  md-progress="promise">
+            <thead md-head md-order="day" md-on-reorder="getCoupons">
               <tr md-row>
-                <th md-column md-order-by="name"><span>Fecha</span></th>
-                <th md-column md-order-by="start_date">Usos</th>
+                <th md-column md-order-by="day"><span>Fecha</span></th>
+                <th md-column md-order-by="count">Usos</th>
               </tr>
             </thead>
             <tbody md-body>
-              <tr  ng-disabled="!item.active" md-row md-select="item" md-select-id="item.coupon_id" ng-repeat="item in coupons.data | orderBy: name | filter:searchCoupon" ng-click="!item.active || showAdvanced($event)">
-                <td md-cell><p>{{item.name}}</p></td>
-
-                <td md-cell>{{item.start_date | date:'dd MMM yyyy'}}</td>
-                <td md-cell>{{item.start_date | date:'dd MMM yyyy'}}</td>
-
+              <tr  md-row ng-repeat="item in coupons.data | orderBy: day">
+                <td md-cell>{{item.day | date:'dd MMM yyyy'}}</td>
+                <td md-cell>{{item.count}} usos</td>
               </tr>
             </tbody>
           </table>
@@ -34,15 +28,15 @@
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" ng-hide="loading" flex>
-      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" >
         More on Wikipedia
       </md-button>
       <span flex></span>
-      <md-button ng-click="answer('not useful')">
+      <md-button ng-click="cancel()">
        Not Useful
       </md-button>
-      <md-button ng-click="answer('useful')" style="margin-right:20px;">
-        Useful
+      <md-button ng-click="getPDF()" style="margin-right:20px;">
+        PDF
       </md-button>
     </md-dialog-actions>
 </md-dialog>
