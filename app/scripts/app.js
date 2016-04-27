@@ -30,7 +30,8 @@ angular
     'dibari.angular-ellipsis',
     'md.data.table',
     'ngImgCrop',
-    'ngDroplet'
+    'ngDroplet',
+    'locator'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;

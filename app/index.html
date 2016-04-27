@@ -27,6 +27,7 @@
   <!-- Template CSS -->
   <!-- build:css(.tmp) dop/dist/styles/main.css -->
   <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/locator.css">
   <link rel="stylesheet" href="styles/calculator.css">
   <link rel="stylesheet" href="styles/demo.css">
   <link rel="stylesheet" href="styles/login.css">
@@ -250,10 +251,12 @@
         <script src="bower_components/angular-material-data-table/dist/md-data-table.js"></script>
         <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
         <script src="bower_components/ng-droplet/dist/ng-droplet.min.js"></script>
+        <script src="bower_components/ng-img-crop-full-extended/compile/minified/ng-img-crop.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJaKK3Btv5ozr_sNZgt_XBRHHXqX9D1O8&libraries=places&sensor=true"></script>
         <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js"></script>
         <script type="text/javascript">Conekta.setPublishableKey('key_FfYRG4sG9AqcoMGkPsX7Mzw');</script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script>
@@ -282,6 +285,8 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/vendor/demo.js"></script>
         <script src="scripts/vendor/angular-locale_es-mx.js"></script>
+        <script src="scripts/vendor/locator.min.js"></script>
+        <script src="scripts/vendor/locator-tpl.js"></script>
 
         <!-- endbuild -->
 

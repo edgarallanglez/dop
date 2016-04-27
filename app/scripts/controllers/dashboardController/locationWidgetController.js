@@ -11,7 +11,7 @@
 angular.module('dopApp')
   .config(function($stateProvider, uiGmapGoogleMapApiProvider){
     uiGmapGoogleMapApiProvider.configure({
-      key: 'AIzaSyDwxoEs4X719_XHnhIjv0dUA-nkXlL26Tw',
+      key: 'AIzaSyDJaKK3Btv5ozr_sNZgt_XBRHHXqX9D1O8',
       v: '3.17',
       libraries: 'weather,geometry,visualization'
     });

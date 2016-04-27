@@ -10,11 +10,20 @@
 angular.module('dopApp')
   .service('$imageService', function(){
     this.myImage = '';
-    this.myCroppedImage = '';
+    this.myLogoCroppedImage = '';
+    this.myBannerCroppedImage = '';
+    this.cropType = 'square';
+    this.aspectRatio = 1.0;
   })
-  .controller('ImageCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService) {
+  .controller('ImageCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, location) {
+    $scope.aspectRatio = $imageService.aspectRatio;
     $scope.myImage = $imageService.myImage;
     $scope.myCroppedImage = '';
+    $scope.cropType = $imageService.cropType;
+
+    location.get(angular.noop, angular.noop);
+    $scope.isModalVisible = false;
+
 
     var handleLogoSelect=function(evt) {
       var file = evt.currentTarget.files[0];
@@ -22,6 +31,8 @@ angular.module('dopApp')
       reader.onload = function (evt) {
         $scope.$apply(function($scope){
           $imageService.myImage = evt.target.result;
+          $imageService.cropType = 'square';
+          $imageService.aspectRatio = 1.0;
           $mdDialog.show({
             clickOutsideToClose: true,
             controller: 'ImageCtrl',
@@ -40,6 +51,8 @@ angular.module('dopApp')
       reader.onload = function (evt) {
         $scope.$apply(function($scope){
           $imageService.myImage = evt.target.result;
+          $imageService.cropType = 'rectangle';
+          $imageService.aspectRatio = 2.105;
           $mdDialog.show({
             clickOutsideToClose: true,
             controller: 'ImageCtrl',
@@ -57,6 +70,7 @@ angular.module('dopApp')
       // $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif']);
 
       $scope.$on('$dropletFileAdded', function whenDropletReady() {
+        //
         // $mdDialog.show({
         //   clickOutsideToClose: true,
         //   controller: 'ImageCtrl',
@@ -65,4 +79,36 @@ angular.module('dopApp')
         // });
       });
     });
+
+    $scope.$watch(function() {
+      return $imageService.myLogoCroppedImage;
+    }, function(myCroppedImage) {
+      $scope.myLogoCroppedImage = myCroppedImage;
+    });
+
+
+    $scope.$watch(function() {
+      return $imageService.myBannerCroppedImage;
+    }, function(myCroppedImage) {
+      $scope.myBannerCroppedImage = myCroppedImage;
+    });
+
+    $scope.doCrop = function() {
+      if ($imageService.cropType === 'square') { $imageService.myLogoCroppedImage = $scope.myCroppedImage; }
+      else { $imageService.myBannerCroppedImage = $scope.myCroppedImage; }
+
+      $scope.hide();
+    };
+
+    $scope.hide = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.locator = function() {
+      console.log('locator');
+    }
+    $scope.toggleModal = function() {
+      $scope.isModalVisible = !$scope.isModalVisible;
+    };
+    $scope.$watch('lookedUpLocation', $scope.toggleModal);
   });

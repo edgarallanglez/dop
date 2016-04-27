@@ -1,7 +1,23 @@
-<md-dialog flex="80" style="height: 500px">
-  <md-content style="height: 500px">
+<md-dialog flex="80" style="height: 550px">
+  <md-dialog-content style="height: 550px; background-color: #f2f2f2">
+    <md-subheader class="subtitle">HERRAMIENTA DE IMAGEN</md-subheader>
     <div class="cropArea">
-      <img-crop area-type="square" image="myImage" result-image="myCroppedImage"></img-crop>
+      <img-crop area-type="{{cropType}}" aspect-ratio="aspectRatio" image="myImage"
+                result-image="myCroppedImage" result-image-size="1224" result-image-quality="1"
+                area-min-size="150"></img-crop>
     </div>
-  </md-content>
+
+    <div>
+      <img ng-src="{{myCroppedImage}}" alt="cropped" />
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()" class="md-button">
+      CANCELAR
+    </md-button>
+    <md-button ng-click="doCrop()" class="md-primary md-accent">
+      GUARDAR
+    </md-button>
+  </div>
 </md-dialog>

@@ -2,15 +2,47 @@
 
   <md-card class="drag-drop" layout="column" style="width: 250px; height: 250px;">
     <!-- <div><input type="file"  /></div> -->
+
     <droplet-upload-single ng-model="interface" id="logoInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;"></droplet-upload-single>
+    <img ng-src="{{myLogoCroppedImage}}" class="img-cropped"/>
     <ng-md-icon icon="file_upload" size="48" class="drag-drop-icon"></ng-md-icon>
     <!-- <span class="dark-font">Logo</span> -->
   </md-card>
 
-  <md-card class="drag-drop" layout="column" flex="70">
+  <md-card class="drag-drop" layout="column" style="width: 530px;">
     <!-- <div><input type="file"  /></div> -->
     <droplet-upload-single ng-model="interface"  id="bannerInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;" flex="100"></droplet-upload-single>
+    <img ng-src="{{myBannerCroppedImage}}" class="img-cropped"/>
     <ng-md-icon icon="file_upload" size="48" class="drag-drop-icon"></ng-md-icon>
     <!-- <span class="dark-font">BANNER</span> -->
   </md-card>
+
+  <md-card style="width: 800px;">
+    <form name="branch_about_form">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex="45">
+            <label>Dirección</label>
+            <location-lookup ng-model="lookedUpLocation" class="locator" limit-to="4"></location-lookup>
+
+          </md-input-container>
+          <md-input-container class="md-block" flex="45">
+            <label>Sobre ti</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+        </div>
+    </form>
+  </md-card>
+
+  <div ng-class="{ false: 'modal', true: 'modal--show' }[isModalVisible]">
+    <div class="overlay" ng-click="toggleModal()"></div>
+    <div class="modal__contents modal--transition">
+      <a class="modal__close" href="" ng-click="toggleModal()">&times;</a>
+      <h3 ng-if="pickedLocation">Picked Location</h3>
+      <p ng-if="pickedLocation">Name: <span class="muted">{{pickedLocation.name}}</span><br/>Description: <span class="muted">{{pickedLocation.description}}</span><br/>Latitude: <span class="muted">{{pickedLocation.latitude}}</span><br/>Longitude: <span class="muted">{{pickedLocation.longitude}}</span></p>
+      <br/>
+      <br/>
+      <h3 ng-if="lookedUpLocation">Looked Up Location</h3>
+      <p ng-if="lookedUpLocation">Name: <span class="muted">{{lookedUpLocation.name}}</span><br/>Description: <span class="muted">{{lookedUpLocation.description}}</span><br/>Latitude: <span class="muted">{{lookedUpLocation.latitude}}</span><br/>Longitude: <span class="muted">{{lookedUpLocation.longitude}}</span></p>
+    </div>
+  </div>
 </div>
