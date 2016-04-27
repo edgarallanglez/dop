@@ -27,7 +27,8 @@ angular.module('dopApp')
 
 
     });
-    $scope.getPDF = function() {
+
+    function generatePDF(){
       var pdf = jsPDF('p', 'pt');
       var myTables = pdf.autoTableHtmlToJson(document.getElementById('preview_table'));
       delete myTables.data[0]
@@ -37,25 +38,36 @@ angular.module('dopApp')
             pdf.setTextColor(40);
             pdf.setFontStyle('normal');
 
-
             var name = $scope.coupon.name;
             var xOffset = (pdf.internal.pageSize.width / 2) - (pdf.getStringUnitWidth(name) * pdf.internal.getFontSize() / 2);
             var available = 'Cupones disponibles: '+ $scope.coupon.available;
-            var remaining = 'Dias restantes: '+ $scope.coupon.available;
-
-            var diffDays = $scope.coupon.end_date - $scope.coupon.start_date;
-            alert(diffDays)
-
+            var remaining = 'Dias restantes: '+ $scope.coupon.remaining;
+            var status;
             console.log($scope.coupon);
+
 
             pdf.setFontSize(12);
             pdf.text(name, xOffset, 28);
-            pdf.text(available, 40, 45);
-            pdf.text(remaining, 40, 60);
+            if($scope.coupon.completed){
+              status = "Finalizada";
+              if($scope.coupon.available>0){
+                pdf.text("Finalizada por límite de fecha", 40, 45);
+              }else{
+                pdf.text("Finalizada por agotamiento de cupones", 40, 45);
+              }
+            }else{
+              status = "En curso";
+              pdf.text(available, 40, 45);
+              pdf.text(remaining, 40, 60);
+            }
           }
       });
 
+      return pdf;
+    }
 
+    $scope.getPDF = function() {
+      var pdf = generatePDF();
       pdf.save($scope.coupon.name);
 
       $mdDialog.hide();
@@ -69,5 +81,10 @@ angular.module('dopApp')
     };
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
+    };
+    $scope.print = function() {
+      var pdf = generatePDF();
+      pdf.autoPrint();
+      window.open(pdf.output('bloburl'), '_blank');
     };
   });
