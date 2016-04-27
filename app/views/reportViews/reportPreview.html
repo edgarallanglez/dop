@@ -28,15 +28,15 @@
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" ng-hide="loading" flex>
-      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" >
-        More on Wikipedia
+      <md-button ng-click="cancel()" >
+        Cancelar
       </md-button>
       <span flex></span>
-      <md-button ng-click="cancel()">
-       Not Useful
+      <md-button ng-click="print()">
+       Imprimir
       </md-button>
       <md-button ng-click="getPDF()" style="margin-right:20px;">
-        PDF
+        Descargar
       </md-button>
     </md-dialog-actions>
 </md-dialog>
