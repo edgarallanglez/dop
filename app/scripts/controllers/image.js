@@ -108,7 +108,8 @@ angular.module('dopApp')
       console.log('locator');
     }
     $scope.toggleModal = function() {
-      $scope.isModalVisible = !$scope.isModalVisible;
+      console.log(lookedUpLocation);
     };
+    
     $scope.$watch('lookedUpLocation', $scope.toggleModal);
   });
