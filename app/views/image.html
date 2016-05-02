@@ -1,45 +1,35 @@
-<div layout="row" layout-fill layout-wrap layout-align="center start">
 
-  <md-card class="drag-drop" layout="column" style="width: 250px; height: 250px;">
-    <!-- <div><input type="file"  /></div> -->
+<div layout="row" flex="70" layout-wrap layout-align="center start">
+  <md-toolbar class="image-toolbar toolbar-title">
+    <div class="md-toolbar-tools">
+      <h1 class="ng-binding">Logo & Banner</h1>
+      <span flex="" class="flex"></span>
+    </div>
+  </md-toolbar>
 
-    <droplet-upload-single ng-model="interface" id="logoInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;"></droplet-upload-single>
-    <img ng-src="{{myLogoCroppedImage}}" class="img-cropped"/>
-    <ng-md-icon icon="file_upload" size="48" class="drag-drop-icon"></ng-md-icon>
-    <!-- <span class="dark-font">Logo</span> -->
-  </md-card>
-
-  <md-card class="drag-drop" layout="column" style="width: 530px;">
-    <!-- <div><input type="file"  /></div> -->
-    <droplet-upload-single ng-model="interface"  id="bannerInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;" flex="100"></droplet-upload-single>
-    <img ng-src="{{myBannerCroppedImage}}" class="img-cropped"/>
-    <ng-md-icon icon="file_upload" size="48" class="drag-drop-icon"></ng-md-icon>
-    <!-- <span class="dark-font">BANNER</span> -->
-  </md-card>
-
-  <md-card style="width: 800px;">
-    <form name="branch_about_form">
-        <div layout="column" layout-fill>
-          <md-input-container class="md-block" layout="row" flex="80">
-            <label>Dirección</label>
-            <location-lookup ng-model="lookedUpLocation" class="locator" limit-to="4" flex="80"></location-lookup>
-          </md-input-container>
-          <md-input-container class="md-block" flex="80">
-            <label>Sobre ti</label>
-            <input ng-model="user.firstName">
-          </md-input-container>
-        </div>
-    </form>
-  </md-card>
-
-  <div ng-class="{ false: 'modal', true: 'modal--show' }[isModalVisible]">
-    <div class="overlay" ng-click="toggleModal()"></div>
-    <div class="modal__contents modal--transition">
-      <a class="modal__close" href="" ng-click="toggleModal()">&times;</a>
-      <br/>
-      <br/>
-      <h3 ng-if="lookedUpLocation">Looked Up Location</h3>
-      <p ng-if="lookedUpLocation">Name: <span class="muted">{{lookedUpLocation.name}}</span><br/>Description: <span class="muted">{{lookedUpLocation.description}}</span><br/>Latitude: <span class="muted">{{lookedUpLocation.latitude}}</span><br/>Longitude: <span class="muted">{{lookedUpLocation.longitude}}</span></p>
+  <div layout-fill layout="row" layout-align="center start">
+  <!-- Logo Card -->
+    <div class="" flex-order="1">
+        <div ui-view="logoView"></div>
+    </div>
+  <!-- Banner Card -->
+    <div class="" flex-order="2">
+        <div ui-view="bannerView"></div>
     </div>
   </div>
+
+  <md-toolbar class="image-toolbar toolbar-title margin-top-xl">
+    <div class="md-toolbar-tools">
+      <h1 class="ng-binding">Dirección</h1>
+      <span flex="" class="flex"></span>
+    </div>
+  </md-toolbar>
+
+  <!-- Reverse Locator -->
+  <div layout-fill layout="row" layout-align="center start">
+    <div class="">
+        <div ui-view="locatorView"></div>
+    </div>
+  </div>
+
 </div>

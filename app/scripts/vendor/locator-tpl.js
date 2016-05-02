@@ -5,6 +5,7 @@ app.run(["$templateCache", function($templateCache) {
   "use strict";
   $templateCache.put("location-lookup/location-lookup.html",
     "<div class=\"search-box\">\n" +
+    "  <ng-md-icon icon=\"location_on\" size=\"22\" style=\"fill: #888; position:absolute; top: 9px; left: 6px; \"></ng-md-icon>" +
     "  <location-predictions results=\"results\"></location-predictions>\n" +
     "</div>\n" +
     "\n" +

@@ -58,8 +58,13 @@ nav a {
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
 }
 
+.locator ul li:focus {
+  outline: none;
+  background: #F7F7F7;
+}
 
 .blue { background-color: #00B4FF; left: 50%; }
 .blue h2,
@@ -165,4 +170,20 @@ nav a {
     -ms-transform: translateX(-0) translateY(150%);
     transform: translateX(-0) translateY(150%);
   }
+}
+.locator {
+  width: 800px;
+}
+.search-box {
+  position: relative;
+}
+.locator .search-box input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  padding-left: 35px;
+  height: 40px;
+  border-bottom: 1px solid rgba(0,0,0,0.10) !important;
+  font-weight: 400;
 }

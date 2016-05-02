@@ -1,0 +1,19 @@
+<md-card class="locator margin-top-xl" flex-sm="100">
+  <form name="branch_about_form" class="no-margin">
+      <div layout="column" layout-fill>
+        <div class="md-block no-padding no-margin-bottom" layout="row" flex="100">
+          <location-lookup ng-model="lookedUpLocation" class="locator" limit-to="4" flex="100"></location-lookup>
+        </div>
+      </div>
+  </form>
+  <div ng-class="{ false: 'modal', true: 'modal--show' }[isModalVisible]">
+    <div class="overlay" ng-click="toggleModal()"></div>
+    <div class="modal__contents modal--transition">
+      <a class="modal__close" href="" ng-click="toggleModal()">&times;</a>
+      <br/>
+      <br/>
+      <h3 ng-if="lookedUpLocation">Looked Up Location</h3>
+      <p ng-if="lookedUpLocation">Name: <span class="muted">{{lookedUpLocation.name}}</span><br/>Description: <span class="muted">{{lookedUpLocation.description}}</span><br/>Latitude: <span class="muted">{{lookedUpLocation.latitude}}</span><br/>Longitude: <span class="muted">{{lookedUpLocation.longitude}}</span></p>
+    </div>
+  </div>
+</md-card>
