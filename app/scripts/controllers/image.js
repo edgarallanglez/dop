@@ -15,7 +15,12 @@ angular.module('dopApp')
     this.cropType = 'square';
     this.aspectRatio = 1.0;
   })
-  .controller('ImageCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, location) {
+  .controller('ImageCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, location, $base64, fileUploadService) {
+    $scope.interface = {};
+    /*$scope.uploadCount = 0;
+    $scope.success = false;
+    $scope.error = false;*/
+
     $scope.aspectRatio = $imageService.aspectRatio;
     $scope.myImage = $imageService.myImage;
     $scope.myCroppedImage = '';
@@ -66,8 +71,15 @@ angular.module('dopApp')
     angular.element(document.querySelector('#bannerInput')).on('change', handleBannerSelect);
 
     $scope.$on('$dropletReady', function whenDropletReady() {
+      console.log(" listo ");
+
       // Directive's interface is ready to be used...
-      // $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif']);
+      $scope.interface.allowedExtensions(['png', 'jpg', 'bmp']);
+            $scope.interface.setRequestHeaders('/api/upload');
+            $scope.interface.setRequestUrl('/api/upload');
+            $scope.interface.defineHTTPSuccess([/2.{2}/]);
+            $scope.interface.useArray(false);
+
 
       $scope.$on('$dropletFileAdded', function whenDropletReady() {
         //
@@ -94,11 +106,9 @@ angular.module('dopApp')
     });
 
     $scope.doCrop = function() {
-      if ($imageService.cropType === 'square') { $imageService.myLogoCroppedImage = $scope.myCroppedImage; }
-      else { $imageService.myBannerCroppedImage = $scope.myCroppedImage; }
-
-      $scope.hide();
+      
     };
+
 
     $scope.hide = function() {
       $mdDialog.cancel();
@@ -107,9 +117,7 @@ angular.module('dopApp')
     $scope.locator = function() {
       console.log('locator');
     }
-    $scope.toggleModal = function() {
-      console.log(lookedUpLocation);
-    };
-    
+
+
     $scope.$watch('lookedUpLocation', $scope.toggleModal);
   });

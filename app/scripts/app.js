@@ -31,7 +31,8 @@ angular
     'md.data.table',
     'ngImgCrop',
     'ngDroplet',
-    'locator'
+    'locator',
+    'base64'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;
