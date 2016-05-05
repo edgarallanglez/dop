@@ -8,19 +8,64 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
+  .service('$logoLoading', function(){
+    this.flag = false;
+  })
 
-  .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService) {
+  .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $logoLoading, Cropper,$timeout) {
+    $scope.minSize = $imageService.minSize;
+    $scope.resultSize = $imageService.resultSize;
+
     $scope.aspectRatio = $imageService.aspectRatio;
     $scope.myImage = $imageService.myImage;
     $scope.myCroppedImage = '';
     $scope.cropType = $imageService.cropType;
 
+    $scope.loadingLogo = $logoLoading.flag;
+
+    $scope.data;
+    $scope.cropper = {};
+    $scope.cropperProxy = 'cropper.first';
+
+
+    $scope.options = {
+          maximize: false,
+          aspectRatio: 1 / 1,
+          dragMode: 'move',
+          crop: function(dataNew) {
+            $scope.data = dataNew;
+
+          }
+    };
+
+
+    $scope.showEvent = 'show';
+    $scope.hideEvent = 'hide';
+    function showCropper() { $scope.$broadcast($scope.showEvent); }
+    function hideCropper() { $scope.$broadcast($scope.hideEvent); }
+
+    $timeout(showCropper);
+
+
+    $scope.$watch(function(){
+      return $logoLoading.flag;
+    }, function(flag){
+      $scope.loadingLogo = flag;
+    });
+
     var handleLogoSelect=function(evt) {
       var file = evt.currentTarget.files[0];
       var reader = new FileReader();
+
+
       reader.onload = function (evt) {
+
         $scope.$apply(function($scope){
+          $scope.minSize = 500;
+          $scope.resultSize = 400;
+
           $imageService.myImage = evt.target.result;
+          $imageService.file = file;
           $imageService.cropType = 'square';
           $imageService.aspectRatio = 1.0;
           $mdDialog.show({
@@ -42,20 +87,24 @@ angular.module('dopApp')
     });
 
     $scope.doCrop = function() {
-      if ($imageService.cropType === 'square') { $imageService.myLogoCroppedImage = $scope.myCroppedImage; }
-      else { $imageService.myBannerCroppedImage = $scope.myCroppedImage; }
+      $logoLoading.flag = true;
 
-      $scope.hide();
+      Cropper.crop($imageService.file,$scope.data)
+        .then(Cropper.encode).then(function(dataUrl) {
+          $imageService.myLogoCroppedImage = dataUrl;
+          $scope.hide();
 
-      var uploadUrl = 'http://45.55.7.118:5000/api/company/branch/4/upload/logo';
-      console.log($imageService.myLogoCroppedImage);
-      $fileUploadService.uploadFileToUrl($imageService.myBannerCroppedImage, uploadUrl, {})
-      .then(function(resp) {
-          console.log(resp);
-      });
+          $fileUploadService.uploadFileToUrl(dataUrl, $imageService.cropType)
+            .then(function(resp) {
+              $logoLoading.flag = false;
+            });
+        });
     };
 
     $scope.hide = function() {
       $mdDialog.cancel();
     };
+
+
+
   });

@@ -9,21 +9,32 @@
  */
 
 angular.module('dopApp')
-  .service('$imageService', function() {
+  .service('$imageService', function($timeout){
     this.myImage = '';
     this.myLogoCroppedImage = '';
     this.myBannerCroppedImage = '';
     this.cropType = 'square';
     this.aspectRatio = 1.0;
+    this.minSize = 300;
+    this.resultSize = 1224;
+    this.file = '';
   })
-  .service('$fileUploadService', function ($http) {
-    this.uploadFileToUrl = function(file, uploadUrl, params){
+  .service('$fileUploadService', function ($http, $userService) {
+
+    this.uploadFileToUrl = function(file, type){
+      var companyId = $userService.currentUser.company_id;
+      var uploadUrl = 'http://45.55.7.118:5000/api/company/branch/'+companyId+'/upload/';
+
+      if(type == 'square'){
+        uploadUrl= uploadUrl+"logo";
+      }else{
+        uploadUrl= uploadUrl+"banner";
+      }
       var fd = new FormData();
       fd.append('file', file);
       var promise = $http.post(uploadUrl, fd, {
         transformRequest: angular.identity,
-        headers: {'Content-Type': undefined},
-        params: params
+        headers: {'Content-Type': undefined}
       });
       return promise;
     };
@@ -55,4 +66,5 @@ angular.module('dopApp')
     $scope.save = function(event) {
       console.log(event);
     };
+
   });
