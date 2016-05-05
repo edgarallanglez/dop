@@ -2,14 +2,18 @@
   <md-dialog-content style="height: 550px; background-color: #f2f2f2">
     <md-subheader class="subtitle">HERRAMIENTA DE IMAGEN</md-subheader>
     <div class="cropArea">
-      <img-crop area-type="{{cropType}}" aspect-ratio="aspectRatio" image="myImage"
-                result-image="myCroppedImage" result-image-size="1224" result-image-quality="1"
-                area-min-size="150"></img-crop>
+      <!--<img-crop area-type="{{cropType}}" aspect-ratio="aspectRatio" image="myImage"
+                result-image="myCroppedImage" result-image-size="resultSize" result-image-quality="1"
+                area-min-size="300"></img-crop>-->
+      <img width="200" ng-cropper  ng-src="{{myImage}}" ng-cropper-proxy="cropperProxy"
+           ng-cropper-show="showEvent"
+           ng-cropper-hide="hideEvent"
+           ng-cropper-options="options">
     </div>
 
-    <div>
+    <!--<div>
       <img ng-src="{{myCroppedImage}}" alt="cropped" />
-    </div>
+    </div>-->
   </md-dialog-content>
   <div class="md-actions" layout="row">
     <span flex></span>

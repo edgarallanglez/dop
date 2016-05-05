@@ -32,7 +32,8 @@ angular
     'ngImgCrop',
     'ngDroplet',
     'locator',
-    'base64'
+    'base64',
+    'ngCropper'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;
