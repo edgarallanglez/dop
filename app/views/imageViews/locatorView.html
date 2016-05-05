@@ -1,4 +1,5 @@
-<md-card class="locator margin-top-xl" flex-sm="100">
+<md-card class="locator margin-top-xl relative-center transition-enable" flex-sm="100">
+  <!-- locator reverse input and results -->
   <form name="branch_about_form" class="no-margin">
       <div layout="column" layout-fill>
         <div class="md-block no-padding no-margin-bottom" layout="row" flex="100">
@@ -6,14 +7,20 @@
         </div>
       </div>
   </form>
-  <div ng-class="{ false: 'modal', true: 'modal--show' }[isModalVisible]">
-    <div class="overlay" ng-click="toggleModal()"></div>
-    <div class="modal__contents modal--transition">
-      <a class="modal__close" href="" ng-click="toggleModal()">&times;</a>
-      <br/>
-      <br/>
-      <h3 ng-if="lookedUpLocation">Looked Up Location</h3>
-      <p ng-if="lookedUpLocation">Name: <span class="muted">{{lookedUpLocation.name}}</span><br/>Description: <span class="muted">{{lookedUpLocation.description}}</span><br/>Latitude: <span class="muted">{{lookedUpLocation.latitude}}</span><br/>Longitude: <span class="muted">{{lookedUpLocation.longitude}}</span></p>
-    </div>
+  <div ng-class="">
+    <div class="" ng-click="getLocation(lookedUpLocation)"></div>
   </div>
 </md-card>
+
+<!-- locator by map and pin -->
+<div class="locator"  style="top: 75px; position: relative;">
+  <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options" control="map.control">
+    <ui-gmap-marker idkey="map.marker.id" coords="map.marker.coords" icon="map.marker.icon" options="{draggable:true}">
+    </ui-gmap-marker>
+    <!-- <ui-gmap-markers ng-show="mapLoaded" models="markers" coords="'self'" icon="'icon'"  options="'options'" fit="true">
+        <ui-gmap-window coords="map.center" show="windowOptions.show" closeClick="closeClick()" >
+            <div ng-non-bindable>{{name}} <br> {{taken_date | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+        </ui-gmap-window>
+    </ui-gmap-markers> -->
+  </ui-gmap-google-map>
+</div>

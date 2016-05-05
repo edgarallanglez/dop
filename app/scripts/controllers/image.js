@@ -9,7 +9,7 @@
  */
 
 angular.module('dopApp')
-  .service('$imageService', function(){
+  .service('$imageService', function() {
     this.myImage = '';
     this.myLogoCroppedImage = '';
     this.myBannerCroppedImage = '';
@@ -51,4 +51,8 @@ angular.module('dopApp')
   })
   .controller('ImageCtrl', function ($scope, $http, $mdDialog, $imageService, $state) {
     $state.go('image.dashboard');
+
+    $scope.save = function(event) {
+      console.log(event);
+    };
   });

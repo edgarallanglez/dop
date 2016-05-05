@@ -51,7 +51,7 @@
                 <!-- Descuento -->
                 <div layout="row" layout-fill class="coupon-type-layout" ng-show="couponSelected=='3'">
                     <md-input-container flex-gt-xs>
-                        <label for="percent"l>Porcentaje de descuento</label>
+                        <label for="percent">Porcentaje de descuento</label>
                         <input name="percent" type="number" id="percent" ng-model="coupon.percent" min="0" max="100">
                     </md-input-container>
                 </div>
@@ -70,7 +70,7 @@
 
                 <div layout="row" layout-fill layout-align="end center">
                     <md-button type="submit" id="create-coupon-btn" class="md-fab md-green-theme" aria-label="Crear" style="line-height: 65px;">
-                         <i class="fa fa-check menu-icon margin-sm"></i>
+                      <ng-md-icon icon="done" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
                     </md-button>
                 </div>
             </form>
