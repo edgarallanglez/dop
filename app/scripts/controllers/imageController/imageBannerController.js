@@ -11,7 +11,17 @@ angular.module('dopApp')
   .service('$bannerLoading', function(){
     this.flag = false;
   })
-  .controller('ImageBannerCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $bannerLoading, Cropper, $timeout) {
+  .directive('imageonload', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('load', function() {
+                scope.$apply(attrs.imageonload);
+            });
+        }
+      };
+  })
+  .controller('ImageBannerCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $bannerLoading, Cropper, $timeout, $userService) {
     $scope.minSize = $imageService.minSize;
     $scope.resultSize = $imageService.resultSize;
 
@@ -38,6 +48,14 @@ angular.module('dopApp')
           }
     };
 
+    var companyId = $userService.currentUser.company_id;
+    $imageService.myBannerCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/banner.png';
+    $bannerLoading.flag = true;
+
+    $scope.showInvoice = function() {
+      $scope.bannerLoaded = true;
+      $bannerLoading.flag = false;
+    };
 
     $scope.showEvent = 'show';
     $scope.hideEvent = 'hide';
