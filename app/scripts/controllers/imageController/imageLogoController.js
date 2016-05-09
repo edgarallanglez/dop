@@ -11,8 +11,17 @@ angular.module('dopApp')
   .service('$logoLoading', function(){
     this.flag = false;
   })
-
-  .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $logoLoading, Cropper,$timeout) {
+  .directive('imageonload', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('load', function() {
+                scope.$apply(attrs.imageonload);
+            });
+        }
+      };
+  })
+  .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $logoLoading, Cropper, $timeout, $userService) {
     $scope.minSize = $imageService.minSize;
     $scope.resultSize = $imageService.resultSize;
 
@@ -21,11 +30,13 @@ angular.module('dopApp')
     $scope.myCroppedImage = '';
     $scope.cropType = $imageService.cropType;
 
+
     $scope.loadingLogo = $logoLoading.flag;
 
     $scope.data;
     $scope.cropper = {};
     $scope.cropperProxy = 'cropper.first';
+
 
 
     $scope.options = {
@@ -36,6 +47,17 @@ angular.module('dopApp')
             $scope.data = dataNew;
 
           }
+    };
+
+
+    var companyId = $userService.currentUser.company_id;
+    $imageService.myLogoCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/logo.png'+ '?' + new Date().getTime();
+
+    $logoLoading.flag = true;
+
+    $scope.showInvoice = function() {
+      $scope.logoLoaded = true;
+      $logoLoading.flag = false;
     };
 
 
@@ -52,6 +74,9 @@ angular.module('dopApp')
     }, function(flag){
       $scope.loadingLogo = flag;
     });
+
+
+
 
     var handleLogoSelect=function(evt) {
       var file = evt.currentTarget.files[0];
@@ -88,7 +113,8 @@ angular.module('dopApp')
 
     $scope.doCrop = function() {
       $logoLoading.flag = true;
-
+      $scope.loadingLogo = true;
+      
       Cropper.crop($imageService.file,$scope.data)
         .then(Cropper.encode).then(function(dataUrl) {
           $imageService.myLogoCroppedImage = dataUrl;
@@ -96,7 +122,8 @@ angular.module('dopApp')
 
           $fileUploadService.uploadFileToUrl(dataUrl, $imageService.cropType)
             .then(function(resp) {
-              $logoLoading.flag = false;
+              //$logoLoading.flag = false;
+
             });
         });
     };
