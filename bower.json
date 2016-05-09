@@ -18,7 +18,7 @@
     "angular-ui-router": "~0.2.13",
     "angular-chart.js": "^0.9.0",
     "chartjs": "~1.0.2",
-    "angular-google-maps": "~2.0.19",
+    "angular-google-maps": "~2.3.2",
     "angular-jwt": "~0.0.6",
     "satellizer": "~0.9.4",
     "angular-material-icons": "~0.4.0",

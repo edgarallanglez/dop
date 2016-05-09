@@ -262,13 +262,12 @@ angular
         }).success(function(data){
           $userService.setUser(data.data[0]);
           $scope.user = $userService.getCurrentUser();
-          console.log(data.data[0]);
         });
       } else {
         $location.path('/login');
       }
     };
-    $scope.init();
+    // $scope.init();
 
     $scope.logout = function() {
       if (!$auth.isAuthenticated()) { return; }

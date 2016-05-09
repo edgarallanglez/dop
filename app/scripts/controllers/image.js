@@ -63,6 +63,8 @@ angular.module('dopApp')
   .controller('ImageCtrl', function ($scope, $http, $mdDialog, $imageService, $state) {
     $state.go('image.dashboard');
 
-
+    $scope.save = function(event) {
+      console.log(event);
+    };
 
   });

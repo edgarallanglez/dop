@@ -26,9 +26,14 @@
   </md-toolbar>
 
   <!-- Reverse Locator -->
-  <div layout-fill layout="row" layout-align="center start">
+  <div style="position:relative" layout-fill layout="row" layout-align="center start">
     <div class="">
         <div ui-view="locatorView"></div>
     </div>
   </div>
+  
+  <md-button class="md-raised md-green-theme md-accent add-campaign-button" aria-label="Guardar Cambios" ng-click="save($event)">
+    GUARDAR CAMBIOS
+  </md-button>
+
 </div>

@@ -250,3 +250,14 @@ md-toast.md-success-toast-theme .md-toast-content {
 .image-toolbar .md-toolbar-tools h1 {
   font-weight: 400 !important;
 }
+
+.transition-enable {
+  -webkit-transition: max-height 1s;
+}
+
+.relative-center {
+  z-index: 2;
+  max-height: auto;
+  position: absolute;
+  left: calc(50% - 408px);
+}

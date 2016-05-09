@@ -91,7 +91,7 @@
                   </md-button>
                   <md-menu-content width="4" class="no-padding">
                     <md-menu-item>
-                      <md-button>
+                      <md-button aria-label="Créditos">
                         {{user.credits | currency:$:2}}
                       </md-button>
                     </md-menu-item>
@@ -183,7 +183,7 @@
                  ng-switch-when="3"
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
+                <md-content layout="row" layout-align="center start" class="no-background height-inherit ng-cloak">
                   <div flex ui-view layout="row" layout-align="center center">
 
                   </div>
@@ -232,6 +232,7 @@
         <script src="bower_components/Chart.js/Chart.js"></script>
         <script src="bower_components/chartjs/Chart.js"></script>
         <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+        <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
         <script src="bower_components/lodash/lodash.js"></script>
         <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
