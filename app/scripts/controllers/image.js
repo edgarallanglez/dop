@@ -60,11 +60,27 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('ImageCtrl', function ($scope, $http, $mdDialog, $imageService, $state) {
+  .controller('ImageCtrl', function ($scope, $http, $auth, $locatorService, $userService, $mdToast, $imageService, $state) {
     $state.go('image.dashboard');
 
-    $scope.save = function(event) {
-      console.log(event);
+    $scope.setLocation = function(event) {
+      $scope.branch_id = $userService.currentUser.branch_id;
+      $scope.url = 'http://45.55.7.118:5000/api/company/'+$scope.branch_id+'/config/set';
+      $http({
+        method: 'POST',
+        url: $scope.url,
+        data: { 'data': $locatorService.locatorItem },
+        headers: { 'Authorization': $auth.getToken() }
+      }).success(function(message) {
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent('CAMBIOS GUARDADOS.')
+            .position('top right')
+            .hideDelay(3500)
+            .theme('success-toast')
+        );
+        console.log(message);
+      });
     };
 
   });

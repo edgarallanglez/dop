@@ -15,7 +15,20 @@ angular.module('dopApp')
       libraries: 'weather,geometry,visualization'
     });
   })
-  .controller('ImageLocatorCtrl', function ($scope, $userService, location, uiGmapGoogleMapApi, uiGmapIsReady) {
+  .service('$locatorService', function(){
+    this.locatorItem = {
+      longitude: '',
+      latitude: '',
+      state: '',
+      city: '',
+      description: ''
+    };
+
+    this.setLocator = function(item) {
+      this.locatorItem = item;
+    };
+  })
+  .controller('ImageLocatorCtrl', function ($scope, $userService, $locatorService, location, uiGmapGoogleMapApi, uiGmapIsReady) {
     var latitude = $userService.getCurrentUser().latitude;
     var longitude = $userService.getCurrentUser().longitude;
 
@@ -43,9 +56,15 @@ angular.module('dopApp')
         coords: {
           latitude: latitude,
           longitude: longitude
+        },
+        events: {
+          dragend: function (maps, eventName, args) {
+            $locatorService.locatorItem.longitude = args.coords.longitude;
+            $locatorService.locatorItem.latitude = args.coords.latitude;
         }
       },
       control: {}
+      }
     };
 
     location.get(angular.noop, angular.noop);
@@ -66,10 +85,17 @@ angular.module('dopApp')
         };
 
         $scope.map.control.getGMap();
+
+        $locatorService.locatorItem = lookedUpLocation;
         var results = document.querySelectorAll('li');
         for (var i = 0; i < results.length; ++i) { results[i].remove(); }
       }
     };
 
     $scope.$watch('lookedUpLocation', $scope.getLocation);
+    // $scope.$watch('map.marker.coords.latitude', $scope.console);
+    //
+    // $scope.console = function(event) {
+    //   console.log($scope.map.marker);
+    // };
   });
