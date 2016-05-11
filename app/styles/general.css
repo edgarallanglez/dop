@@ -68,9 +68,7 @@ body h1, h2, h3, h4, h5, h6 { font-weight: 300 !important; }
 /* fonts */
 .font-15 { font-size: 15px !important; }
 .font-xl { font-size: 2.0em; }
-.center {
-    text-align: center !important;
-}
+.center { text-align: center !important; }
 .report-height { min-height: 450px !important; }
 .menu-icon { font-size: 24px; }
 .navbar {
@@ -169,6 +167,7 @@ md-tabs.md-default-theme md-tab.active{
   text-align: right;
 }
 
+md-toast { position: fixed !important; }
 md-toast.md-success-toast-theme .md-toast-content {
   background-color: #448AFF;
   margin-top: 50px;

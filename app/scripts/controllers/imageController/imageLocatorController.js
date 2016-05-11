@@ -84,7 +84,7 @@ angular.module('dopApp')
           longitude: lookedUpLocation.longitude
         };
 
-        $scope.map.control.getGMap();
+      //  $scope.map.control.getGMap();
 
         $locatorService.locatorItem = lookedUpLocation;
         var results = document.querySelectorAll('li');
