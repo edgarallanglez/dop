@@ -11,17 +11,21 @@ angular.module('dopApp')
   .service('$logoLoading', function(){
     this.flag = false;
   })
-  .directive('imageonload', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element.bind('load', function() {
-                scope.$apply(attrs.imageonload);
-            });
-        }
-      };
+  .service('$uploading', function(){
+    this.flag = false;
   })
-  .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $logoLoading, Cropper, $timeout, $userService) {
+  .directive('imageonload', function ($logoLoading) {
+      $logoLoading.flag = true;
+      return {
+          restrict: 'A',
+          link: function (scope, element, attrs) {
+              element.bind('load', function() {
+                  scope.$apply(attrs.imageonload);
+              });
+          }
+        };
+  })
+  .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $logoLoading, Cropper, $timeout, $userService, $uploading) {
     $scope.minSize = $imageService.minSize;
     $scope.resultSize = $imageService.resultSize;
 
@@ -32,12 +36,12 @@ angular.module('dopApp')
 
 
     $scope.loadingLogo = $logoLoading.flag;
+    $scope.isUploading = $uploading.flag;
 
-    $scope.data;
     $scope.cropper = {};
     $scope.cropperProxy = 'cropper.first';
 
-
+    $scope.uploading = false;
 
     $scope.options = {
           maximize: false,
@@ -53,11 +57,11 @@ angular.module('dopApp')
     var companyId = $userService.currentUser.company_id;
     $imageService.myLogoCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/logo.png'+ '?' + new Date().getTime();
 
-    $logoLoading.flag = true;
+
 
     $scope.showInvoice = function() {
-      $scope.logoLoaded = true;
-      $logoLoading.flag = false;
+        $scope.logoLoaded = true;
+        $scope.loadingLogo = false;
     };
 
 
@@ -75,6 +79,11 @@ angular.module('dopApp')
       $scope.loadingLogo = flag;
     });
 
+    $scope.$watch(function(){
+      return $uploading.flag;
+    }, function(flag){
+      $scope.isUploading = flag;
+    });
 
 
 
@@ -112,9 +121,8 @@ angular.module('dopApp')
     });
 
     $scope.doCrop = function() {
-      $logoLoading.flag = true;
-      $scope.loadingLogo = true;
-      
+      $uploading.flag = true;
+
       Cropper.crop($imageService.file,$scope.data)
         .then(Cropper.encode).then(function(dataUrl) {
           $imageService.myLogoCroppedImage = dataUrl;
@@ -122,8 +130,7 @@ angular.module('dopApp')
 
           $fileUploadService.uploadFileToUrl(dataUrl, $imageService.cropType)
             .then(function(resp) {
-              //$logoLoading.flag = false;
-
+              $uploading.flag = false;
             });
         });
     };

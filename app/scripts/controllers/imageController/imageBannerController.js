@@ -11,6 +11,9 @@ angular.module('dopApp')
   .service('$bannerLoading', function(){
     this.flag = false;
   })
+  .service('$bannerUploading', function(){
+    this.flag = false;
+  })
   .directive('imageonload', function () {
     return {
         restrict: 'A',
@@ -21,7 +24,7 @@ angular.module('dopApp')
         }
       };
   })
-  .controller('ImageBannerCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $bannerLoading, Cropper, $timeout, $userService) {
+  .controller('ImageBannerCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $bannerLoading, Cropper, $timeout, $userService, $bannerUploading) {
     $scope.minSize = $imageService.minSize;
     $scope.resultSize = $imageService.resultSize;
 
@@ -32,6 +35,7 @@ angular.module('dopApp')
 
 
     $scope.loadingBanner = $bannerLoading.flag;
+    $scope.isBannerUploading = $bannerUploading.flag;
 
     $scope.data;
     $scope.cropper = {};
@@ -49,7 +53,7 @@ angular.module('dopApp')
     };
 
     var companyId = $userService.currentUser.company_id;
-    $imageService.myBannerCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/banner.png';
+    $imageService.myBannerCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/banner.png'+'?' + new Date().getTime();;
     $bannerLoading.flag = true;
 
     $scope.showInvoice = function() {
@@ -68,6 +72,12 @@ angular.module('dopApp')
       return $bannerLoading.flag;
     }, function(flag){
       $scope.loadingBanner = flag;
+    });
+
+    $scope.$watch(function(){
+      return $bannerUploading.flag;
+    }, function(flag){
+      $scope.isBannerUploading = flag;
     });
 
     var handleBannerSelect=function(evt) {
@@ -101,7 +111,7 @@ angular.module('dopApp')
     });
 
     $scope.doCrop = function() {
-      $bannerLoading.flag = true;
+      $bannerUploading.flag = true;
 
       Cropper.crop($imageService.file,$scope.data)
         .then(Cropper.encode).then(function(dataUrl) {
@@ -110,7 +120,7 @@ angular.module('dopApp')
 
           $fileUploadService.uploadFileToUrl(dataUrl, $imageService.cropType)
             .then(function(resp) {
-              $bannerLoading.flag = false;
+              $bannerUploading.flag = false;
             });
         });
     };

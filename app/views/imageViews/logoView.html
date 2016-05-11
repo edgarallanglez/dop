@@ -1,6 +1,6 @@
 <md-card  class="drag-drop margin-top-xl" layout="column" style="width: 250px; height: 250px;">
   <!-- <div><input type="file"  /></div> -->
-  <div ng-show="loadingLogo" class="loading-image">
+  <div ng-show="loadingLogo || isUploading" class="loading-image">
     <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
   </div>
   <droplet-upload-single ng-model="interface" id="logoInput" style="height: 100%;width: 100%; opacity: 0; cursor: pointer;"></droplet-upload-single>

@@ -5,12 +5,11 @@
       <!--<img-crop area-type="{{cropType}}" aspect-ratio="aspectRatio" image="myImage"
                 result-image="myCroppedImage" result-image-size="resultSize" result-image-quality="1"
                 area-min-size="300"></img-crop>-->
-      <img width="200" ng-cropper  ng-src="{{myImage}}" ng-cropper-proxy="cropperProxy"
+      <img ng-cropper  ng-src="{{myImage}}" ng-cropper-proxy="cropperProxy"
            ng-cropper-show="showEvent"
            ng-cropper-hide="hideEvent"
            ng-cropper-options="options">
     </div>
-
     <!--<div>
       <img ng-src="{{myCroppedImage}}" alt="cropped" />
     </div>-->
