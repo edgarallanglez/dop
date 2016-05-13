@@ -36,6 +36,10 @@ angular.module('dopApp')
           });
       })
     };
+
+    $scope.signup = function() {
+      $location.path('/signup')
+    };
     // $scope.setGlobalUser = function () {
     //   var payload = $auth.getPayload();
 

@@ -160,7 +160,7 @@
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
-                  <div flex ui-view>
+                  <div flex ui-view layout="row" layout-align="center center">
 
                   </div>
                 </md-content>
@@ -172,7 +172,7 @@
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
-                  <div flex ui-view>
+                  <div flex ui-view layout="row" layout-align="center center">
 
                   </div>
                 </md-content>
@@ -194,7 +194,7 @@
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
-      <div ui-view="login"></div>
+      <div ui-view></div>
     </div>
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
       <script>
@@ -232,6 +232,7 @@
         <script src="bower_components/Chart.js/Chart.js"></script>
         <script src="bower_components/chartjs/Chart.js"></script>
         <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+        <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
         <script src="bower_components/lodash/lodash.js"></script>
         <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
         <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
@@ -288,8 +289,11 @@
         <script src="scripts/controllers/modalController/addCreditModalController.js"></script>
         <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/controllers/paymentController/creditsPaymentController.js"></script>
+        <script src="scripts/directives/passwordStrength.js"></script>
+        <script src="scripts/directives/passwordMatch.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/vendor/demo.js"></script>
         <script src="scripts/vendor/angular-locale_es-mx.js"></script>
         <script src="scripts/vendor/locator.min.js"></script>

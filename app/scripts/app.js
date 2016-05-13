@@ -109,10 +109,27 @@ angular
       })
       .state('login', {
         url: '/login',
-        views: {
-          'login': {
-            templateUrl: 'login.html',
-            controller: 'LoginCtrl'
+        templateUrl: 'login.html',
+        controller: 'LoginCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) { deferred.reject(); }
+            else { deferred.resolve(); }
+            return deferred.promise;
+          }
+        }
+      })
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'signup.html',
+        controller: 'SignupCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) { deferred.reject(); }
+            else { deferred.resolve(); }
+            return deferred.promise;
           }
         }
       })

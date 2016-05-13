@@ -2,28 +2,34 @@
 
 /**
  * @ngdoc function
- * @name dopApp.controller:LoginCtrl
+ * @name dopApp.controller:SignupCtrl
  * @description
  * # SignupCtrl
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .controller('SignupCtrl', function ($scope, $auth, $http, $templateCache) {
+  .controller('SignupCtrl', function($scope, $location, $auth, $mdToast) {
     $scope.signup = function() {
-      $auth.signup({
-        'email' : "allang@gmail.com",
-        'password' : "123",
-        'name': 'Edgar',
-        'branch_id': 2
-      })
-      .then(function(response) {
-        console.log(response.data);
-        $auth.setToken(response.data.token, false);
-      });
-
+      $auth.signup($scope.user)
+        .then(function(response) {
+          $auth.setToken(response);
+          $location.path('/');
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('TU CUENTA SE HA CREADO EXITOSAMENTE!')
+              .position('top right')
+              .hideDelay(3500)
+              .theme('success-toast')
+          );
+        })
+        .catch(function(response) {
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent('HA OCURRIDO UN ERROR!')
+              .position('top right')
+              .hideDelay(3500)
+              .theme('error-toast')
+          );
+        });
     };
-    // $scope.authenticate = function(provider) {
-    //   $auth.authenticate(provider);
-    // };
-
   });
