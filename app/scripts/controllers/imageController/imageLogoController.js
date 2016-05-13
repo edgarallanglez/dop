@@ -25,6 +25,22 @@ angular.module('dopApp')
           }
         };
   })
+  .directive('checkimage', function($http, $logoLoading) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            attrs.$observe('ngSrc', function(ngSrc) {
+                $http.get(ngSrc).success(function(){
+                    alert('image exist');
+                }).error(function(){
+                    console.log("Imagen no encontrada");
+                    $logoLoading.flag = false;
+                    //element.attr('src', '/images/default_user.jpg'); // set default image
+                });
+            });
+        }
+    };
+  })
   .controller('ImageLogoCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $logoLoading, Cropper, $timeout, $userService, $uploading) {
     $scope.minSize = $imageService.minSize;
     $scope.resultSize = $imageService.resultSize;
@@ -59,7 +75,7 @@ angular.module('dopApp')
 
 
 
-    $scope.showInvoice = function() {
+    $scope.onLoadImage = function() {
         $scope.logoLoaded = true;
         $scope.loadingLogo = false;
     };

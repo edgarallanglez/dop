@@ -24,6 +24,22 @@ angular.module('dopApp')
         }
       };
   })
+  .directive('checkimage', function($http, $bannerLoading) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            attrs.$observe('ngSrc', function(ngSrc) {
+                $http.get(ngSrc).success(function(){
+                    alert('image exist');
+                }).error(function(){
+                    console.log("Imagen no encontrada");
+                    $bannerLoading.flag = false;
+                    //element.attr('src', '/images/default_user.jpg'); // set default image
+                });
+            });
+        }
+    };
+  })
   .controller('ImageBannerCtrl', function ($scope, $auth, $http, $templateCache, $mdDialog, $imageService, $fileUploadService, $bannerLoading, Cropper, $timeout, $userService, $bannerUploading) {
     $scope.minSize = $imageService.minSize;
     $scope.resultSize = $imageService.resultSize;
@@ -56,7 +72,7 @@ angular.module('dopApp')
     $imageService.myBannerCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/banner.png'+'?' + new Date().getTime();;
     $bannerLoading.flag = true;
 
-    $scope.showInvoice = function() {
+    $scope.onLoadImage = function() {
       $scope.bannerLoaded = true;
       $bannerLoading.flag = false;
     };
