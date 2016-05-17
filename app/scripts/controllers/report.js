@@ -55,7 +55,7 @@ angular.module('dopApp')
   })
   .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log, $userService, $http, $mdDialog, $mdMedia) {
     $scope.reportData = $reportService.reportData;
-
+    $scope.empty = true;
     $scope.selected = [];
 
 
@@ -91,7 +91,8 @@ angular.module('dopApp')
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
     }).success(function(data) {
-
+      if (data.data.length === 0) { $scope.empty = true; }
+      else { $scope.empty = false; }
       angular.forEach(data.data, function(value, key){
           if(value.name === null){
             value.name = "Nueva Campaña";

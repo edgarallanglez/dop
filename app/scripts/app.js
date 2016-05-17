@@ -83,11 +83,8 @@ angular
         resolve: {
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if (!$auth.isAuthenticated()) {
-              $location.path('/login');
-            } else {
-              deferred.resolve();
-            }
+            if (!$auth.isAuthenticated()) { $location.path('/login'); }
+            else { deferred.resolve(); }
 
             return deferred.promise;
           },
@@ -99,7 +96,7 @@ angular
                 var user = data.data[0];
                 $userService.setUser(user);
                 deferred.resolve();
-              }).error(function(message){
+              }).error(function(message) {
                 SweetAlert.swal(message, 'error');
               });
             } else { deferred.resolve(); }
@@ -140,11 +137,9 @@ angular
         resolve: {
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if ($auth.isAuthenticated()) {
-              deferred.resolve();
-            } else {
-              $location.path('/login');
-            }
+            if ($auth.isAuthenticated()) { deferred.resolve(); }
+            else { $location.path('/login'); }
+
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
@@ -170,11 +165,9 @@ angular
         resolve: {
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if ($auth.isAuthenticated()) {
-              deferred.resolve();
-            } else {
-              $location.path('/login');
-            }
+            if ($auth.isAuthenticated()) { deferred.resolve(); }
+            else { $location.path('/login'); }
+
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
@@ -200,11 +193,9 @@ angular
         resolve: {
           authenticated: function($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if ($auth.isAuthenticated()) {
-              deferred.resolve();
-            } else {
-              $location.path('/login');
-            }
+            if ($auth.isAuthenticated()) { deferred.resolve(); }
+            else { $location.path('/login'); }
+            
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
@@ -310,6 +301,7 @@ angular
       return $userService.currentUser;
     }, function(user) {
       $scope.user = user;
+      console.log(user);
     });
 
     if ($userService.currentUser !== null) {
@@ -327,23 +319,6 @@ angular
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
-    };
-
-    //Llamar SideBar derecho
-    $scope.toggleRightNotifications = function() {
-      $mdSidenav('notifications-sidenav').open()
-                                          .then(function(){
-                                            //Transición terminada
-                                          });
-    };
-
-    $scope.toggleRightWidgets = function() {
-      var closeWidgetsBtn=document.getElementById('closeWidgetsBtn');
-      setTimeout(function(){ closeWidgetsBtn.classList.add('active'); }, 450);
-      $mdSidenav('widgets-sidenav').open()
-                                    .then(function(){
-                                      //Transición terminada
-                                    });
     };
 
     $scope.showCreditModal = function(ev) {

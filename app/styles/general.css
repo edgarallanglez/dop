@@ -176,6 +176,10 @@ md-toast.md-success-toast-theme .md-toast-content {
   color: white;
 }
 
+.hidden {
+  visibility: hidden;
+  display: inherit !important;
+}
 .cropArea {
     background: none;
     overflow: hidden;
@@ -261,4 +265,29 @@ md-toast.md-success-toast-theme .md-toast-content {
   max-height: auto;
   position: absolute;
   left: calc(50% - 408px);
+}
+
+.empty-view {
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 115px);
+  font-size: 1.4em;
+}
+
+.empty-view-200 {
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 200px);
+  font-size: 1.4em;
+}
+
+.empty-view-relative {
+  position: relative;
+  top: 45%;
+  left: calc(50% - 115px);
+  font-size: 1.4em;
+}
+
+.height-inherit {
+  min-height: 300px;
 }

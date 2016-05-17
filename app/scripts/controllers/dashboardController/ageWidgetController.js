@@ -12,12 +12,15 @@ angular.module('dopApp')
   })
   .controller('AgeWidgetCtrl', function($scope, $http, $userService) {
     var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.empty = true;
 
     $http({
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/used/ages/'+ branch_id,
     }).then(function(data){
       $scope.ranges = data.data;
+      if (data.data.data.length === 0) { $scope.empty = true; }
+      else { $scope.empty = false; }
       angular.forEach($scope.ranges.data, function(value, key) {
         if(value.age <= 15){
           $scope.data[0][0] = value.count;

@@ -5,7 +5,7 @@
         <ul class="actions">
             <li class="dropdown action-show">
                 <a href="" data-toggle="dropdown" aria-expanded="false">
-                    <ng-md-icon icon="more_vert">
+                    <ng-md-icon icon="refresh" style="fill: #444"></ng-md-icon>
                 </a>
 
                 <div class="dropdown-menu pull-right">
@@ -17,9 +17,10 @@
         </ul>
     </div>
 
-    <div class="card-body card-padding">
+    <div class="card-body card-padding" style="position: relative">
         <div class="padding-xl">
-          <canvas id="genderChart" width="600" height="340" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas>
+          <canvas ng-class="{ hidden: empty }" id="genderChart" width="600" height="340" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas>
+          <p ng-if="empty" class="empty-view"> DATOS INSUFICIENTES </p>
         </div>
     </div>
 </div>

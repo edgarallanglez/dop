@@ -1,35 +1,40 @@
 <div layout-fill layout="row" layout-wrap style="margin: 0 auto;">
-        <div class="loading" flex ng-show="loading" layout-align="start center">
-          	<md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-        </div>
-     	<div ng-repeat="item in coupons" layout="row" layout-fill layout-wrap layout-align="center center">
-		      	<md-card class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)">
-					<div class="info">
-						<h2 class="margin-sm">{{promo.name}}</h2>
-						<h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
-						</span><p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
-					</div>
-					<div class="statistics">
-						<ul layout="row">
-							<li flex>
-								<i class="fa fa-bullseye" ></i>
-								<h3>{{promo.views}}0</h3>
-								<p class="transparent-text">Aperturas</p>
-							</li>
-							<li flex>
-								<i class="fa fa-heart"></i>
-								<h3>{{promo.total_likes}}0</h3>
-								<p class="transparent-text">Me gusta</p>
-							</li>
-							<li flex>
-								<i class="fa fa-ticket "></i>
-								<h3>{{promo.total_uses}}0</h3>
-								<p class="transparent-text">Usos</p>
-							</li>
-						</ul>
-					</div>
-		        </md-card>
-      	</div>
+  <div class="loading" flex ng-show="loading" layout-align="start center">
+    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <div ng-repeat="item in coupons" layout="row" layout-fill layout-wrap layout-align="center center">
+    <md-card class="background-white coupon-card animated fadeInLeft" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)">
+      <div class="info">
+        <h2 class="margin-sm">{{promo.name}}</h2>
+        <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
+      <span>
+        <p ng-if="promo.description" class="coupon-description" data-ng-bind="promo.description"></p>
+      </span>
+      </div>
+      <div class="statistics">
+        <ul layout="row">
+          <li flex>
+            <i class="fa fa-bullseye" ></i>
+            <h3>{{promo.views}}0</h3>
+            <p class="transparent-text">Aperturas</p>
+          </li>
+          <li flex>
+            <i class="fa fa-heart"></i>
+            <h3>{{promo.total_likes}}0</h3>
+            <p class="transparent-text">Me gusta</p>
+          </li>
+          <li flex>
+            <i class="fa fa-ticket "></i>
+            <h3>{{promo.total_uses}}0</h3>
+            <p class="transparent-text">Usos</p>
+          </li>
+        </ul>
+      </div>
+    </md-card>
+  </div>
+  <div class="" style="height: 300px">
+    <p ng-if="empty" class="empty-view-200"> CREA UNA CAMPAÑA PARA COMENZAR </p>
+  </div>
 </div>
 
 <!-- 		<div class="coupon-list-button">

@@ -19,7 +19,7 @@ angular.module('dopApp')
   .controller('CouponListCtrl', function($scope, $http, Restangular, SweetAlert, CouponFactory, $userService, $couponService) {
     var godCoupon = new CouponFactory();
     var branch_id = $userService.getCurrentUser().branch_id;
-    
+
     $scope.promod = new Date();
     $http({
       method: 'GET',
@@ -27,6 +27,8 @@ angular.module('dopApp')
     }).success(function(data){
       $scope.coupons = data;
       console.log($scope.coupons);
+      if ($scope.coupons.data.length === 0) { $scope.empty = true; }
+      else { $scope.empty = false; }
     }).error(function(){
       SweetAlert.swal("Error al cargar cupones, porfavor refresque la pagina", "", "error")
     });
@@ -44,6 +46,6 @@ angular.module('dopApp')
 
     $scope.configCoupon = function(coupon) {
       $couponService.setCoupon(coupon);
-      $couponService.inSet = true; 
+      $couponService.inSet = true;
     }
   });

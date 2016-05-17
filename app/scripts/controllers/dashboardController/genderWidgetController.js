@@ -12,6 +12,7 @@ angular.module('dopApp')
   })
   .controller('GenderWidgetCtrl', function($rootScope, $scope, $http, $userService) {
   	var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.empty = true;
 
   	$http({
       method: 'GET',
@@ -19,19 +20,15 @@ angular.module('dopApp')
     }).then(function(data){
       $scope.genders = data.data;
       angular.forEach($scope.genders.data, function(value, key) {
-        if(value.gender == 'male'){
-          $scope.data[0] = value.count;
-        }else{
-	        if(value.gender == 'female'){
-	          $scope.data[1] = value.count;
-	        }
-	    }
+        if (value.gender === 'male') { $scope.data[0] = value.count; }
+        else if (value.gender === 'female') { $scope.data[1] = value.count; }
       });
-      //$scope.loading = false;
+      if ($scope.data[0] === 0 && $scope.data[1] === 0) { $scope.empty = true; }
+      else { $scope.empty = false; }
     });
 
     $scope.labels = ['Hombres', 'Mujeres'];
     $scope.data = [0, 0];
-    $scope.colours = ['#1976D2', '#E53935'];  
+    $scope.colours = ['#1976D2', '#E53935'];
 
   });
