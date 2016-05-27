@@ -14,18 +14,18 @@ angular.module('dopApp')
   .service('$uploading', function(){
     this.flag = false;
   })
-  .directive('imageonload', function ($logoLoading) {
+  .directive('logoonload', function ($logoLoading) {
       $logoLoading.flag = true;
       return {
           restrict: 'A',
           link: function (scope, element, attrs) {
               element.bind('load', function() {
-                  scope.$apply(attrs.imageonload);
+                  scope.$apply(attrs.logoonload);
               });
           }
         };
   })
-  .directive('checkimage', function($http, $logoLoading) {
+  .directive('checklogo', function($http, $logoLoading) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -75,7 +75,7 @@ angular.module('dopApp')
 
 
 
-    $scope.onLoadImage = function() {
+    $scope.onLoadLogo = function() {
         $scope.logoLoaded = true;
         $scope.loadingLogo = false;
     };
