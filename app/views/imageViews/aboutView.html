@@ -1,0 +1,36 @@
+<md-card  class="margin-top-xl" layout="column" layout-align="start center" style="width: 800px">
+  <!-- <div><input type="file"  /></div> -->
+  <!-- <div class="">
+    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+  </div> -->
+
+  <form name="aboutForm" class="margin-top-xl">
+    <div layout layout-sm="column" layout-align="start start">
+      <md-input-container class="md-block" flex="45" flex-offset="5">
+        <label>Nombre Sucursal</label>
+        <input ng-model="about.name">
+      </md-input-container>
+    </div>
+
+    <div layout layout-sm="column" layout-align="start start">
+      <md-input-container class="md-block" flex="30" flex-offset="5">
+        <label>Teléfono</label>
+        <input name="phone" ng-model="about.phone" ng-pattern="/^([0-9]{3})[0-9]{3}[0-9]{4}$/" />
+        <div class="hint" ng-show="showHints">(###) ###-####</div>
+        <div ng-messages="aboutForm.phone.$error" ng-hide="showHints">
+          <div ng-message="pattern">Ingresa un número de teléfono válido.</div>
+        </div>
+      </md-input-container>
+    </div>
+
+    <div layout layout-sm="column" layout-align="center start">
+      <md-input-container class="md-block" flex="90">
+        <label>Dime algo sobre tu empresa</label>
+        <textarea ng-model="about.description" md-maxlength="140" rows="2" md-select-on-focus></textarea>
+        <div ng-messages="aboutForm.description.$error">
+          <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 140 caracteres!</div>
+        </div>
+      </md-input-container>
+    </div>
+  </form>
+</md-card>

@@ -32,6 +32,9 @@ angular.module('dopApp')
     var latitude = $userService.getCurrentUser().latitude;
     var longitude = $userService.getCurrentUser().longitude;
 
+    $locatorService.locatorItem.longitude = longitude;
+    $locatorService.locatorItem.latitude = latitude;
+    
     uiGmapGoogleMapApi.then(function(maps) {
       if( typeof _.contains === 'undefined' ) {
         _.contains = _.includes;

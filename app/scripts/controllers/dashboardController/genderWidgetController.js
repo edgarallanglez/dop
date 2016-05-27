@@ -29,6 +29,6 @@ angular.module('dopApp')
 
     $scope.labels = ['Hombres', 'Mujeres'];
     $scope.data = [0, 0];
-    $scope.colours = ['#1976D2', '#E53935'];
+    $scope.colours = ['#448AFF', '#FF4081'];
 
   });

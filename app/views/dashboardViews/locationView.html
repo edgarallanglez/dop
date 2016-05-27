@@ -1,11 +1,11 @@
-<div class="card">
+<div class="card animated fadeInUp">
     <div class="card-header">
         <h2>Ubicación</h2>
-        
+
         <ul class="actions">
             <li class="dropdown action-show">
                 <a href="" data-toggle="dropdown" aria-expanded="false">
-                    <ng-md-icon icon="more_vert">
+                    <ng-md-icon icon="more_vert"></ng-md-icon>
                 </a>
 
                 <div class="dropdown-menu pull-right">
@@ -16,14 +16,14 @@
             </li>
         </ul>
     </div>
-    
+
     <div class="card-body card-padding">
         <div class="padding-xl">
           <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options">
-            <ui-gmap-marker idKey='marker.id' coords='marker.coords' icon='marker.icon'>
+            <ui-gmap-marker idkey="marker.id" coords="marker.coords" icon="marker.icon">
             </ui-gmap-marker>
             <ui-gmap-markers ng-show="mapLoaded" models="markers" coords="'self'" icon="'icon'"  options="'options'" fit="true">
-                <ui-gmap-window coords="map.center" show="windowOptions.show" closeClick="closeClick()" >
+                <ui-gmap-window coords="map.center" show="windowOptions.show" closeclick="closeClick()" >
                     <div ng-non-bindable>{{name}} <br> {{taken_date | date:"MM/dd/yyyy 'at' h:mma"}}</div>
                 </ui-gmap-window>
             </ui-gmap-markers>
