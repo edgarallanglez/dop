@@ -32,7 +32,7 @@ angular.module('dopApp')
                 $http.get(ngSrc).success(function(){
                     alert('image exist');
                 }).error(function(){
-                    console.log("Imagen no encontrada");
+                    console.log("Banner no encontrado");
                     $bannerLoading.flag = false;
                     //element.attr('src', '/images/default_user.jpg'); // set default image
                 });
@@ -69,12 +69,12 @@ angular.module('dopApp')
     };
 
     var companyId = $userService.currentUser.company_id;
-    $imageService.myBannerCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/banner.png'+'?' + new Date().getTime();;
+    $imageService.myBannerCroppedImage = 'http://45.55.7.118/branches/images/'+companyId+'/banner.png'+'?' + new Date().getTime();
     $bannerLoading.flag = true;
 
     $scope.onLoadImage = function() {
       $scope.bannerLoaded = true;
-      $bannerLoading.flag = false;
+      $scope.loadingBanner = false;
     };
 
     $scope.showEvent = 'show';
