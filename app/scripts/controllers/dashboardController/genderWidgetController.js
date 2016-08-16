@@ -17,7 +17,7 @@ angular.module('dopApp')
   	$http({
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/used/gender/'+ branch_id,
-    }).then(function(data){
+    }).then(function(data) {
       $scope.genders = data.data;
       angular.forEach($scope.genders.data, function(value, key) {
         if (value.gender === 'male') { $scope.data[0] = value.count; }

@@ -67,7 +67,7 @@ angular.module('dopApp')
         SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");
       })
       .finally(function() {
-        SweetAlert.swal("Cupón Creado!", "El cupón ha sido modificado correctamente ", "success");
+        SweetAlert.swal("Campaña Creada!", "La campaña ha sido modificado correctamente ", "success");
       })
     };
 

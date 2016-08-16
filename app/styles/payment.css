@@ -5,3 +5,7 @@ md-select {
 .fa-2 {
   font-size: 2em;
 }
+
+md-card .md-card-image {
+  max-height: 50% !important;
+}

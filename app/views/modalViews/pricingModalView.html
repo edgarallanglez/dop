@@ -1,9 +1,9 @@
 <md-dialog ng-controller="PricingModalCtrl" md-theme="green" flex="80" aria-label="Compra coupones">
   <md-dialog-content class="sticky-container">
-    <md-subheader class="">Herramienta para compra de cupones</md-subheader>
+    <md-subheader class="">Herramienta para compra de campaña</md-subheader>
     <div layout="row" layout-margin>
-      <span flex="10">Cantidad</span>
-      <md-slider flex aria-label="Cantidad de cupones" ng-model="amountOfCoupon" min="50" max="500" step="25" id="day-slider"></md-slider>
+      <span flex="10">Personas</span>
+      <md-slider flex aria-label="Cantidad de disponibilidad" ng-model="amountOfCoupon" min="50" max="500" step="25" id="day-slider"></md-slider>
       <div flex="20" layout layout-align="center center">
         <h5 class="pricing-quantities" aria-controls="day-slider">{{amountOfCoupon}}</h5>
       </div>

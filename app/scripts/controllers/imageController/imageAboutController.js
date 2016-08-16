@@ -19,11 +19,30 @@ angular.module('dopApp')
      this.about = item;
    };
   })
-  .controller('ImageAboutCtrl', function($aboutService, $scope) {
+  .controller('ImageAboutCtrl', function($aboutService, $scope , $userService, $auth, SweetAlert, $http) {
     $scope.about = {
-      name: 'zara',
-      description: 'hola hola',
-      phone: '6672207920'
+      name: '',
+      description: '',
+      phone: ''
+    };
+
+    $scope.init = function () {
+      var payload = $auth.getPayload();
+      var branch_id = $userService.currentUser.branch_id;
+      return $http({
+        method: 'GET',
+        url: 'https://inmoon.com.mx/api/company/branch/'+branch_id+'/profile/tool/get',
+        headers: {'Content-Type': 'application/json'}
+      }).success(function(data){
+        var branch = data.data[0];
+        $scope.about.name =  branch.name;
+        $scope.about.description = branch.about;
+        $scope.about.phone = branch.phone;
+
+      }).error(function(message) {
+        SweetAlert.swal(message, '', 'error');
+      //  self.loading = false;
+      });
     };
 
     $scope.$watch(function() {

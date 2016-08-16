@@ -59,6 +59,8 @@ angular.module('dopApp')
 
 
     $scope.options = {
+          viewMode: 0,
+          scalable: true,
           maximize: true,
           aspectRatio:  2.11,
           dragMode: 'move',

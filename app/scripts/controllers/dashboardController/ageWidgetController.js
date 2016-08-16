@@ -19,7 +19,7 @@ angular.module('dopApp')
       url: 'http://45.55.7.118:5000/api/coupon/used/ages/'+ branch_id,
     }).then(function(data){
       $scope.ranges = data.data;
-      if (data.data.data.length === 0) { $scope.empty = true; }
+      if (data.data.data.length === 0) { $scope.empty = false; }
       else { $scope.empty = false; }
       angular.forEach($scope.ranges.data, function(value, key) {
         if(value.age <= 15){
@@ -44,7 +44,7 @@ angular.module('dopApp')
           $scope.data[0][6] = value.count;
         }
       });
-      //$scope.loading = false;
+      $scope.loading = false;
     });
 
     $scope.labels = ['12-15', '16-19', '20-24', '25-29', '30-34', '35-39', '+40'];

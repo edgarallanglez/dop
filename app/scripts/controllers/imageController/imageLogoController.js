@@ -60,7 +60,8 @@ angular.module('dopApp')
     $scope.uploading = false;
 
     $scope.options = {
-          maximize: false,
+          maximize: true,
+          viewMode: 0,
           aspectRatio: 1 / 1,
           dragMode: 'move',
           crop: function(dataNew) {
