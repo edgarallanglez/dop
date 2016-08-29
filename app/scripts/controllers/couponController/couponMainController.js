@@ -13,7 +13,7 @@ angular.module('dopApp')
   .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService, $couponService) {
     //  var selected_coupon = Coupon.getCoupon();
     //  console.log("Cupón seleccionado: "+selected_coupon.name);
-    //  $scope.couponSelected = 0;
+    $scope.couponSelected = 1;
     $scope.selectTags = [
       { label: 'Compra X y llevate X', val: 4 },
       { label: 'Descuento', val: 3 },

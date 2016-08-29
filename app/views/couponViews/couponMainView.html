@@ -9,7 +9,7 @@
                         <md-option ng-repeat="tag in selectTags" ng-value="{{tag.val}}">{{tag.label}}</md-option>
                 </md-select>
             </md-input-container>
-            <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-show="couponSelected!=1" layout-wrap layout-fill layout="row" flex>
+            <form ng-submit="createCoupon()" name="userForm" class="coupon-form" ng-if="couponSelected!=1" layout-wrap layout-fill layout="row" flex>
                 <div layout="row" layout-fill>
                     <md-input-container flex-gt-xs>
                         <label for="name">Nombre</label>
