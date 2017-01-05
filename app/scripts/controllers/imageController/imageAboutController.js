@@ -31,7 +31,7 @@ angular.module('dopApp')
       var branch_id = $userService.currentUser.branch_id;
       return $http({
         method: 'GET',
-        url: 'https://inmoon.com.mx/api/company/branch/'+branch_id+'/profile/tool/get',
+        url: 'http://45.55.7.118/api/company/branch/'+branch_id+'/profile/tool/get',
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
         var branch = data.data[0];

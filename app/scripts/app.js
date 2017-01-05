@@ -52,7 +52,7 @@ angular
       var payload = $auth.getPayload();
       return $http({
         method: 'POST',
-        url: 'https://inmoon.com.mx/api/company/me',
+        url: 'http://45.55.7.118/api/company/me',
         data: { 'branches_user_id': payload.id },
         headers: {'Content-Type': 'application/json'}
       }).success(function(data){
@@ -70,10 +70,10 @@ angular
                     $locationProvider, $httpProvider, $authProvider, RestangularProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    RestangularProvider.setBaseUrl('https://inmoon.com.mx/api');
+    RestangularProvider.setBaseUrl('http://45.55.7.118:5000/api');
     RestangularProvider.setDefaultHeaders({ 'token' : 'application/json' });
-    $authProvider.signupUrl = 'https://inmoon.com.mx/api/company/auth/signup';
-    $authProvider.loginUrl = 'https://inmoon.com.mx/api/company/auth/login';
+    $authProvider.signupUrl = 'http://45.55.7.118:5000/api/company/auth/signup';
+    $authProvider.loginUrl = 'http://45.55.7.118:5000/api/company/auth/login';
     $authProvider.facebook({ clientId: '927375797314743' });
     $stateProvider
       .state('home', {
@@ -195,7 +195,7 @@ angular
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.resolve(); }
             else { $location.path('/login'); }
-            
+
             return deferred.promise;
           },
           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
@@ -264,7 +264,7 @@ angular
         var payload = $auth.getPayload();
         $http({
           method: 'POST',
-          url: 'https://inmoon.com.mx/api/company/me',
+          url: 'http://45.55.7.118/api/company/me',
           data: { 'branches_user_id': payload.id },
           headers: {'Content-Type': 'application/json'}
         }).success(function(data){
