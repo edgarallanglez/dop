@@ -33,19 +33,21 @@ angular.module('dopApp')
       element.tableExport({type:'pdf', escape: 'false', fileName:'reporte'});
      }
 
-     $http({
+     /*$http({
        method: 'GET',
        url: 'http://45.55.7.118:5000/api/report/uses/'+ 11,
      }).then(function(data){
        $scope.report_rows = data.data.data;
        console.log($scope.report_rows);
-     });
+     });*/
 
     var branch_id = $userService.getCurrentUser().branch_id;
     $http({
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/latest/stats/'+ branch_id,
     }).then(function(data){
+      console.log(data.data);
+      debugger
       $scope.coupons = data.data;
       $scope.loading = false;
     });

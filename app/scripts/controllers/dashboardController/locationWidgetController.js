@@ -38,22 +38,39 @@ angular.module('dopApp')
       },
       zoom: 13
     };
+    console.log("User is" + $scope.user);
 
     $scope.marker = {
       id: 0,
       coords: {
         latitude: $userService.getCurrentUser().latitude,
         longitude: $userService.getCurrentUser().longitude
+      },
+      icon : {
+        size: {
+          width: 50,
+          height: 50
+        },
+        url: 'http://45.55.7.118/branches/images/'+$scope.user.company_id+'/'+$scope.user.logo,
+        scaledSize: {
+          width: 50,
+          height: 50
+        },
+        anchor: {
+          x: 0,
+          y: 0
+        }
       }
     }
 
     var branch_id = $userService.getCurrentUser().branch_id;
-    $scope.markers = [];
-    $http({
+    
+    /*$http({
       method: 'GET',
-      url: 'http://45.55.7.118:5000/api/coupon/taken/location/'+ branch_id,
+      url: 'http://45.55.7.118:5000/api/coupon/get/views/'+ branch_id,
     }).then(function(data){
-
+      $scope.markers = [];
+      $scope.markers.length = 0;
       for(var i=0; i < data.data.data.length; i++){
         var object = data.data.data[i];
         //var position = new google.maps.LatLng(object.latitude, object.longitude)
@@ -62,20 +79,45 @@ angular.module('dopApp')
           latitude: object.latitude,
           longitude: object.longitude,
           name: object.name,
-          taken_date: object.taken_date,
+          view_date: object.view_date,
           icon: 'images/marker.png'
-          /*options: {
-            animation: google.maps.Animation.DROP
-          }*/
+
         }
         $scope.markers.push(marker);
       }
 
-      /*var bounds = new google.maps.LatLngBounds();
-      for (var i in $scope.markers)
-        bounds.extend($scope.markers[i].position) */
+    });*/
+    $scope.loading = true;
 
-    });
+    $scope.getLocations = function(){
+      $scope.loading = true;
+      $scope.markers = [];
+      $scope.markers.length = 0;
+        $http({
+        method: 'GET',
+        url: 'http://45.55.7.118:5000/api/coupon/get/views/'+ branch_id,
+      }).then(function(data){
+        $scope.loading = false;
+        for(var i=0; i < data.data.data.length; i++){
+          var object = data.data.data[i];
+          //var position = new google.maps.LatLng(object.latitude, object.longitude)
+          var marker = {
+            id: i,
+            latitude: object.latitude,
+            longitude: object.longitude,
+            name: object.name,
+            view_date: object.view_date,
+            icon: 'images/marker.png'
+            /*options: {
+              animation: google.maps.Animation.DROP
+            }*/
+          }
+          $scope.markers.push(marker);
+        }
+      });
+    };
+
+    $scope.getLocations();
 
     $scope.windowOptions = {
         show: false

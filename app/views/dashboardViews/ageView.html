@@ -10,16 +10,10 @@
         <h2>Usos por edad</h2>
 
         <ul class="actions">
-            <li class="dropdown action-show">
-                <a href="" data-toggle="dropdown" aria-expanded="false">
+            <li class="action-show">
+                <a ng-click="getByAge()" aria-expanded="false">
                     <ng-md-icon icon="refresh" style="fill: #444"></ng-md-icon>
                 </a>
-
-                <div class="dropdown-menu pull-right">
-                    <p class="p-20">
-                        You can put anything here
-                    </p>
-                </div>
             </li>
         </ul>
     </div>
@@ -28,6 +22,8 @@
         <div class="padding-xl">
           <canvas ng-class="{ hidden: empty }" id="ageChart" width="600" height="340" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas>
           <p ng-if="empty" class="empty-view"> DATOS INSUFICIENTES </p>
+          <md-progress-circular ng-show="loading" class="chart md-accent" md-mode="indeterminate"></md-progress-circular>
         </div>
     </div>
+
 </div>
