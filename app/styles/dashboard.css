@@ -49,7 +49,13 @@ md-tab-template div:nth-child(4){
 	border-top: 2px solid rgb(225, 225, 225);
 }
 
-.coupon-description { line-height: 1.3; }
+.coupon-description {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.2em;
+}
 /* end Coupon Widget*/
 
 /* Gender Chart CSS*/
@@ -104,17 +110,47 @@ md-tab-template div:nth-child(4){
 	  padding: 0px;
 	}
 }
+.actions .action-show a:hover{
+	cursor: pointer;
+}
 
 /* End Gender Chart CSS*/
 
 /* Maps Widget*/
 .angular-google-map-container { height: 400px; }
 
-.coupon-card { padding: 0em; cursor: pointer; }
-.coupon-card .info { padding: 1em; text-align: center; }
+.coupon-card { padding: 0em; cursor: pointer; min-height: 232px; position: relative;}
+.coupon-card .info { padding: 1em; text-align: center; min-height: 150px; max-height: 150px; }
 .coupon-card p,
 .coupon-card h2 { margin-bottom: 0; }
 .coupon-card h2 { margin-top:0; }
+.coupon-card .info .status {
+	font-size: 0.9em;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+}
+.coupon-card .info .details { 
+	position: absolute;
+	left: 0.9em;
+	font-size: 0.8em;
+	top:0.5em;
+	text-align: left;
+	color: #848484;
+}
+
+md-progress-circular.location{
+	position: absolute;
+	left: calc(50% - 25px);
+	top: 50%;
+    background: white;
+    border-radius: 50%;
+}
+md-progress-circular.chart{
+	position: absolute;
+	left: calc(50% - 25px);
+	top: 40%;
+}
 /*canvas#ageChart {
 		width: 100% !important;
 		height: auto !important;
@@ -123,8 +159,8 @@ canvas#genderChart {
 		width: 100% !important;
 		height: auto !important;
 }*/
-.coupon-card .statistics{ color: #FFF; background: #fb226f; padding: 0.5em; width: 100%; margin-top: 1em; /*position: absolute; bottom: 0;*/ }
-.coupon-card .statistics ul { list-style: none; padding: 0; margin: 0; text-align: center; }
+.coupon-card .statistics{ color: #FFF; background: #fb226f; padding: 0.5em; width: 100%; /*margin-top: 0em; position: absolute; bottom: 0;*/ }
+.coupon-card .statistics ul { list-style: none; padding: 0; margin: 0; text-align: center; margin-top: 6px; }
 .coupon-card .statistics ul li{ display: inline-block; vertical-align: top; font-weight: 600; }
 .coupon-card .statistics ul li i{ display: block; font-size: 0.8em; font-weight: 200; margin-bottom: 0.3em; }
 .coupon-card .statistics ul li h3{ font-weight: 600 !important; margin: 0; font-size: 1.5em; }

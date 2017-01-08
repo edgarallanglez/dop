@@ -57,7 +57,7 @@ angular.module('dopApp')
           break;
       }
 
-      $http({
+    $http({
         method: 'POST',
         url: 'http://45.55.7.118:5000/api/coupon/customize',
         data: couponInfo,
@@ -67,9 +67,13 @@ angular.module('dopApp')
         SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");
       })
       .finally(function() {
+
         SweetAlert.swal("Campaña Creada!", "La campaña ha sido modificado correctamente ", "success");
       })
     };
+
+    $scope.coupon.coupon_category_id = 2;
+
 
     $scope.$watch(function(){
       return $couponService.coupon;

@@ -24,7 +24,7 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('CouponCtrl', function ($scope, $state, $mdDialog, SweetAlert, $couponService) {
+  .controller('CouponCtrl', function ($scope, $state, $mdDialog, SweetAlert, $couponService, $http) {
     $state.go('coupon.list');
     $scope.showModal = function(ev) {
 
@@ -41,6 +41,25 @@ angular.module('dopApp')
         $scope.alert = 'You cancelled the dialog.';
       });
     };
+
+    $scope.activeCoupon = function(coupon_id){
+      window.event.stopPropagation();
+      
+      $http({
+        method: 'PUT',
+        url: 'http://45.55.7.118:5000/api/coupon/active/'+coupon_id,
+        headers: {'Content-Type': 'application/json'}
+        })
+        .catch(function(data, status) {
+          SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");
+        })
+        .finally(function() {
+          SweetAlert.swal("Campaña Publicada!", "La campaña ha sido activada", "success");
+          $state.reload();
+        })
+    };
+
+
 
     $scope.showConfigModal = function(promo) {
 			$couponService.coupon = promo;

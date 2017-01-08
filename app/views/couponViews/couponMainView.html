@@ -5,7 +5,7 @@
   <md-dialog-content class="sticky-container" layout="row" layout-align="center center" layout-wrap layout-fill>
       <div flex="80">
             <md-input-container>
-                <md-select ng-model="couponSelected" class="coupon-select" placeholder="Tipo de Promoción" flex>
+                <md-select ng-model="couponSelected" ng-change="coupon.coupon_category_id=couponSelected" class="coupon-select" placeholder="Tipo de Promoción" flex>
                         <md-option ng-repeat="tag in selectTags" ng-value="{{tag.val}}">{{tag.label}}</md-option>
                 </md-select>
             </md-input-container>
