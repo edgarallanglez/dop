@@ -47,14 +47,10 @@ angular.module('dopApp')
         longitude: $userService.getCurrentUser().longitude
       },
       icon : {
-        size: {
-          width: 50,
-          height: 50
-        },
-        url: 'http://45.55.7.118/branches/images/'+$scope.user.company_id+'/'+$scope.user.logo,
+        url: 'images/current_location.png',
         scaledSize: {
-          width: 50,
-          height: 50
+          width: 40,
+          height: 40
         },
         anchor: {
           x: 0,
@@ -64,7 +60,7 @@ angular.module('dopApp')
     }
 
     var branch_id = $userService.getCurrentUser().branch_id;
-    
+
     /*$http({
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/get/views/'+ branch_id,
