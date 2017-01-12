@@ -3,7 +3,7 @@
     <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
   </div>
   <div ng-repeat="item in coupons" layout="row" layout-fill  flex="100" layout-wrap layout-align="center center">
-    <md-card class="background-white coupon-card animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)" layout="column" layout-align="center center">
+    <md-card class="background-white coupon-card animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)" ng-class="{'background-lightgray': !promo.active}" layout="column" layout-align="center center">
       <div class="info" layout="row" layout-align="center center" flex>
           <div ng-if="promo.name" class="status">
             <!-- ACTIVE -->
@@ -13,7 +13,7 @@
 
             <!--<i ng-if="!promo.active && !promo.completed && promo.coupon_category_id!=1" class="fa fa-circle warning-font"></i>-->
             <!-- COMPLETED-->
-            <i ng-if="promo.completed" class="fa fa-circle accent-font"></i>
+            <i ng-if="promo.completed" class="fa fa-check accent-font"></i>
           </div>
           <div ng-if="!promo.active && !promo.completed" class="details" >
             <p style="display:inline-block"><i class="fa fa-clock-o"></i> {{promo.duration}} dias</p>
@@ -50,8 +50,8 @@
       <div ng-click="activeCoupon(promo.coupon_id)" class="active-button" ng-if="!promo.active && promo.name && !promo.completed">
         ACTIVAR
       </div>
-      <div class="active-button" ng-if="!promo.active && promo.name && promo.completed">
-        REACTIVAR
+      <div class="active-button" ng-if="promo.completed">
+        COMPRAR DE NUEVO
       </div>
     </md-card>
   </div>

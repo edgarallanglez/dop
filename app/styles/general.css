@@ -15,7 +15,7 @@ body {
 body h1, h2, h3, h4, h5, h6 { font-weight: 300 !important; }
 .pointer { cursor: pointer; }
 .background-white { background-color: white !important; }
-.background-lightgray { background-color: rgb(247, 247, 247) !important; }
+.background-lightgray { background-color: #f8f8f8 !important; }
 .no-background { background-color: transparent !important; }
 .no-margin-bottom { margin-bottom: 0; }
 .no-padding { padding: 0 !important; }

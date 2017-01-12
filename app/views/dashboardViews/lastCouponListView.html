@@ -4,13 +4,13 @@
           <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
         </md-card>
       <div ng-repeat="item in coupons" layout="row" layout-fill layout-wrap layout-align="center center">
-      	<md-card ng-click="select(item)" class="background-white coupon-card animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex layout="column" layout-align="center center">
+      	<md-card  class="background-white coupon-card animated fadeInUp" ng-repeat="promo in item" ng-click="select(promo)" ng-class="{'background-lightgray': !promo.active}" flex-xs="100" flex-sm="100" flex layout="column" layout-align="center center">
                   <div  class="info" layout="row" layout-align="center center" flex>
                     <div ng-if="promo.name" class="status">
                       <!-- ACTIVE -->
                       <i ng-if="promo.active && !promo.completed" class="fa fa-circle success-font"></i>
                       <!-- INACTIVE -->
-                      <i ng-if="!promo.active && !promo.completed && promo.coupon_category_id==1" class="fa fa-circle disabled-font">
+                      <!--<i ng-if="!promo.active && !promo.completed && promo.coupon_category_id==1" class="fa fa-circle disabled-font">-->
                       </i>
                       <i ng-if="!promo.active && !promo.completed && promo.coupon_category_id!=1" class="fa fa-circle warning-font"></i>
                       <!-- COMPLETED-->
@@ -25,7 +25,7 @@
                       </span>
                     </div>
                   </div>
-                  <div ng-if="promo.name"  class="statistics" flex>
+                  <div ng-if="promo.name && promo.active"  class="statistics" flex>
                       <ul layout="row" layout-wrap>
                         <li flex>
                           <i class="fa fa-bullseye"></i>
@@ -43,6 +43,12 @@
                           <p class="transparent-text">Usos</p>
                         </li>
                       </ul>
+                  </div>
+                  <div ng-click="activeCoupon(promo.coupon_id)" class="active-button" ng-if="!promo.active && promo.name && !promo.completed">
+                    ACTIVAR
+                  </div>
+                  <div class="active-button" ng-if="promo.completed">
+                    COMPRAR DE NUEVO
                   </div>
         </md-card>
 

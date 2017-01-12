@@ -24,6 +24,8 @@ angular.module('dopApp')
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
+      $scope.data.selectedIndex = 1;
+      $location.path('/coupon').replace();
     }
 
     $scope.export_action = 'pdf';
@@ -47,9 +49,7 @@ angular.module('dopApp')
       url: 'http://45.55.7.118:5000/api/coupon/latest/stats/'+ branch_id,
     }).then(function(data){
       console.log(data.data);
-      debugger
       $scope.coupons = data.data;
       $scope.loading = false;
     });
-
   });
