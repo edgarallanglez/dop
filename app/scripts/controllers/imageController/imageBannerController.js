@@ -50,7 +50,7 @@ angular.module('dopApp')
     $scope.cropType = $imageService.cropType;
 
 
-    $scope.loadingBanner = $bannerLoading.flag;
+    $scope.loadingBanner = true;
     $scope.isBannerUploading = $bannerUploading.flag;
 
     $scope.data;
@@ -76,7 +76,7 @@ angular.module('dopApp')
 
     $scope.onLoadImage = function() {
       $scope.bannerLoaded = true;
-      $scope.loadingBanner = false;
+      //$scope.loadingBanner = false;
     };
 
     $scope.showEvent = 'show';
