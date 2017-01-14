@@ -24,7 +24,9 @@ angular.module('dopApp')
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
-    };
+      $scope.data.selectedIndex = 1;
+      $location.path('/coupon').replace();
+    }
 
     $scope.export_action = 'pdf';
 

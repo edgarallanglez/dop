@@ -33,7 +33,8 @@ angular
     'ngDroplet',
     'locator',
     'base64',
-    'ngCropper'
+    'ngCropper',
+    'angularMoment'
   ])
   .service('$userService', function($auth, $http, SweetAlert) {
     this.currentUser = null;

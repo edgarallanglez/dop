@@ -1,5 +1,5 @@
 
-<div layout="row" flex="70" layout-wrap layout-align="center start">
+<div layout="row" flex="70"  flex-xs="100" layout-wrap layout-align="center start">
   <md-toolbar class="image-toolbar toolbar-title">
     <div class="md-toolbar-tools">
       <h1 class="ng-binding">Logo & Banner</h1>
@@ -7,13 +7,13 @@
     </div>
   </md-toolbar>
 
-  <div layout-fill layout="row" layout-align="center start">
+  <div layout-fill  layout="row" layout-align="center start">
   <!-- Logo Card -->
-    <div class="" flex-order="1">
+    <div class="" flex-xs="90" flex-order="1">
         <div ui-view="logoView"></div>
     </div>
   <!-- Banner Card -->
-    <div class="" flex-order="2">
+    <div class="" flex-xs="90" flex-order="2">
         <div ui-view="bannerView"></div>
     </div>
   </div>
@@ -25,7 +25,7 @@
     </div>
   </md-toolbar>
 
-  <div style="" layout-fill layout="row" layout-align="center start">
+  <div style=""  layout-fill layout="row" layout-align="center start">
     <div class="">
         <div ui-view="aboutView"></div>
     </div>
