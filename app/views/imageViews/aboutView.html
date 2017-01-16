@@ -1,10 +1,10 @@
-<md-card  class="margin-top-xl" layout="column" layout-align="start center" style="width: 800px" data-ng-init="init()">
+<md-card  class="margin-top-xl" layout="row" layout-wrap layout-align="start center" style="width: 800px" data-ng-init="init()" ng-cloak>
   <!-- <div><input type="file"  /></div> -->
   <!-- <div class="">
     <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
   </div> -->
 
-  <form name="aboutForm" class="margin-top-xl">
+  <form name="aboutForm" class="margin-top-xl" flex="60">
     <div layout layout-sm="column" layout-align="start start">
       <md-input-container class="md-block" flex="45" flex-offset="5">
         <label>Nombre Sucursal</label>
@@ -26,11 +26,38 @@
     <div layout layout-sm="column" layout-align="center start">
       <md-input-container class="md-block" flex="90">
         <label>Dime algo sobre tu empresa</label>
-        <textarea ng-model="about.description" md-maxlength="140" rows="2" md-select-on-focus></textarea>
+        <textarea ng-model="about.description" md-maxlength="160" rows="4" md-select-on-focus></textarea>
         <div ng-messages="aboutForm.description.$error">
           <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 140 caracteres!</div>
         </div>
       </md-input-container>
     </div>
   </form>
+
+  <div flex="40" layout="row">
+    <div>
+      <h1 class="md-title">Selecciona tus filtros</h1>
+      <div>
+        <md-input-container layout="row">
+          <label>Filtros</label>
+          <md-select ng-model="selectedFilters"
+                     md-on-close="clearSearchTerm()"
+                     data-md-container-class="selectdemoSelectHeader"
+                     multiple>
+            <md-select-header>
+              <input ng-model="searchTerm"
+                     type="search"
+                     placeholder="Busca un filtro"
+                     class="md-text">
+            </md-select-header>
+            <md-optgroup label="filtros">
+              <md-option ng-value="filter" ng-repeat="filter in filters |
+                filter:searchTerm">{{filter}}</md-option>
+            </md-optgroup>
+          </md-select>
+        </md-input-container>
+      </div>
+    </div>
+  </div>
+
 </md-card>

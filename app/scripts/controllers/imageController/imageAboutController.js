@@ -19,12 +19,47 @@ angular.module('dopApp')
      this.about = item;
    };
   })
-  .controller('ImageAboutCtrl', function($aboutService, $scope , $userService, $auth, SweetAlert, $http) {
+  .controller('ImageAboutCtrl', function($aboutService, $scope , $userService, $auth, SweetAlert, $http, $element) {
     $scope.about = {
       name: '',
       description: '',
       phone: ''
     };
+
+    $scope.filters = [ 'alitas & boneless',
+                          'bistro',
+                          'cafeteria',
+                          'comida china',
+                          'comida rapida',
+                          'gourmet',
+                          'italiana',
+                          'marisco',
+                          'mexicana',
+                          'sushi',
+                          'automotriz',
+                          'educacion',
+                          'electronica',
+                          'hogar',
+                          'moda',
+                          'viajes',
+                          'salud y belleza',
+                          'bares',
+                          'cine',
+                          'club nocturno',
+                          'deporte',
+                          'parques',
+                          'teatro',
+                          'autoservicio',
+                          'Mens Club' ];
+    $scope.searchTerm = '';
+    $scope.clearSearchTerm = function() {
+      $scope.searchTerm = '';
+    };
+      // The md-select directive eats keydown events for some quick select
+      // logic. Since we have a search input here, we don't need that logic.
+    $element.find('input').on('keydown', function(ev) {
+        ev.stopPropagation();
+    });
 
     $scope.init = function () {
       var payload = $auth.getPayload();
