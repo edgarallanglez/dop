@@ -25,7 +25,7 @@
                       </span>
                     </div>
                   </div>
-                  <div ng-if="promo.name && promo.active"  class="statistics" flex>
+                  <div ng-if="promo.name && promo.active && !promo.completed"  class="statistics" flex>
                       <ul layout="row" layout-wrap>
                         <li flex>
                           <i class="fa fa-bullseye"></i>
@@ -44,7 +44,7 @@
                         </li>
                       </ul>
                   </div>
-                  <div ng-click="activeCoupon(promo.coupon_id)" class="active-button" ng-if="!promo.active && promo.name && !promo.completed">
+                  <div ng-click="activateCoupon(promo.coupon_id)" class="active-button" ng-if="!promo.active && promo.name && !promo.completed">
                     ACTIVAR
                   </div>
                   <div class="active-button" ng-if="promo.completed">

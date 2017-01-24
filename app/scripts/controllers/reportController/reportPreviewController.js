@@ -33,27 +33,36 @@ angular.module('dopApp')
       var myTables = pdf.autoTableHtmlToJson(document.getElementById('preview_table'));
       delete myTables.data[0]
       pdf.autoTable(myTables.columns, myTables.data,
-        {startY: 70, theme:'striped',
+        {startY: 110, theme:'striped',   headerStyles: {
+            fillColor: [252,64,131],
+            textColor: [255, 255, 255],
+            halign: 'left'
+        },
           beforePageContent: function(data) {
             pdf.setTextColor(40);
             pdf.setFontStyle('normal');
 
+            var image = document.getElementById('dop_logo');
             var name = $scope.coupon.name;
+            var expired_text = "Finalizada por límite de fecha";
+            var spent_text = "Finalizada por agotamiento de cupones"
             var xOffset = (pdf.internal.pageSize.width / 2) - (pdf.getStringUnitWidth(name) * pdf.internal.getFontSize() / 2);
-            var available = 'Cupones disponibles: '+ $scope.coupon.available;
-            var remaining = 'Dias restantes: '+ $scope.coupon.remaining;
+            var available = 'CUPONES DISPONIBLES: '+ $scope.coupon.available;
+            var remaining = 'DIAS RESTANTES: '+ $scope.coupon.remaining;
             var status;
             console.log($scope.coupon);
 
-
+            pdf.addImage(image,40, 28);
             pdf.setFontSize(12);
             pdf.text(name, xOffset, 28);
             if($scope.coupon.completed){
               status = "Finalizada";
               if($scope.coupon.available>0){
-                pdf.text("Finalizada por límite de fecha", 40, 45);
+                var center_text =  (pdf.internal.pageSize.width / 2) - (pdf.getStringUnitWidth(expired_text) * pdf.internal.getFontSize() / 2);
+                pdf.text(expired_text, center_text, 45);
               }else{
-                pdf.text("Finalizada por agotamiento de cupones", 40, 45);
+                var center_text =  (pdf.internal.pageSize.width / 2) - (pdf.getStringUnitWidth(spent_text) * pdf.internal.getFontSize() / 2);
+                pdf.text(spent_text, center_text, 45);
               }
             }else{
               status = "En curso";

@@ -27,28 +27,28 @@ angular.module('dopApp')
         else { $scope.empty = false; }
         angular.forEach($scope.ranges.data, function(value, key) {
           if(value.age == null){
-            $scope.data[0][0] = value.count;
+            $scope.data[0][0] += value.count;
           }
           if(value.age >= 12 && value.age <= 15){
-            $scope.data[0][1] = value.count;
+            $scope.data[0][1] += value.count;
           }
           if(value.age >= 16 && value.age <= 19){
-            $scope.data[0][2] = value.count;
+            $scope.data[0][2] += value.count;
           }
           if(value.age >= 20 && value.age <= 24){
-            $scope.data[0][3] = value.count;
+            $scope.data[0][3] += value.count;
           }
           if(value.age >= 25 && value.age <= 29){
-            $scope.data[0][4] = value.count;
+            $scope.data[0][4] += value.count;
           }
            if(value.age >= 30 && value.age <= 34){
-            $scope.data[0][5] = value.count;
+            $scope.data[0][5] += value.count;
           }
            if(value.age >= 35 && value.age <= 39){
-            $scope.data[0][6] = value.count;
+            $scope.data[0][6] += value.count;
           }
            if(value.age >= 40){
-            $scope.data[0][7] = value.count;
+            $scope.data[0][7] += value.count;
           }
         });
         $scope.loading = false;

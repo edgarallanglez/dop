@@ -19,14 +19,38 @@ angular.module('dopApp')
        this.coupon = coupon;
     };
   })
-  .controller('LastCouponListWidgetCtrl', function($scope, $http, $userService, CouponFactory, $lastCouponService, $state) {
+  .controller('LastCouponListWidgetCtrl', function($scope, $http, $userService, CouponFactory, $lastCouponService, $state, $location, $auth, $mdToast) {
     $scope.loading = true;
+    
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
-      $scope.data.selectedIndex = 1;
       $location.path('/coupon').replace();
     }
+
+    $scope.activateCoupon = function(coupon_id) {
+      window.event.stopPropagation();
+      
+      $http({
+        method: 'PUT',
+        url: 'http://45.55.7.118:5000/api/coupon/active/'+coupon_id,
+        headers: {'Authorization': $auth.getToken()}
+        })
+        .catch(function(data, status) {
+          SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");
+        })
+        .finally(function() {
+          $mdToast.show(
+                $mdToast.simple()
+                  .textContent('CAMPAÑA ACTIVADA.')
+                  .position('top right')
+                  .hideDelay(3500)
+                  .theme('success-toast')
+              );
+          $state.reload();
+        });
+    }
+
 
     $scope.export_action = 'pdf';
 
