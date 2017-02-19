@@ -28,14 +28,14 @@
         <label>Dime algo sobre tu empresa</label>
         <textarea ng-model="about.description" md-maxlength="160" rows="4" md-select-on-focus></textarea>
         <div ng-messages="aboutForm.description.$error">
-          <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 140 caracteres!</div>
+          <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 160 caracteres!</div>
         </div>
       </md-input-container>
     </div>
   </form>
 
-  <div flex="40" layout="row">
-    <div>
+  <div flex="30" layout="row">
+    <div class="md-padding" flex>
       <h1 class="md-title">Selecciona tus filtros</h1>
       <div>
         <md-input-container layout="row">
@@ -44,11 +44,11 @@
                      md-on-close="clearSearchTerm()"
                      data-md-container-class="selectdemoSelectHeader"
                      multiple>
-            <md-select-header>
+            <md-select-header class="demo-select-header">
               <input ng-model="searchTerm"
                      type="search"
                      placeholder="Busca un filtro"
-                     class="md-text">
+                     class="demo-header-searchbox md-text">
             </md-select-header>
             <md-optgroup label="filtros">
               <md-option ng-value="filter" ng-repeat="filter in filters |

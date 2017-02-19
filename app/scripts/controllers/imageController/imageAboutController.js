@@ -57,9 +57,9 @@ angular.module('dopApp')
     };
       // The md-select directive eats keydown events for some quick select
       // logic. Since we have a search input here, we don't need that logic.
-    $element.find('input').on('keydown', function(ev) {
-        ev.stopPropagation();
-    });
+    // $element.find('input').on('keydown', function(ev) {
+    //     ev.stopPropagation();
+    // });
 
     $scope.init = function () {
       var payload = $auth.getPayload();
