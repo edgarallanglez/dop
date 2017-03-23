@@ -26,7 +26,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     sshconfig: {
       awesome: {
-        host: '45.55.1.118',
+        host: '107.170.237.249',
         port: '9000',
         privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/id_rsa'),
         username: 'root',
