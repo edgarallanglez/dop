@@ -214,7 +214,20 @@ angular
             return deferred.promise;
           }
         }
-      });
+      })
+      .state('notification', {
+        url: '/notification',
+        templateUrl: 'notification.html',
+        controller: 'NotificationCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) { deferred.reject(); }
+            else { deferred.resolve(); }
+            return deferred.promise;
+          }
+        }
+      })
 
     $urlRouterProvider.otherwise('/');
     // Theme configurations
