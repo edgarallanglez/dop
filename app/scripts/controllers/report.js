@@ -112,9 +112,11 @@ angular.module('dopApp')
 
     $scope.getPDF = function() {
       var pdf = jsPDF('p', 'pt');
+
       var myTables = pdf.autoTableHtmlToJson(document.getElementById('table'));
 
       pdf.autoTable(myTables.columns, myTables.data, {startY: 60, theme:'striped'});
+      
       pdf.save('Test.pdf') ;
     };
 

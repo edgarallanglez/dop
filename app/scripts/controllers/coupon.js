@@ -65,10 +65,9 @@ angular.module('dopApp')
         })
     };
 
-
-
+    
     $scope.showConfigModal = function(promo) {
-      $lastCouponService.getCoupon().coupon_id = null;
+      //$lastCouponService.getCoupon().coupon_id = null;
       if(!promo.active){
   			$couponService.coupon = promo;
         $mdDialog.show({
@@ -97,10 +96,9 @@ angular.module('dopApp')
           .ok('ACEPTAR')
           .cancel('CANCELAR');
           $mdDialog.show(deactivate).then(function() {
+
             var start_date =new Date(promo.start_date);
             var end_date =new Date(promo.end_date);
-
-
 
             $http({
             method: 'PUT',
@@ -108,13 +106,15 @@ angular.module('dopApp')
             headers: {'Authorization': $auth.getToken()}
             })
             .catch(function(data, status) {
-              console.log("Falla")
+              $lastCouponService.getCoupon().coupon_id = null;
+
               console.log(data);
               $mdDialog.hide();
             })
             .finally(function() {
+              $lastCouponService.getCoupon().coupon_id = null;
+
               $mdDialog.hide();
-              console.log("Hola");
               //var diff = newDate(Math.abs(end_date - start_date));
               $mdToast.show(
                 $mdToast.simple()

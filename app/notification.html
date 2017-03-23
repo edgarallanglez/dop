@@ -1,0 +1,55 @@
+<div  ng-controller="NotificationCtrl as ctrl">
+  <div class="chipsdemoContactChips" layout-fill layout="row" layout-align="center center">
+    <md-content class="md-padding autocomplete">
+	  	<form ng-submit="$event.preventDefault()">
+	      <p>Notificaciones juejue</p>
+		  <md-input-container md-no-float class="md-block">
+          	<input ng-model="message" placeholder="Notificación">
+          </md-input-container>
+
+          <md-checkbox
+              ng-model="send_to_all"
+              aria-label="Checkbox 2"
+              class="md-warn md-align-top-left" flex> Enviar a todos
+            </md-checkbox>
+
+	      <!--
+	      <md-autocomplete
+	          ng-disabled="ctrl.isDisabled"
+	          md-no-cache="ctrl.noCache"
+	          md-selected-item="ctrl.selectedItem"
+	          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+	          md-search-text="ctrl.searchText"
+	          md-selected-item-change="ctrl.selectedItemChange(item)"
+	          md-items="item in ctrl.querySearch(ctrl.searchText)"
+	          md-item-text="item.display"
+	          md-min-length="0"
+	          placeholder="What is your favorite US state?">
+	        <md-item-template>
+	          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+	        </md-item-template>
+	        <md-not-found>
+	          No states matching "{{ctrl.searchText}}" were found.
+	          <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
+	        </md-not-found>
+	      </md-autocomplete>
+	      <br/>-->
+	      <md-contact-chips
+	      	ng-hide="send_to_all"
+	        ng-model="asyncContacts"
+	        md-contacts="ctrl.searchingQuery($query)"
+	        md-contact-name="names"
+	        md-contact-image="image"
+	        md-contact-email="device_os"
+	        md-require-match="false"
+	        md-highlight-flags="i"
+	        filter-selected="ctrl.filterSelected"
+	        placeholder="Para">
+	        <!--filter-selected="ctrl.filterSelected"-->
+    	  </md-contact-chips>
+    	  <md-button ng-click="sendNotification()" class="md-raised md-primary">Enviar</md-button>
+
+	    </form>
+  	</md-content>
+  </div>
+ </div>

@@ -31,7 +31,9 @@ angular.module('dopApp')
       'percent':0,
       'bond':0,
       'description':'',
-      'bond_size': 0
+      'bond_size': 0,
+      'n1':0,
+      'n2':0
     };
 
     $scope.createCoupon = function() {
@@ -67,7 +69,6 @@ angular.module('dopApp')
         SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");
       })
       .finally(function() {
-
         SweetAlert.swal("Campaña Creada!", "La campaña ha sido modificado correctamente ", "success");
       })
     };
