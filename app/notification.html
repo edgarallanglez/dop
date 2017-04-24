@@ -13,6 +13,13 @@
               class="md-warn md-align-top-left" flex> Enviar a todos
             </md-checkbox>
 
+             <md-checkbox
+              ng-model="adults_only"
+              ng-show="send_to_all"
+              aria-label="Checkbox 3"
+              class="md-warn md-align-top-left" flex> Adultos
+            </md-checkbox>
+
 	      <!--
 	      <md-autocomplete
 	          ng-disabled="ctrl.isDisabled"
@@ -43,7 +50,7 @@
 	        md-contact-email="device_os"
 	        md-require-match="false"
 	        md-highlight-flags="i"
-	        filter-selected="ctrl.filterSelected"
+	        filter-selected="filterSelected"
 	        placeholder="Para">
 	        <!--filter-selected="ctrl.filterSelected"-->
     	  </md-contact-chips>
