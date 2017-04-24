@@ -1,0 +1,36 @@
+SELECT branch_location_id, branch_id, company_id, state, city, latitude, longitude, distance, address, name, category_id, subcategory_id, available,
+                  coupon_name, coupon_id, description, start_date, end_date, min_spent, logo,
+              (SELECT COUNT(*)  FROM coupons_likes
+                      WHERE d.coupon_id = coupons_likes.coupon_id) AS total_likes,
+              (SELECT EXISTS (SELECT * FROM coupons_likes  WHERE coupons_likes.user_id = 3 AND d.coupon_id = coupons_likes.coupon_id)::bool) AS user_like,
+              (SELECT EXISTS (SELECT * FROM clients_coupon
+                  WHERE user_id = 3 AND clients_coupon.coupon_id = d.coupon_id AND used = false)::bool) AS taken
+              FROM (SELECT coupons.name AS coupon_name, coupons.coupon_id,coupons.start_date,coupons.end_date, coupons.limit ,coupons.min_spent,
+                           coupons.description, z.branch_location_id, z.branch_id, z.state, z.city, z.address, coupons.available,
+                  z.latitude, z.longitude, branches.name, branches.company_id, branches_design.logo, subcategory.category_id, subcategory.subcategory_id,
+                  p.radius,
+                  p.distance_unit
+                           * DEGREES(ACOS(COS(RADIANS(p.latpoint))
+                           * COS(RADIANS(z.latitude))
+                           * COS(RADIANS(p.longpoint - z.longitude))
+                           + SIN(RADIANS(p.latpoint))
+                           * SIN(RADIANS(z.latitude)))) AS distance
+              FROM branches_location AS z
+              JOIN branches ON z.branch_id = branches.branch_id
+              JOIN branches_subcategory ON z.branch_id = branches_subcategory.branch_id
+              JOIN branches_design ON branches.branch_id = branches_design.branch_id
+              JOIN subcategory ON subcategory.subcategory_id = branches_subcategory.subcategory_id
+              JOIN coupons ON branches.branch_id = coupons.branch_id AND deleted = FALSE AND active = TRUE AND coupons.end_date>now() AND available>0
+              JOIN (   /* these are the query parameters */
+                  SELECT 24.7926419  AS latpoint, -107.4381106 AS longpoint,
+                         10 AS radius,      111.045 AS distance_unit
+              ) AS p ON 1=1
+              WHERE z.latitude
+               BETWEEN p.latpoint  - (p.radius / p.distance_unit)
+                   AND p.latpoint  + (p.radius / p.distance_unit)
+              AND z.longitude
+               BETWEEN p.longpoint - (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+                   AND p.longpoint + (p.radius / (p.distance_unit * COS(RADIANS(p.latpoint))))
+              ) AS d
+              WHERE distance <= radius
+              ORDER BY distance LIMIT 8
