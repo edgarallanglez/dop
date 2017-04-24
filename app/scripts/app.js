@@ -228,6 +228,19 @@ angular
           }
         }
       })
+      .state('problems', {
+        url: '/problems',
+        templateUrl: 'problems.html',
+        controller: 'ReportPreviewCtrl',
+        resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) { deferred.reject(); }
+            else { deferred.resolve(); }
+            return deferred.promise;
+          }
+        }
+      })
 
     $urlRouterProvider.otherwise('/');
     // Theme configurations

@@ -10,6 +10,7 @@ angular.module('dopApp')
   .controller('NotificationCtrl', function($scope, $location,$timeout, $q, $log, $http, SweetAlert) {
 
     $scope.send_to_all= true;
+    $scope.adults_only = false;
     $scope.message = '';
     /*var self = this;
 
@@ -84,7 +85,7 @@ angular.module('dopApp')
     self.allContacts = loadContacts();
     self.contacts = [self.allContacts[0]];
     $scope.asyncContacts = [];
-    self.filterSelected = true;
+    $scope.filterSelected = true;
 
     self.querySearch = querySearch;
     self.delayedQuerySearch = delayedQuerySearch;
@@ -161,7 +162,12 @@ angular.module('dopApp')
       return pendingSearch;
     }
     $scope.sendNotification = function() {
-      console.log($scope.asyncContacts);
+      if($scope.send_to_all){
+        sendToAll();
+      }else{
+        sendTo();
+      }
+
       /*if($scope.send_to_all){
         sendToAll();
       }else{
@@ -189,15 +195,43 @@ angular.module('dopApp')
       pendingSearch = null;
       cancelSearch = angular.noop;
     }
-    function sendToAll(){
+    function sendTo(){
+      self.ios_tokens = [];
+      self.android_tokens = [];
+
+      angular.forEach($scope.asyncContacts, function(data){
+        if(data.device_os == 'ios'){
+          self.ios_tokens.push(data.device_token);
+        }else{
+          self.android_tokens.push(data.device_token);
+        }
+      });
+
       $http({
             method: 'POST',
-            url: 'http://45.55.7.118:5000/api/notification/push/to/all',
-            data: { device:'ios', title: 'JUE', message: $scope.message}
+            url: 'http://45.55.7.118:5000/api/notification/push/to',
+            data: { ios_tokens: self.ios_tokens, android_tokens: self.android_tokens, message: $scope.message}
           }).success(function(data){
             console.log(data);
             alert(data);
           }).error(function(){
+            alert("Error");
+         });
+
+      console.log(self.ios_tokens);
+      console.log(self.android_tokens);
+
+    }
+    function sendToAll(){
+      $http({
+            method: 'POST',
+            url: 'http://45.55.7.118:5000/api/notification/push/to/all',
+            data: { device:'ios', adults_only: $scope.adults_only, message: $scope.message}
+          }).success(function(data){
+            console.log(data);
+            alert(data);
+          }).error(function(){
+
             alert("Error");
          });
     }
