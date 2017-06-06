@@ -38,7 +38,7 @@ angular.module('dopApp')
       },
       zoom: 13
     };
-    console.log('User is' + $scope.user);
+    // console.log('User is' + $scope.user);
 
     $scope.marker = {
       id: 0,

@@ -21,7 +21,7 @@ angular.module('dopApp')
   })
   .controller('LastCouponListWidgetCtrl', function($scope, $http, $userService, CouponFactory, $lastCouponService, $state, $location, $auth, $mdToast) {
     $scope.loading = true;
-    
+
     $scope.select = function(coupon) {
       $lastCouponService.setCoupon(coupon);
       $state.go('coupon');
@@ -30,7 +30,7 @@ angular.module('dopApp')
 
     $scope.activateCoupon = function(coupon_id) {
       window.event.stopPropagation();
-      
+
       $http({
         method: 'PUT',
         url: 'http://45.55.7.118:5000/api/coupon/active/'+coupon_id,
@@ -72,7 +72,7 @@ angular.module('dopApp')
       method: 'GET',
       url: 'http://45.55.7.118:5000/api/coupon/latest/stats/' + branch_id,
     }).then(function(data){
-      console.log(data.data);
+      // console.log(data.data);
       $scope.coupons = data.data;
       $scope.loading = false;
     });

@@ -65,13 +65,13 @@
                     data.selectedIndex = 1;
                   </md-tab-body> -->
                 </md-tab>
-                <md-tab id="tab3">
+                <!-- <md-tab id="tab3">
                   <md-tab-label>REPORTES</md-tab-label>
-         <!--          <md-tab-body>
+                   <md-tab-body>
                     View for Item #3 <br/>
                     data.selectedIndex = 2;
                   </md-tab-body>
-   -->          </md-tab>
+                </md-tab> -->
                 <md-tab id="tab4">
                  <md-tab-label>PERFIL</md-tab-label>
                 <!--          <md-tab-body>
@@ -85,7 +85,7 @@
                     <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 59px!important;"></ng-md-icon>
                 </md-button> -->
                 <md-menu md-position-mode="target-right target">
-                  <md-button aria-label="Open phone interactions menu" ng-click="openMenu($mdOpenMenu, $event)">
+                  <md-button aria-label="Open phone interactions menu" ng-click="openMenu($mdOpenMenu, $event)" ng-mouseout="$mdClose()">
                     <img ng-src="http://45.55.7.118/branches/images/{{user.company_id}}/{{user.logo}}" class="branch-logo"/>
                     {{user.name}}
                     <ng-md-icon icon="arrow_drop_down" size="18" style="fill: #000000; vertical-align: sub;"></ng-md-icon>
@@ -166,7 +166,7 @@
                   </div>
                 </md-content>
             </div>
-            <div role="tabpanel"
+            <!-- <div role="tabpanel"
                  id="tab3-content"
                  aria-labelledby="tab3"
                  ng-switch-when="2"
@@ -177,11 +177,11 @@
 
                   </div>
                 </md-content>
-            </div>
+            </div> -->
             <div role="tabpanel"
                  id="tab4-content"
                  aria-labelledby="tab4"
-                 ng-switch-when="3"
+                 ng-switch-when="2"
                  md-swipe-left="next()"
                  md-swipe-right="previous()" >
                 <md-content layout="row" layout-align="center start" class="no-background height-inherit ng-cloak">
