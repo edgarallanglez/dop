@@ -31,7 +31,6 @@ angular.module('dopApp')
       url: 'http://45.55.7.118:5000/api/coupon/all/'+ branch_id + '/get',
     }).success(function(data){
       $scope.coupons = data;
-      console.log($scope.coupons);
       if ($scope.coupons.data.length === 0) { $scope.empty = true; }
       else { $scope.empty = false; }
     }).error(function(){
@@ -41,7 +40,6 @@ angular.module('dopApp')
     $scope.dateFormat = function(stringDate) {
       if (stringDate) {
         $scope.formattedDate = new Date(stringDate);
-        console.log($scope.formattedDate);
       }
     }
 

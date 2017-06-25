@@ -28,8 +28,8 @@ angular.module('dopApp')
   })
 
   .controller('PricingModalCtrl', function($scope, $mdDialog, SweetAlert, CouponFactory, $userService, $paymentService) {
-    $scope.amountOfCoupon = 50;
-    $scope.expireTime = 1;
+    $scope.amountOfCoupon = 5;
+    $scope.expireTime = 7;
 
     $scope.hide = function() {
       $mdDialog.hide();

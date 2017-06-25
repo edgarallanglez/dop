@@ -14,7 +14,6 @@ angular.module('dopApp')
     $scope.total_label = $scope.total / 100;
 
     // Bonus calculation.
-
     if ($scope.total >= 100000 && $scope.total < 200000) { $scope.bonus = $scope.total * 0.1; }
     if ($scope.total >= 200000 && $scope.total < 500000) { $scope.bonus = $scope.total * 0.25; }
     if ($scope.total >= 500000) { $scope.bonus = $scope.total * 0.4; }
@@ -35,7 +34,7 @@ angular.module('dopApp')
         if ($paymentService.paymentData.service === 'campaign') {
           $scope.url = 'http://45.55.7.118:5000/api/coupon/payment/campaign/card';
         } else {
-          $scope.url = 'http://45.55.7.118:5000/api/company/'+$scope.branch_id+'/credits/add';
+          $scope.url = 'http://45.55.7.118:5000/api/company/' + $scope.branch_id+'/credits/add';
         }
         $http({
           method: 'POST',

@@ -12,7 +12,6 @@ angular.module('dopApp')
   .config(function($stateProvider) {
   })
   .controller('AddCreditModalCtrl', function($scope, $mdDialog, SweetAlert, CouponFactory, $userService, $paymentService) {
-    console.log('holis');
 
     $scope.hide = function() {
       $mdDialog.hide();

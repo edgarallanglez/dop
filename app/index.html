@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href="images/favicon.png">
+  <link rel="shortcut icon" href="images/dop_gradient_logo.png">
 
   <title>DOP</title>
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
@@ -43,49 +43,24 @@
 <body ng-app="dopApp" ng-controller="TabController" style="opacity: 1; margin-left: 0px;" ng-cloak>
     <!-- Fixed navbar -->
     <div id="webApp" ng-show="isAuthenticated()">
-          <md-content>
+        <md-content>
           <div class="md-toolbar-tools">
               <img id="main-logo" src="images/dop_logo_w.png">
-
-    <!--         <a ng-href="#/">
-                <img id="main-logo" src="images/dop_logo_w.png">
-            </a> -->
               <md-tabs class="md-defaults-theme" md-selected="data.selectedIndex" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
                 <md-tab id="tab1">
                   <md-tab-label>INICIO</md-tab-label>
-              <!--     <md-tab-body>
-                    View for Item #1 <br/>
-                    data.selectedIndex = 0;
-                  </md-tab-body> -->
                 </md-tab>
                 <md-tab id="tab2">
                   <md-tab-label>CAMPAÑAS</md-tab-label>
-              <!--     <md-tab-body>
-                    View for Item #2 <br/>
-                    data.selectedIndex = 1;
-                  </md-tab-body> -->
                 </md-tab>
-                <!-- <md-tab id="tab3">
-                  <md-tab-label>REPORTES</md-tab-label>
-                   <md-tab-body>
-                    View for Item #3 <br/>
-                    data.selectedIndex = 2;
-                  </md-tab-body>
-                </md-tab> -->
                 <md-tab id="tab4">
-                 <md-tab-label>PERFIL</md-tab-label>
-                <!--          <md-tab-body>
-                   View for Item #3 <br/>
-                   data.selectedIndex = 2;
-                 </md-tab-body>
--->             </md-tab>
+                  <md-tab-label>PERFIL</md-tab-label>
+                </md-tab>
               </md-tabs>
+
               <div ng-controller="MeCtrl" class="pull-right" flex="100" ng-init="init()">
-                <!-- <md-button class="md-fab md-mini md-green-theme" aria-label="Agregar Creditos" ng-click="showCreditModal($event)">
-                    <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 59px!important;"></ng-md-icon>
-                </md-button> -->
                 <md-menu md-position-mode="target-right target">
-                  <md-button aria-label="Open phone interactions menu" ng-click="openMenu($mdOpenMenu, $event)" ng-mouseout="$mdClose()">
+                  <md-button aria-label="Open phone interactions menu" ng-click="$mdOpenMenu()" ng-mouseleave="$mdCloseMenu()">
                     <img ng-src="http://45.55.7.118/branches/images/{{user.company_id}}/{{user.logo}}" class="branch-logo"/>
                     {{user.name}}
                     <ng-md-icon icon="arrow_drop_down" size="18" style="fill: #000000; vertical-align: sub;"></ng-md-icon>
@@ -110,88 +85,57 @@
                   </md-menu-content>
                 </md-menu>
               </div>
-            </div>
-          </md-content>
-<!--
-            <md-content>
-              <a ng-href="#/">
-                <img id="main-logo" src="images/dop_logo_w.png">
-              </a> -->
-              <!-- fill up the space between left and right area -->
-<!--               <md-tabs  id="toolbar-options" md-selected="data.selectedIndex">
-                <md-tab id="tab1" aria-controls="tab1-content" >
-                  <a href="#/">
-                    Inicio
-                  </a>
-                </md-tab>
-                <md-tab id="tab2" aria-controls="tab2-content">
-                  <a href="#/coupon">
-                    Promociones
-                  </a>
-                </md-tab>
-                <md-tab id="tab3" aria-controls="tab3-content">
-                  <a href="#/report">
-                    Reportes
-                  </a>
-                </md-tab>
-              </md-tabs>
-              <span flex></span>
-            </md-content>
- -->
-         <md-card class="loading" flex ng-show="loading" layout-align="center center">
-              <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-          </md-card>
-          <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
-            <div role="tabpanel"
-                 id="tab1-content"
-                 aria-labelledby="tab1"
-                 ng-switch-when="0"
-                 md-swipe-left="next()"
-                 md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
-                  <div flex ui-view layout="row" layout-align="center center">
+          </div>
+        </md-content>
 
-                  </div>
-                </md-content>
-            </div>
-            <div role="tabpanel"
-                 id="tab2-content"
-                 aria-labelledby="tab2"
-                 ng-switch-when="1"
-                 md-swipe-left="next()"
-                 md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
-                  <div flex ui-view layout="row" layout-align="center center">
+        <md-card class="loading" flex ng-show="loading" layout-align="center center">
+            <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+        </md-card>
 
-                  </div>
-                </md-content>
-            </div>
-            <!-- <div role="tabpanel"
-                 id="tab3-content"
-                 aria-labelledby="tab3"
-                 ng-switch-when="2"
-                 md-swipe-left="next()"
-                 md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
-                  <div flex ui-view layout="row" layout-align="center center">
+        <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
+          <div role="tabpanel"
+               id="tab1-content"
+               aria-labelledby="tab1"
+               ng-switch-when="0"
+               md-swipe-left="next()"
+               md-swipe-right="previous()" >
+              <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
+                <div flex ui-view layout="row" layout-align="center center"></div>
+              </md-content>
+          </div>
+          <div role="tabpanel"
+               id="tab2-content"
+               aria-labelledby="tab2"
+               ng-switch-when="1"
+               md-swipe-left="next()"
+               md-swipe-right="previous()" >
+              <md-content layout="row" layout-align="center center" class="no-background ng-cloak">
+                <div flex ui-view layout="row" layout-align="center center"></div>
+              </md-content>
+          </div>
+          <!-- <div role="tabpanel"
+               id="tab3-content"
+               aria-labelledby="tab3"
+               ng-switch-when="2"
+               md-swipe-left="next()"
+               md-swipe-right="previous()" >
+              <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
+                <div flex ui-view layout="row" layout-align="center center">
 
-                  </div>
-                </md-content>
-            </div> -->
-            <div role="tabpanel"
-                 id="tab4-content"
-                 aria-labelledby="tab4"
-                 ng-switch-when="2"
-                 md-swipe-left="next()"
-                 md-swipe-right="previous()" >
-                <md-content layout="row" layout-align="center start" class="no-background height-inherit ng-cloak">
-                  <div flex ui-view layout="row" layout-align="center center">
-
-                  </div>
-                </md-content>
-            </div>
-          </ng-switch>
-
+                </div>
+              </md-content>
+          </div> -->
+          <div role="tabpanel"
+               id="tab4-content"
+               aria-labelledby="tab4"
+               ng-switch-when="2"
+               md-swipe-left="next()"
+               md-swipe-right="previous()" >
+              <md-content layout="row" layout-align="center start" class="no-background height-inherit ng-cloak">
+                <div flex ui-view layout="row" layout-align="center center"></div>
+              </md-content>
+          </div>
+        </ng-switch>
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
@@ -274,8 +218,6 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script>
         <script src="scripts/app.js"></script>
 
-
-
         <script src="scripts/controllers/main.js"></script>
           <script src="scripts/controllers/dashboardController/genderWidgetController.js"></script>
           <script src="scripts/controllers/dashboardController/ageWidgetController.js"></script>
@@ -309,7 +251,6 @@
         <script src="scripts/vendor/angular-locale_es-mx.js"></script>
         <script src="scripts/vendor/locator.min.js"></script>
         <script src="scripts/vendor/locator-tpl.js"></script>
-
 
         <!-- endbuild -->
 

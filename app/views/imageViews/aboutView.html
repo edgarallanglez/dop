@@ -15,7 +15,7 @@
     <div layout layout-sm="column" layout-align="start start">
       <md-input-container class="md-block" flex="30" flex-offset="5">
         <label>Teléfono</label>
-        <input name="phone" ng-model="about.phone" ng-pattern="/^([0-9]{3})[0-9]{3}[0-9]{4}$/" />
+        <input name="phone" ng-model="about.phone" />
         <div class="hint" ng-show="showHints">(###) ###-####</div>
         <div ng-messages="aboutForm.phone.$error" ng-hide="showHints">
           <div ng-message="pattern">Ingresa un número de teléfono válido.</div>
@@ -26,15 +26,15 @@
     <div layout layout-sm="column" layout-align="center start">
       <md-input-container class="md-block" flex="90">
         <label>Dime algo sobre tu empresa</label>
-        <textarea ng-model="about.description" md-maxlength="160" rows="4" md-select-on-focus></textarea>
+        <textarea ng-model="about.description" md-maxlength="220" rows="5" md-select-on-focus></textarea>
         <div ng-messages="aboutForm.description.$error">
-          <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 160 caracteres!</div>
+          <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 220 caracteres!</div>
         </div>
       </md-input-container>
     </div>
   </form>
 
-  <div flex="30" layout="row">
+  <!-- <div flex="30" layout="row">
     <div class="md-padding" flex>
       <h1 class="md-title">Selecciona tus filtros</h1>
       <div>
@@ -58,6 +58,6 @@
         </md-input-container>
       </div>
     </div>
-  </div>
+  </div> -->
 
 </md-card>

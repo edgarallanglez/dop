@@ -245,15 +245,6 @@ angular
     $urlRouterProvider.otherwise('/');
     // Theme configurations
 
-    // $mdThemingProvider.theme('default')
-    //   .primaryPalette('blue-grey', {
-    //     'default': '800',
-    //     'hue-1': '100',
-    //     'hue-3': '300'
-    //   })
-    //   .accentPalette('red', {
-    //     'default': '600'
-    //   });
     $mdThemingProvider.theme('green')
       .primaryPalette('light-green')
       .accentPalette('blue');
@@ -285,7 +276,7 @@ angular
           'hue-2': '300'
       });
 })
-  .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location){
+  .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location, $mdDialog){
     $scope.init = function () {
       if (!$userService.getCurrentUser() && $auth.isAuthenticated()) {
         var payload = $auth.getPayload();
@@ -302,7 +293,10 @@ angular
         $location.path('/login');
       }
     };
-    // $scope.init();
+    // $scope.openMenu = function($mdOpenMenu, ev) {
+    //   var originatorEv = ev;
+    //   $mdOpenMenu(ev);
+    // };
 
     $scope.logout = function() {
       if (!$auth.isAuthenticated()) { return; }
@@ -337,11 +331,6 @@ angular
         $scope.user.credits = credits;
       });
     }
-
-    $scope.openMenu = function($mdOpenMenu, ev) {
-      var originatorEv = ev;
-      $mdOpenMenu(ev);
-    };
 
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();

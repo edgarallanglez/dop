@@ -3,7 +3,7 @@
     <md-subheader class="">Herramienta para compra de campaña</md-subheader>
     <div layout="row" layout-margin>
       <span flex="10">Personas</span>
-      <md-slider flex aria-label="Cantidad de disponibilidad" ng-model="amountOfCoupon" min="50" max="500" step="25" id="day-slider"></md-slider>
+      <md-slider flex aria-label="Cantidad de disponibilidad" ng-model="amountOfCoupon" min="5" max="20" step="1" id="day-slider"></md-slider>
       <div flex="20" layout layout-align="center center">
         <h5 class="pricing-quantities" aria-controls="day-slider">{{amountOfCoupon}}</h5>
       </div>
@@ -11,7 +11,7 @@
     <md-divider></md-divider>
     <div layout="row" layout-margin>
       <span flex="10">Expiracíon</span>
-      <md-slider flex aria-label="Caducidad de cupones" ng-model="expireTime" min="1" max="30"></md-slider>
+      <md-slider flex aria-label="Caducidad de cupones" ng-model="expireTime" min="7" max="15"></md-slider>
       <div flex="20" layout layout-align="center center">
         <h5 class="pricing-quantities" aria-controls="expire-slider">{{expireTime}} días</h5>
       </div>
