@@ -16,7 +16,7 @@ angular.module('dopApp')
         this.coupon = coupon;
     }
 })
-    .controller('CouponListCtrl', function($scope, $http, Restangular, SweetAlert, CouponFactory,
+    .controller('LoyaltyListCtrl', function($scope, $http, Restangular, SweetAlert, CouponFactory,
                                              $userService, $couponService, $lastCouponService) {
     var godCoupon = new CouponFactory();
     var branch_id = $userService.getCurrentUser().branch_id;

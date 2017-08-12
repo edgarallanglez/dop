@@ -53,6 +53,9 @@
                 <md-tab id="tab2">
                   <md-tab-label>CAMPAÑAS</md-tab-label>
                 </md-tab>
+                <md-tab id="tab3">
+                  <md-tab-label>LEALTAD</md-tab-label>
+                </md-tab>
                 <md-tab id="tab4">
                   <md-tab-label>PERFIL</md-tab-label>
                 </md-tab>
@@ -113,22 +116,20 @@
                 <div flex ui-view layout="row" layout-align="center center"></div>
               </md-content>
           </div>
-          <!-- <div role="tabpanel"
+           <div role="tabpanel"
                id="tab3-content"
                aria-labelledby="tab3"
                ng-switch-when="2"
                md-swipe-left="next()"
                md-swipe-right="previous()" >
               <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
-                <div flex ui-view layout="row" layout-align="center center">
-
-                </div>
+                <div flex ui-view layout="row" layout-align="center center"></div>
               </md-content>
-          </div> -->
+          </div> 
           <div role="tabpanel"
                id="tab4-content"
                aria-labelledby="tab4"
-               ng-switch-when="2"
+               ng-switch-when="3"
                md-swipe-left="next()"
                md-swipe-right="previous()" >
               <md-content layout="row" layout-align="center start" class="no-background height-inherit ng-cloak">
@@ -227,6 +228,9 @@
         <script src="scripts/controllers/coupon.js"></script>
           <script src="scripts/controllers/couponController/couponListController.js"></script>
           <script src="scripts/controllers/couponController/couponMainController.js"></script>
+        <script src="scripts/controllers/loyalty.js"></script>
+          <script src="scripts/controllers/loyaltyController/loyaltyController.js"></script>
+
         <script src="scripts/controllers/report.js"></script>
           <script src="scripts/controllers/reportController/basicReportController.js"></script>
           <script src="scripts/controllers/reportController/middleReportController.js"></script>

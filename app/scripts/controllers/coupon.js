@@ -47,8 +47,8 @@ angular.module('dopApp')
       
       $http({
         method: 'PUT',
-        url: 'http://45.55.7.118:5000/api/coupon/active/'+coupon_id,
-        headers: {'Authorization': $auth.getToken()}
+        url: 'http://45.55.7.118:5000/api/coupon/active/' + coupon_id,
+        headers: { 'Authorization': $auth.getToken() }
         })
         .catch(function(data, status) {
           SweetAlert.swal("Oops!", "Ha ocurrido un error, intentelo más tarde ", "error");

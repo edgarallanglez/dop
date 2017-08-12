@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc overview
  * @name dopApp
@@ -159,34 +157,34 @@ angular
           }
         }
       })
-      // .state('report', {
-      //   url: '/report',
-      //   templateUrl: 'views/report.html',
-      //   controller: 'ReportCtrl',
-      //   resolve: {
-      //     authenticated: function($q, $location, $auth, $state) {
-      //       var deferred = $q.defer();
-      //       if ($auth.isAuthenticated()) { deferred.resolve(); }
-      //       else { $location.path('/login'); }
-      //
-      //       return deferred.promise;
-      //     },
-      //     userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
-      //       var deferred = $q.defer();
-      //       //var payload = $auth.getPayload();
-      //       if (!$userService.getCurrentUser()) {
-      //         $userService.getMe().success(function(data){
-      //           var user = data.data[0];
-      //           $userService.setUser(user);
-      //           deferred.resolve();
-      //         }).error(function(){
-      //           SweetAlert.swal('Error en el servidor', '', 'error');
-      //         });
-      //       } else { deferred.resolve(); }
-      //       return deferred.promise;
-      //     }
-      //   }
-      // })
+       .state('loyalty', {
+         url: '/loyalty',
+         templateUrl: 'views/loyalty.html',
+         controller: 'LoyaltyCtrl',
+         resolve: {
+           authenticated: function($q, $location, $auth, $state) {
+             var deferred = $q.defer();
+             if ($auth.isAuthenticated()) { deferred.resolve(); }
+             else { $location.path('/login'); }
+      
+             return deferred.promise;
+           },
+           userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
+             var deferred = $q.defer();
+             //var payload = $auth.getPayload();
+             if (!$userService.getCurrentUser()) {
+               $userService.getMe().success(function(data){
+                 var user = data.data[0];
+                 $userService.setUser(user);
+                 deferred.resolve();
+               }).error(function(){
+                 SweetAlert.swal('Error en el servidor', '', 'error');
+               });
+             } else { deferred.resolve(); }
+             return deferred.promise;
+           }
+         }
+       })
       .state('image', {
         url: '/image',
         templateUrl: 'views/image.html',
@@ -361,14 +359,13 @@ angular
         } else if ($scope.data.selectedIndex === 1 && $auth.isAuthenticated()) {
           $location.path('/coupon').replace();
           $userService.fromLogin = false;
-        // } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
-        //   $location.path('/report').replace();
-        //   $userService.fromLogin = false;
-        // }
-      } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
-          $location.path('/image').replace();
-          $userService.fromLogin = false;
-        }
+         } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
+           $location.path('/loyalty').replace();
+           $userService.fromLogin = false;
+         } else if ($scope.data.selectedIndex === 3 && $auth.isAuthenticated()) {
+           $location.path('/image').replace();
+           $userService.fromLogin = false;
+         }
       }
 
       //  paint tab after reload
@@ -379,11 +376,11 @@ angular
         } else if ($location.path() === '/coupon') {
           $scope.data.selectedIndex = 1;
           $scope.reload = false;
-        // } else if ($location.path() === '/report') {
-        //   $scope.data.selectedIndex = 2;
-        //   $scope.reload = false;
+         } else if ($location.path() === '/loyalty') {
+           $scope.data.selectedIndex = 2;
+           $scope.reload = false;
         } else if ($location.path() === '/image') {
-          $scope.data.selectedIndex = 2;
+          $scope.data.selectedIndex = 3;
           $scope.reload = false;
         }
       }
