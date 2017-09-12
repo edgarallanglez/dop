@@ -18,6 +18,10 @@ angular.module('dopApp')
               templateUrl: '../../views/dashboardViews/lastCouponListView.html',
               controller: 'LastCouponListWidgetCtrl'
             },
+            'statsView': {
+              templateUrl: '../../views/dashboardViews/statsView.html',
+              controller: 'StatsViewCtrl'
+            },
             'genderChart': {
               templateUrl: '../../views/dashboardViews/genderView.html',
               controller: 'GenderWidgetCtrl'

@@ -1,0 +1,68 @@
+<md-dialog ng-controller="LoyaltyModalCtrl" md-theme="green" flex="80" aria-label="Compra coupones">
+  <md-dialog-content class="sticky-container" style="background-color: #f2f2f2">
+    <md-subheader class="">PROGRAMAS DE LEALTAD E HISTORIAL</md-subheader>
+    <div class="no-padding-bottom padding-top-md">
+        <div layout="row" layout-sm="column" layout-xs="column" layout-align="center start" layout-fill layout-wrap>
+          <!-- user info -->
+            <div class="center loyalty-stats" flex="35" flex-sm="100" flex-xs="100">
+                <img ng-src="{{person.main_image}}" class="user-image"/>
+                <h2 class="margin-top-md">{{person.names}} {{person.surnames}}</h2>
+            </div>
+          <!--  loyalty info -->
+            <div class="center loyalty-stats" flex>
+                <md-card class="loading" flex ng-show="loading" layout-align="center center">
+                    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+                </md-card>
+                <md-card layout="row" ng-show="!loading">
+                    <div class="center" ng-repeat="program in stats" flex>
+                        <img ng-src="http://45.55.7.118/loyalty/{{program.logo}}" class="program-logo"/>
+                        <h2 class="margin-top-md">{{program.name}}</h2>
+                        <h4 class="margin-top-md">{{program.visit}}/{{program.goal}}</h4>  
+                    </div>
+                </md-card> 
+            </div>
+        </div>
+        <div layout-fill  layout="row" layout-align="center start" flex>
+            <md-card class="" flex="100">
+                <md-toolbar class="image-toolbar md-table-toolbar md-default">
+                  <div class="md-toolbar-tools">
+                    <h1 class="loyalty-toolbar toolbar-title">Historial</h1>
+                  </div>
+                </md-toolbar>
+                <md-card class="loading" flex ng-show="loading_content" layout-align="center center">
+                    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+                </md-card>
+                <!-- exact table from live demo -->
+                <md-table-container>
+                  <table id="table" md-table table md-progress="promise">
+                    <thead md-head md-order="query.order" md-on-reorder="">
+                      <tr md-row>
+                        <th md-column md-order-by=""><span><blank></blank></span></th>
+                        <th md-column md-order-by="nameToLower"><span>Programa</span></th>
+                        <th md-column><span>Descripción</span></th>
+                        <th md-column md-order-by="dateToLower"><span>Fecha visita</span></th>
+                      </tr>
+                    </thead>
+                    <tbody md-body>
+                      <tr class="pointer" md-row md-select="history" ng-repeat="history in historial">
+                        <td md-cell><img ng-src="http://45.55.7.118/loyalty/{{history.logo}}" class="branch-logo"/></td>
+                        <td md-cell md-order-by="name">{{history.name}}</td>
+                        <td md-cell>{{history.description}}</td>
+                        <td md-cell md-order-by="date">{{history.date | date : "MMM d, y h:mm:ss a"}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </md-table-container>
+            </md-card>
+      </div>
+        
+    </div>
+
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()" class="md-primary md-accent">
+      OK
+    </md-button>
+  </div>
+</md-dialog>

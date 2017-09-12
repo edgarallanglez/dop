@@ -20,6 +20,7 @@ angular.module('dopApp')
 
     $scope.cardData = {};
     $scope.branch_id = $userService.currentUser.branch_id;
+    $scope.payment_source = $userService.payment_sources;
     $scope.sendPayment = function() {
       $scope.cardData = {
         'name': $scope.cardData.name,

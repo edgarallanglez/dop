@@ -71,7 +71,8 @@ md-tab-template div:nth-child(4){
 .card {
   position: relative;
   background: #fff;
-  box-shadow: 0 1px 1px rgba(0,0,0,.15);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
 /*  margin-bottom: 30px;*/
 }
 
@@ -159,7 +160,7 @@ canvas#genderChart {
 		width: 100% !important;
 		height: auto !important;
 }*/
-.coupon-card .statistics{ color: #FFF; background: #fb226f; padding: 0.5em; width: 100%; /*margin-top: 0em; position: absolute; bottom: 0;*/ }
+.coupon-card .statistics{ color: #444; background: #f2f2f2; padding: 0.5em; width: 100%; /*margin-top: 0em; position: absolute; bottom: 0;*/ }
 .coupon-card .statistics ul { list-style: none; padding: 0; margin: 0; text-align: center; margin-top: 6px; }
 .coupon-card .statistics ul li{ display: inline-block; vertical-align: top; font-weight: 600; }
 .coupon-card .statistics ul li i{ display: block; font-size: 0.8em; font-weight: 200; margin-bottom: 0.3em; }

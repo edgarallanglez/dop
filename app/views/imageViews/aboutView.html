@@ -1,39 +1,55 @@
-<md-card  class="margin-top-xl" layout="row" layout-wrap layout-align="start center" style="width: 800px" data-ng-init="init()" ng-cloak>
-  <!-- <div><input type="file"  /></div> -->
-  <!-- <div class="">
-    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-  </div> -->
+<div class="margin-top-xl" layout="row" layout-fill layout-margin layout-align="center start" style="width: 800px" data-ng-init="init()" ng-cloak>
+  <md-card flex="60">
+    <!-- <div><input type="file"  /></div> -->
+    <!-- <div class="">
+      <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+    </div> -->
 
-  <form name="aboutForm" class="margin-top-xl" flex="60">
-    <div layout layout-sm="column" layout-align="start start">
-      <md-input-container class="md-block" flex="45" flex-offset="5">
-        <label>Nombre Sucursal</label>
-        <input ng-model="about.name">
-      </md-input-container>
-    </div>
+    <form name="aboutForm" class="margin-top-xl" md-theme="defaults">
+      <div layout layout-sm="column" layout-align="start start">
+        <md-input-container class="md-block" flex="45" flex-offset="5">
+          <label>Nombre Sucursal</label>
+          <input ng-model="about.name">
+        </md-input-container>
+      </div>
 
-    <div layout layout-sm="column" layout-align="start start">
-      <md-input-container class="md-block" flex="30" flex-offset="5">
-        <label>Teléfono</label>
-        <input name="phone" ng-model="about.phone" />
-        <div class="hint" ng-show="showHints">(###) ###-####</div>
-        <div ng-messages="aboutForm.phone.$error" ng-hide="showHints">
-          <div ng-message="pattern">Ingresa un número de teléfono válido.</div>
-        </div>
-      </md-input-container>
-    </div>
+      <div layout layout-sm="column" layout-align="start start">
+        <md-input-container class="md-block" flex="30" flex-offset="5">
+          <label>Teléfono</label>
+          <input name="phone" ng-model="about.phone" />
+          <div class="hint" ng-show="showHints">(###) ###-####</div>
+          <div ng-messages="aboutForm.phone.$error" ng-hide="showHints">
+            <div ng-message="pattern">Ingresa un número de teléfono válido.</div>
+          </div>
+        </md-input-container>
+      </div>
 
-    <div layout layout-sm="column" layout-align="center start">
-      <md-input-container class="md-block" flex="90">
-        <label>Dime algo sobre tu empresa</label>
-        <textarea ng-model="about.description" md-maxlength="220" rows="5" md-select-on-focus></textarea>
-        <div ng-messages="aboutForm.description.$error">
-          <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 220 caracteres!</div>
-        </div>
-      </md-input-container>
-    </div>
-  </form>
-
+      <div layout layout-sm="column" layout-align="center start">
+        <md-input-container class="md-block" flex="90">
+          <label>Dime algo sobre tu empresa</label>
+          <textarea ng-model="about.description" md-maxlength="220" rows="5" md-select-on-focus></textarea>
+          <div ng-messages="aboutForm.description.$error">
+            <div ng-message="md-maxlength">Escribe algo sobre tu empresa en menos de 220 caracteres!</div>
+          </div>
+        </md-input-container>
+      </div>
+    </form>
+  </md-card>
+  
+  <div class="center margin-top-xl" flex=40 ng-if="!payment_source">
+    <md-button class="md-raised md-accent" flex ng-click="addPaymentMethod()">Agregar Tarjeta</md-button>
+  </div>
+  
+  <div flex=40 class="center margin-bottom-xl" layout="column" layout-align="center center" ng-if="payment_source">
+    <label>MÉTODO DE PAGO</label>
+    <md-card class="md-block payment-card" flex>
+       <div class="{{payment_source.brand | lowercase}}"></div>
+      <h3 class="no-margin-bottom">{{payment_source.last4}}</h3>
+      <h5 class="no-margin-bottom">{{payment_source.name}}</h5>
+      <span class="margin-bottom-xl" style="font-weight: 400">{{payment_source.exp_month}}/{{payment_source.exp_year}}</span>
+    </md-card>
+  </div>
+</div>
   <!-- <div flex="30" layout="row">
     <div class="md-padding" flex>
       <h1 class="md-title">Selecciona tus filtros</h1>
@@ -59,5 +75,3 @@
       </div>
     </div>
   </div> -->
-
-</md-card>

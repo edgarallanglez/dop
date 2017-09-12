@@ -53,14 +53,12 @@ angular.module('dopApp')
         controller: 'AdvanceReportCtrl'
       });
   })
-  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log, $userService, $http, $mdDialog, $mdMedia) {
+  .controller('ReportCtrl', function ($scope, $state, $reportService, $mdSidenav, $log,
+                                       $userService, $http, $mdDialog, $mdMedia) {
+    
     $scope.reportData = $reportService.reportData;
     $scope.empty = true;
     $scope.selected = [];
-
-
-
-
     $scope.query = {
       order: 'name',
       limit: 5,
@@ -74,6 +72,7 @@ angular.module('dopApp')
     $scope.getCoupons = function () {
       //$scope.promise = $nutrition.desserts.get($scope.query, success).$promise;
     };
+    
     $scope.toggleRight = function (current) {
       $mdSidenav('reportData').open()
                           .then(function(){
@@ -94,16 +93,14 @@ angular.module('dopApp')
       if (data.data.length === 0) { $scope.empty = true; }
       else { $scope.empty = false; }
       angular.forEach(data.data, function(value, key){
-          if(value.name === null){
+          if (value.name === null) {
             value.name = "Nueva Campaña";
           }
       });
 
       //pdf.save('Test.pdf');
-
       /*doc.text(20, 20, 'Hello world.');*/
       $scope.coupons = data;
-
       console.log($scope.coupons);
 
     }).error(function(){
@@ -112,11 +109,8 @@ angular.module('dopApp')
 
     $scope.getPDF = function() {
       var pdf = jsPDF('p', 'pt');
-
       var myTables = pdf.autoTableHtmlToJson(document.getElementById('table'));
-
-      pdf.autoTable(myTables.columns, myTables.data, {startY: 60, theme:'striped'});
-      
+      pdf.autoTable(myTables.columns, myTables.data, { startY: 60, theme:'striped' });
       pdf.save('Test.pdf') ;
     };
 

@@ -11,7 +11,6 @@
                       <i ng-if="promo.active && !promo.completed" class="fa fa-circle success-font"></i>
                       <!-- INACTIVE -->
                       <!--<i ng-if="!promo.active && !promo.completed && promo.coupon_category_id==1" class="fa fa-circle disabled-font">-->
-                      </i>
                       <i ng-if="!promo.active && !promo.completed && promo.coupon_category_id!=1" class="fa fa-circle warning-font"></i>
                       <!-- COMPLETED-->
                       <i ng-if="promo.completed" class="fa fa-circle accent-font"></i>
@@ -30,26 +29,26 @@
                         <li flex>
                           <i class="fa fa-bullseye"></i>
                           <h3>{{promo.views || 0}}</h3>
-                          <p class="transparent-text">Aperturas</p>
+                          <p class="">Aperturas</p>
                         </li>
                         <li flex>
                           <i class="fa fa-heart"></i>
                           <h3>{{promo.total_likes}}</h3>
-                          <p class="transparent-text">Me gusta</p>
+                          <p class="">Me gusta</p>
                         </li>
                         <li flex>
                           <i class="fa fa-ticket "></i>
                           <h3>{{promo.total_uses}}</h3>
-                          <p class="transparent-text">Usos</p>
+                          <p class="">Usos</p>
                         </li>
                       </ul>
                   </div>
                   <div ng-click="activateCoupon(promo.coupon_id)" class="active-button" ng-if="!promo.active && promo.name && !promo.completed">
                     ACTIVAR
                   </div>
-                  <div class="active-button" ng-if="promo.completed">
+                  <md-button class="md-raised active-button" ng-if="promo.completed">
                     COMPRAR DE NUEVO
-                  </div>
+                  </md-button>
         </md-card>
 
       </div>

@@ -14,14 +14,13 @@ angular.module('dopApp')
       .state('loyalty.list', {
         views: {
             // the child views will be defined here (absolutely named)
-            'lastCoupons': {
-              templateUrl: '../../views/loyaltyViews/lastCouponListView.html',
-              controller: 'LoyalPeopleCtrl'
+            'loyaltyPeople': {
+              templateUrl: '../../views/loyaltyViews/loyaltyView.html',
+              controller: 'LoyaltyListCtrl'
             }
         }
       });
   })
   .controller('LoyaltyCtrl', function($scope, $state) {
     $state.go('loyalty.list');
-        
   });

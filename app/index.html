@@ -14,8 +14,8 @@
 
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) dop/dist/styles/vendor.css -->
-  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="bower_components/angular/angular-csp.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/angular/angular-csp.css" type="text/css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
   <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
@@ -23,14 +23,13 @@
   <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css">
   <link rel="stylesheet" href="bower_components/cropperjs/dist/cropper.min.css">
   <link rel="stylesheet" href="bower_components/ng-cropper/dist/ngCropper.all.css">
-  <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" type="text/css"/>
   <!-- endbuild -->
 
   <!-- Template CSS -->
   <!-- build:css(.tmp) dop/dist/styles/main.css -->
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/locator.css">
-  <link rel="stylesheet" href="styles/calculator.css">
   <link rel="stylesheet" href="styles/demo.css">
   <link rel="stylesheet" href="styles/login.css">
   <link rel="stylesheet" href="styles/coupon.css">
@@ -77,6 +76,11 @@
                     <md-menu-item>
                       <md-button ng-click="showCreditModal($event)">
                         Agregar Créditos
+                      </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button ng-click="showProModal($event)">
+                        Plan PRO
                       </md-button>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
@@ -225,6 +229,7 @@
           <script src="scripts/controllers/dashboardController/couponStatusWidgetController.js"></script>
           <script src="scripts/controllers/dashboardController/lastCouponListWidgetController.js"></script>
           <script src="scripts/controllers/dashboardController/locationWidgetController.js"></script>
+          <script src="scripts/controllers/dashboardController/statsViewController.js"></script>
         <script src="scripts/controllers/coupon.js"></script>
           <script src="scripts/controllers/couponController/couponListController.js"></script>
           <script src="scripts/controllers/couponController/couponMainController.js"></script>
@@ -243,9 +248,13 @@
           <script src="scripts/controllers/imageController/imageAboutController.js"></script>
         <script src="scripts/controllers/modalController/pricingModalController.js"></script>
         <script src="scripts/controllers/modalController/addCreditModalController.js"></script>
+        <script src="scripts/controllers/modalController/becomeProModalController.js"></script>
+        <script src="scripts/controllers/modalController/addPaymentMethod.js"></script>
+        <script src="scripts/controllers/modalController/loyaltyModalController.js"></script>
         <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/controllers/paymentController/creditsPaymentController.js"></script>
         <script src="scripts/directives/passwordStrength.js"></script>
+        <script src="scripts/directives/confetti.js"></script>
         <script src="scripts/directives/passwordMatch.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>

@@ -1,12 +1,3 @@
-
-<div class="loyalty-container" layout-fill>
-	<div>
- 		<div ui-view="loyalty-list-view" layout-fill layout="row" layout-wrap>
-
-	  </div>
-	</div>
-        
-    <md-button class="md-fab md-green-theme add-campaign-button" aria-label="Agregar Campaña" ng-click="showModal($event)">
-        <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
-    </md-button>
-</div>
+<md-card layout="row" flex="90" layout-fill>
+    <div ui-view="loyaltyPeople" layout-fill layout="row"></div>
+</md-card>

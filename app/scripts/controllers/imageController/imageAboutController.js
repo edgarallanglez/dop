@@ -19,13 +19,14 @@ angular.module('dopApp')
      this.about = item;
    };
   })
-  .controller('ImageAboutCtrl', function($aboutService, $scope , $userService, $auth, SweetAlert, $http, $element) {
+  .controller('ImageAboutCtrl', function($aboutService, $scope , $userService, $auth, SweetAlert, $http, $element, $mdDialog) {
     $scope.about = {
       name: '',
       description: '',
       phone: ''
     };
 
+    $scope.payment_source = $userService.payment_sources;
     $scope.filters = [ 'alitas & boneless',
                           'bistro',
                           'cafeteria',
@@ -66,9 +67,9 @@ angular.module('dopApp')
       var branch_id = $userService.currentUser.branch_id;
       return $http({
         method: 'GET',
-        url: 'http://45.55.7.118/api/company/branch/'+branch_id+'/profile/tool/get',
+        url: 'http://45.55.7.118/api/company/branch/' + branch_id + '/profile/tool/get',
         headers: {'Content-Type': 'application/json'}
-      }).success(function(data){
+      }).success(function(data) {
         var branch = data.data[0];
         $scope.about.name =  branch.name;
         $scope.about.description = branch.about;
@@ -85,4 +86,13 @@ angular.module('dopApp')
     }, function (about) {
        $aboutService.setAbout(about);
     });
+  
+    $scope.addPaymentMethod = function() {
+      $mdDialog.show({
+          locals: { subscribe: false },
+          clickOutsideToClose: false,
+          controller: 'AddPaymentModalCtrl',
+          templateUrl: '../views/modalViews/addPaymentMethod.html',
+        });
+    }
   });
