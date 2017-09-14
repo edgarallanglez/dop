@@ -1,7 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,300,400);
 @import url('dashboard.css');
 @import url('report.css');
-@import url('weather.css');
 @import url('payment.css');
 body {
   background-color: #eee !important;
@@ -298,6 +297,7 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   top: 45%;
   left: calc(50% - 115px);
   font-size: 1.4em;
+  z-index: 5;
 }
 
 .empty-view-200 {
@@ -305,6 +305,15 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   top: 45%;
   left: calc(50% - 200px);
   font-size: 1.4em;
+  z-index: 5;
+}
+
+.empty-view-286 {
+  position: absolute;
+  top: 45%;
+  left: calc(50% - 286px);
+  font-size: 1.4em;
+  z-index: 5;
 }
 
 .empty-view-relative {
@@ -312,6 +321,7 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   top: 45%;
   left: calc(50% - 115px);
   font-size: 1.4em;
+  z-index: 5;
 }
 
 .height-inherit {
