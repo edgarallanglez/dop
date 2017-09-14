@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/angular/angular-csp.css" type="text/css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-  <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
   <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
   <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
   <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css">
@@ -99,7 +98,7 @@
             <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
         </md-card>
 
-        <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
+        <ng-switch on="data.selectedIndex" class="tabpanel-container" ng-show="!loading">
           <div role="tabpanel"
                id="tab1-content"
                aria-labelledby="tab1"
@@ -179,8 +178,8 @@
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="bower_components/Chart.js/Chart.js"></script>
-        <script src="bower_components/chartjs/Chart.js"></script>
+        <script src="bower_components/chart.js/Chart.js"></script>
+        <script src="bower_components/chartjs/dist/Chart.js"></script>
         <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
         <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
         <script src="bower_components/lodash/lodash.js"></script>

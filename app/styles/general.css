@@ -166,6 +166,7 @@ md-tabs.md-default-theme md-tab.active{
 
 .success-font { color: #8BC34A !important; }
 .warning-font { color: #FFEB3B !important; }
+.primary-font { color: #fb226f !important; }
 .accent-font { color: #448AFF !important; }
 .disabled-font { color: #9E9E9E !important; }
 .error { color: #DE3641 !important; }
@@ -188,6 +189,7 @@ md-tabs.md-default-theme md-tab.active{
   text-align: right;
 }
 
+.left { text-align: left !important; }
 md-toast { position: fixed !important; }
 md-toast.md-success-toast-theme .md-toast-content {
   background-color: #448AFF;
