@@ -58,10 +58,10 @@ angular.module('dopApp')
     $scope.labels = ['Indefinido', '12-15', '16-19', '20-24', '25-29', '30-34', '35-39', '+40'];
     $scope.data = [[0, 0, 0, 0, 0, 0, 0, 0]];
     $scope.colors = [{
-      backgroundColor: '#fb226f',
+//      backgroundColor: '#fb226f',
+//      borderColor: '#C2185B'
+      backgroundColor: '#AD1457',
       borderColor: '#C2185B'
-//      backgroundColor: '#FF7474',
-//      borderColor: '#FF4081'
     }];
      $scope.options = {
         scales: {

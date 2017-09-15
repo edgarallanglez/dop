@@ -4,6 +4,8 @@
 	width: 48px;
 	margin: 16px;
 }
+
+.thirty-two { width: 32%;}
 .coupon-container { background: none !important; }
 .coupon-list-card {
 	padding: 0;

@@ -1,9 +1,9 @@
-<div layout-fill layout="row" flex="100" style="margin: 0 auto; min-height: 100%;">
+
   <md-card class="loading" flex ng-show="loading" layout-align="center center">
     <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
   </md-card>
-  <div ng-repeat="item in coupons" layout="row" layout-fill  flex="100" layout-wrap layout-align="center center">
-    <md-card class="background-white coupon-card animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)" ng-class="{'background-lightgray': !promo.active}" layout="column" layout-align="center center">
+  <div ng-repeat="item in coupons" layout="row" layout-align="start center" layout-wrap layout-margin>
+    <md-card class="background-white coupon-card thirty-two animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex-md="45" ng-click="showConfigModal(promo)" ng-class="{'background-lightgray': !promo.active}" layout="column" layout-align="center center">
       <div class="info" layout="row" layout-align="center center" flex>
         <div ng-if="promo.name" class="status">
           <!-- ACTIVE -->
@@ -58,7 +58,6 @@
   <div class="" style="height: 300px">
     <p ng-if="empty" class="empty-view-200"> CREA UNA CAMPAÑA PARA COMENZAR </p>
   </div>
-</div>
 
 <!-- 		<div class="coupon-list-button">
 
