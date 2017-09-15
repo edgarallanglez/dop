@@ -183,6 +183,7 @@ md-tabs.md-default-theme md-tab.active{
   height: 32px ;
   margin: 0 10px 0 5px;
   border-radius: 50%;
+  background: #F2F2F2;
 }
 
 .pull-right {
@@ -293,6 +294,10 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   max-height: auto;
   position: absolute;
   left: calc(50% - 408px);
+}
+
+.empty-view-height {
+  min-height: 300px;
 }
 
 .empty-view {
@@ -407,7 +412,7 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   height: 40px;
   width: 90%;
   border-radius: 3px;
-  z-index: 100;
+  z-index: 10;
   margin: 0 !important;
 }
 
@@ -464,7 +469,7 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
 
 #world { 
   position: absolute; 
-  z-index: 99;
+  z-index: 9;
 }
 
 @media (max-width: 959px) {

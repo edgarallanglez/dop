@@ -19,7 +19,6 @@ angular.module('dopApp')
       .then(function(response) {
         $auth.setToken(response.data.token, false);
         $location.path('/');
-        $state.reload();
         $userService.fromLogin = true;
       })
       .catch(function(response) {

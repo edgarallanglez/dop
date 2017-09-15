@@ -62,7 +62,7 @@
               <div ng-controller="MeCtrl" class="pull-right" flex="100" ng-init="init()">
                 <md-menu md-position-mode="target-right target">
                   <md-button aria-label="Open phone interactions menu" ng-click="$mdOpenMenu()" ng-mouseleave="$mdCloseMenu()">
-                    <img ng-src="http://45.55.7.118/branches/images/{{user.company_id}}/{{user.logo}}" class="branch-logo"/>
+                    <img ng-src="http://45.55.7.118/branches/images/{{user.company_id}}/{{user.logo}}" on-error-src="images/dop_logo_placeholder.png"  class="branch-logo"/>
                     {{user.name}}
                     <ng-md-icon icon="arrow_drop_down" size="18" style="fill: #000000; vertical-align: sub;"></ng-md-icon>
                   </md-button>
@@ -255,6 +255,7 @@
         <script src="scripts/controllers/paymentController/creditsPaymentController.js"></script>
         <script src="scripts/directives/passwordStrength.js"></script>
         <script src="scripts/directives/confetti.js"></script>
+        <script src="scripts/directives/onErrorSrc.js"></script>
         <script src="scripts/directives/passwordMatch.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>

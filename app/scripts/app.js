@@ -276,7 +276,8 @@ angular
           'hue-2': '300'
       });
 })
-  .controller('MeCtrl', function ($scope, $http, $auth, $userService, $mdSidenav, $log, $location, $mdDialog){
+  .controller('MeCtrl', function ($scope, $http, $auth, $userService, $mdSidenav,
+                                   $log, $location, $mdDialog) {
     $scope.init = function () {
       if (!$userService.getCurrentUser() && $auth.isAuthenticated()) {
         var payload = $auth.getPayload();

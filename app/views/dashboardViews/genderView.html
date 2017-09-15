@@ -18,8 +18,8 @@
           <md-progress-circular ng-show="loading"  class="chart md-accent" md-mode="indeterminate"></md-progress-circular>
         </div>
         <div flex="40">
-          <h3 class="left"><i class="fa fa-circle dark-accent-font"></i> Hombres: {{data[0]}}</h3>
-          <h3 class="left"><i class="fa fa-circle primary-font"></i> Mujeres: &nbsp{{data[1]}}</h3>
+          <h3 ng-if="!empty && !loading" class="left"><i class="fa fa-circle dark-accent-font"></i> Hombres: {{data[0]}}</h3>
+          <h3 ng-if="!empty && !loading" class="left"><i class="fa fa-circle primary-font"></i> Mujeres: &nbsp{{data[1]}}</h3>
         </div>
     </div>
 </div>
