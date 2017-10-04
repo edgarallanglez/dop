@@ -26,6 +26,7 @@ angular.module('dopApp')
       $scope.stats.views += obj.views;
       $scope.stats.uses += obj.total_uses;
     });
+    $scope.stats.profile_views = result.data[0].profile_views;
     $scope.loading = false;
   });
 });
