@@ -9,13 +9,12 @@
 angular
   .module('dopApp', [
     'ngAnimate',
-    'ngAria',
     'ngCookies',
-    'ngMessages',
     'ngResource',
+    'ngSanitize',
     'ngRoute',
     'ui.router',
-    'ngSanitize',
+    'ngAria',
     'ngMaterial',
     'chart.js',
     'uiGmapgoogle-maps',
@@ -33,7 +32,8 @@ angular
     'ngCropper',
     'angularMoment',
     'btford.socket-io',
-    'ngMdIcons'
+    'ngMdIcons',
+    'ngMessages',
   ])
   .service('$userService', function ($auth, $http, SweetAlert) {
     this.currentUser = null;
