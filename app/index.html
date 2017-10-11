@@ -140,6 +140,9 @@
               </md-content>
           </div>
         </ng-switch>
+        <md-button ng-controller="MainCtrl" class="md-fab validate-button" aria-label="Validar Campaña" ng-click="showValidateModal($event)">
+          <ng-md-icon icon="loyalty" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
+        </md-button>
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
@@ -178,7 +181,7 @@
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="bower_components/chart.js/Chart.js"></script>
+        <script src="bower_components/chart.js/dist/Chart.js"></script>
         <script src="bower_components/chartjs/dist/Chart.js"></script>
         <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
         <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
@@ -213,6 +216,8 @@
         <script src="bower_components/angular-base64/angular-base64.js"></script>
         <script src="bower_components/cropperjs/dist/cropper.js"></script>
         <script src="bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+        <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+        <script src="bower_components/angular-socket-io/socket.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -235,7 +240,6 @@
           <script src="scripts/controllers/couponController/couponMainController.js"></script>
         <script src="scripts/controllers/loyalty.js"></script>
           <script src="scripts/controllers/loyaltyController/loyaltyController.js"></script>
-
         <script src="scripts/controllers/report.js"></script>
           <script src="scripts/controllers/reportController/basicReportController.js"></script>
           <script src="scripts/controllers/reportController/middleReportController.js"></script>
@@ -251,6 +255,7 @@
         <script src="scripts/controllers/modalController/becomeProModalController.js"></script>
         <script src="scripts/controllers/modalController/addPaymentMethod.js"></script>
         <script src="scripts/controllers/modalController/loyaltyModalController.js"></script>
+        <script src="scripts/controllers/modalController/redeemModalController.js"></script>
         <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/controllers/paymentController/creditsPaymentController.js"></script>
         <script src="scripts/directives/passwordStrength.js"></script>

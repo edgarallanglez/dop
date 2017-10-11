@@ -45,7 +45,19 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('MainCtrl', function($scope, $state) {
+  .controller('MainCtrl', function($scope, $state, $mdDialog) {
     $state.go('home.dashboard');
-
+    $scope.showValidateModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: false,
+        controller: 'RedeemModalCtrl',
+        templateUrl: '../../views/modalViews/redeemModalView.html',
+        targetEvent: ev,
+      })
+      .then(function (answer) {
+        //SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
+      }, function () {
+        $scope.alert = 'You cancelled the dialog.';
+      });
+    };
   });

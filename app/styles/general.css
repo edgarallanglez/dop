@@ -364,11 +364,21 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   border-radius: 50%;
 }
 
+.super-z-index {
+  z-index: 1000;
+}
+
 .program-logo {
   width: 40%;
   max-width: 125px;
   margin: 0 auto;
   border-radius: 50%;
+}
+
+.validate-button {
+	position: fixed;
+	right: 35px;
+	bottom: 35px;
 }
 
 .payment-card {

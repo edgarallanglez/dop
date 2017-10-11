@@ -32,7 +32,8 @@ angular
     'locator',
     'base64',
     'ngCropper',
-    'angularMoment'
+    'angularMoment',
+    'btford.socket-io'
   ])
   .service('$userService', function ($auth, $http, SweetAlert) {
     this.currentUser = null;
@@ -306,7 +307,7 @@ angular
           // toastr.info('You have been logged out');
           $userService.currentUser = null;
           // $location.path('/login');
-          location.reload();
+          $location.reload();
         });
     };
   })
@@ -345,7 +346,6 @@ angular
         templateUrl: '../views/modalViews/addCreditModalView.html',
         targetEvent: ev,
       })
-
       .then(function (answer) {
         //SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
       }, function () {

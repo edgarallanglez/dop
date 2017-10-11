@@ -188,7 +188,14 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath:  /\.\.\//,
+        options: {
+          'overrides': {
+            'socket.io-client': {
+              'main': 'dist/socket.io.js'
+            }
+          }
+        }
       }
     },
 
