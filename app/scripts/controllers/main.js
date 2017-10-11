@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the dopApp
  */
-angular.module('dopApp')
+angular.module('dopApp', ['ngMdIcons'])
   .config(function($stateProvider){
     $stateProvider
       // HOME STATES AND NESTED VIEWS ========================================

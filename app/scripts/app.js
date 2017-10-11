@@ -11,7 +11,6 @@ angular
     'ngAnimate',
     'ngAria',
     'ngCookies',
-    'ngMdIcons',
     'ngMessages',
     'ngResource',
     'ngRoute',
@@ -46,7 +45,7 @@ angular
       this.currentUser = currentUser;
       this.payment_sources = payment_sources;
     };
-    
+
     this.getCurrentUser = function () {
       return this.currentUser;
     };
@@ -169,7 +168,7 @@ angular
              var deferred = $q.defer();
              if ($auth.isAuthenticated()) { deferred.resolve(); }
              else { $location.path('/login'); }
-      
+
              return deferred.promise;
            },
            userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
