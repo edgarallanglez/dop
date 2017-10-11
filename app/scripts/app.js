@@ -10,7 +10,6 @@ angular
   .module('dopApp', [
     'ngAnimate',
     'ngCookies',
-    'ngResource',
     'ngRoute',
     'ui.router',
     'ngAria',
