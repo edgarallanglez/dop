@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService, $couponService) {
+  .controller('CouponMainCtrl', function($scope, $http, $filter, SweetAlert, $userService, $couponService, $mdDialog) {
     //  var selected_coupon = Coupon.getCoupon();
     //  console.log("Cupón seleccionado: "+selected_coupon.name);
     $scope.couponSelected = 1;
@@ -85,5 +85,9 @@ angular.module('dopApp')
           $scope.inSet = $couponService.inSet;
         }
     });
+    
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
 
   });

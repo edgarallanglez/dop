@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the dopApp
  */
-angular.module('dopApp')
+angular.module('dopApp', ['ngMdIcons'])
   .config(function($stateProvider){
     $stateProvider
       // HOME STATES AND NESTED VIEWS ========================================
@@ -17,6 +17,10 @@ angular.module('dopApp')
             'lastCoupons': {
               templateUrl: '../../views/dashboardViews/lastCouponListView.html',
               controller: 'LastCouponListWidgetCtrl'
+            },
+            'statsView': {
+              templateUrl: '../../views/dashboardViews/statsView.html',
+              controller: 'StatsViewCtrl'
             },
             'genderChart': {
               templateUrl: '../../views/dashboardViews/genderView.html',
@@ -41,7 +45,19 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('MainCtrl', function($scope, $state) {
+  .controller('MainCtrl', function($scope, $state, $mdDialog) {
     $state.go('home.dashboard');
-
+    $scope.showValidateModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: false,
+        controller: 'RedeemModalCtrl',
+        templateUrl: '../../views/modalViews/redeemModalView.html',
+        targetEvent: ev,
+      })
+      .then(function (answer) {
+        //SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
+      }, function () {
+        $scope.alert = 'You cancelled the dialog.';
+      });
+    };
   });

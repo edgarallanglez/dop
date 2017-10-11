@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc overview
  * @name dopApp
@@ -13,7 +11,6 @@ angular
     'ngAnimate',
     'ngAria',
     'ngCookies',
-    'ngMdIcons',
     'ngMessages',
     'ngResource',
     'ngRoute',
@@ -34,17 +31,21 @@ angular
     'locator',
     'base64',
     'ngCropper',
-    'angularMoment'
+    'angularMoment',
+    'btford.socket-io'
   ])
-  .service('$userService', function($auth, $http, SweetAlert) {
+  .service('$userService', function ($auth, $http, SweetAlert) {
     this.currentUser = null;
+    this.payment_sources = null;
     this.loading = false;
     this.fromLogin = false;
     var self = this;
 
-    this.setUser = function(currentUser) {
+    this.setUser = function (currentUser, payment_sources) {
       this.currentUser = currentUser;
+      this.payment_sources = payment_sources;
     };
+
     this.getCurrentUser = function () {
       return this.currentUser;
     };
@@ -55,12 +56,11 @@ angular
         method: 'POST',
         url: 'http://45.55.7.118/api/company/me',
         data: { 'branches_user_id': payload.id },
-        headers: {'Content-Type': 'application/json'}
-      }).success(function(data){
-
+        headers: { 'Content-Type': 'application/json' }
+      }).success(function (data) {
         self.loading = false;
         return data.data;
-      }).error(function(message) {
+      }).error(function (message) {
         SweetAlert.swal(message, '', 'error');
         self.loading = false;
       });
@@ -82,22 +82,22 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth, $state) {
+          authenticated: function ($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if (!$auth.isAuthenticated()) { $location.path('/login'); }
             else { deferred.resolve(); }
 
             return deferred.promise;
           },
-          userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
+          userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $userService.getMe().success(function(data){
+              $userService.getMe().success(function (data) {
                 var user = data.data[0];
-                $userService.setUser(user);
+                $userService.setUser(user, data.payment_sources);
                 deferred.resolve();
-              }).error(function(message) {
+              }).error(function (message) {
                 SweetAlert.swal(message, 'error');
               });
             } else { deferred.resolve(); }
@@ -110,7 +110,7 @@ angular
         templateUrl: 'login.html',
         controller: 'LoginCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth) {
+          authenticated: function ($q, $location, $auth) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.reject(); }
             else { deferred.resolve(); }
@@ -123,7 +123,7 @@ angular
         templateUrl: 'signup.html',
         controller: 'SignupCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth) {
+          authenticated: function ($q, $location, $auth) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.reject(); }
             else { deferred.resolve(); }
@@ -136,22 +136,22 @@ angular
         templateUrl: 'views/coupon.html',
         controller: 'CouponCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth, $state) {
+          authenticated: function ($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.resolve(); }
             else { $location.path('/login'); }
 
             return deferred.promise;
           },
-          userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
+          userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $userService.getMe().success(function(data){
+              $userService.getMe().success(function (data){
                 var user = data.data[0];
-                $userService.setUser(user);
+                $userService.setUser(user, data.payment_sources);
                 deferred.resolve();
-              }).error(function(){
+              }).error(function (){
                 SweetAlert.swal('Error en el servidor', '', 'error');
               });
             } else { deferred.resolve(); }
@@ -159,55 +159,55 @@ angular
           }
         }
       })
-      // .state('report', {
-      //   url: '/report',
-      //   templateUrl: 'views/report.html',
-      //   controller: 'ReportCtrl',
-      //   resolve: {
-      //     authenticated: function($q, $location, $auth, $state) {
-      //       var deferred = $q.defer();
-      //       if ($auth.isAuthenticated()) { deferred.resolve(); }
-      //       else { $location.path('/login'); }
-      //
-      //       return deferred.promise;
-      //     },
-      //     userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
-      //       var deferred = $q.defer();
-      //       //var payload = $auth.getPayload();
-      //       if (!$userService.getCurrentUser()) {
-      //         $userService.getMe().success(function(data){
-      //           var user = data.data[0];
-      //           $userService.setUser(user);
-      //           deferred.resolve();
-      //         }).error(function(){
-      //           SweetAlert.swal('Error en el servidor', '', 'error');
-      //         });
-      //       } else { deferred.resolve(); }
-      //       return deferred.promise;
-      //     }
-      //   }
-      // })
+       .state('loyalty', {
+         url: '/loyalty',
+         templateUrl: 'views/loyalty.html',
+         controller: 'LoyaltyCtrl',
+         resolve: {
+           authenticated: function ($q, $location, $auth, $state) {
+             var deferred = $q.defer();
+             if ($auth.isAuthenticated()) { deferred.resolve(); }
+             else { $location.path('/login'); }
+
+             return deferred.promise;
+           },
+           userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
+             var deferred = $q.defer();
+             //var payload = $auth.getPayload();
+             if (!$userService.getCurrentUser()) {
+               $userService.getMe().success(function (data){
+                 var user = data.data[0];
+                 $userService.setUser(user, data.payment_sources);
+                 deferred.resolve();
+               }).error(function (){
+                 SweetAlert.swal('Error en el servidor', '', 'error');
+               });
+             } else { deferred.resolve(); }
+             return deferred.promise;
+           }
+         }
+       })
       .state('image', {
         url: '/image',
         templateUrl: 'views/image.html',
         controller: 'ImageCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth, $state) {
+          authenticated: function ($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.resolve(); }
             else { $location.path('/login'); }
 
             return deferred.promise;
           },
-          userService: function($q, $location, $auth, $http, $userService, SweetAlert) {
+          userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
             if (!$userService.getCurrentUser()) {
-              $userService.getMe().success(function(data){
+              $userService.getMe().success(function (data){
                 var user = data.data[0];
-                $userService.setUser(user);
+                $userService.setUser(user, data.payment_sources);
                 deferred.resolve();
-              }).error(function(){
+              }).error(function (){
                 SweetAlert.swal('Error en el servidor', '', 'error');
               });
             } else { deferred.resolve(); }
@@ -220,7 +220,7 @@ angular
         templateUrl: 'notification.html',
         controller: 'NotificationCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth) {
+          authenticated: function ($q, $location, $auth) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.reject(); }
             else { deferred.resolve(); }
@@ -233,7 +233,7 @@ angular
         templateUrl: 'problems.html',
         controller: 'ReportPreviewCtrl',
         resolve: {
-          authenticated: function($q, $location, $auth) {
+          authenticated: function ($q, $location, $auth) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.reject(); }
             else { deferred.resolve(); }
@@ -276,7 +276,8 @@ angular
           'hue-2': '300'
       });
 })
-  .controller('MeCtrl', function($scope, $http, $auth, $userService, $mdSidenav, $log, $location, $mdDialog){
+  .controller('MeCtrl', function ($scope, $http, $auth, $userService, $mdSidenav,
+                                   $log, $location, $mdDialog) {
     $scope.init = function () {
       if (!$userService.getCurrentUser() && $auth.isAuthenticated()) {
         var payload = $auth.getPayload();
@@ -285,72 +286,81 @@ angular
           url: 'http://45.55.7.118/api/company/me',
           data: { 'branches_user_id': payload.id },
           headers: {'Content-Type': 'application/json'}
-        }).success(function(data){
-          $userService.setUser(data.data[0]);
+        }).success(function (data){
+          $userService.setUser(data.data[0], data.payment_sources);
           $scope.user = $userService.getCurrentUser();
         });
       } else {
         $location.path('/login');
       }
     };
-    // $scope.openMenu = function($mdOpenMenu, ev) {
+    // $scope.openMenu = function ($mdOpenMenu, ev) {
     //   var originatorEv = ev;
     //   $mdOpenMenu(ev);
     // };
 
-    $scope.logout = function() {
+    $scope.logout = function () {
       if (!$auth.isAuthenticated()) { return; }
       $auth.logout()
-        .then(function() {
+        .then(function () {
           // toastr.info('You have been logged out');
           $userService.currentUser = null;
           // $location.path('/login');
-          location.reload();
+          $location.reload();
         });
     };
   })
-  .controller('TabController', function($scope, $state, $location, $userService, $log, $mdSidenav, $http, $templateCache, $auth, $mdDialog){
+  .controller('TabController', function ($scope, $state, $location, $userService, $log, $mdSidenav,
+                                         $http, $templateCache, $auth, $mdDialog) {
     // if (!$userService.fromLogin) { $scope.reload = false; } else { $scope.reload = true; }
     $scope.reload = true;
-    $scope.$watch(function() {
+    $scope.$watch(function () {
       return $userService.loading;
     }, function (flag) {
         $scope.loading = flag;
     });
 
-    $scope.$watch(function() {
+    $scope.$watch(function () {
       return $userService.currentUser;
-    }, function(user) {
+    }, function (user) {
       $scope.user = user;
     });
 
     if ($userService.currentUser !== null) {
-      $scope.$watch(function() {
+      $scope.$watch(function () {
         return $userService.currentUser.credits;
-      }, function(credits) {
+      }, function (credits) {
         $scope.user.credits = credits;
       });
     }
 
-    $scope.isAuthenticated = function() {
+    $scope.isAuthenticated = function () {
       return $auth.isAuthenticated();
     };
 
-    $scope.showCreditModal = function(ev) {
+    $scope.showCreditModal = function (ev) {
       $mdDialog.show({
         clickOutsideToClose: false,
         controller: 'AddCreditModalCtrl',
         templateUrl: '../views/modalViews/addCreditModalView.html',
         targetEvent: ev,
       })
-
-      .then(function(answer) {
+      .then(function (answer) {
         //SweetAlert.swal("Cancelado", "Tu compra ha sido cancelada :)", "error");
-      }, function() {
+      }, function () {
         $scope.alert = 'You cancelled the dialog.';
       });
     };
-
+  
+    $scope.showProModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: true,
+        controller: 'BecomeProModalCtrl',
+        templateUrl: '../views/modalViews/becomeProModalView.html',
+        targetEvent: ev,
+      });
+    };
+  
     $scope.$watch('data.selectedIndex', function () {
       // tab selected change
       if ($userService.fromLogin) { $scope.reload = false; }
@@ -361,14 +371,13 @@ angular
         } else if ($scope.data.selectedIndex === 1 && $auth.isAuthenticated()) {
           $location.path('/coupon').replace();
           $userService.fromLogin = false;
-        // } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
-        //   $location.path('/report').replace();
-        //   $userService.fromLogin = false;
-        // }
-      } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
-          $location.path('/image').replace();
-          $userService.fromLogin = false;
-        }
+         } else if ($scope.data.selectedIndex === 2 && $auth.isAuthenticated()) {
+           $location.path('/loyalty').replace();
+           $userService.fromLogin = false;
+         } else if ($scope.data.selectedIndex === 3 && $auth.isAuthenticated()) {
+           $location.path('/image').replace();
+           $userService.fromLogin = false;
+         }
       }
 
       //  paint tab after reload
@@ -379,11 +388,11 @@ angular
         } else if ($location.path() === '/coupon') {
           $scope.data.selectedIndex = 1;
           $scope.reload = false;
-        // } else if ($location.path() === '/report') {
-        //   $scope.data.selectedIndex = 2;
-        //   $scope.reload = false;
+         } else if ($location.path() === '/loyalty') {
+           $scope.data.selectedIndex = 2;
+           $scope.reload = false;
         } else if ($location.path() === '/image') {
-          $scope.data.selectedIndex = 2;
+          $scope.data.selectedIndex = 3;
           $scope.reload = false;
         }
       }

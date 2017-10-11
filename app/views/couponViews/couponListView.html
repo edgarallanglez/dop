@@ -1,24 +1,24 @@
-<div layout-fill layout="row" flex="100" style="margin: 0 auto; min-height: 100%;">
-  <div class="loading" flex ng-show="loading" layout-align="start center">
-    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-  </div>
-  <div ng-repeat="item in coupons" layout="row" layout-fill  flex="100" layout-wrap layout-align="center center">
-    <md-card class="background-white coupon-card animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex="30" ng-click="showConfigModal(promo)" ng-class="{'background-lightgray': !promo.active}" layout="column" layout-align="center center">
-      <div class="info" layout="row" layout-align="center center" flex>
-          <div ng-if="promo.name" class="status">
-            <!-- ACTIVE -->
-            <!--<i ng-if="promo.active && !promo.completed" class="fa fa-circle success-font"></i>-->
-            <!-- INACTIVE -->
-            
 
-            <!--<i ng-if="!promo.active && !promo.completed && promo.coupon_category_id!=1" class="fa fa-circle warning-font"></i>-->
-            <!-- COMPLETED-->
-            <i ng-if="promo.completed" class="fa fa-check accent-font"></i>
-          </div>
-          <div ng-if="!promo.active && !promo.completed" class="details" >
-            <p style="display:inline-block"><i class="fa fa-clock-o"></i> {{promo.duration}} dias</p>
-            <p style="display:inline-block;margin-left:0.5em"><i class="fa fa-ticket"></i> {{promo.limit}} usos</p>
-          </div>
+  <md-card class="loading" flex ng-show="loading" layout-align="center center">
+    <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+  </md-card>
+  <div ng-repeat="item in coupons" layout="row" layout-align="start center" layout-wrap layout-margin>
+    <md-card class="background-white coupon-card thirty-two animated fadeInUp" ng-repeat="promo in item" flex-xs="100" flex-sm="100" flex-md="45" ng-click="showConfigModal(promo)" ng-class="{'background-lightgray': !promo.active}" layout="column" layout-align="center center">
+      <div class="info" layout="row" layout-align="center center" flex>
+        <div ng-if="promo.name" class="status">
+          <!-- ACTIVE -->
+          <!--<i ng-if="promo.active && !promo.completed" class="fa fa-circle success-font"></i>-->
+          <!-- INACTIVE -->
+
+
+          <!--<i ng-if="!promo.active && !promo.completed && promo.coupon_category_id!=1" class="fa fa-circle warning-font"></i>-->
+          <!-- COMPLETED-->
+          <i ng-if="promo.completed" class="fa fa-check accent-font"></i>
+        </div>
+        <div ng-if="!promo.active && !promo.completed" class="details" >
+          <p style="display:inline-block"><i class="fa fa-clock-o"></i> {{promo.duration}} dias</p>
+          <p style="display:inline-block;margin-left:0.5em"><i class="fa fa-ticket"></i> {{promo.limit}} usos</p>
+        </div>
         <div layout="column" layout-align="center center">
           <h2 class="margin-md">{{promo.name}}</h2>
           <h1 ng-if="!promo.name" class="new-promo-placeholder">Nueva Promoción</h1>
@@ -33,64 +33,63 @@
           <li flex>
             <i class="fa fa-bullseye" ></i>
             <h3>{{promo.views}}</h3>
-            <p class="transparent-text">Aperturas</p>
+            <p class="">Aperturas</p>
           </li>
           <li flex>
             <i class="fa fa-heart"></i>
             <h3>{{promo.total_likes}}</h3>
-            <p class="transparent-text">Me gusta</p>
+            <p class="">Me gusta</p>
           </li>
           <li flex>
             <i class="fa fa-ticket "></i>
             <h3>{{promo.total_uses}}</h3>
-            <p class="transparent-text">Usos</p>
+            <p class="">Usos</p>
           </li>
         </ul>
       </div>
-      <div ng-click="activeCoupon(promo.coupon_id)" class="active-button" ng-if="!promo.active && promo.name && !promo.completed">
+      <md-button ng-click="activeCoupon(promo.coupon_id)" class="md-raised active-button" ng-if="!promo.active && promo.name && !promo.completed">
         ACTIVAR
-      </div>
-      <div class="active-button" ng-if="promo.completed">
+      </md-button>
+      <md-button class="md-raised active-button" ng-if="promo.completed">
         COMPRAR DE NUEVO
-      </div>
+      </md-button>
     </md-card>
   </div>
   <div class="" style="height: 300px">
-    <p ng-if="empty" class="empty-view-200"> CREA UNA CAMPAÑA PARA COMENZAR </p>
+    <h3 ng-if="empty" class="empty-view-200"> CREA UNA CAMPAÑA PARA COMENZAR </h3>
   </div>
-</div>
 
 <!-- 		<div class="coupon-list-button">
 
-			<div class="coupon-search-container" flex="100">
-					<i class="fa fa-search"></i>
-					<input placeholder="Buscar" type="text" ng-model="searchPromo"/>
-			</div>
-		</div>
-		<div class="coupon-list">
-				<md-list ng-repeat="item in coupons">
-						<md-list-item class="md-3-line pointer promo" ng-repeat="promo in item | filter:searchPromo" flex ng-click="configCoupon(promo)">
-							<div layout="row" layout-align="center center" class="promo">
-								<div ng-switch on="{{promo.coupon_category_id}}" class="left center md-avatar" flex="25">
-									<div ng-switch-when="1" class="coupon-category-1"><ng-md-icon icon="settings" size="30" style="fill: #FFF"></ng-md-icon></div>
-									<div ng-switch-when="2" class="coupon-category-2">$</div>
-									<div ng-switch-when="3" class="coupon-category-3">%</div>
-									<div ng-switch-when="4" class="coupon-category-4">X</div>
-									<ng-md-icon icon="percent" style="fill: black" size="30"></ng-md-icon>
-								</div>
-								<div class="right" flex>
-									<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md clear" ng-click="delete(promo)"></ng-md-icon>
-									<div class="md-list-item-text">
-											<h3 class="coupon-title margin-bottom-sm">{{ promo.name }}</h3>
-											<h3 ng-if="!promo.description" class="coupon-description new-promo-placeholder">Nueva Promoción</h3>
-											<p ng-if="promo.description" data-ng-bind="promo.description" class="coupon-description" data-ellipsis></p>
-											<p class="pull-right" ng-if="promo.end_date" ng-init="dateFormat(promo.end_date)">
-												Aplicable hasta el {{ formattedDate | date:'dd' }} de {{ formattedDate | date:'MMMM' }}
-											</p>
-									</div>
-								</div>
-							</div>
-							<md-divider layout="row"></md-divider>
-						</md-list-item>
-				</md-list>
-		</div> -->
+<div class="coupon-search-container" flex="100">
+<i class="fa fa-search"></i>
+<input placeholder="Buscar" type="text" ng-model="searchPromo"/>
+</div>
+</div>
+<div class="coupon-list">
+<md-list ng-repeat="item in coupons">
+<md-list-item class="md-3-line pointer promo" ng-repeat="promo in item | filter:searchPromo" flex ng-click="configCoupon(promo)">
+<div layout="row" layout-align="center center" class="promo">
+<div ng-switch on="{{promo.coupon_category_id}}" class="left center md-avatar" flex="25">
+<div ng-switch-when="1" class="coupon-category-1"><ng-md-icon icon="settings" size="30" style="fill: #FFF"></ng-md-icon></div>
+<div ng-switch-when="2" class="coupon-category-2">$</div>
+<div ng-switch-when="3" class="coupon-category-3">%</div>
+<div ng-switch-when="4" class="coupon-category-4">X</div>
+<ng-md-icon icon="percent" style="fill: black" size="30"></ng-md-icon>
+</div>
+<div class="right" flex>
+<ng-md-icon icon="clear" size="18" style="fill: #F44336" class="pull-right margin-top-md clear" ng-click="delete(promo)"></ng-md-icon>
+<div class="md-list-item-text">
+<h3 class="coupon-title margin-bottom-sm">{{ promo.name }}</h3>
+<h3 ng-if="!promo.description" class="coupon-description new-promo-placeholder">Nueva Promoción</h3>
+<p ng-if="promo.description" data-ng-bind="promo.description" class="coupon-description" data-ellipsis></p>
+<p class="pull-right" ng-if="promo.end_date" ng-init="dateFormat(promo.end_date)">
+Aplicable hasta el {{ formattedDate | date:'dd' }} de {{ formattedDate | date:'MMMM' }}
+</p>
+</div>
+</div>
+</div>
+<md-divider layout="row"></md-divider>
+</md-list-item>
+</md-list>
+</div> -->

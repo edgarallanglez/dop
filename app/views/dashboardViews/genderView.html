@@ -4,19 +4,22 @@
 
         <ul class="actions">
             <li class="action-show">
-                <a ng-click="getByGender()"  aria-expanded="false">
+                <a ng-click="getByGender()" aria-expanded="false">
                     <ng-md-icon icon="refresh" style="fill: #444"></ng-md-icon>
                 </a>
             </li>
         </ul>
     </div>
 
-    <div class="card-body card-padding" style="position: relative">
-        <div class="padding-xl">
-          <canvas ng-class="{ hidden: empty }" id="genderChart" width="600" height="340" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas>
+    <div class="card-body card-padding" style="position: relative" layout="row">
+        <div class="padding-xl" flex="60" style="padding-top: 0px !important;">
+          <canvas ng-class="{ hidden: empty }" id="genderChart" width="600" height="280" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-colors="colors"></canvas>
           <p ng-if="empty" class="empty-view"> DATOS INSUFICIENTES </p>
           <md-progress-circular ng-show="loading"  class="chart md-accent" md-mode="indeterminate"></md-progress-circular>
-
+        </div>
+        <div flex="40">
+          <h3 ng-if="!empty && !loading" class="left"><i class="fa fa-circle dark-accent-font"></i> Hombres: {{data[0]}}</h3>
+          <h3 ng-if="!empty && !loading" class="left"><i class="fa fa-circle primary-font"></i> Mujeres: &nbsp{{data[1]}}</h3>
         </div>
     </div>
 </div>

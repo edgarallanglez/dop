@@ -1,0 +1,44 @@
+
+<md-dialog class="pro-dialog" ng-controller="BecomeProModalCtrl" md-theme="" flex="40" aria-label="Hazte PRO" ng-init="init()">
+  <canvas id="world" confetti></canvas>
+  <md-dialog-content class="sticky-container" style="background-color: #f9f9f9">
+    <md-subheader class="">
+      <h3>PLAN PRO</h3>
+      <img src="../../images/awards-flat-dop.png" alt="" style="width: 15%;
+                                                                position: absolute;
+                                                                right: -15px;
+                                                                top: -30px;">
+    </md-subheader>
+    <md-card class="loading" flex ng-show="loading" layout-align="center center">
+        <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+    </md-card>
+    <div layout="column" class="no-padding-bottom padding-top-md">
+      <h4>Conviértete en usuario PRO y obtén todos los beneficios de DOP de forma ilimitada.</h4>
+      <ul class="benefits">
+        <li>Programas de Lealtad</li>
+        <li>Verifica Quién, Dónde y Cuándo tu programa de lealtad fue utilizado</li>
+        <li>Configura cuantas visitas son necesarias para la recompensa de lealtad y DOP llevará el control por ti</li>
+        <li>Campañas de promoción</li>
+        <li>Estadística fina de visualizaciones</li>
+        <li>Likes, Usos y Locación de todas tus campañas</li>
+      </ul>
+    </div>
+
+
+  </md-dialog-content>
+  <div class="md-actions">
+    <div ng-if="!pro" layout-align="center center" layout="row" flex>
+      <md-button ng-click="subscribe()" class="pro-button new-gradient-dop md-accent md-raised" flex ng-if="payment_method">
+        Suscribeme
+      </md-button>
+
+      <md-button ng-click="addPaymentMethod()" class="pro-button new-gradient-dop md-accent md-raised" flex ng-if="!payment_method">
+        AGREGAR método de pago
+      </md-button>
+    </div>
+    <md-button ng-click="hide()" class="pro-button new-gradient-dop md-accent md-raised" flex ng-if="pro">
+      tú ya eres pro 🙌
+    </md-button>
+ 
+  </div>
+</md-dialog>

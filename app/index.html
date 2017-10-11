@@ -11,26 +11,24 @@
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Raleway:300,200,100" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
+  
   <!-- Bootstrap core CSS -->
   <!-- build:css(.) dop/dist/styles/vendor.css -->
-  <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="bower_components/angular/angular-csp.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/angular/angular-csp.css" type="text/css">
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-  <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
   <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css">
   <link rel="stylesheet" href="bower_components/animate.css/animate.min.css">
   <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css">
   <link rel="stylesheet" href="bower_components/cropperjs/dist/cropper.min.css">
   <link rel="stylesheet" href="bower_components/ng-cropper/dist/ngCropper.all.css">
-  <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" type="text/css"/>
   <!-- endbuild -->
 
   <!-- Template CSS -->
   <!-- build:css(.tmp) dop/dist/styles/main.css -->
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/locator.css">
-  <link rel="stylesheet" href="styles/calculator.css">
   <link rel="stylesheet" href="styles/demo.css">
   <link rel="stylesheet" href="styles/login.css">
   <link rel="stylesheet" href="styles/coupon.css">
@@ -53,6 +51,9 @@
                 <md-tab id="tab2">
                   <md-tab-label>CAMPAÑAS</md-tab-label>
                 </md-tab>
+                <md-tab id="tab3">
+                  <md-tab-label>LEALTAD</md-tab-label>
+                </md-tab>
                 <md-tab id="tab4">
                   <md-tab-label>PERFIL</md-tab-label>
                 </md-tab>
@@ -61,7 +62,7 @@
               <div ng-controller="MeCtrl" class="pull-right" flex="100" ng-init="init()">
                 <md-menu md-position-mode="target-right target">
                   <md-button aria-label="Open phone interactions menu" ng-click="$mdOpenMenu()" ng-mouseleave="$mdCloseMenu()">
-                    <img ng-src="http://45.55.7.118/branches/images/{{user.company_id}}/{{user.logo}}" class="branch-logo"/>
+                    <img ng-src="http://45.55.7.118/branches/images/{{user.company_id}}/{{user.logo}}" on-error-src="images/dop_logo_placeholder.png"  class="branch-logo"/>
                     {{user.name}}
                     <ng-md-icon icon="arrow_drop_down" size="18" style="fill: #000000; vertical-align: sub;"></ng-md-icon>
                   </md-button>
@@ -74,6 +75,11 @@
                     <md-menu-item>
                       <md-button ng-click="showCreditModal($event)">
                         Agregar Créditos
+                      </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                      <md-button ng-click="showProModal($event)">
+                        Plan PRO
                       </md-button>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
@@ -92,7 +98,7 @@
             <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
         </md-card>
 
-        <ng-switch on="data.selectedIndex" class="tabpanel-container padding-xl" ng-show="!loading">
+        <ng-switch on="data.selectedIndex" class="tabpanel-container" ng-show="!loading">
           <div role="tabpanel"
                id="tab1-content"
                aria-labelledby="tab1"
@@ -113,22 +119,20 @@
                 <div flex ui-view layout="row" layout-align="center center"></div>
               </md-content>
           </div>
-          <!-- <div role="tabpanel"
+           <div role="tabpanel"
                id="tab3-content"
                aria-labelledby="tab3"
                ng-switch-when="2"
                md-swipe-left="next()"
                md-swipe-right="previous()" >
               <md-content layout="row" layout-align="center center" class="no-background height-inherit ng-cloak">
-                <div flex ui-view layout="row" layout-align="center center">
-
-                </div>
+                <div flex ui-view layout="row" layout-align="center center"></div>
               </md-content>
-          </div> -->
+          </div> 
           <div role="tabpanel"
                id="tab4-content"
                aria-labelledby="tab4"
-               ng-switch-when="2"
+               ng-switch-when="3"
                md-swipe-left="next()"
                md-swipe-right="previous()" >
               <md-content layout="row" layout-align="center start" class="no-background height-inherit ng-cloak">
@@ -136,6 +140,9 @@
               </md-content>
           </div>
         </ng-switch>
+        <md-button ng-controller="MainCtrl" class="md-fab validate-button" aria-label="Validar Campaña" ng-click="showValidateModal($event)">
+          <ng-md-icon icon="loyalty" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
+        </md-button>
     </div>
 
     <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
@@ -174,8 +181,8 @@
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="bower_components/Chart.js/Chart.js"></script>
-        <script src="bower_components/chartjs/Chart.js"></script>
+        <script src="bower_components/chart.js/dist/Chart.js"></script>
+        <script src="bower_components/chartjs/dist/Chart.js"></script>
         <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
         <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
         <script src="bower_components/lodash/lodash.js"></script>
@@ -208,6 +215,8 @@
         <script src="bower_components/angular-base64/angular-base64.js"></script>
         <script src="bower_components/cropperjs/dist/cropper.js"></script>
         <script src="bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+        <script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+        <script src="bower_components/angular-socket-io/socket.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -224,9 +233,12 @@
           <script src="scripts/controllers/dashboardController/couponStatusWidgetController.js"></script>
           <script src="scripts/controllers/dashboardController/lastCouponListWidgetController.js"></script>
           <script src="scripts/controllers/dashboardController/locationWidgetController.js"></script>
+          <script src="scripts/controllers/dashboardController/statsViewController.js"></script>
         <script src="scripts/controllers/coupon.js"></script>
           <script src="scripts/controllers/couponController/couponListController.js"></script>
           <script src="scripts/controllers/couponController/couponMainController.js"></script>
+        <script src="scripts/controllers/loyalty.js"></script>
+          <script src="scripts/controllers/loyaltyController/loyaltyController.js"></script>
         <script src="scripts/controllers/report.js"></script>
           <script src="scripts/controllers/reportController/basicReportController.js"></script>
           <script src="scripts/controllers/reportController/middleReportController.js"></script>
@@ -239,9 +251,15 @@
           <script src="scripts/controllers/imageController/imageAboutController.js"></script>
         <script src="scripts/controllers/modalController/pricingModalController.js"></script>
         <script src="scripts/controllers/modalController/addCreditModalController.js"></script>
+        <script src="scripts/controllers/modalController/becomeProModalController.js"></script>
+        <script src="scripts/controllers/modalController/addPaymentMethod.js"></script>
+        <script src="scripts/controllers/modalController/loyaltyModalController.js"></script>
+        <script src="scripts/controllers/modalController/redeemModalController.js"></script>
         <script src="scripts/controllers/paymentController/paymentController.js"></script>
         <script src="scripts/controllers/paymentController/creditsPaymentController.js"></script>
         <script src="scripts/directives/passwordStrength.js"></script>
+        <script src="scripts/directives/confetti.js"></script>
+        <script src="scripts/directives/onErrorSrc.js"></script>
         <script src="scripts/directives/passwordMatch.js"></script>
         <script src="scripts/models/couponFactory.js"></script>
         <script src="scripts/controllers/login.js"></script>
@@ -254,7 +272,7 @@
 
         <!-- endbuild -->
 
-
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script> 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

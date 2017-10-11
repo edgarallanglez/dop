@@ -1,0 +1,47 @@
+<md-card class="loading" flex ng-show="loading" layout-align="center center">
+  <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+</md-card>
+<div ng-if="pro && !loading" flex>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <h1 class="loyalty-toolbar toolbar-title">Lealtad</h1>
+    </div>
+  </md-toolbar>
+
+  <!-- exact table from live demo -->
+  <md-table-container>
+    <table id="table" md-table table ng-model="selected" md-progress="promise">
+      <thead md-head md-order="query.order" md-on-reorder="" ng-if="!empty">
+        <tr md-row>
+          <th md-column md-order-by=""><span><blank></blank></span></th>
+          <th md-column md-order-by="namesToLower"><span>Nombres</span></th>
+          <th md-column md-order-by="nameToLower"><span>Programa</span></th>
+          <th md-column><span>Descripción</span></th>
+          <th md-column md-order-by="dateToLower"><span>Ultima visita</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr class="pointer" md-row md-select="person" ng-repeat="person in people" ng-click="getPersonData(person)">
+          <td md-cell><img ng-src="{{person.main_image}}" class="branch-logo"/></td>
+          <td md-cell md-order-by="names">{{person.names}} {{person.surnames}}</td>
+          <td md-cell md-order-by="name">{{person.name}}</td>
+          <td md-cell>{{person.description}}</td>
+          <td md-cell md-order-by="date">{{person.date | date : "MMM d, y h:mm:ss a"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <div class="empty-view-286" ng-if="empty">TODAVÍA NO HAY USUARIOS EN TU SISTEMA DE LEALTAD</div>
+</div>
+<div class="empty-view-height" ng-if="!pro && !loading" layout-align="center center" layout="row" layout-wrap flex>
+  <h3 class="center" flex="100"> ESTA FUNCIONALIDAD ES PARA USUARIOS PRO </h3>
+  <div ng-if="!pro && !loading" flex="100" layout-align="center center" layout="row">
+    <md-button ng-click="subscribe()" class="pro-button new-gradient-dop md-accent md-raised" flex="50" ng-if="payment_method">
+      Suscribeme
+    </md-button>
+
+    <md-button ng-click="addPaymentMethod()" class="pro-button new-gradient-dop md-accent md-raised" flex="50" ng-if="!payment_method">
+      AGREGAR método de pago y suscribeme
+    </md-button>
+  </div>
+</div>

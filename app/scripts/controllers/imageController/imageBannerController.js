@@ -32,7 +32,6 @@ angular.module('dopApp')
                 $http.get(ngSrc).success(function(){
                     alert('image exist');
                 }).error(function(){
-                    console.log("Banner no encontrado");
                     $bannerLoading.flag = false;
                     //element.attr('src', '/images/default_user.jpg'); // set default image
                 });

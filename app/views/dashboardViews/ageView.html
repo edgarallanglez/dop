@@ -1,12 +1,5 @@
-<!-- <div layout-align="center center" ng-controller="">
-    <h2>Gráfica por Edad</h2>
-    <div class="chart-container padding-xl">
-
-    </div>
-</div> -->
-
 <div class="card animated fadeInUp">
-    <div class="card-header">
+    <div class="card-header" style="padding-bottom: 10px !important;">
         <h2>Usos por edad</h2>
 
         <ul class="actions">
@@ -18,9 +11,11 @@
         </ul>
     </div>
 
-    <div class="card-body card-padding" style="position: relative">
-        <div class="padding-xl">
-          <canvas ng-class="{ hidden: empty }" id="ageChart" width="600" height="340" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-colours="colours"></canvas>
+    <div class="card-body card-padding" style="position: relative" layout="row" layout-align="center center">
+        <div class="padding-xs" flex=75 style="padding-top: 0px !important;">
+          <canvas ng-class="{ hidden: empty }" id="ageChart" width="600" height="245" 
+            class="chart chart-bar" chart-data="data" chart-labels="labels" chart-colors="colors"></canvas>
+            
           <p ng-if="empty" class="empty-view"> DATOS INSUFICIENTES </p>
           <md-progress-circular ng-show="loading" class="chart md-accent" md-mode="indeterminate"></md-progress-circular>
         </div>

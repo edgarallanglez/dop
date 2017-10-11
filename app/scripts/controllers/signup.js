@@ -13,7 +13,7 @@ angular.module('dopApp')
       $auth.signup($scope.user)
         .then(function(response) {
           $auth.setToken(response);
-          $location.path('/');
+          $location.path('/image');
           $mdToast.show(
             $mdToast.simple()
               .textContent('TU CUENTA SE HA CREADO EXITOSAMENTE!')

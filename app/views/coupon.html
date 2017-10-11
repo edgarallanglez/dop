@@ -1,25 +1,8 @@
 
-<div class="coupon-container" layout-fill>
-	<div>
- 		<div ui-view="coupon-list-view" layout-fill layout="row" layout-wrap>
-
-	  </div>
-	</div>
+<div class="center coupon-container" layout-fill flex="90">
+    <div ui-view="coupon-list-view"></div>
 
     <md-button class="md-fab md-green-theme add-campaign-button" aria-label="Agregar Campaña" ng-click="showModal($event)">
         <ng-md-icon icon="add" size="28" style="fill: #FFF; line-height: 75px!important;"></ng-md-icon>
     </md-button>
-	<!-- <div flex>
-        <div class="margin-bottom-md">
-            <md-card class="dialog-demo-content">
-                <md-button class="md-icon-button" aria-label="Buy cuopons" >
-                  <ng-md-icon icon="favorite" style="fill: lightblue;"></ng-md-icon>
-                  Comprar nueva promoción
-                </md-button>
-            </md-card>
-        </div>
-	    <div>
-	   		<md-card class="coupon-main-card" ui-view="coupon-main-view"></md-card>
-	    </div>
-	</div> -->
 </div>

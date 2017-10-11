@@ -55,18 +55,27 @@ angular.module('dopApp')
       });
     }
     $scope.getByAge();
-    $scope.labels = ['??', '12-15', '16-19', '20-24', '25-29', '30-34', '35-39', '+40'];
+    $scope.labels = ['Indefinido', '12-15', '16-19', '20-24', '25-29', '30-34', '35-39', '+40'];
     $scope.data = [[0, 0, 0, 0, 0, 0, 0, 0]];
-    $scope.colours = [{
-      fillColor: '#448AFF',
-      strokeColor: '#3972D2',
-      highlightFill: '#4A88F2',
-      highlightStroke: '#03A9F4'
+    $scope.colors = [{
+//      backgroundColor: '#fb226f',
+//      borderColor: '#C2185B'
+      backgroundColor: '#AD1457',
+      borderColor: '#C2185B'
     }];
-    // $scope.options = {
-    //   scaleGridLineColor : "white",
-    //   scaleFontColor: "white"
-    // }
+     $scope.options = {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true,
+                ticks: {
+                    fixedStepSize: 1
+                }
+            }]
+        }
+    }
     $scope.$broadcast("$reload", {});
 
   });

@@ -1,0 +1,78 @@
+
+<md-dialog ng-controller="PricingModalCtrl" md-theme="green" flex="50" aria-label="Compra coupones">
+  <md-dialog-content class="sticky-container">
+    <md-subheader flex>
+      <span>Herramienta de pago con tarjeta</span>
+      <div class="pull-right">
+        <i class="margin-sm fa-2 fa fa-cc-visa"></i>
+        <i class="margin-sm fa-2 fa fa-cc-mastercard"></i>
+        <i class="margin-sm fa-2 fa fa-cc-amex"></i>
+      </div>
+    </md-subheader>
+    <form action="" method="POST" id="card-form" layout-margin md-theme="green">
+
+      <div layout="row">
+        <md-input-container flex>
+          <label>Nombre del tarjeta habiente</label>
+          <input name="name" ng-model="cardData.name" required data-conekta="card[name]">
+          <div ng-messages="userForm.name.$error" ng-show="userForm.name.$dirty">
+            <div ng-message="required">Un nombre es requerido!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row">
+        <md-input-container flex>
+          <label>Número de la tarjeta</label>
+          <input name="card" type="number" ng-model="cardData.number" required data-conekta="card[number]">
+          <div ng-messages="userForm.card.$error" ng-show="userForm.card.$dirty">
+            <div ng-message="required">Una tarjeta es requerida!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row">
+        <md-input-container flex>
+          <label>CVC</label>
+          <input name="cvc" type="number" ng-model="cardData.cvc" required data-conekta="card[cvc]">
+          <div ng-messages="userForm.cvc.$error" ng-show="userForm.cvc.$dirty">
+            <div ng-message="required">Código de seguridad es requerido!</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row">
+        <label layout="row" layout-align="start center" flex="25" class="padding-bottom-xl" style="color: #505050;">FECHA EXPIRACIÓN</label>
+          <div flex="10" layout="start start">
+            <md-input-container flex>
+              <label>MM</label>
+              <input name="MM" type="number" ng-model="cardData.expMonth" required data-conekta="card[exp_month]">
+              <div ng-messages="userForm.month.$error" ng-show="userForm.month.$dirty">
+                <div ng-message="required">El mes es requerido!</div>
+              </div>
+            </md-input-container>
+          </div>
+          <div flex="10" layout="start start">
+            <md-input-container flex>
+              <label>YYYY</label>
+              <input name="YYYY" type="number" ng-model="cardData.expYear" required data-conekta="card[exp_year]">
+              <div ng-messages="userForm.year.$error" ng-show="userForm.year.$dirty">
+                <div ng-message="required">El año es requerido!</div>
+              </div>
+            </md-input-container>
+          </div>
+      </div>
+      <!-- <button type="submit">Suscribirse ahora!</button> -->
+    </form>
+
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="hide()" class="md-button">
+      Cancelar
+    </md-button>
+    <md-button ng-click="addCard()" class="md-primary md-accent">
+      Agregar
+    </md-button>
+  </div>
+</md-dialog>

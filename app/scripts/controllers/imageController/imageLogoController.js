@@ -33,7 +33,6 @@ angular.module('dopApp')
                 $http.get(ngSrc).success(function(){
                     alert('image exist');
                 }).error(function(){
-                    console.log("Imagen no encontrada");
                     $logoLoading.flag = false;
                     //element.attr('src', '/images/default_user.jpg'); // set default image
                 });
