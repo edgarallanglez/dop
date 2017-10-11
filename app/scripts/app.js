@@ -6,10 +6,12 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('dopApp', [
     'ngAnimate',
     'ngCookies',
+    'ngSanitize',
+    'ngResource',
     'ngRoute',
     'ui.router',
     'ngAria',
