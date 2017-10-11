@@ -23,6 +23,7 @@ module.exports = function (grunt) {
   };
 
   // Define the configuration for all the tasks
+  // authorized_keys for server, id_rsa for local
   grunt.initConfig({
     sshconfig: {
       awesome: {

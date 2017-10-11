@@ -32,7 +32,8 @@ angular
     'base64',
     'ngCropper',
     'angularMoment',
-    'btford.socket-io'
+    'btford.socket-io',
+    'ngMdIcons'
   ])
   .service('$userService', function ($auth, $http, SweetAlert) {
     this.currentUser = null;
