@@ -9,7 +9,7 @@
 
  */
 angular.module('dopApp')
-  .config(['uiGmapgoogle-maps', function($stateProvider, uiGmapGoogleMapApiProvider){
+  .config(['uiGmapGoogleMapApiProvider', function($stateProvider, uiGmapGoogleMapApiProvider){
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyDJaKK3Btv5ozr_sNZgt_XBRHHXqX9D1O8',
       v: '3.17',
