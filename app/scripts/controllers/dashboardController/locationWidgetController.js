@@ -9,13 +9,13 @@
 
  */
 angular.module('dopApp')
-  .config(['uiGmapGoogleMapApiProvider', function($stateProvider, uiGmapGoogleMapApiProvider){
+  .config(function($stateProvider, uiGmapGoogleMapApiProvider){
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyDJaKK3Btv5ozr_sNZgt_XBRHHXqX9D1O8',
       v: '3.17',
       libraries: 'weather,geometry,visualization'
     });
-  }])
+  })
   .controller('LocationWidgetCtrl', function($scope, $http, $userService, uiGmapGoogleMapApi, uiGmapIsReady) {
     uiGmapGoogleMapApi.then(function(maps) {
       if( typeof _.contains === 'undefined' ) {

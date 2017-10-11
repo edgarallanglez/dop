@@ -8,7 +8,7 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .config(['$stateProvider', function($stateProvider) {
+  .config(function($stateProvider) {
     $stateProvider
       // HOME STATES AND NESTED VIEWS ========================================
       .state('home.dashboard', {
@@ -44,7 +44,7 @@ angular.module('dopApp')
             }
         }
       });
-  }])
+  })
   .controller('MainCtrl', function($scope, $state, $mdDialog) {
     $state.go('home.dashboard');
     $scope.showValidateModal = function (ev) {

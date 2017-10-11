@@ -8,13 +8,13 @@
  * Controller of the dopApp
  */
 angular.module('dopApp')
-  .config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider){
+  .config(function(uiGmapGoogleMapApiProvider){
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyDJaKK3Btv5ozr_sNZgt_XBRHHXqX9D1O8',
       v: '3.17',
       libraries: 'weather,geometry,visualization'
     });
-  }])
+  })
   .service('$locatorService', function(){
     this.locatorItem = {
       longitude: '',
