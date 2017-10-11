@@ -307,7 +307,7 @@ angular
           // toastr.info('You have been logged out');
           $userService.currentUser = null;
           // $location.path('/login');
-          $location.reload();
+          location.reload();
         });
     };
   })
