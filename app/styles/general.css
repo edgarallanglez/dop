@@ -458,6 +458,14 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
 
 .stat-card h4 { font-weight: 500 !important; }
 
+.validate-logo {
+  width: 52px ;
+  height: 52px ;
+  margin: 10px;
+  border-radius: 50%;
+  background: #F2F2F2;
+}
+
 .blue-gradient {
   background-image: linear-gradient(-180deg, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.20) 100%), 
     linear-gradient(-180deg, #3E74FF 0%, #2154BA 100%);

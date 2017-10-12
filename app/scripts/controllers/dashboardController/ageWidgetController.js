@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('AgeWidgetCtrl', function($scope, $http, $userService) {
+  .controller('AgeWidgetCtrl', function($scope, $http, $userService, $auth) {
     var branch_id = $userService.getCurrentUser().branch_id;
     $scope.empty = false;
     $scope.loading = true;
@@ -21,9 +21,9 @@ angular.module('dopApp')
       $http({
         method: 'GET',
         url: 'http://45.55.7.118:5000/api/coupon/used/ages/'+ branch_id,
-      }).then(function(data){
-        $scope.ranges = data.data;
-        if (data.data.data.length === 0) { $scope.empty = true; }
+      }).then(function(result){
+        $scope.ranges = result.data;
+        if (result.data.data.length === 0) { $scope.empty = true; }
         else { $scope.empty = false; }
         angular.forEach($scope.ranges.data, function(value, key) {
           if(value.age == null){

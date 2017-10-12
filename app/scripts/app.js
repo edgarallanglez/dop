@@ -35,6 +35,12 @@ var app = angular
     'ngMdIcons',
     'ngMessages',
   ])
+  .factory('$socket', function (socketFactory) {
+      return socketFactory({
+        prefix: 'foo~',
+        ioSocket: io.connect('http://45.55.7.118', { secure: true, transports: [ "flashsocket","polling","websocket" ] })
+      });
+  })
   .service('$userService', function ($auth, $http, SweetAlert) {
     this.currentUser = null;
     this.payment_sources = null;
@@ -278,7 +284,7 @@ var app = angular
       });
 })
   .controller('MeCtrl', function ($scope, $http, $auth, $userService, $mdSidenav,
-                                   $log, $location, $mdDialog) {
+                                   $log, $location, $mdDialog, $socket) {
     $scope.init = function () {
       if (!$userService.getCurrentUser() && $auth.isAuthenticated()) {
         var payload = $auth.getPayload();
@@ -290,6 +296,9 @@ var app = angular
         }).success(function (data){
           $userService.setUser(data.data[0], data.payment_sources);
           $scope.user = $userService.getCurrentUser();
+          $socket.emit('waitingForRedeemWebAdmin', {
+              branch_id: $scope.user.branch_id
+          });
         });
       } else {
         $location.path('/login');

@@ -10,7 +10,7 @@
 angular.module('dopApp')
   .config(function($stateProvider) {
 })
-  .controller('StatsViewCtrl', function($rootScope, $scope, $http, $userService) {
+  .controller('StatsViewCtrl', function($rootScope, $scope, $http, $userService, $auth) {
   var branch_id = $userService.currentUser.branch_id;
   $scope.stats = {
     likes: 0,
@@ -19,7 +19,8 @@ angular.module('dopApp')
   }
   $http({
     method: 'GET',
-    url: 'http://45.55.7.118:5000/api/company/branch/' + branch_id + '/full/stats/get'
+    url: 'http://45.55.7.118:5000/api/company/branch/' + branch_id + '/full/stats/get',
+    headers: { 'token': $auth.getToken() }
   }).success(function(result) {
     angular.forEach(result.data, function (obj, index) {
       $scope.stats.likes += obj.total_likes;
