@@ -1,5 +1,5 @@
 
-<md-dialog class="pro-dialog" ng-controller="RedeemModalCtrl" md-theme="" flex="60" aria-label="Valída" ng-init="init()">
+<md-dialog class="pro-dialog" ng-controller="RedeemModalCtrl" md-theme="" flex="75" aria-label="Valída" ng-init="init()">
   <canvas id="world"></canvas>
   
   <md-dialog-content class="sticky-container" style="background-color: #f2f2f2">
@@ -19,7 +19,7 @@
         <h4 flex ng-if="user.visit < user.goal">Meta: {{user.goal}}</h4>
         <h4 flex ng-if="user.visit == user.goal">Canjeando Recompensa</h4>
         <div flex="30" layout="row" layout-align="center center">
-          <md-button ng-click="validate()" class="md-accent md-raised super-z-index">
+          <md-button ng-click="validate(user)" class="md-accent md-raised super-z-index">
             VALIDAR
           </md-button>
         </div>

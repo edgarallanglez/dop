@@ -27,8 +27,27 @@ angular.module('dopApp')
       $scope.users.push(response.data);
     });
     
-    $scope.validate = function() {
-      
+    $scope.validate = function(user) {
+      $http({
+        method: 'POST',
+        url: 'http://45.55.7.118:5000/api/loyalty/user/redeem/by/branch',
+        data: {
+          'branch_id': $userService.currentUser.branch_id,
+          'loyalty_id': user.loyalty_id,
+          'user_id': user.user_id,
+          'branch_folio': ' ',
+          'room': $userService.currentUser.branch_id,
+        },
+        headers: { 'token': $auth.getToken() }
+      }).then(function onSuccess(response) {
+        if(response.data.message == 'success') { SweetAlert.swal('Success', '¡Listo! Has validado la visita' , 'success'); }
+        else if(response.data.message == 'error') { 
+          var hours_left = response.data.minutes / 60
+          SweetAlert.swal('Error', " hizo válida esta promoción recientemente, faltan "+ hours_left+ "\
+                          horas para que pueda usarla nuevamente.", 'error'); }
+      }).catch(function onError(response) {
+        SweetAlert.swal('Error', response.data.message, 'error');
+      });
     };
     
     $scope.init();
