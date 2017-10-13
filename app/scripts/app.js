@@ -91,8 +91,8 @@ var app = angular
         resolve: {
           authenticated: function ($q, $location, $auth, $state) {
             var deferred = $q.defer();
-            if (!$auth.isAuthenticated()) { $location.path('/login'); }
-            else { deferred.resolve(); }
+            if ($auth.isAuthenticated()) { deferred.resolve(); }
+            else { $location.path('/login'); }
 
             return deferred.promise;
           },
