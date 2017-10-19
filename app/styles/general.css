@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:500,300,400);
+@import url(http://fonts.googleapis.com/css?family=Roboto:900,700,500,300,400);
 @import url('dashboard.css');
 @import url('report.css');
 @import url('payment.css');
@@ -65,6 +65,7 @@ body h1, h2, h3, h4, h5, h6 { font-weight: 400 !important; }
 .margin-bottom-xxl { margin-bottom: 30px !important; }
 
 .text-center { text-align: center; }
+.force-center { margin: 0 auto !important; }
 
 /* fonts */
 .font-15 { font-size: 15px !important; }
@@ -413,10 +414,12 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
   color: #333 !important;
 }
 
+/*
 .pro-dialog .md-actions {
   height: 74px !important;
   padding: 0 15px !important;
 }
+*/
 
 .pro-button {
   height: 40px;
@@ -440,7 +443,7 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
 }
 
 .benefits {
-  margin: 30px;
+  margin: 5px;
   font-size: 14px;
   font-weight: 500;
   color: #222222;
@@ -488,6 +491,18 @@ md-toolbar.image-toolbar { min-height: 28px !important; }
 #world { 
   position: absolute; 
   z-index: 9;
+  max-height: 625px;
+}
+
+.plan-detail {
+  color: #333333;
+}
+
+.pro-content md-card { min-height: 400px; }
+
+.plan-title .child {
+  font-weight: 900 !important;
+  color: #fb226f;
 }
 
 @media (max-width: 959px) {

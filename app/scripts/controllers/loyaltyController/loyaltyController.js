@@ -99,6 +99,14 @@ angular.module('dopApp')
     }).catch(function onError(response) {
       SweetAlert.swal('Error', response.message, 'error');
     });
-
+    
   };
+  $scope.showProModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: true,
+        controller: 'BecomeProModalCtrl',
+        templateUrl: '../views/modalViews/becomeProModalView.html',
+        targetEvent: ev,
+      });
+    };
 });

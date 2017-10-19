@@ -10,8 +10,10 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('AgeWidgetCtrl', function($scope, $http, $userService, $auth) {
+  .controller('AgeWidgetCtrl', function($scope, $http, $userService, $auth, $mdDialog) {
     var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.pro = $userService.currentUser.pro;
+    $scope.payment_method = $userService.payment_sources;
     $scope.empty = false;
     $scope.loading = true;
     $scope.getByAge = function(){
@@ -77,5 +79,13 @@ angular.module('dopApp')
         }
     }
     $scope.$broadcast("$reload", {});
+    $scope.showProModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: true,
+        controller: 'BecomeProModalCtrl',
+        templateUrl: '../views/modalViews/becomeProModalView.html',
+        targetEvent: ev,
+      });
+    };
 
   });

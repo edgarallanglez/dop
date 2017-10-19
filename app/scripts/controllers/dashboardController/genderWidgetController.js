@@ -10,8 +10,10 @@
 angular.module('dopApp')
   .config(function($stateProvider){
   })
-  .controller('GenderWidgetCtrl', function($rootScope, $scope, $http, $userService) {
-  	var branch_id = $userService.getCurrentUser().branch_id;
+  .controller('GenderWidgetCtrl', function($rootScope, $scope, $http, $userService, $mdDialog) {
+    var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.pro = $userService.currentUser.pro;
+    $scope.payment_method = $userService.payment_sources;
     $scope.empty = false;
     $scope.loading = true;
 
@@ -43,5 +45,14 @@ angular.module('dopApp')
     $scope.labels = ['Hombres', 'Mujeres', 'Sin especificar'];
     $scope.data = [0, 0, 0];
     $scope.colors = ['#2d67dc', '#fb226f', '#9e9e9e'];
+  
+    $scope.showProModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: true,
+        controller: 'BecomeProModalCtrl',
+        templateUrl: '../views/modalViews/becomeProModalView.html',
+        targetEvent: ev,
+      });
+    };
 
   });

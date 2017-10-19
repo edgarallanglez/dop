@@ -1,4 +1,4 @@
-    <div layout-fill layout="row" layout-wrap style="margin: 0 auto;">
+    <div layout-fill layout="row" layout-wrap style="margin: 0 auto;" ng-if="pro && !loading">
         <md-card class="loading" flex ng-show="loading" layout-align="center center">
           <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
         </md-card>
@@ -62,3 +62,16 @@
         </tr>
       </table> -->
     </div>
+    
+<md-card class="empty-view-height" ng-if="!pro && !loading" layout-align="center center" layout="row" layout-wrap flex>
+  <h3 class="center" flex="100"> ESTA FUNCIONALIDAD ES PARA USUARIOS PRO </h3>
+  <div ng-if="!pro && !loading" flex="100" layout-align="center center" layout="row">
+    <md-button ng-click="showProModal()" class="pro-button new-gradient-dop md-accent md-raised" flex="50" ng-if="payment_method">
+      Suscribeme
+    </md-button>
+
+    <md-button ng-click="showProModal()" class="pro-button new-gradient-dop md-accent md-raised" flex="50" ng-if="!payment_method">
+      AGREGAR método de pago y suscribeme
+    </md-button>
+  </div>
+</md-card>

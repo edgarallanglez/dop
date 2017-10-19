@@ -17,6 +17,10 @@ angular.module('dopApp')
     });
   })
   .controller('LocationWidgetCtrl', function($scope, $http, $userService, uiGmapGoogleMapApi, uiGmapIsReady) {
+    var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.pro = $userService.currentUser.pro;
+    $scope.payment_method = $userService.payment_sources;
+    $scope.loading = true;
     uiGmapGoogleMapApi.then(function(maps) {
       if( typeof _.contains === 'undefined' ) {
         _.contains = _.includes;

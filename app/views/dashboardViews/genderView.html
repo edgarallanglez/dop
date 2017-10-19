@@ -1,4 +1,4 @@
-<div class="card animated fadeInUp">
+<div class="card animated fadeInUp" ng-if="pro && !loading">
     <div class="card-header">
         <h2>Usos por género</h2>
 
@@ -23,3 +23,16 @@
         </div>
     </div>
 </div>
+
+<md-card class="empty-view-height" ng-if="!pro && !loading" layout-align="center center" layout="row" layout-wrap flex>
+  <h3 class="center" flex="100"> ESTA FUNCIONALIDAD ES PARA USUARIOS PRO </h3>
+  <div ng-if="!pro && !loading" flex="100" layout-align="center center" layout="row">
+    <md-button ng-click="showProModal()" class="pro-button new-gradient-dop md-accent md-raised" flex="60" ng-if="payment_method">
+      Suscribeme
+    </md-button>
+
+    <md-button ng-click="showProModal()" class="pro-button new-gradient-dop md-accent md-raised" flex="60" ng-if="!payment_method">
+      AGREGAR método de pago y suscribeme
+    </md-button>
+  </div>
+</md-card>

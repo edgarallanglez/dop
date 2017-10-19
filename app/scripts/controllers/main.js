@@ -45,8 +45,9 @@ angular.module('dopApp')
         }
       });
   })
-  .controller('MainCtrl', function($scope, $state, $mdDialog) {
+  .controller('MainCtrl', function($scope, $state, $userService, $mdDialog) {
     $state.go('home.dashboard');
+  
     $scope.showValidateModal = function (ev) {
       $mdDialog.show({
         clickOutsideToClose: false,

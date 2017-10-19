@@ -19,8 +19,11 @@ angular.module('dopApp')
        this.coupon = coupon;
     };
   })
-  .controller('LastCouponListWidgetCtrl', function($scope, $http, $userService, CouponFactory,
+  .controller('LastCouponListWidgetCtrl', function($scope, $http, $userService, CouponFactory, $mdDialog,
                                                     $lastCouponService, $state, $location, $auth, $mdToast) {
+    var branch_id = $userService.getCurrentUser().branch_id;
+    $scope.pro = $userService.currentUser.pro;
+    $scope.payment_method = $userService.payment_sources;
     $scope.loading = true;
 
     $scope.select = function(coupon) {
@@ -77,4 +80,12 @@ angular.module('dopApp')
       $scope.coupons = data.data;
       $scope.loading = false;
     });
+    $scope.showProModal = function (ev) {
+      $mdDialog.show({
+        clickOutsideToClose: true,
+        controller: 'BecomeProModalCtrl',
+        templateUrl: '../views/modalViews/becomeProModalView.html',
+        targetEvent: ev,
+      });
+    };
   });

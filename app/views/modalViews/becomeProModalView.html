@@ -1,44 +1,95 @@
-
-<md-dialog class="pro-dialog" ng-controller="BecomeProModalCtrl" md-theme="" flex="40" aria-label="Hazte PRO" ng-init="init()">
+<md-dialog class="pro-dialog" ng-controller="BecomeProModalCtrl" flex="80" aria-label="Hazte PRO" ng-init="init()">
   <canvas id="world" confetti></canvas>
   <md-dialog-content class="sticky-container" style="background-color: #f9f9f9">
-    <md-subheader class="">
+    <md-subheader>
       <h3>PLAN PRO</h3>
-      <img src="../../images/awards-flat-dop.png" alt="" style="width: 15%;
+      <img src="../../images/awards-flat-dop.png" alt="" style="width: 6%;
                                                                 position: absolute;
                                                                 right: -15px;
-                                                                top: -30px;">
+                                                                top: -30px;">                                                         
     </md-subheader>
-    <md-card class="loading" flex ng-show="loading" layout-align="center center">
-        <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+
+    <md-card class="loading" flex ng-if="loading" layout-align="center center">
+      <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
     </md-card>
-    <div layout="column" class="no-padding-bottom padding-top-md">
-      <h4>Conviértete en usuario PRO y obtén todos los beneficios de DOP de forma ilimitada.</h4>
-      <ul class="benefits">
-        <li>Programas de Lealtad</li>
-        <li>Verifica Quién, Dónde y Cuándo tu programa de lealtad fue utilizado</li>
-        <li>Configura cuantas visitas son necesarias para la recompensa de lealtad y DOP llevará el control por ti</li>
-        <li>Campañas de promoción</li>
-        <li>Estadística fina de visualizaciones</li>
-        <li>Likes, Usos y Locación de todas tus campañas</li>
-      </ul>
+    <h4 class="margin-xl">Conviértete en usuario PRO y obtén todos los beneficios de DOP de forma ilimitada.</h4>
+    <div class="pro-content" layout="row" layout-wrap layout-align="center center">
+      <md-card layout="column" class="super-z-index no-padding-bottom padding-top-md" flex-xs="100" flex-sm="45" flex-md="45" flex>
+        <div class="plan-title" layout="column" layout-align="top center">
+          <h2 class="child">Plan Gratis</h2>
+          <h2 class="child no-margin-top">$ 00/mes</h2>
+        </div>
+        <ul class="benefits">
+          <li>1 Campaña (Regalando un producto o servicio)</li>
+          <li>Notificaciones a clientes</li>
+        </ul>
+        <div class="action" layout="row" layout-align="center end" flex>
+          <md-button class="md-raised margin-bottom-xl" flex="80">
+            Únete a la familia PRO
+          </md-button>
+        </div>
+      </md-card>
+      <md-card layout="column" class="super-z-index no-padding-bottom padding-top-md" flex-xs="100" flex-sm="45" flex-md="45" flex>
+        <div class="plan-title" layout="column" layout-align="top center">
+          <h2 class="child">Plan Mensual</h2>
+          <h2 class="child no-margin-top">$ 950/mes</h2>
+        </div>
+        <ul class="benefits">
+          <li>Sistema de Lealtad (Hasta 2 programas de manera simultánea)</li>
+          <li>Campañas de Descuento (4 por mes)</li>
+          <li>Campañas de regalo (ilimitadas)</li>
+          <li>Notificaciones a clientes</li>
+          <li>Estadística fina de visualizaciones</li>
+          <li>Menciones en redes sociales</li>
+        </ul>
+        <div class="action" layout="row" layout-align="center end" flex>
+          <md-button ng-click="subscribe()" class=" md-accent md-raised margin-bottom-xl" flex="80">
+            COMPRAR
+          </md-button>
+        </div>
+      </md-card>
+      <md-card layout="column" class="super-z-index no-padding-bottom padding-top-md" flex-xs="100" flex-sm="45" flex-md="45" flex>
+        <div class="plan-title" layout="column" layout-align="top center">
+          <h2 class="child">Plan Semestral</h2>
+          <h2 class="child no-margin-top">$ 760/mes</h2>
+        </div>
+        <ul class="benefits">
+          <li>Lo mismo que el plan mensual pero más barato pagando por 6 meses</li>
+        </ul>
+        <div class="action" layout="row" layout-align="center end" flex>
+          <md-button ng-click="subscribe()" class="md-accent md-raised margin-bottom-xl" flex="80">
+            COMPRAR
+          </md-button>
+        </div>
+      </md-card>
+      <md-card layout="column" class="super-z-index no-padding-bottom padding-top-md" flex-xs="100" flex-sm="45" flex-md="45" flex>
+        <div class="plan-title" layout="column" layout-align="top center">
+          <h2 class="child">Plan Anual</h2>
+          <h2 class="child no-margin-top">$ 665/mes</h2>
+        </div>
+        <ul class="benefits">
+          <li>Lo mismo que el plan mensual pero más barato pagando por 12 meses</li>
+        </ul>
+        <div class="action" layout="row" layout-align="center end" flex>
+          <md-button ng-click="subscribe()" class="margin-bottom-xl  md-accent md-raised" flex="80">
+            COMPRAR
+          </md-button>
+        </div>
+      </md-card>
     </div>
-
-
+    
   </md-dialog-content>
   <div class="md-actions">
-    <div ng-if="!pro" layout-align="center center" layout="row" flex>
-      <md-button ng-click="subscribe()" class="pro-button new-gradient-dop md-accent md-raised" flex ng-if="payment_method">
-        Suscribeme
-      </md-button>
-
-      <md-button ng-click="addPaymentMethod()" class="pro-button new-gradient-dop md-accent md-raised" flex ng-if="!payment_method">
-        AGREGAR método de pago
+    <h4 class="margin-xl">Planes por 1 sucursal. 40% de ahorro en cada una de las sucursales adicionales</h4>
+    <div class="force-center center" ng-if="!pro" layout="row">
+      <md-button ng-click="" class="md-raised force-center" ng-if="!payment_method">
+        ya casi eres de la familia
       </md-button>
     </div>
-    <md-button ng-click="hide()" class="pro-button new-gradient-dop md-accent md-raised" flex ng-if="pro">
-      tú ya eres pro 🙌
-    </md-button>
- 
+    <div class="force-center center" layout="row" ng-if="pro" flex>
+      <md-button ng-click="hide()" class="margin-bottom-xl md-accent md-raised force-center" flex="80">
+        tú ya eres pro 🙌
+      </md-button>
+    </div>
   </div>
 </md-dialog>
