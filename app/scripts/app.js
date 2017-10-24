@@ -92,7 +92,10 @@ var app = angular
           authenticated: function ($q, $location, $auth, $state) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) { deferred.resolve(); }
-            else { $location.path('/login'); }
+            else { 
+              $location.path('/login'); 
+              $state.go('login')
+            }
 
             return deferred.promise;
           },
