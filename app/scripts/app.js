@@ -330,6 +330,7 @@ var app = angular
       $scope.showlogin = false
     } else {
       $scope.showlogin = true
+      $location.path('/login');
     }
     
     $scope.reload = true;
