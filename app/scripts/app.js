@@ -252,7 +252,6 @@ var app = angular
         }
       })
 
-    $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
     // Theme configurations
 
@@ -328,6 +327,7 @@ var app = angular
                                          $http, $templateCache, $auth, $mdDialog, $auth) {
     // if (!$userService.fromLogin) { $scope.reload = false; } else { $scope.reload = true; }
     if (!$auth.isAuthenticated) {$location.path('/login')};
+    $scope.$apply();
     $scope.reload = true;
     $scope.$watch(function () {
       return $userService.loading;
