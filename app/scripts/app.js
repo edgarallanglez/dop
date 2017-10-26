@@ -253,6 +253,7 @@ var app = angular
       })
 
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
     // Theme configurations
 
     $mdThemingProvider.theme('green')
@@ -326,12 +327,6 @@ var app = angular
   .controller('TabController', function ($scope, $state, $location, $userService, $log, $mdSidenav,
                                          $http, $templateCache, $auth, $mdDialog, $auth) {
     // if (!$userService.fromLogin) { $scope.reload = false; } else { $scope.reload = true; }
-    if ($auth.isAuthenticated()) {
-      $scope.showlogin = false
-    } else {
-      $scope.showlogin = true
-      $location.path('/login');
-    }
     
     $scope.reload = true;
     $scope.$watch(function () {

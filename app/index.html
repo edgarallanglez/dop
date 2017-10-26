@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
+  <base href="/">
   <link rel="shortcut icon" href="images/dop_gradient_logo.png">
 
   <title>DOP</title>
@@ -146,7 +147,7 @@
         </md-button>
     </div>
 
-    <div class="login-container" layout="row" layout-align="center center" ng-if="showlogin">
+    <div class="login-container" layout="row" layout-align="center center" ng-if="!isAuthenticated()">
       <div ui-view></div>
     </div>
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
