@@ -83,22 +83,34 @@ var app = angular
     $authProvider.signupUrl = 'http://45.55.7.118:5000/api/company/auth/signup';
     $authProvider.loginUrl = 'http://45.55.7.118:5000/api/company/auth/login';
     $authProvider.facebook({ clientId: '927375797314743' });
+
+    var skipIfLoggedIn = ['$q', '$auth', function($q, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.reject();
+      } else {
+        deferred.resolve();
+      }
+      return deferred.promise;
+    }];
+
+    var loginRequired = ['$q', '$location', '$auth', function($q, $location, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.resolve();
+      } else {
+        $location.path('/login');
+      }
+      return deferred.promise;
+    }];
+
     $stateProvider
       .state('home', {
         url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         resolve: {
-          authenticated: function ($q, $location, $auth, $state) {
-            var deferred = $q.defer();
-            if ($auth.isAuthenticated()) { deferred.resolve(); }
-            else { 
-              $location.path('/login'); 
-              $state.go('login')
-            }
-
-            return deferred.promise;
-          },
+          loginRequired: loginRequired,
           userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
@@ -120,12 +132,7 @@ var app = angular
         templateUrl: 'login.html',
         controller: 'LoginCtrl',
         resolve: {
-          authenticated: function ($q, $location, $auth) {
-            var deferred = $q.defer();
-            if ($auth.isAuthenticated()) { deferred.reject(); }
-            else { deferred.resolve(); }
-            return deferred.promise;
-          }
+          skipIfLoggedIn: skipIfLoggedIn
         }
       })
       .state('signup', {
@@ -133,12 +140,7 @@ var app = angular
         templateUrl: 'signup.html',
         controller: 'SignupCtrl',
         resolve: {
-          authenticated: function ($q, $location, $auth) {
-            var deferred = $q.defer();
-            if ($auth.isAuthenticated()) { deferred.reject(); }
-            else { deferred.resolve(); }
-            return deferred.promise;
-          }
+          skipIfLoggedIn: skipIfLoggedIn
         }
       })
       .state('coupon', {
@@ -146,13 +148,7 @@ var app = angular
         templateUrl: 'views/coupon.html',
         controller: 'CouponCtrl',
         resolve: {
-          authenticated: function ($q, $location, $auth, $state) {
-            var deferred = $q.defer();
-            if ($auth.isAuthenticated()) { deferred.resolve(); }
-            else { $location.path('/login'); }
-
-            return deferred.promise;
-          },
+          loginRequired: loginRequired,
           userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
@@ -174,13 +170,7 @@ var app = angular
          templateUrl: 'views/loyalty.html',
          controller: 'LoyaltyCtrl',
          resolve: {
-           authenticated: function ($q, $location, $auth, $state) {
-             var deferred = $q.defer();
-             if ($auth.isAuthenticated()) { deferred.resolve(); }
-             else { $location.path('/login'); }
-
-             return deferred.promise;
-           },
+          loginRequired: loginRequired,
            userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
              var deferred = $q.defer();
              //var payload = $auth.getPayload();
@@ -202,13 +192,7 @@ var app = angular
         templateUrl: 'views/image.html',
         controller: 'ImageCtrl',
         resolve: {
-          authenticated: function ($q, $location, $auth, $state) {
-            var deferred = $q.defer();
-            if ($auth.isAuthenticated()) { deferred.resolve(); }
-            else { $location.path('/login'); }
-
-            return deferred.promise;
-          },
+          loginRequired: loginRequired,
           userService: function ($q, $location, $auth, $http, $userService, SweetAlert) {
             var deferred = $q.defer();
             //var payload = $auth.getPayload();
@@ -226,7 +210,7 @@ var app = angular
         }
       })
       .state('notification', {
-        url: '/notification',
+        url: '/notification1991',
         templateUrl: 'notification.html',
         controller: 'NotificationCtrl',
         resolve: {
@@ -251,8 +235,12 @@ var app = angular
           }
         }
       })
-
-    $locationProvider.html5Mode(true);
+    
+    // $locationProvider.html5Mode({
+    //   enabled: true,
+    //   requireBase: false
+    // });
+    $urlRouterProvider.otherwise('/');
     // Theme configurations
 
     $mdThemingProvider.theme('green')
@@ -326,7 +314,7 @@ var app = angular
   .controller('TabController', function ($scope, $state, $location, $userService, $log, $mdSidenav,
                                          $http, $templateCache, $auth, $mdDialog, $auth) {
     // if (!$userService.fromLogin) { $scope.reload = false; } else { $scope.reload = true; }
-    if (!$auth.isAuthenticated()) {$location.path('/login')};
+    //if (!$auth.isAuthenticated()) {$location.path('/login')};
     $scope.reload = true;
     $scope.$watch(function () {
       return $userService.loading;
