@@ -326,8 +326,7 @@ var app = angular
   .controller('TabController', function ($scope, $state, $location, $userService, $log, $mdSidenav,
                                          $http, $templateCache, $auth, $mdDialog, $auth) {
     // if (!$userService.fromLogin) { $scope.reload = false; } else { $scope.reload = true; }
-    if (!$auth.isAuthenticated) {$location.path('/login')};
-    $scope.$apply();
+    if (!$auth.isAuthenticated()) {$location.path('/login')};
     $scope.reload = true;
     $scope.$watch(function () {
       return $userService.loading;
