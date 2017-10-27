@@ -84,9 +84,10 @@ var app = angular
     $authProvider.loginUrl = 'http://45.55.7.118:5000/api/company/auth/login';
     $authProvider.facebook({ clientId: '927375797314743' });
 
-    var skipIfLoggedIn = ['$q', '$auth', function($q, $auth) {
+    var skipIfLoggedIn = ['$q', '$auth', '$location', function($q, $auth, $location) {
       var deferred = $q.defer();
       if ($auth.isAuthenticated()) {
+        $location.path('/');
         deferred.reject();
       } else {
         deferred.resolve();
