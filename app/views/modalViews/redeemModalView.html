@@ -6,11 +6,16 @@
     <md-subheader class="">
       <h3 style="display: inline-flex"><ng-md-icon icon="loyalty" size="26" style="fill: #333;"></ng-md-icon> Valida la visita</h3>
     </md-subheader>
-    <md-card class="loading" flex ng-show="loading" layout-align="center center">
-        <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
-    </md-card>
     <div layout="column" class="no-padding-bottom padding-top-md">
       <h4>Verifíca que el usuario cumpla los requisitos de lealtad y valida su visita.</h4>
+      <md-card class="loading" flex ng-show="loading" layout-align="center center">
+        <md-progress-circular class="md-accent" md-mode="indeterminate"></md-progress-circular>
+      </md-card>
+      <md-card class="loading" flex ng-show="reloadButtonFlag" layout-align="center center">
+        <md-button ng-click="init()" class="md-accent md-raised super-z-index">
+          Recargar
+        </md-button>
+      </md-card>
       <md-card ng-repeat="user in users" layout="row" layout-align="center center">
         <img ng-src="{{user.user_image}}" class="validate-logo">
         <h4 flex>{{user.user_name}}</h4>

@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       awesome: {
         host: '107.170.237.249',
         port: '9000',
-        privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/authorized_keys'),
+        privateKey: grunt.file.read(process.env['HOME'] + '/.ssh/id_rsa'),
         username: 'root',
         agent: process.env.SSH_AUTH_SOCK
       }
@@ -136,24 +136,24 @@ module.exports = function (grunt) {
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
-    // jshint: {
-    //   options: {
-    //     jshintrc: '.jshintrc',
-    //     reporter: require('jshint-stylish')
-    //   },
-    //   all: {
-    //     src: [
-    //       'Gruntfile.js',
-    //       '<%= yeoman.app %>/scripts/{,*/}*.js'
-    //     ]
-    //   },
-    //   test: {
-    //     options: {
-    //       jshintrc: 'test/.jshintrc'
-    //     },
-    //     src: ['test/spec/{,*/}*.js']
-    //   }
-    // },
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
+      },
+      all: {
+        src: [
+          'Gruntfile.js',
+          '<%= yeoman.app %>/scripts/{,*/}*.js'
+        ]
+      },
+      test: {
+        options: {
+          jshintrc: 'test/.jshintrc'
+        },
+        src: ['test/spec/{,*/}*.js']
+      }
+    },
 
     // Empties folders to start fresh
     clean: {
