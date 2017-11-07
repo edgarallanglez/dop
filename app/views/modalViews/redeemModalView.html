@@ -16,14 +16,14 @@
           Recargar
         </md-button>
       </md-card>
-      <md-card ng-repeat="user in users" layout="row" layout-align="center center">
-        <img ng-src="{{user.user_image}}" class="validate-logo">
-        <h4 flex>{{user.user_name}}</h4>
-        <h4 flex>Lealtad: {{user.loyalty_name || 'Tu sistema de lealtad'}}</h4>
-        <h4 flex ng-if="user.visit < user.goal">visitas: {{user.visit}}</h4>
-        <h4 flex ng-if="user.visit < user.goal">Meta: {{user.goal}}</h4>
-        <h4 flex ng-if="user.visit == user.goal">Canjeando Recompensa</h4>
-        <div flex="30" layout="row" layout-align="center center">
+      <md-card ng-repeat="user in users" layout="row" layout-xs="column" layout-align="center center">
+        <img ng-src="{{user.user_image}}" class="validate-logo" style="text-align: left">
+        <h5 flex-xs="100" flex="15" style="text-align: left">{{user.user_name}}</h5>
+        <h5 flex-xs="100" flex="30" style="text-align: left">Lealtad: {{user.loyalty_name || 'Tu sistema de lealtad'}}</h5>
+        <h5 flex-xs="100" flex ng-if="user.visit < user.goal" style="text-align: left">visitas: {{user.visit}}</h5>
+        <h5 flex-xs="100" flex ng-if="user.visit < user.goal" style="text-align: left">Meta: {{user.goal}}</h5>
+        <h5 flex-xs="100" flex ng-if="user.visit == user.goal" style="text-align: left">Canjeando Recompensa</h5>
+        <div flex="25" layout="row" layout-align="center center">
           <md-button ng-click="validate(user)" class="md-accent md-raised super-z-index">
             VALIDAR
           </md-button>
