@@ -55,7 +55,6 @@ angular.module('dopApp')
     }
 
     $scope.validate = function(user) {
-      debugger;
       if (user.coupon) {
         $http({
           method: 'POST',

@@ -19,10 +19,11 @@
       <md-card ng-repeat="user in users" layout="row" layout-xs="column" layout-align="center center">
         <img ng-src="{{user.user_image}}" class="validate-logo" style="text-align: left">
         <h5 flex-xs="100" flex="15" style="text-align: left">{{user.user_name}}</h5>
-        <h5 flex-xs="100" flex="30" style="text-align: left">Lealtad: {{user.loyalty_name || 'Tu sistema de lealtad'}}</h5>
+        <h5 flex-xs="100" flex="30" ng-if="!user.coupon" style="text-align: left">Lealtad: {{user.loyalty_name || 'Tu sistema de lealtad'}}</h5>
+        <h5 flex-xs="100" flex="65" ng-if="user.coupon" style="text-align: left">Descripción: {{user.coupon_name || ''}}</h5>
         <h5 flex-xs="100" flex ng-if="user.visit < user.goal" style="text-align: left">visitas: {{user.visit}}</h5>
         <h5 flex-xs="100" flex ng-if="user.visit < user.goal" style="text-align: left">Meta: {{user.goal}}</h5>
-        <h5 flex-xs="100" flex ng-if="user.visit == user.goal" style="text-align: left">Canjeando Recompensa</h5>
+        <h5 flex-xs="100" flex ng-if="user.visit == user.goal && !user.coupon" style="text-align: left">Canjeando Recompensa</h5>
         <div flex="25" layout="row" layout-align="center center">
           <md-button ng-click="validate(user)" class="md-accent md-raised super-z-index">
             VALIDAR
